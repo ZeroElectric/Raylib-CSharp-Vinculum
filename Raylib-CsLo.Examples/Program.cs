@@ -6,8 +6,6 @@
 // [!!] The code and 100+ examples are here! https://github.com/NotNotTech/Raylib-CsLo 
 // [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!]  [!!] [!!] [!!] [!!]
 
-
-/////////////////////////////////////////
 /////////////////////////////////////////
 /////////////////////////////////////////
 //all these `global using` statements are for convience in porting the examples.
@@ -16,90 +14,63 @@
 //all the examples would need to be modified: to prefix everything with the proper Class/Enum.
 /////////////////////////////////////////
 /////////////////////////////////////////
-/////////////////////////////////////////
 
-
-global using System.Numerics;
-global using Raylib_CsLo;
 global using Raylib_CsLo.InternalHelpers;
-
-global using static Raylib_CsLo.Raylib;
-global using static Raylib_CsLo.RayMath;
-global using static Raylib_CsLo.RayGui;
-global using static Raylib_CsLo.RlGl;
-
-global using static Raylib_CsLo.KeyboardKey;
-global using static Raylib_CsLo.MouseButton;
+global using System.Numerics;
+global using static Raylib_CsLo.BlendMode;
+global using static Raylib_CsLo.CameraMode;
+global using static Raylib_CsLo.CameraProjection;
+global using static Raylib_CsLo.ConfigFlags;
+global using static Raylib_CsLo.CubemapLayout;
+global using static Raylib_CsLo.Easings;
+global using static Raylib_CsLo.Examples.RLights;
+global using static Raylib_CsLo.Examples.RLights.LightType;
+global using static Raylib_CsLo.FontType;
 global using static Raylib_CsLo.GamepadAxis;
 global using static Raylib_CsLo.GamepadButton;
 global using static Raylib_CsLo.Gesture;
-global using static Raylib_CsLo.ConfigFlags;
-global using static Raylib_CsLo.CameraProjection;
-global using static Raylib_CsLo.CameraMode;
+global using static Raylib_CsLo.KeyboardKey;
+global using static Raylib_CsLo.MaterialMapIndex;
+global using static Raylib_CsLo.MouseButton;
+global using static Raylib_CsLo.MouseCursor;
+global using static Raylib_CsLo.NPatchLayout;
+global using static Raylib_CsLo.Physac;
+global using static Raylib_CsLo.PixelFormat;
+global using static Raylib_CsLo.RayGui;
+global using static Raylib_CsLo.Raylib;
+global using static Raylib_CsLo.RayMath;
+global using static Raylib_CsLo.rlFramebufferAttachTextureType;
+global using static Raylib_CsLo.rlFramebufferAttachType;
+global using static Raylib_CsLo.RlGl;
+global using static Raylib_CsLo.rlShaderLocationIndex;
+global using static Raylib_CsLo.ShaderLocationIndex;
+global using static Raylib_CsLo.ShaderUniformDataType;
 global using static Raylib_CsLo.TextureFilter;
 global using static Raylib_CsLo.TextureWrap;
-global using static Raylib_CsLo.ShaderUniformDataType;
 global using static Raylib_CsLo.TraceLogLevel;
-global using static Raylib_CsLo.MaterialMapIndex;
-global using static Raylib_CsLo.CubemapLayout;
-global using static Raylib_CsLo.PixelFormat;
 
-global using static Raylib_CsLo.rlFramebufferAttachType;
-global using static Raylib_CsLo.rlFramebufferAttachTextureType;
-global using static Raylib_CsLo.rlShaderLocationIndex;
-
-
-global using static Raylib_CsLo.ShaderAttributeDataType;
-global using static Raylib_CsLo.ShaderLocationIndex;
-
-
-global using static Raylib_CsLo.Examples.RLights;
-global using static Raylib_CsLo.Examples.RLights.LightType;
-
-
-global using static Raylib_CsLo.BlendMode;
-global using static Raylib_CsLo.NPatchLayout;
-
-
-global using static Raylib_CsLo.FontType;
-global using static Raylib_CsLo.MouseCursor;
-
-
-global using static Raylib_CsLo.Easings;
-global using static Raylib_CsLo.Physac;
-
-/////////////////////////////////////////
 /////////////////////////////////////////
 /////////////////////////////////////////
 //The C examples use type aliases, so the following `global using * = ` lines are to match those.
 /////////////////////////////////////////
 /////////////////////////////////////////
-/////////////////////////////////////////
+
 global using Camera = Raylib_CsLo.Camera3D;
 global using RenderTexture2D = Raylib_CsLo.RenderTexture;
 global using Texture2D = Raylib_CsLo.Texture;
 global using TextureCubemap = Raylib_CsLo.Texture;
 global using Matrix = System.Numerics.Matrix4x4;
 
-
 public static class Program
 {
-
-
 	public static void Main(params string[] args)
 	{
 		/////////////////////////////////////////
 		////////////  MANUAL TEST CASES:  these are test cases for bugfixes to CsLo
 		Raylib_CsLo.Examples.TestCases.NullString.LoadShaderFromMemory.Program.main(args);
 
-		//return;
-
 		/////////////////////////////////////////
-		/////////////////////////////////////////
-		/////////////////////////////////////////
-		///////////////////////  ALL THE EXAMPLES.   you can comment out the ones you don't want to run.
-		/////////////////////////////////////////
-		/////////////////////////////////////////
+		///////////////////////  ALL THE EXAMPLES. you can comment out the ones you don't want to run.
 		/////////////////////////////////////////
 
 		/////////////////////////////////////////
@@ -128,9 +99,7 @@ public static class Program
 		Raylib_CsLo.Examples.Core.WindowFlags.main();
 		Raylib_CsLo.Examples.Core.SplitScreen.main();
 		Raylib_CsLo.Examples.Core.SmoothPixelPerfectCamera.main();
-		//the following example requires a custom build of raylib to work.  see it's docs for info.
-		Raylib_CsLo.Examples.Core.CustomFrameControl.main();
-
+		//Raylib_CsLo.Examples.Core.CustomFrameControl.main(); //the following example requires a custom build of raylib to work.  see it's docs for info.
 
 		/////////////////////////////////////////
 		////////////  MODELS
@@ -151,7 +120,7 @@ public static class Program
 		Raylib_CsLo.Examples.Models.Skybox.main();
 		Raylib_CsLo.Examples.Models.WavingCubes.main();
 		Raylib_CsLo.Examples.Models.YawPitchRoll.main();
-
+		Raylib_CsLo.Examples.Models.DrawCubeWithTexture.main();
 
 		/////////////////////////////////////////
 		////////// SHADERS
@@ -173,7 +142,6 @@ public static class Program
 		Raylib_CsLo.Examples.Shaders.TextureDrawing.main();
 		Raylib_CsLo.Examples.Shaders.TextureOutline.main();
 		Raylib_CsLo.Examples.Shaders.TextureWaves.main();
-
 
 		/////////////////////////////////////////
 		////////////  TEXTURES
@@ -198,7 +166,6 @@ public static class Program
 		Raylib_CsLo.Examples.Textures.TextureToImage.main();
 		Raylib_CsLo.Examples.Textures.TiledExture.main();
 
-
 		/////////////////////////////////////////
 		//////////////////// TEXT
 		Raylib_CsLo.Examples.Text.Draw2dIn3d.main();
@@ -211,9 +178,7 @@ public static class Program
 		Raylib_CsLo.Examples.Text.SpriteFontLoading.main();
 		Raylib_CsLo.Examples.Text.TextFormatting.main();
 		Raylib_CsLo.Examples.Text.WritingAnimation.main();
-		///////////// the unicode example doesn't work properly.  I guess the fonts don't include the needed unicode chars
-		Raylib_CsLo.Examples.Text.Unicode.main();
-
+		Raylib_CsLo.Examples.Text.Unicode.main(); // the unicode example doesn't work properly.  I guess the fonts don't include the needed unicode chars
 
 		/////////////////////////////////////////
 		////////////////////// SHAPES
@@ -233,9 +198,6 @@ public static class Program
 		Raylib_CsLo.Examples.Shapes.RectangleScalingMouse.main();
 		Raylib_CsLo.Examples.Shapes.LinesCubicBezier.main();
 
-
-
-
 		/////////////////////////////////////////
 		//////////////////////////  PHYSICS
 		Raylib_CsLo.Examples.Physics.PhysicsDemo.main();
@@ -244,19 +206,12 @@ public static class Program
 		Raylib_CsLo.Examples.Physics.PhysicsRestitution.main();
 		Raylib_CsLo.Examples.Physics.PhysicsShatter.main();
 
-
-
 		/////////////////////////////////////////
 		////////////////////////  AUDIO
 		Raylib_CsLo.Examples.Audio.MultichannelSoundPlaying.main();
 		Raylib_CsLo.Examples.Audio.RawAudioStreaming.main();
 		Raylib_CsLo.Examples.Audio.SoundLoadingAndPlaying.main();
-		System.Diagnostics.Debug.Assert(false,
-			"There are bugs in the native Audio code, regarding streaming.  Each of the following streaming example works, but upon exit, it might do some memory/state corruption that causes the next audio scene to crash upon it's exit. see https://github.com/raysan5/raylib/issues/2714 ");
 		Raylib_CsLo.Examples.Audio.MusicPlayingStreaming.main();
 		Raylib_CsLo.Examples.Audio.ModulePlayingStreaming.main();
-
 	}
-
-	
 }
