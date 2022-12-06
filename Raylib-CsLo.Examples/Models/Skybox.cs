@@ -221,7 +221,7 @@ public unsafe static class Skybox
 		rlFramebufferAttach(fbo, cubemap.id, RL_ATTACHMENT_COLOR_CHANNEL0, RL_ATTACHMENT_CUBEMAP_POSITIVE_X, 0);
 
 		// Check if framebuffer is complete with attachments (valid)
-		if (rlFramebufferComplete(fbo)) TraceLog(LOG_INFO, "FBO: [ID %i] Framebuffer object created successfully", fbo);
+		//if (rlFramebufferComplete(fbo)) TraceLog(LOG_INFO, "FBO: [ID %i] Framebuffer object created successfully", fbo);
 		//------------------------------------------------------------------------------------------
 
 		// STEP 2: Draw to framebuffer

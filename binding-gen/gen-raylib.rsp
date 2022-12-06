@@ -3,7 +3,7 @@
 ############################## 
 --config
 # Bindings should be generated for the latest preview version of .NET/C#. This is currently .NET 6/C# 10.
-preview-codegen
+latest-codegen
 # Generated bindings for latest or preview codegen should not use nint or nuint.
 # preview-codegen-nint
 generate-template-bindings
