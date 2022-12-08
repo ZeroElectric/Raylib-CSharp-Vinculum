@@ -1,5 +1,4 @@
 # Raylib-CSharp-Vinculum [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CsLo) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/Source/Raylib-CSharp-Vinculum.Examples) ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) 
----
 
 ### **Raylib-CSharp-Vinculum is a autogen C# binding for [Raylib](https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.**
 
@@ -40,11 +39,10 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 ## via Nuget
 
 - ### By adding the package using .NET CLI:
-  ```
-  dotnet add package Raylib-CSharp-Vinculum --version 4.2.0-alpha
-  ```
-- ### Or by searching for [Raylib-CSharp-Vinculum](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) in Visual Studio's Nuget Package Manager
 
+      dotnet add package Raylib-CSharp-Vinculum --version 4.2.0-alpha 
+
+- ### Or by searching for [Raylib-CSharp-Vinculum](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) in Visual Studio's Nuget Package Manager
 
 ## via Source
 
