@@ -32,7 +32,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 3d in `CsLo` requires the `unsafe` keyword.  If you use 3d, you need to understand how pointers work. A basic guide on pointers can be found [here](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/unsafe-code). Raylib uses pointers to link things like `Model`, `Mesh`, and `Material`. 
 
->### *Additionally, 3D users: **Be sure you check the Usage Tips section below**, especially on how you need to use `Matrix4x4.Transpose()` when sending matricies to Raylib.*
+### Additionally, 3D users: **be sure you check the FAQ & Tips section below**, especially on how you need to use `Matrix4x4.Transpose()` when sending matricies to Raylib.
 
 # How to Install
 
