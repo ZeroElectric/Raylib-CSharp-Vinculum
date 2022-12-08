@@ -1,0 +1,206 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/win-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/win-x64": {
+      "ClangSharpPInvokeGenerator/15.0.2-pr": {
+        "dependencies": {
+          "ClangSharp.PInvokeGenerator": "15.0.2-pr.3624478131",
+          "Microsoft.SourceLink.GitHub": "1.1.1",
+          "System.CommandLine": "2.0.0-beta3.22114.1"
+        },
+        "runtime": {
+          "ClangSharpPInvokeGenerator.dll": {}
+        }
+      },
+      "libclang/15.0.0": {
+        "dependencies": {
+          "libclang.runtime.win-x64": "15.0.0"
+        }
+      },
+      "libclang.runtime.win-x64/15.0.0": {
+        "native": {
+          "runtimes/win-x64/native/libclang.dll": {
+            "fileVersion": "15.0.0.0"
+          }
+        }
+      },
+      "libClangSharp/15.0.0": {
+        "dependencies": {
+          "libClangSharp.runtime.win-x64": "15.0.0"
+        }
+      },
+      "libClangSharp.runtime.win-x64/15.0.0": {
+        "native": {
+          "runtimes/win-x64/native/libClangSharp.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.Build.Tasks.Git/1.1.1": {},
+      "Microsoft.SourceLink.Common/1.1.1": {},
+      "Microsoft.SourceLink.GitHub/1.1.1": {
+        "dependencies": {
+          "Microsoft.Build.Tasks.Git": "1.1.1",
+          "Microsoft.SourceLink.Common": "1.1.1"
+        }
+      },
+      "System.CommandLine/2.0.0-beta3.22114.1": {
+        "runtime": {
+          "lib/net6.0/System.CommandLine.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.22.11401"
+          }
+        },
+        "resources": {
+          "lib/net6.0/cs/System.CommandLine.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net6.0/de/System.CommandLine.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net6.0/es/System.CommandLine.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net6.0/fr/System.CommandLine.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net6.0/it/System.CommandLine.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net6.0/ja/System.CommandLine.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net6.0/ko/System.CommandLine.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net6.0/pl/System.CommandLine.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net6.0/pt-BR/System.CommandLine.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net6.0/ru/System.CommandLine.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net6.0/tr/System.CommandLine.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net6.0/zh-Hans/System.CommandLine.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/net6.0/zh-Hant/System.CommandLine.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
+      "ClangSharp/15.0.2-pr.3624478131": {
+        "dependencies": {
+          "ClangSharp.Interop": "15.0.2-pr.3624478131"
+        },
+        "runtime": {
+          "ClangSharp.dll": {}
+        }
+      },
+      "ClangSharp.Interop/15.0.2-pr.3624478131": {
+        "dependencies": {
+          "libclang": "15.0.0",
+          "libClangSharp": "15.0.0"
+        },
+        "runtime": {
+          "ClangSharp.Interop.dll": {}
+        }
+      },
+      "ClangSharp.PInvokeGenerator/15.0.2-pr.3624478131": {
+        "dependencies": {
+          "ClangSharp": "15.0.2-pr.3624478131"
+        },
+        "runtime": {
+          "ClangSharp.PInvokeGenerator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClangSharpPInvokeGenerator/15.0.2-pr": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "libclang/15.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Jwn7mUkEyvIwI03vCS99h7JM7b4PWhWsLKnd4zfFfkwTRbvj9Ac0iGFFxDbLB9oZDdAQZTMdOxRR5Bd7Ai/Bcg==",
+      "path": "libclang/15.0.0",
+      "hashPath": "libclang.15.0.0.nupkg.sha512"
+    },
+    "libclang.runtime.win-x64/15.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sxTUHdNCe/A0o0UTKoSyYm/47W3Klf2PobQACTudOkCxPASJo+T8Ws47mnnhpbqAPPAUjDJ/MoBwvVSwML2viw==",
+      "path": "libclang.runtime.win-x64/15.0.0",
+      "hashPath": "libclang.runtime.win-x64.15.0.0.nupkg.sha512"
+    },
+    "libClangSharp/15.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TCw7ehpKGVFn6rNUE6xk/m7aluiROUivSYhP2LgprVw5YAyphWL8qGBFP5UP2aeX3xAuWCpk0JnxqPXdtZyVLQ==",
+      "path": "libclangsharp/15.0.0",
+      "hashPath": "libclangsharp.15.0.0.nupkg.sha512"
+    },
+    "libClangSharp.runtime.win-x64/15.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cXNc1pw2GN2374INVwbMvCbw1HZOTIkE3i51tlBZjs4N7wyhjDxdZsf6KYCyIaDp17Cxn5C9jC0XQthIGsykww==",
+      "path": "libclangsharp.runtime.win-x64/15.0.0",
+      "hashPath": "libclangsharp.runtime.win-x64.15.0.0.nupkg.sha512"
+    },
+    "Microsoft.Build.Tasks.Git/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AT3HlgTjsqHnWpBHSNeR0KxbLZD7bztlZVj7I8vgeYG9SYqbeFGh0TM/KVtC6fg53nrWHl3VfZFvb5BiQFcY6Q==",
+      "path": "microsoft.build.tasks.git/1.1.1",
+      "hashPath": "microsoft.build.tasks.git.1.1.1.nupkg.sha512"
+    },
+    "Microsoft.SourceLink.Common/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WMcGpWKrmJmzrNeuaEb23bEMnbtR/vLmvZtkAP5qWu7vQsY59GqfRJd65sFpBszbd2k/bQ8cs8eWawQKAabkVg==",
+      "path": "microsoft.sourcelink.common/1.1.1",
+      "hashPath": "microsoft.sourcelink.common.1.1.1.nupkg.sha512"
+    },
+    "Microsoft.SourceLink.GitHub/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IaJGnOv/M7UQjRJks7B6p7pbPnOwisYGOIzqCz5ilGFTApZ3ktOR+6zJ12ZRPInulBmdAf1SrGdDG2MU8g6XTw==",
+      "path": "microsoft.sourcelink.github/1.1.1",
+      "hashPath": "microsoft.sourcelink.github.1.1.1.nupkg.sha512"
+    },
+    "System.CommandLine/2.0.0-beta3.22114.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QMzk1jj+PzdGbwuVsxII7FcQaCelnK+TcRcAqOGVoPovLBCSQPdikKiEzb56vAidvum5t4LSdDZ34O4j7+ALgw==",
+      "path": "system.commandline/2.0.0-beta3.22114.1",
+      "hashPath": "system.commandline.2.0.0-beta3.22114.1.nupkg.sha512"
+    },
+    "ClangSharp/15.0.2-pr.3624478131": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClangSharp.Interop/15.0.2-pr.3624478131": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClangSharp.PInvokeGenerator/15.0.2-pr.3624478131": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

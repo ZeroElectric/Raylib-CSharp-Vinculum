@@ -1,12 +1,12 @@
-[submodule "sub-modules/raylib"]
-	path = sub-modules/raylib
+[submodule "Libs/raylib"]
+	path = Libs/raylib
 	url = https://github.com/raysan5/raylib
-[submodule "sub-modules/physac"]
-	path = sub-modules/physac
+[submodule "Libs/physac"]
+	path = Libs/physac
 	url = https://github.com/raysan5/physac
-[submodule "sub-modules/raygui"]
-	path = sub-modules/raygui
+[submodule "Libs/raygui"]
+	path = Libs/raygui
 	url = https://github.com/raysan5/raygui
-[submodule "sub-modules/rres"]
-	path = sub-modules/rres
+[submodule "Libs/rres"]
+	path = Libs/rres
 	url = https://github.com/raysan5/rres

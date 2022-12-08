@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raylib-CSharp-Vinculum", "Raylib-CSharp-Vinculum\Raylib-CSharp-Vinculum.csproj", "{5A9FA8DE-3F28-4D7B-A0F3-9FC5DEC06608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raylib-CSharp-Vinculum", "Source\Raylib-CSharp-Vinculum\Raylib-CSharp-Vinculum.csproj", "{5A9FA8DE-3F28-4D7B-A0F3-9FC5DEC06608}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raylib-CSharp-Vinculum.Tests", "Raylib-CSharp-Vinculum.Tests\Raylib-CSharp-Vinculum.Tests.csproj", "{EC201E2E-2956-4450-A56A-1A78CEF84952}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raylib-CSharp-Vinculum.Examples", "Source\Raylib-CSharp-Vinculum.Examples\Raylib-CSharp-Vinculum.Examples.csproj", "{30F66300-AF37-48A0-8117-3033E72602DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raylib-CSharp-Vinculum.Examples", "Raylib-CSharp-Vinculum.Examples\Raylib-CSharp-Vinculum.Examples.csproj", "{30F66300-AF37-48A0-8117-3033E72602DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Raylib-CSharp-Vinculum.Tests", "Source\Raylib-CSharp-Vinculum.Tests\Raylib-CSharp-Vinculum.Tests.csproj", "{ED558577-7D5D-433D-BF14-0043BDFB67FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{5A9FA8DE-3F28-4D7B-A0F3-9FC5DEC06608}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A9FA8DE-3F28-4D7B-A0F3-9FC5DEC06608}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A9FA8DE-3F28-4D7B-A0F3-9FC5DEC06608}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC201E2E-2956-4450-A56A-1A78CEF84952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC201E2E-2956-4450-A56A-1A78CEF84952}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC201E2E-2956-4450-A56A-1A78CEF84952}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC201E2E-2956-4450-A56A-1A78CEF84952}.Release|Any CPU.Build.0 = Release|Any CPU
 		{30F66300-AF37-48A0-8117-3033E72602DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{30F66300-AF37-48A0-8117-3033E72602DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30F66300-AF37-48A0-8117-3033E72602DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30F66300-AF37-48A0-8117-3033E72602DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED558577-7D5D-433D-BF14-0043BDFB67FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED558577-7D5D-433D-BF14-0043BDFB67FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED558577-7D5D-433D-BF14-0043BDFB67FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED558577-7D5D-433D-BF14-0043BDFB67FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
