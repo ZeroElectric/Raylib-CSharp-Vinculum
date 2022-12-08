@@ -2,18 +2,15 @@
 # example https://github.com/microsoft/ClangSharp/blob/main/sources/ClangSharpPInvokeGenerator/Properties/GenerateClang.rsp
 ############################## 
 --config
-# Bindings should be generated for the latest preview version of .NET/C#. This is currently .NET 6/C# 10.
+# Bindings are generated for the latest version of .NET/C#. Currently thats: .NET 7/C# 11.
 latest-codegen
-# Generated bindings for latest or preview codegen should not use nint or nuint.
-# preview-codegen-nint
 generate-template-bindings
 generate-macro-bindings
 generate-tests-xunit
 generate-helper-types
 unix-types
-# windows-types
+#windows-types
 multi-file
-############ try these out
 generate-aggressive-inlining
 generate-cpp-attributes
 generate-marker-interfaces
@@ -22,36 +19,19 @@ generate-native-inheritance-attribute
 ################ new for physac header gen
 explicit-vtbls
 generate-vtbl-index-attribute
-#generate-unmanaged-constants
-# --file-directory 
-# ./raylib-4.0.0_win64_msvc16/include/
-# --include-directory 
-# ./raylib-4.0.0_win64_msvc16/include/
-############################## 
-#--methodClassName
-#Raylib
-############################## 
-#--file
-#raylib.h
-# raygui.h
-#raymath.h
-# rlgl.h
-############################## 
-#--libraryPath raylib.dll
 ############################## 
 --headerFile
-./GenerateRaylib-LICENSE.txt
+./AutoGen-LICENSE.txt
 ############################## 
 --namespace
-Raylib_CsLo
+ZeroElectric.Vinculum
 ############################## 
 --output
-../Raylib-CsLo/autogen/bindings
+../Raylib-CSharp-Vinculum/autogen/bindings
 ############################## 
 --test-output
-../Raylib-CsLo.Tests/autogen/tests
-# --prefixStrip
-# clang_
+../Raylib-CSharp-Vinculum.Tests/autogen/tests
+############################## 
 --with-attribute
 Boolean=[MarshalAs(UnmanagedType.I1)]
 ############################## REMAP
@@ -105,7 +85,7 @@ Vector2=System.Numerics
 Vector3=System.Numerics
 Vector4=System.Numerics
 Quaternion=System.Numerics
-Bool=Raylib_CsLo.InternalHelpers
+Bool=ZeroElectric.Vinculum.InternalHelpers
 ############################## exclude
 --exclude
 Matrix

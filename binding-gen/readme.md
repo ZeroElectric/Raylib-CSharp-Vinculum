@@ -1,10 +1,9 @@
 # Binding-Gen
-scripts to generate bindings from various `.h` files, leveraging the `ClangSharp` source generators.
+Scripts to generate bindings from various `.h` files, leveraging the `ClangSharp` source generators.
 
-how to run:
-- checkout the submodules from `../sub-modules`
-- run `./regen.ps1`
-
+How to run:
+- Checkout the submodules from `../sub-modules`
+- Run `./regen.ps1`
 
 # how to build everything (including native dll) from scratch
 
