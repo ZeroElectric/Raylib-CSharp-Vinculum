@@ -1,9 +1,9 @@
 # Raylib-CSharp-Vinculum [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CsLo) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/Source/Raylib-CSharp-Vinculum.Examples) ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) 
 
-### **Raylib-CSharp-Vinculum is a autogen C# binding for [Raylib](https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.**
+### **Raylib-CSharp-Vinculum is a autogen C#/.Net binding for [Raylib](https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.**
 
   - Windows supported. With Linux planned.
-  - Supports net5+, Mono 6.4+, NetCore3.0
+  - Supports .Net 5+, Mono 6.4+, Net Core3.0
   - 1-1 bindings + convenience wrappers to make it easier to use.
   - Includes bindings for all of Raylib's extras:
     - `raylib` : Core features, including Audio.
@@ -17,7 +17,6 @@
   - A focus on performance. No runtime allocations if at all possible.
   - A fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) as the maintainer wishes to step down.
   - No intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html) or [view the examples]
-  - Tested using `Win11 & .Net 7`
   - Nuget package can be found [here](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/)
   - Go give Ray some love, https://github.com/sponsors/raysan5
 
@@ -26,7 +25,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 ## What is **Raylib**?
 
-[Raylib](https://www.raylib.com/) is a friendly-to-use game framework: audio, 2D, 3D, fonts, animation, 2D physics. Inspired By `Xna / MonoGame`.  **However, `Raylib` is a C framework**.  `Raylib-CSharp-Vinculum` is a C# autogen wrapper using P/Invoke, which lets you gain raylib's powers in C# to quickly prototype your game ideas.
+[Raylib](https://www.raylib.com/) is a easey-to-use videogame framework well suited for prototyping, tooling, embedded systems and education, inclueds systems for: audio, 3D, 2D, 2D physics, fonts, animation an OpenGL abstraction layer and more. Inspired By `Xna` & The `Borland Graphics Interface`.  **However, `Raylib` is a C framework**.  `Raylib-CSharp-Vinculum` is a C# autogen wrapper, which lets you use Raylib in C#/.Net.
 
 ## High performance for 3d! (but `unsafe` to use)
 
@@ -66,8 +65,10 @@ git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
 
 # Differences from [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo)
 
-- The only real change from Raylib-CsLo is namespace is different `Raylib-CsLo > ZeroElectric.Vinculum`
-- Also uses a newer build of Raylib
+- Changed the namespace from `Raylib-CsLo > ZeroElectric.Vinculum`
+- Greatly optimized the project layout
+- Uses a newer build of Raylib
+- New Build system, now you just run build.bat from the root to build the lib
 
 # Examples
 

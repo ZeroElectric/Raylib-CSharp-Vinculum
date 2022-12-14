@@ -34,29 +34,16 @@ public unsafe static class CustomLogging
 {
 
 	[DllImport("msvcrt.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-	public static extern int vsprintf(
-		StringBuilder buffer,
-		string format,
-		IntPtr args);
+	public static extern int vsprintf(StringBuilder buffer,string format,IntPtr args);
 
 	[DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
-	public static extern int _vscprintf(
-		string format,
-		IntPtr ptr);
+	public static extern int _vscprintf(string format,IntPtr ptr);
 
 
 	// Custom logging funtion
-	//private static void LogCustom(int msgType, char* text, __arglist) //va_list args
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) })]
 	private static void LogCustom(int msgType, sbyte* text, sbyte* args)
 	{
-		//Console.WriteLine("hi");
-
-		//char timeStr[64] = { 0 };
-		//time_t now = time(NULL);
-		//struct tm *tm_info = localtime(&now);
-		//strftime(timeStr, sizeof(timeStr), "%Y-%m-%d %H:%M:%S", tm_info);
-		//printf("[%s] ", timeStr);
 		Console.Write(DateTime.Now);
 
 		switch ((TraceLogLevel)msgType)
@@ -69,21 +56,7 @@ public unsafe static class CustomLogging
 				Console.Write($"[???] {msgType} :"); break;
 		}
 
-		//vprintf(text, args);
-		//printf("\n");
-
 		var textStr = Marshal.PtrToStringUTF8((IntPtr)text)??"";
-
-		////calc arg count?
-		//var splits = textStr.Split("%");
-		//var argsCount = splits.Length - 1;
-		//foreach (var splitStr in splits)
-		//{
-		//	if (splitStr.Length == 0)
-		//	{
-		//		argsCount--;
-		//	}
-		//}
 
 		var sb = new StringBuilder(_vscprintf(textStr, (IntPtr)args) + 1);
 		vsprintf(sb, textStr, (IntPtr)args);
@@ -91,9 +64,6 @@ public unsafe static class CustomLogging
 		//here formattedMessage has the value your are looking for
 		var formattedMessage = sb.ToString();
 		Console.WriteLine(formattedMessage);
-
-
-
 	}
 
 
@@ -107,7 +77,6 @@ public unsafe static class CustomLogging
 		// First thing we do is setting our custom logger to ensure everything raylib logs
 		// will use our own logger instead of its internal one
 		SetTraceLogCallback(&LogCustom);
-
 
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - custom logging");
 
