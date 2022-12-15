@@ -25,13 +25,13 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 ## What is **Raylib**?
 
-[Raylib](https://www.raylib.com/) is a easey-to-use videogame framework well suited for prototyping, tooling, embedded systems and education, inclueds systems for: audio, 3D, 2D, 2D physics, fonts, animation an OpenGL abstraction layer and more. Inspired By `Xna` & The `Borland Graphics Interface`.  **However, `Raylib` is a C framework**.  `Raylib-CSharp-Vinculum` is a C# autogen wrapper, which lets you use Raylib in C#/.Net.
+[Raylib](https://www.raylib.com/) is a easey-to-use videogame framework well suited for prototyping, tooling, embedded systems and education, inclueds systems for: audio, 3D, 2D, 2D physics, fonts, animation, an OpenGL abstraction layer & more. Inspired By `Xna` & The `Borland Graphics Interface`.  **However, `Raylib` is a C framework**.  `Raylib-CSharp-Vinculum` is a C# autogen wrapper, which lets you use Raylib in C#/.Net.
 
-## High performance for 3d! (but `unsafe` to use)
+## High performance for 3D! (but `unsafe` to use)
 
-3d in `CsLo` requires the `unsafe` keyword.  If you use 3d, you need to understand how pointers work. A basic guide on pointers can be found [here](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/unsafe-code). Raylib uses pointers to link things like `Model`, `Mesh`, and `Material`. 
+3D requires the `unsafe` keyword.  If you use 3D, you will need to understand how pointers work. A basic guide on pointers can be found [here](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/unsafe-code).
 
-### Additionally, 3D users: **be sure you check the FAQ & Tips section below**, especially on how you need to use `Matrix4x4.Transpose()` when sending matricies to Raylib.
+### Additionally, 3D users: **be sure you check the FAQ & Tips section below**, especially on how you need to use `Matrix4x4.Transpose()` when sending Matricies to Raylib.
 
 # How to Install
 
@@ -77,11 +77,11 @@ Basic Example:
 ```cs
 using ZeroElectric.Vinculum;
 
-namespace StandaloneExample
+namespace VinculumExample
 {
   public static class Program
   {
-    public static async Task Main(string[] args)
+    public static void Main(string[] args)
     {
       Raylib.InitWindow(1280, 720, "Hello, Raylib-Vinculum");
       Raylib.SetTargetFPS(60);
