@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -50,7 +50,6 @@ public unsafe static class FirstPersonMaze
 
 		Vector3 mapPosition = new(-16.0f, 0.0f, -8.0f);  // Set model position
 
-		SetCameraMode(camera, CAMERA_FIRST_PERSON);     // Set camera mode
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 										//--------------------------------------------------------------------------------------
@@ -62,7 +61,7 @@ public unsafe static class FirstPersonMaze
 			//----------------------------------------------------------------------------------
 			Vector3 oldCamPos = camera.position;    // Store old camera position
 
-			UpdateCamera(ref camera);      // Update camera
+			UpdateCamera(ref camera, CAMERA_FIRST_PERSON);          // Update camera
 
 			// Check player collision (we simplify to 2D collision detection)
 			Vector2 playerPos = new(camera.position.X, camera.position.Z);

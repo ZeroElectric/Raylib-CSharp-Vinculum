@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -100,6 +100,7 @@ public unsafe static class SimpleMask
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			framesCounter++;
 			rotation.X += 0.01f;
 			rotation.Y += 0.005f;
@@ -111,7 +112,8 @@ public unsafe static class SimpleMask
 			// Rotate one of the models
 			model1.transform = MatrixRotateXYZ(rotation);
 
-			UpdateCamera(&camera);
+			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
+
 			//----------------------------------------------------------------------------------
 
 			// Draw

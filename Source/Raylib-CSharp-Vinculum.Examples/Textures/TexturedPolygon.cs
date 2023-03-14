@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -93,8 +93,7 @@ public unsafe static class TexturedPolygon
 
 			DrawText("textured polygon", 20, 20, 20, DARKGRAY);
 
-			DrawTexturePoly(texture, new Vector2(GetScreenWidth() / 2, GetScreenHeight() / 2),
-							positions, texcoords, MAX_POINTS, WHITE);
+			DrawTexturePoly(texture, new Vector2(GetScreenWidth() / 2, GetScreenHeight() / 2), positions, texcoords, MAX_POINTS, WHITE);
 
 			EndDrawing();
 			//----------------------------------------------------------------------------------
@@ -110,5 +109,32 @@ public unsafe static class TexturedPolygon
 		return 0;
 	}
 
+	static void DrawTexturePoly(Texture2D texture, Vector2 center, Vector2[] points, Vector2[] texcoords, int pointCount, Color tint)
+	{
+		rlSetTexture(texture.id);
+
+		// Texturing is only supported on RL_QUADS
+		rlBegin(RL_QUADS);
+
+		rlColor4ub(tint.r, tint.g, tint.b, tint.a);
+
+		for (int i = 0; i < pointCount - 1; i++)
+		{
+			rlTexCoord2f(0.5f, 0.5f);
+			rlVertex2f(center.X, center.Y);
+
+			rlTexCoord2f(texcoords[i].X, texcoords[i].Y);
+			rlVertex2f(points[i].X + center.X, points[i].Y + center.Y);
+
+			rlTexCoord2f(texcoords[i + 1].X, texcoords[i + 1].Y);
+			rlVertex2f(points[i + 1].X + center.X, points[i + 1].Y + center.Y);
+
+			rlTexCoord2f(texcoords[i + 1].X, texcoords[i + 1].Y);
+			rlVertex2f(points[i + 1].X + center.X, points[i + 1].Y + center.Y);
+		}
+		rlEnd();
+
+		rlSetTexture(0);
+	}
 
 }

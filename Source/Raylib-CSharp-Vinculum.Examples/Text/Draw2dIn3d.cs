@@ -53,6 +53,8 @@ public unsafe static class Draw2dIn3d
 	static bool SHOW_LETTER_BOUNDRY = false;
 	static bool SHOW_TEXT_BOUNDRY = false;
 
+	static CameraMode CAMERA_MODE = CameraMode.CAMERA_ORBITAL;
+
 	//--------------------------------------------------------------------------------------
 	// Data Types definition
 	//--------------------------------------------------------------------------------------
@@ -89,8 +91,6 @@ public unsafe static class Draw2dIn3d
 		camera.up = new Vector3(0.0f, 1.0f, 0.0f);              // Camera up vector (rotation towards target)
 		camera.fovy = 45.0f;                                    // Camera field-of-view Y
 		camera.projection_ = CAMERA_PERSPECTIVE;                 // Camera mode type
-
-		SetCameraMode(camera, CAMERA_ORBITAL);
 
 		Vector3 cubePosition = new Vector3(0.0f, 1.0f, 0.0f);
 		Vector3 cubeSize = new Vector3(2.0f, 2.0f, 2.0f);
@@ -173,12 +173,12 @@ public unsafe static class Draw2dIn3d
 				if (spin)
 				{
 					camera.position = new Vector3(-10.0f, 15.0f, -10.0f);   // Camera position
-					SetCameraMode(camera, CAMERA_ORBITAL);
+					CAMERA_MODE = CAMERA_ORBITAL;
 				}
 				else
 				{
 					camera.position = new Vector3(10.0f, 10.0f, -10.0f);   // Camera position
-					SetCameraMode(camera, CAMERA_FREE);
+					CAMERA_MODE = CAMERA_FREE;
 				}
 			}
 
@@ -266,7 +266,7 @@ public unsafe static class Draw2dIn3d
 			// Measure 3D text so we can center it
 			tbox = MeasureTextWave3D(font, text, fontSize, fontSpacing, lineSpacing);
 
-			UpdateCamera(&camera);          // Update camera
+			UpdateCamera(ref camera, CAMERA_MODE);          // Update camera
 			quads = 0;                      // Reset quad counter
 			time += GetFrameTime();         // Update timer needed by `DrawTextWave3D()`
 											//----------------------------------------------------------------------------------

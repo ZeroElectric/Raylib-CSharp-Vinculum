@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -89,7 +89,6 @@ public unsafe static class Fog
 		// Using just 1 point lights
 		rLights.CreateLight(LIGHT_POINT, new Vector3(0, 2, 6), Vector3Zero(), WHITE, shader);
 
-		SetCameraMode(camera, CAMERA_ORBITAL);  // Set an orbital camera mode
 
 		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
 												//--------------------------------------------------------------------------------------
@@ -99,7 +98,7 @@ public unsafe static class Fog
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(&camera);              // Update camera
+			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 
 			if (IsKeyDown(KEY_UP))
 			{

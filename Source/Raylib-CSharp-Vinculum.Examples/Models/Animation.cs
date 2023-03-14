@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -59,8 +59,6 @@ public unsafe static class Animation
 		ModelAnimation[] anims = LoadModelAnimations("resources/models/iqm/guyanim.iqm");
 		int animFrameCounter = 0;
 
-		SetCameraMode(camera, CAMERA_FREE); // Set free camera mode
-
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 											//--------------------------------------------------------------------------------------
 
@@ -69,7 +67,7 @@ public unsafe static class Animation
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);
+			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
 
 			// Play animation when spacebar is held down
 			if (IsKeyDown(KEY_SPACE))

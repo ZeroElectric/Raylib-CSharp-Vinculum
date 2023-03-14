@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -97,18 +97,16 @@ public unsafe static class VrSimulator
 
 		Vector3 cubePosition = new( 0.0f, 0.0f, 0.0f );
 
-		SetCameraMode(camera, CAMERA_FIRST_PERSON);         // Set first person camera mode
-
 		SetTargetFPS(90);                   // Set our game to run at 90 frames-per-second
-											//--------------------------------------------------------------------------------------
 
 		// Main game loop
 		while (!WindowShouldClose())        // Detect window close button or ESC key
 		{
 			// Update
+
 			//----------------------------------------------------------------------------------
-			UpdateCamera(&camera);          // Update camera (simulator mode)
-											//----------------------------------------------------------------------------------
+			UpdateCamera(ref camera, CAMERA_FIRST_PERSON);          // Update camera
+			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------

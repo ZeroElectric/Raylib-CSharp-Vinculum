@@ -68,8 +68,6 @@ public unsafe static class MeshPicking
 		Vector3 sp = new(-30.0f, 5.0f, 5.0f);
 		float sr = 4.0f;
 
-		SetCameraMode(camera, CAMERA_FREE); // Set a free camera mode
-
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 											//--------------------------------------------------------------------------------------
 											// Main game loop
@@ -77,7 +75,7 @@ public unsafe static class MeshPicking
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);          // Update camera
+			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
 
 			// Display information about closest hit
 			RayCollision collision = new();

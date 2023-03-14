@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -46,17 +46,16 @@ public unsafe static class Picking3d
 
 		RayCollision collision =new();
 
-		SetCameraMode(camera, CAMERA_FREE); // Set a free camera mode
-
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-											//--------------------------------------------------------------------------------------
 
 		// Main game loop
 		while (!WindowShouldClose())        // Detect window close button or ESC key
 		{
 			// Update
+
 			//----------------------------------------------------------------------------------
-			UpdateCamera(&camera);          // Update camera
+			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
+			//----------------------------------------------------------------------------------
 
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{

@@ -95,8 +95,6 @@ public unsafe static class Skybox
 			UnloadImage(img);
 		}
 
-		SetCameraMode(camera, CAMERA_FIRST_PERSON);  // Set a first person camera mode
-
 		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
 												//--------------------------------------------------------------------------------------
 
@@ -105,7 +103,7 @@ public unsafe static class Skybox
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);              // Update camera
+			UpdateCamera(ref camera, CAMERA_FIRST_PERSON);          // Update camera
 
 			// Load new cubemap texture on drag&drop
 			if (IsFileDropped())

@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -46,7 +46,6 @@ public unsafe static class RlglSolarSystem
 		camera.fovy = 45.0f;
 		camera.projection_ = CAMERA_PERSPECTIVE;
 
-		SetCameraMode(camera, CAMERA_FREE);
 
 		float rotationSpeed = 0.2f;         // General system rotation speed
 
@@ -63,7 +62,7 @@ public unsafe static class RlglSolarSystem
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);
+			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
 
 			earthRotation += (5.0f * rotationSpeed);
 			earthOrbitRotation += (365 / 360.0f * (5.0f * rotationSpeed) * rotationSpeed);

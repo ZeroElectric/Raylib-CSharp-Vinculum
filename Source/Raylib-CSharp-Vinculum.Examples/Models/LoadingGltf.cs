@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -48,20 +48,12 @@ public unsafe static class LoadingGltf
 
 		// Load some models
 		Model[] model = new Model[MAX_GLTF_MODELS];
-		model[0] = LoadModel("resources/models/gltf/raylib_32x32.glb");
-		model[1] = LoadModel("resources/models/gltf/rigged_figure.glb");
-		model[2] = LoadModel("resources/models/gltf/GearboxAssy.glb");
-		model[3] = LoadModel("resources/models/gltf/BoxAnimated.glb");
-		model[4] = LoadModel("resources/models/gltf/AnimatedTriangle.gltf");
-		model[5] = LoadModel("resources/models/gltf/AnimatedMorphCube.glb");
-		model[6] = LoadModel("resources/models/gltf/vertex_colored_object.glb");
-		model[7] = LoadModel("resources/models/gltf/girl.glb");
+		model[0] = LoadModel("resources/models/gltf/raylib_logo_3d.glb");
+		model[1] = LoadModel("resources/models/gltf/robot.glb");
 
 		int currentModel = 0;
 
 		Vector3 position = new(0.0f, 0.0f, 0.0f);    // Set model position
-
-		SetCameraMode(camera, CAMERA_FREE); // Set free camera mode
 
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 											//--------------------------------------------------------------------------------------
@@ -71,7 +63,7 @@ public unsafe static class LoadingGltf
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);          // Update our camera with inputs
+			UpdateCamera(ref camera, CameraMode.CAMERA_ORBITAL);          // Update camera
 
 			if (IsKeyReleased(KEY_RIGHT))
 			{

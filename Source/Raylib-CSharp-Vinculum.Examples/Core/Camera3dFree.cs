@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -41,10 +41,9 @@ public unsafe static class Camera3dFree
 
 		Vector3 cubePosition = new(0.0f, 0.0f, 0.0f);
 
-		SetCameraMode(camera, CAMERA_FREE); // Set a free camera mode
-
-		SetCameraPanControl((int)MouseButton.MOUSE_BUTTON_RIGHT);
-
+		//SetCameraMode(camera, CAMERA_FREE); // Set a free camera mode
+		//SetCameraPanControl((int)MouseButton.MOUSE_BUTTON_RIGHT); TODO (Ken) Find the new API for this!
+		
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 											//--------------------------------------------------------------------------------------
 
@@ -53,7 +52,7 @@ public unsafe static class Camera3dFree
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(&camera);          // Update camera
+			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
 
 			if (IsKeyDown('Z')) camera.target = new(0.0f, 0.0f, 0.0f);
 			if (IsKeyDown('Z')) camera.target = new(0.0f, 0.0f, 0.0f);

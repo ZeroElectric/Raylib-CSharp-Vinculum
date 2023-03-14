@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -45,8 +45,6 @@ public unsafe static class Heightmap
 
 		UnloadImage(image);                     // Unload heightmap image from RAM, already uploaded to VRAM
 
-		SetCameraMode(camera, CAMERA_ORBITAL);  // Set an orbital camera mode
-
 		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
 												//--------------------------------------------------------------------------------------
 
@@ -55,8 +53,8 @@ public unsafe static class Heightmap
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);              // Update camera
-												   //----------------------------------------------------------------------------------
+			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
+																	//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------

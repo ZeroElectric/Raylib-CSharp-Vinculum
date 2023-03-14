@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -118,8 +118,6 @@ public unsafe static class PostProcessingShader
 		// Create a RenderTexture2D to be used for render to texture
 		RenderTexture2D target = LoadRenderTexture(screenWidth, screenHeight);
 
-		// Setup orbital camera
-		SetCameraMode(camera, CAMERA_ORBITAL);  // Set an orbital camera mode
 
 		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
 												//--------------------------------------------------------------------------------------
@@ -129,7 +127,7 @@ public unsafe static class PostProcessingShader
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(&camera);              // Update camera
+			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 
 			if (IsKeyPressed(KEY_RIGHT)) currentShader++;
 			else if (IsKeyPressed(KEY_LEFT)) currentShader--;

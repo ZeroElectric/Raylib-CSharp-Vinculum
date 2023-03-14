@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -99,8 +99,6 @@ public unsafe static class MeshInstancing
 		material.shader = shader;
 		material.maps[(int)MATERIAL_MAP_DIFFUSE].color = RED;
 
-		SetCameraMode(camera, CAMERA_ORBITAL);  // Set an orbital camera mode
-
 		int textPositionY = 300;
 		int framesCounter = 0;                  // Simple frames counter to manage animation
 
@@ -159,7 +157,7 @@ public unsafe static class MeshInstancing
 				transforms[i] = MatrixMultiply(transforms[i], MatrixTranslate(0.0f, y, 0.0f));
 			}
 
-			UpdateCamera(&camera);
+			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 			//----------------------------------------------------------------------------------
 
 			// Draw

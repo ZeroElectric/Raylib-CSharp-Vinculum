@@ -14,12 +14,12 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageOutputDir>..\..\Output\nuget-bin\</PackageOutputDir>
         <RepositoryUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</RepositoryUrl>
-        <Version>4.2.0.0-alpha</Version>
-        <PackageReleaseNotes>Release Notes: Initial release of Raylib-CSharp-Vinculum, CSharp bindings for Raylib 4.2. Supports Windows-x64 &amp; Linux-x64.</PackageReleaseNotes>
+        <Version>4.5.0.0-dev-alpha</Version>
+        <PackageReleaseNotes>Release Notes: Updated to Raylib 4.5-dev</PackageReleaseNotes>
         <Authors>ZeroElectric;Minmoose</Authors>
         <Company>ZeroElectricGames</Company>
         <Description>
-            AutoGen C# bindings for [Raylib](https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.
+            AutoGen C# bindings for [Raylib] 4.5-dev(https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.
             - Windows supported. With Linux planed.
             - Supports net5+, Mono 6.4+, NetCore3.0
             - 1-1 bindings + convenience wrappers to make it easier to use.
@@ -32,12 +32,13 @@
         <PackageProjectUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</PackageProjectUrl>
         <PackageTags>zeroelectric;raylib-cslo;raylib-csharp;vinculum;raylib-csharp-vinculum;raylib;gamedev;binding;rendering;3d;2d;graphics;opengl;physics;audio;</PackageTags>
         <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
-        <AssemblyVersion>0.0.0.*</AssemblyVersion>
-        <Copyright>2022 (C) ZeroElectric, Raylib-CsLo &amp; Contributors</Copyright>
+        <AssemblyVersion>4.5.0.0</AssemblyVersion>
+        <Copyright>2022-2023 (C) ZeroElectric, Raylib-CsLo &amp; Contributors</Copyright>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <!--include pdb in nuget package, as per: https://stackoverflow.com/a/48391188 -->
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
         <IsPublishable>False</IsPublishable>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -51,7 +52,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Toolkit.HighPerformance" Version="7.1.2" />
+        <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.1.0" />
     </ItemGroup>
 
     <ItemGroup>

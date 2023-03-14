@@ -70,8 +70,6 @@ public unsafe static class LoadingVox
 
 		int currentModel = 0;
 
-		SetCameraMode(camera, CAMERA_ORBITAL);  // Set a orbital camera mode
-
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 										//--------------------------------------------------------------------------------------
 
@@ -80,7 +78,7 @@ public unsafe static class LoadingVox
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);      // Update our camera to orbit
+			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 
 			// Cycle between models on mouse click
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) currentModel = (currentModel + 1) % MAX_VOX_FILES;

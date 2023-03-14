@@ -111,8 +111,6 @@ public unsafe static class MeshGeneration
 
 		int currentModel = 0;
 
-		SetCameraMode(camera, CAMERA_ORBITAL);  // Set a orbital camera mode
-
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 										//--------------------------------------------------------------------------------------
 
@@ -121,7 +119,7 @@ public unsafe static class MeshGeneration
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera);      // Update internal camera and our camera
+			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{

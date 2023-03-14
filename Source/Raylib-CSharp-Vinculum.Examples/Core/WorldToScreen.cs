@@ -1,4 +1,4 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
+// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
 // [!!] Copyright ©️ Raylib-CsLo and Contributors. 
 // [!!] This file is licensed to you under the MPL-2.0.
 // [!!] See the LICENSE file in the project root for more info. 
@@ -42,7 +42,6 @@ public unsafe static class WorldToScreen
 		Vector3 cubePosition =new( 1.0f, 5.0f, 5.0f );
 		Vector2 cubeScreenPosition = new( 0.0f, 0.0f );
 
-		SetCameraMode(camera, CAMERA_FREE); // Set a free camera mode
 
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 											//--------------------------------------------------------------------------------------
@@ -52,8 +51,8 @@ public unsafe static class WorldToScreen
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(&camera);          // Update camera
-			
+			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
+
 			// Calculate cube screen space position (with a little offset to be in top)
 			cubeScreenPosition = GetWorldToScreen(new(cubePosition.X, cubePosition.Y + 2.5f, cubePosition.Z), camera);
 			//----------------------------------------------------------------------------------
