@@ -13,7 +13,7 @@
 
 /*******************************************************************************************
 *
-*   rcamera - Basic camera system with support for multiple camera modes
+*   rcamera - A basic camera system ported from rcamera.h
 *
 *   LICENSE: zlib/libpng
 *
@@ -40,7 +40,7 @@ using System.Numerics;
 
 namespace ZeroElectric.Vinculum;
 
-public static unsafe partial class RayCamera
+public static unsafe class RayCamera
 {
 	/// <summary>
 	/// Returns the cameras forward vector (normalized)
@@ -261,7 +261,7 @@ public static unsafe partial class RayCamera
 	{
 		if (Camera3D->projection == (int)CameraProjection.CAMERA_PERSPECTIVE)
 		{
-			return RayMath.MatrixPerspective(Camera3D->fovy * (MathF.PI / 180.0f), aspect, RlGl.RL_CULL_DISTANCE_NEAR, RlGl.RL_CULL_DISTANCE_FAR);
+			return RayMath.MatrixPerspective(Camera3D->fovy * RayMath.DEG2RAD, aspect, RlGl.RL_CULL_DISTANCE_NEAR, RlGl.RL_CULL_DISTANCE_FAR);
 		}
 		else if (Camera3D->projection == (int)CameraProjection.CAMERA_ORTHOGRAPHIC)
 		{
