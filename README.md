@@ -13,7 +13,7 @@
     - `rres` : A simple and easy-to-use file-format to package resources
     - `easings` : Use for simple animations  (C# Managed Port)
     - `raymath` : A game math library (C# Managed Port)
-    - `rcamera` : A C# port of rcamera.h
+    - `rcamera` : A basic camera system (Direct C# port of rcamera.h)
   - Requires `unsafe` for 3d workflows.
   - A focus on performance. No runtime allocations if at all possible.
   - A fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) as the maintainer wishes to step down.
