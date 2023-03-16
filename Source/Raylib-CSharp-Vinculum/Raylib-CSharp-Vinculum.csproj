@@ -14,20 +14,28 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageOutputDir>..\..\Output\nuget-bin\</PackageOutputDir>
         <RepositoryUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</RepositoryUrl>
-        <Version>4.5.0.0-dev-alpha</Version>
-        <PackageReleaseNotes>Release Notes: Updated to Raylib 4.5-dev</PackageReleaseNotes>
+        <Version>4.5.0.0-rc1</Version>
+        <PackageReleaseNotes>Release Notes: 
+
+4.5.0-rc1: Added RayCamera
+
+4.5.0-dev-alpha: Updated to Raylib 4.5-dev
+
+4.2.0.0-alpha: Initial release of Raylib-CSharp-Vinculum, CSharp bindings for Raylib 4.2. Supports Windows
+
+</PackageReleaseNotes>
         <Authors>ZeroElectric;Minmoose</Authors>
         <Company>ZeroElectricGames</Company>
         <Description>
-            AutoGen C# bindings for [Raylib] 4.5-dev(https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.
+            AutoGen C# bindings for [Raylib 4.5-dev](https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.
             - Windows supported. With Linux planed.
-            - Supports net5+, Mono 6.4+, NetCore3.0
+            - Supports net5+
             - 1-1 bindings + convenience wrappers to make it easier to use.
             - Includes bindings for all of Raylib's extras: RayGui, Easings, Physac, RlGl, RayMath &amp; RRES.
             - Requires `unsafe` for 3d workflows.
             - A focus on performance. No runtime allocations if at all possible.
             - A fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) as the maintainer wishes to step down.
-            - No intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html)
+            - Very few intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html) or [view the examples](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.Examples)
         </Description>
         <PackageProjectUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</PackageProjectUrl>
         <PackageTags>zeroelectric;raylib-cslo;raylib-csharp;vinculum;raylib-csharp-vinculum;raylib;gamedev;binding;rendering;3d;2d;graphics;opengl;physics;audio;</PackageTags>
@@ -39,6 +47,8 @@
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
         <IsPublishable>False</IsPublishable>
         <RepositoryType>git</RepositoryType>
+        <Title>Raylib CSharp Vinculum</Title>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -79,6 +89,13 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>false</Pack>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
