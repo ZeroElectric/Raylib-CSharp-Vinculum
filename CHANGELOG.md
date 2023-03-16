@@ -6,7 +6,7 @@
 - Added new data structures validation functions such as `IsImageReady()`, `IsTextureReady()`, `IsSoundReady()` & more!
 - Redesigned rlgl module for automatic render-batch limits checking and rshapes module to minimize the rlgl dependency.
 
-#### The functions have been removed:
+#### The following functions have been removed:
 
 - REMOVED: Multichannel audio API: PlaySoundMulti(), StopSoundMulti()
 - REMOVED: UnloadModelKeepMeshes()
@@ -19,4 +19,4 @@
 - RENAMED: TextCodepointsToUTF8() to LoadUTF8()
 - RENAMED: GetCodepoint() -> GetCodepointNext()
 
-#### With more then 25 new functions and 40+ function revsions make sure to check out raylib's [CHANGELOG]([CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG)) for a detailed list of changes in raylib 4.5
+#### With more then 25 new functions and 40+ function revsions make sure to check out raylib's [CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG) for a detailed list of changes in raylib 4.5
