@@ -38,19 +38,18 @@ public unsafe static class VrSimulator
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - vr simulator");
 
 		// VR device parameters definition
-		VrDeviceInfo device = new(){
-        // Oculus Rift CV1 parameters for simulator
-        hResolution = 2160,                 // Horizontal resolution in pixels
-        vResolution = 1200,                 // Vertical resolution in pixels
-        hScreenSize = 0.133793f,            // Horizontal size in meters
-        vScreenSize = 0.0669f,              // Vertical size in meters
-        vScreenCenter = 0.04678f,           // Screen center in meters
-        eyeToScreenDistance = 0.041f,       // Distance between eye and display in meters
-        lensSeparationDistance = 0.07f,     // Lens separation distance in meters
-        interpupillaryDistance = 0.07f,     // IPD (distance between pupils) in meters
-
-		
-    };
+		VrDeviceInfo device = new()
+		{
+			// Oculus Rift CV1 parameters for simulator
+			hResolution = 2160,                 // Horizontal resolution in pixels
+			vResolution = 1200,                 // Vertical resolution in pixels
+			hScreenSize = 0.133793f,            // Horizontal size in meters
+			vScreenSize = 0.0669f,              // Vertical size in meters
+			vScreenCenter = 0.04678f,           // Screen center in meters
+			eyeToScreenDistance = 0.041f,       // Distance between eye and display in meters
+			lensSeparationDistance = 0.07f,     // Lens separation distance in meters
+			interpupillaryDistance = 0.07f,     // IPD (distance between pupils) in meters
+		};
 
 		// NOTE: CV1 uses fresnel-hybrid-asymmetric lenses with specific compute shaders
 		// Following parameters are just an approximation to CV1 distortion stereo rendering
@@ -94,13 +93,13 @@ public unsafe static class VrSimulator
 
 		// Define the camera to look into our 3d world
 		Camera camera = new();
-		camera.position = new( 5.0f, 2.0f, 5.0f );    // Camera position
-		camera.target = new( 0.0f, 2.0f, 0.0f );      // Camera looking at point
-		camera.up = new( 0.0f, 1.0f, 0.0f );          // Camera up vector
+		camera.position = new(5.0f, 2.0f, 5.0f);    // Camera position
+		camera.target = new(0.0f, 2.0f, 0.0f);      // Camera looking at point
+		camera.up = new(0.0f, 1.0f, 0.0f);          // Camera up vector
 		camera.fovy = 60.0f;                                // Camera field-of-view Y
 		camera.projection_ = CAMERA_PERSPECTIVE;             // Camera type
 
-		Vector3 cubePosition = new( 0.0f, 0.0f, 0.0f );
+		Vector3 cubePosition = new(0.0f, 0.0f, 0.0f);
 
 		SetTargetFPS(90);                   // Set our game to run at 90 frames-per-second
 
@@ -133,7 +132,7 @@ public unsafe static class VrSimulator
 			BeginShaderMode(distortion);
 			DrawTextureRec(target.texture, new(
 				0, 0, (float)target.texture.width,
-                              (float)-target.texture.height ), new( 0.0f, 0.0f ), WHITE);
+							  (float)-target.texture.height), new(0.0f, 0.0f), WHITE);
 			EndShaderMode();
 			DrawFPS(10, 10);
 			EndDrawing();
@@ -153,6 +152,6 @@ public unsafe static class VrSimulator
 		return 0;
 	}
 
-	
+
 }
 
