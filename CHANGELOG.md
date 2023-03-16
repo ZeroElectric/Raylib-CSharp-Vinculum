@@ -19,4 +19,4 @@
 - RENAMED: TextCodepointsToUTF8() to LoadUTF8()
 - RENAMED: GetCodepoint() -> GetCodepointNext()
 
-#### With more then 25 new functions and 40+ function revsions make sure to check out raylib's [CHANGELOG]([CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG)) for a detailed list of changes in raylib 4.5
+#### With more then 25 new functions and 40+ function revsions make sure to check out raylib's [CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG) for a detailed list of changes in raylib 4.5
