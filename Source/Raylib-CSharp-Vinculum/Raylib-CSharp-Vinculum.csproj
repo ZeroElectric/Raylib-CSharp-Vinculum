@@ -49,6 +49,7 @@
         <RepositoryType>git</RepositoryType>
         <Title>Raylib CSharp Vinculum</Title>
         <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageOutputPath>..\..\Output</PackageOutputPath>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
