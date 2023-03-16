@@ -24,11 +24,11 @@ dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-director
 "### Building: raygui"
 dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RayGuiSrc" --file raygui.h --methodClassName RayGui --libraryPath raylib --include-directory "$RaylibSrc"
 "### Building: physac"
-dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$PhysacSrc" --include-directory "$RaylibSrc" --file physac.h --methodClassName Physac --libraryPath raylib
+dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$PhysacSrc" --file physac.h --methodClassName Physac --libraryPath raylib --include-directory "$RaylibSrc"
 "### Building: rres"
 dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RResSrc" --file rres.h --methodClassName RRes --libraryPath raylib --include-directory "$RaylibSrc"
 "### Building: reasings "
-dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$EasingsSrc" --include-directory "$RaylibSrc" --file reasings.h --methodClassName Easings --exclude EaseElasticInOut PI DEG2RAD RAD2DEG
+dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$EasingsSrc" --file reasings.h --methodClassName Easings --include-directory "$RaylibSrc" --exclude EaseElasticInOut PI DEG2RAD RAD2DEG
 
 "### FIXING FILES..."
 
