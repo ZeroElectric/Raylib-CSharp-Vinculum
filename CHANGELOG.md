@@ -6,7 +6,7 @@
 - Added new data structures validation functions such as `IsImageReady()`, `IsTextureReady()`, `IsSoundReady()` & more!
 - Redesigned rlgl module for automatic render-batch limits checking and rshapes module to minimize the rlgl dependency.
 
-#### The functions have been removed:
+#### The following functions have been removed:
 
 - REMOVED: Multichannel audio API: PlaySoundMulti(), StopSoundMulti()
 - REMOVED: UnloadModelKeepMeshes()
