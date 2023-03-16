@@ -40,7 +40,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 - ### By adding the package using .NET CLI:
 
-      dotnet add package Raylib-CSharp-Vinculum --version 4.5.0-rc1
+      dotnet add package Raylib-CSharp-Vinculum --version 4.5.0
 
 - ### Or by searching for [Raylib-CSharp-Vinculum](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) in Visual Studio's Nuget Package Manager
 

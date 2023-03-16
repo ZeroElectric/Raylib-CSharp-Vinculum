@@ -68,8 +68,6 @@ public static class Program
 	public static void Main(params string[] args)
 	{
 
-		ZeroElectric.Vinculum.Examples.Core.VrSimulator.main();
-
 		/////////////////////////////////////////
 		////////////	MANUAL TEST CASES:  these are test cases for bugfixes to CsLo
 		ZeroElectric.Vinculum.Examples.TestCases.NullString.LoadShaderFromMemory.Program.main(args);
