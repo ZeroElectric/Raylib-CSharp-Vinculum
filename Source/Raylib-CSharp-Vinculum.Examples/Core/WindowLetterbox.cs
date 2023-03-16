@@ -1,10 +1,15 @@
-﻿// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
-// [!!] Copyright ©️ Raylib-CsLo and Contributors. 
-// [!!] This file is licensed to you under the MPL-2.0.
-// [!!] See the LICENSE file in the project root for more info. 
-// [!!] ------------------------------------------------- 
-// [!!] The code and 100+ examples are here! https://github.com/NotNotTech/Raylib-CsLo 
-// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!]  [!!] [!!] [!!] [!!]
+
+//------------------------------------------------------------------------------
+//
+// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+// This file is licensed to you under the MPL-2.0.
+// See the LICENSE file in the project's root for more info.
+//
+// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+// Find Raylib here: https://github.com/raysan5/raylib
+//
+//------------------------------------------------------------------------------
 
 /*******************************************************************************************
 *
@@ -41,8 +46,8 @@ public unsafe static class WindowLetterbox
 		RenderTexture2D target = LoadRenderTexture(gameScreenWidth, gameScreenHeight);
 		SetTextureFilter(target.texture, TEXTURE_FILTER_BILINEAR);  // Texture scale filter to use
 
-		Color[] colors =new Color[10];
-		for (int i = 0; i < 10; i++) colors[i] = new( GetRandomValue(100, 250), GetRandomValue(50, 150), GetRandomValue(10, 100), 255 );
+		Color[] colors = new Color[10];
+		for (int i = 0; i < 10; i++) colors[i] = new(GetRandomValue(100, 250), GetRandomValue(50, 150), GetRandomValue(10, 100), 255);
 
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 											//--------------------------------------------------------------------------------------
@@ -58,7 +63,7 @@ public unsafe static class WindowLetterbox
 			if (IsKeyPressed(KEY_SPACE))
 			{
 				// Recalculate random colors for the bars
-				for (int i = 0; i < 10; i++) colors[i] = new( GetRandomValue(100, 250), GetRandomValue(50, 150), GetRandomValue(10, 100), 255 );
+				for (int i = 0; i < 10; i++) colors[i] = new(GetRandomValue(100, 250), GetRandomValue(50, 150), GetRandomValue(10, 100), 255);
 			}
 
 			// Update virtual mouse (clamped mouse value behind game screen)
@@ -66,7 +71,7 @@ public unsafe static class WindowLetterbox
 			Vector2 virtualMouse;// = { 0 };
 			virtualMouse.X = (mouse.X - (GetScreenWidth() - (gameScreenWidth * scale)) * 0.5f) / scale;
 			virtualMouse.Y = (mouse.Y - (GetScreenHeight() - (gameScreenHeight * scale)) * 0.5f) / scale;
-			virtualMouse = Vector2.Clamp(virtualMouse, Vector2.Zero, new( (float)gameScreenWidth, (float)gameScreenHeight ));
+			virtualMouse = Vector2.Clamp(virtualMouse, Vector2.Zero, new((float)gameScreenWidth, (float)gameScreenHeight));
 
 			// Apply the same transformation as the virtual mouse to the real mouse (i.e. to work with raygui)
 			//SetMouseOffset(-(GetScreenWidth() - (gameScreenWidth*scale))*0.5f, -(GetScreenHeight() - (gameScreenHeight*scale))*0.5f);
@@ -90,10 +95,10 @@ public unsafe static class WindowLetterbox
 			ClearBackground(BLACK);     // Clear screen background
 
 			// Draw render texture to screen, properly scaled
-			DrawTexturePro(target.texture,new( 0.0f, 0.0f, (float)target.texture.width, (float)-target.texture.height ),
+			DrawTexturePro(target.texture, new(0.0f, 0.0f, (float)target.texture.width, (float)-target.texture.height),
 						  new(
 				(GetScreenWidth() - ((float)gameScreenWidth * scale)) * 0.5f, (GetScreenHeight() - ((float)gameScreenHeight * scale)) * 0.5f,
-						   (float)gameScreenWidth * scale, (float)gameScreenHeight * scale ), new( 0, 0 ), 0.0f, WHITE);
+						   (float)gameScreenWidth * scale, (float)gameScreenHeight * scale), new(0, 0), 0.0f, WHITE);
 			EndDrawing();
 			//--------------------------------------------------------------------------------------
 		}
@@ -108,6 +113,6 @@ public unsafe static class WindowLetterbox
 		return 0;
 	}
 
-	
+
 }
 

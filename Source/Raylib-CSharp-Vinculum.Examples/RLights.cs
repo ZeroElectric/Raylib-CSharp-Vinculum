@@ -1,14 +1,17 @@
-// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] 
-// [!!] Copyright ©️ Raylib-CsLo and Contributors. 
-// [!!] This file is licensed to you under the MPL-2.0.
-// [!!] See the LICENSE file in the project root for more info. 
-// [!!] ------------------------------------------------- 
-// [!!] The code and 100+ examples are here! https://github.com/NotNotTech/Raylib-CsLo 
-// [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!] [!!]  [!!] [!!] [!!] [!!]
+
+//------------------------------------------------------------------------------
+//
+// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+// This file is licensed to you under the MPL-2.0.
+// See the LICENSE file in the project's root for more info.
+//
+// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+// Find Raylib here: https://github.com/raysan5/raylib
+//
+//------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.Examples;
-
-//TODO (KEN) Fix this, and add it to the main lib?
 
 /**********************************************************************************************
 *
@@ -41,7 +44,7 @@ namespace ZeroElectric.Vinculum.Examples;
 *     3. This notice may not be removed or altered from any source distribution.
 *
 **********************************************************************************************/
-public unsafe class RLights
+public unsafe class RLights //TODO (Ken) Clean this up
 {
 	//----------------------------------------------------------------------------------
 	// Defines and Macros
