@@ -13,10 +13,11 @@
     - `rres` : A simple and easy-to-use file-format to package resources
     - `easings` : Use for simple animations  (C# Managed Port)
     - `raymath` : A game math library (C# Managed Port)
+    - `rcamera` : A C# port of rcamera.h
   - Requires `unsafe` for 3d workflows.
   - A focus on performance. No runtime allocations if at all possible.
   - A fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) as the maintainer wishes to step down.
-  - No intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html) or [view the examples]
+  - No intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html) or [view the examples](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.Examples)
   - Nuget package can be found [here](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/)
   - Go give Ray some love, https://github.com/sponsors/raysan5
 
@@ -39,7 +40,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 - ### By adding the package using .NET CLI:
 
-      dotnet add package Raylib-CSharp-Vinculum --version 4.2.0-alpha 
+      dotnet add package Raylib-CSharp-Vinculum --version 4.5.0 
 
 - ### Or by searching for [Raylib-CSharp-Vinculum](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) in Visual Studio's Nuget Package Manager
 
@@ -137,6 +138,7 @@ namespace VinculumExample
     //Use 'global using'-'global using static' to make C# code function more like the raylib c examples.   
     global using static ZeroElectric.Vinculum.Raylib;
     global using static ZeroElectric.Vinculum.RayMath;
+    global using static ZeroElectric.Vinculum.RayCamera;
     global using static ZeroElectric.Vinculum.RayGui;
     global using static ZeroElectric.Vinculum.RlGl;
 
@@ -150,6 +152,6 @@ namespace VinculumExample
 # License
 ## Mozilla Public License 2.0 (**MPL**)
 
-By default, this repository is licensed under the [Mozilla Public License 2.0 (**MPL**)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/LICENSE).  The MPL is a popular "weak copyleft" license that allows just about anything.  **For example, you may use/include/static-link this library in a commercial, closed-source project without any burdens.**    The main limitation of the MPL being that: ***Modifications to the source code in this project must be open sourced***.  
+This repository is licensed under the [Mozilla Public License 2.0 (**MPL**)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/LICENSE).  The MPL is a popular "weak copyleft" license that allows just about anything.  **For example, you may use/include/static-link this library in a commercial, closed-source project without any burdens.**    The main limitation of the MPL being that: ***Modifications to the source code in this project must be open sourced***.  
 
 The MPL is a great choice, both by providing flexibility to the user, and by encouraging contributions to the underlying project.  If you would like to read about the MPL, **FOSSA** has [a great overview of the MPL 2.0 here](https://fossa.com/blog/open-source-software-licenses-101-mozilla-public-license-2-0/).
