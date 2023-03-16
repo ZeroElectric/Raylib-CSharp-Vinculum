@@ -40,7 +40,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 - ### By adding the package using .NET CLI:
 
-      dotnet add package Raylib-CSharp-Vinculum --version 4.5.0 
+      dotnet add package Raylib-CSharp-Vinculum --version 4.5.0-rc1
 
 - ### Or by searching for [Raylib-CSharp-Vinculum](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) in Visual Studio's Nuget Package Manager
 
@@ -53,14 +53,14 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
   - Visual C++ Toolset
   - MSVC v142(or higher) x64/x86
 
-1. Clone this repo using the git command below. **Downloading this repo as a zip file will not work** as it is important you use `git clone --recursive` to get all of the submodules
+1. Clone this repo using the git command below. **(Note: Downloading this repo as a zip file will not work,** it is important you use `git clone --recursive` to get all of the submodules)
 ```
 git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
 ```
 > If you didn't/forgot to use `--recursive`, you can run `git submodule update --init --recursive` to fix it
-2. Run `build.bat` and wait for the build to complete 
-3. Reference `Raylib-CSharp-Vinculum.dll` from `Output\bin` and import the folder `runtimes` into your project's root directory
-4. If you're looking for the compiled 'Examples' it will be in `Output\example-bin`
+- Run `build.bat` and wait for the build to complete 
+- Reference `Raylib-CSharp-Vinculum.dll` from `Output\bin` and import the folder `runtimes` into your project's root directory
+- Compiled 'Examples' it will be in `Output\example-bin`
 
 >If the build wasn't successful make a new issue with the error it gave you
 
@@ -105,6 +105,12 @@ namespace VinculumExample
   }
 }
 ```
+
+- #### View code example collection [here](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.Examples)
+
+- #### raylib 4.5 cheatsheet [here](https://www.raylib.com/cheatsheet/cheatsheet.html)
+
+- #### raylib architecture design [here](https://github.com/raysan5/raylib/wiki/raylib-architecture)
 
 # FAQ & Tips
 
