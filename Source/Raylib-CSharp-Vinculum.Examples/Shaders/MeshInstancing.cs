@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------------------------------
 
-namespace ZeroElectric.Vinculum.Examples.Shaders;
+namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 
 /*******************************************************************************************
 *
@@ -33,7 +33,7 @@ public unsafe static class MeshInstancing
 	const int MAX_INSTANCES = 10000;
 	public static int main()
 	{
-		var rLights = new Examples.RLights();
+		var rLights = new ExampleCore.RLights();
 		// Initialization
 		//--------------------------------------------------------------------------------------
 		const int screenWidth = 800;

@@ -39,7 +39,7 @@
 //#define XBOX360_NAME_ID     "Xbox 360 Controller"
 //#define PS3_NAME_ID         "PLAYSTATION(R)3 Controller"
 //#endif
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 using System;
 using static Consts;

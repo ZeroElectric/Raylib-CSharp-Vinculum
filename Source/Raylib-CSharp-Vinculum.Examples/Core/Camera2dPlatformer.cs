@@ -25,7 +25,7 @@
 ********************************************************************************************/
 
 
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 
 
@@ -264,7 +264,7 @@ public unsafe static class Camera2dPlatformer
 			camera.target = Vector2.Add(camera.target, diff * (speed * delta / length));
 		}
 	}
-	internal static int main()
+	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------

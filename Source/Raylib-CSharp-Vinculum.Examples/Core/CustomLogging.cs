@@ -29,7 +29,7 @@ using static ZeroElectric.Vinculum.TraceLogLevel;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 /// <summary>
 /// tough to implement logging.
 /// solution from : https://stackoverflow.com/a/37629480

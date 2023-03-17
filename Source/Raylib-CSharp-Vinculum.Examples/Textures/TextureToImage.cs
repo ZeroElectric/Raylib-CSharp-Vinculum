@@ -18,7 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
-namespace ZeroElectric.Vinculum.Examples.Textures;
+namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 
 /*******************************************************************************************
 *

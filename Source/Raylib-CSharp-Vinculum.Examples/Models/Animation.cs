@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------------------------------
 
-namespace ZeroElectric.Vinculum.Examples.Models;
+namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
 /// <summary>
 /// /*******************************************************************************************

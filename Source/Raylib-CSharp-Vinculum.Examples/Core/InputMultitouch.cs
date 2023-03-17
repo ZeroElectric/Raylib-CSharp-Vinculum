@@ -23,7 +23,7 @@
 *   Copyright (c) 2019 Berni (@Berni8k) and Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 public static class InputMultitouch
 {

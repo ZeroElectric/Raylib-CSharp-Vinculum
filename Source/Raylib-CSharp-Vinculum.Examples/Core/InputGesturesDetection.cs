@@ -21,7 +21,7 @@
 *   Copyright (c) 2016 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 public static class InputGesturesDetection
 {

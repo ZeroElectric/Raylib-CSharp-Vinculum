@@ -17,7 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZeroElectric.Vinculum.Examples.Shapes;
+namespace ZeroElectric.Vinculum.ExampleCore.Shapes;
 
 /*******************************************************************************************
 *

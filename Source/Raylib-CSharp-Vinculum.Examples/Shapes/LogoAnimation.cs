@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------------------------------
 
-namespace ZeroElectric.Vinculum.Examples.Shapes;
+namespace ZeroElectric.Vinculum.ExampleCore.Shapes;
 
 /*******************************************************************************************
 *

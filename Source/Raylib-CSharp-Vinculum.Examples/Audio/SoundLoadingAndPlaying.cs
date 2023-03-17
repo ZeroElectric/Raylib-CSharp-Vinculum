@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------------------------------
 
-namespace ZeroElectric.Vinculum.Examples.Audio;
+namespace ZeroElectric.Vinculum.ExampleCore.Audio;
 /*******************************************************************************************
 *
 *   raylib [audio] example - Sound loading and playing

@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------------------------------
 
-namespace ZeroElectric.Vinculum.Examples.Textures;
+namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 
 /*******************************************************************************************
 *

@@ -23,7 +23,7 @@
 *   Copyright (c) 2021 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 using static BasicScreenManager.GameScreen;
 public static class BasicScreenManager

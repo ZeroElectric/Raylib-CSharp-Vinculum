@@ -22,7 +22,7 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 public static class Camera2d
 {

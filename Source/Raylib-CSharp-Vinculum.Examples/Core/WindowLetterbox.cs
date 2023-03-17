@@ -24,7 +24,7 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.Examples.Core;
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 public unsafe static class WindowLetterbox
 {

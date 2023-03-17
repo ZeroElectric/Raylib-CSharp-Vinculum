@@ -34,7 +34,7 @@
 using System.IO.Compression;
 using System.Text;
 
-namespace ZeroElectric.Vinculum.Examples.TestCases.NullString
+namespace ZeroElectric.Vinculum.ExampleCore.TestCases.NullString
 {
 
 	namespace LoadShaderFromMemory

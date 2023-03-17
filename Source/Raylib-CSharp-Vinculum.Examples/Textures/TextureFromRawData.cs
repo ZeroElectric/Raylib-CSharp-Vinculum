@@ -14,7 +14,7 @@
 using CommunityToolkit.HighPerformance;
 using System.Runtime.CompilerServices;
 
-namespace ZeroElectric.Vinculum.Examples.Textures;
+namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 
 /*******************************************************************************************
 *

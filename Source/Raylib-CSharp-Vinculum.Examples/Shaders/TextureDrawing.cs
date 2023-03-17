@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------------------------------
 
-namespace ZeroElectric.Vinculum.Examples.Shaders;
+namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 
 /*******************************************************************************************
 *
