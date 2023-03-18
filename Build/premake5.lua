@@ -1,9 +1,3 @@
-newoption 
-{
-   trigger = "opengl43",
-   description = "use OpenGL 4.3"
-}
-
 workspace "Raylib-With-Extras"
 	configurations { "Debug","Debug.DLL", "Release", "Release.DLL" }
 	platforms { "x64"}
@@ -29,23 +23,18 @@ workspace "Raylib-With-Extras"
 		
 	targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native" --"../Output/raylib/bin/%{cfg.buildcfg}/" 
 	
-	defines{"PLATFORM_DESKTOP"}
-	if (_OPTIONS["opengl43"]) then
-		defines{"GRAPHICS_API_OPENGL_43"}
-	else
-		defines{"GRAPHICS_API_OPENGL_33"}
-	end
+	defines{"PLATFORM_DESKTOP", "GRAPHICS_API_OPENGL_43"} -- "GRAPHICS_API_OPENGL_33" "SUPPORT_CAMERA_SYSTEM"
 	
 --The raylib-with-extras project, but named "raylib" so the dll is named properly
 project "raylib"
 	filter "configurations:Debug.DLL OR Release.DLL"
 		kind "SharedLib"
 		defines {"BUILD_LIBTYPE_SHARED"}
-		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native" --"../Output/raylib/bin/%{cfg.buildcfg}/"
+		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native"
 
 	filter "configurations:Debug OR Release"
 		kind "StaticLib"
-		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native" --
+		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native" 
 
 	filter "action:vs*"
 		defines{"_WINSOCK_DEPRECATED_NO_WARNINGS", "_CRT_SECURE_NO_WARNINGS", "_WIN32"}

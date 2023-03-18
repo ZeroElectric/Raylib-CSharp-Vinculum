@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Raylib_CSharp_Vinculum.TestingProgram</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Raylib-CSharp-Vinculum.ExampleCore\Raylib-CSharp-Vinculum.ExampleCore.csproj" />
+  </ItemGroup>
+
+</Project>
