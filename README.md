@@ -17,7 +17,7 @@
   - Requires `unsafe` for 3d workflows.
   - A focus on performance. No runtime allocations if at all possible.
   - A fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) as the maintainer wishes to step down.
-  - No intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html) or [view the examples](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.Examples)
+  - No intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html) or [view the examples](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.ExampleCore)
   - Nuget package can be found [here](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/)
   - Go give Ray some love, https://github.com/sponsors/raysan5
 
@@ -106,7 +106,7 @@ namespace VinculumExample
 }
 ```
 
-- #### View code example collection [here](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.Examples)
+- #### View code example collection [here](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.ExampleCore)
 
 - #### raylib 4.5 cheatsheet [here](https://www.raylib.com/cheatsheet/cheatsheet.html)
 
