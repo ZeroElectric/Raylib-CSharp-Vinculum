@@ -3,7 +3,7 @@
 ### **Raylib-CSharp-Vinculum is a autogen C#/.Net binding for [Raylib](https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.**
 
   - Windows supported. With Linux planned.
-  - Supports .Net 5+, Mono 6.4+, Net Core3.0
+  - Supports .Net 5+, Mono 6.4+, Core 3.0
   - 1-1 bindings + convenience wrappers to make it easier to use.
   - Includes bindings for all of Raylib's extras:
     - `raylib` : Core features, including Audio.
