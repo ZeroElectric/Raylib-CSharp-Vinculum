@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Source\Raylib-CSharp-Vinculum.Examples\Raylib-CSharp-Vinculum.ExampleCore.csproj" />
+    <ProjectReference Include="..\Raylib-CSharp-Vinculum.ExampleCore\Raylib-CSharp-Vinculum.ExampleCore.csproj" />
   </ItemGroup>
 
 </Project>
