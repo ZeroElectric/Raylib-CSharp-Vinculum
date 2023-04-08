@@ -32,9 +32,9 @@ project "raylib"
 		defines {"BUILD_LIBTYPE_SHARED"}
 		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native"
 
-	filter "configurations:Debug OR Release"
-		kind "StaticLib"
-		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native" 
+	--filter "configurations:Debug OR Release"
+		--kind "StaticLib"
+		--targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/ 
 
 	filter "action:vs*"
 		defines{"_WINSOCK_DEPRECATED_NO_WARNINGS", "_CRT_SECURE_NO_WARNINGS", "_WIN32"}

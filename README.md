@@ -1,8 +1,8 @@
-# Raylib-CSharp-Vinculum [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/Source/Raylib-CSharp-Vinculum.Examples) ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) 
+# Raylib-CSharp-Vinculum [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/Source/Raylib-CSharp-Vinculum.Examples) ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64%2C%20Linux--x64%20-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) 
 
 ### **Raylib-CSharp-Vinculum is a autogen C#/.Net binding for [Raylib](https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.**
 
-  - Windows supported. With Linux planned.
+  - Windows & Linux supported.
   - Supports .Net 5+, Mono 6.4+, Core 3.0
   - 1-1 bindings + convenience wrappers to make it easier to use.
   - Includes bindings for all of Raylib's extras:
@@ -40,7 +40,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 - ### By adding the package using .NET CLI:
 
-      dotnet add package Raylib-CSharp-Vinculum --version 4.5.0
+      dotnet add package Raylib-CSharp-Vinculum
 
 - ### Or by searching for [Raylib-CSharp-Vinculum](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) in Visual Studio's Nuget Package Manager
 
@@ -75,34 +75,44 @@ git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
 
 Basic Example:
 ---
-```cs
+```csharp
 using ZeroElectric.Vinculum;
 
-namespace VinculumExample
-{
-  public static class Program
-  {
-    public static void Main(string[] args)
-    {
-      Raylib.InitWindow(1280, 720, "Hello, Raylib-Vinculum");
-      Raylib.SetTargetFPS(60);
-      
-      // Main game loop
-      while (!Raylib.WindowShouldClose()) // Detect window close button or ESC key
-      {
-        Raylib.BeginDrawing();
-        Raylib.ClearBackground(Raylib.SKYBLUE);
-       
-        Raylib.DrawFPS(10, 10);
-        
-        Raylib.DrawText("Hello Raylib in CSharp!", 640 , 360, 50, Raylib.BLUE);
-        
-        Raylib.EndDrawing();
-      }
+namespace VinculumExample;
 
-      Raylib.CloseWindow();
-    }
-  }
+public static class Program
+{
+	public static void Main(string[] args)
+	{
+		// Set the width and height of the window     
+		int screenWidth = 800;
+		int screenHeight = 450;
+
+		// Initialize the window with the specified width, height, and title
+		Raylib.InitWindow(screenWidth, screenHeight, "Hello World , Raylib-CSharp-Vinculum");
+
+		// Set the FPS to 60
+		Raylib.SetTargetFPS(60);
+
+		// Loop until the window is closed
+		while (!Raylib.WindowShouldClose())
+		{
+			// Begin drawing to the window
+			Raylib.BeginDrawing();
+
+			// Clear the background to white
+			Raylib.ClearBackground(Color.RAYWHITE);
+
+			// Draw the text "Hello World" in maroon color at position (190, 200)
+			Raylib.DrawText("Hello Raylib in CSharp!", 190, 200, 20, Color.MAROON);
+
+			// End drawing to the window
+			Raylib.EndDrawing();
+		}
+
+		// Close the window
+		Raylib.CloseWindow();
+	}
 }
 ```
 
