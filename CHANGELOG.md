@@ -1,5 +1,7 @@
+## 4.5.0.1 (Apr 7 2023): 
+- Added Linux support.
 
-## Release notes summary for raylib-csharp-vinculum 4.5 (March 18 2023),
+## 4.5.0 (Mar 18 2023),
 - A simpler and more extendable Camera module (RayCamera a C# port of rcamera.h).
 - Support for M3D models and M3D/GLTF animations, 
 - Support for QOA audio format, 
