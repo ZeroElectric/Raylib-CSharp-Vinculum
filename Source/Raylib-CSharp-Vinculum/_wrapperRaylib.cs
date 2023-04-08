@@ -68,9 +68,7 @@ public static unsafe partial class Raylib
 		return format.SPrintF(args);
 	}
 
-	/// <summary>
-	/// dealing with __arglist: https://www.c-sharpcorner.com/UploadFile/b942f9/calling-unmanaged-functions-which-take-a-variable-number-of-arguments-from-C-Sharp/
-	/// </summary>
+	// dealing with __arglist: https://www.c-sharpcorner.com/UploadFile/b942f9/calling-unmanaged-functions-which-take-a-variable-number-of-arguments-from-C-Sharp/
 	//[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 	//[return: NativeTypeName("const char *")]
 	//public static extern sbyte* TextFormat([NativeTypeName("const char *")] sbyte* text, __arglist); //TODO (Ken) Find out why is this now a dupe when it wasn't before
