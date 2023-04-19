@@ -396,8 +396,8 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-Build/Raylib-With-Extras.sln
-Build/raylib-with-extras/*
+#Build/Raylib-With-Extras.sln
+#Build/raylib-with-extras/*
 Output/*
 
 Source/Raylib-CSharp-Vinculum/autogen/*
