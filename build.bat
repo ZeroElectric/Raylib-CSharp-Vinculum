@@ -12,4 +12,6 @@ call build-vinculum.bat
 cd %~dp0\Build
 call build-examples.bat
 
+echo Build Complete!
+
 pause

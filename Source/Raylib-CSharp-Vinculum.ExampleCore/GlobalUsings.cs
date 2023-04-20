@@ -15,7 +15,7 @@
 // All these `global using` statements are for convience in porting the examples, to allow the examples to be copy-pasted almost verbatum.
 
 global using System.Numerics;
-global using ZeroElectric.Vinculum.InternalHelpers;
+global using ZeroElectric.Vinculum.Extensions;
 
 global using static ZeroElectric.Vinculum.RayGui;
 global using static ZeroElectric.Vinculum.Raylib;

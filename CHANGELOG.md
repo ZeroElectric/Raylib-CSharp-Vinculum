@@ -1,7 +1,24 @@
-## 4.5.0.1 (Apr 7 2023): 
+# 4.5.1 (Apr 20 2023), Raygui 3.5 
+
+### Updated raygui to 3.5 
+- Added new Tab Bar contorol `GuiTabBar()`, based upon `GuiToggle()`,
+- Added helper functions to split text in separate lines,
+- Added new icons useful for code editing tools,
+- Redesigned `GuiTextBox()` to support cursor movement and `GuiDrawText()` to divide drawing by lines.
+
+#### The following functions have been removed:
+- REMOVED: Unneeded icon editing functions
+- `REMOVED: GuiTextBoxMulti()`, very limited and broken
+- REMOVED: MeasureTextEx() dependency, logic directly implemented
+- REMOVED: DrawTextEx() dependency, logic directly implemented
+
+# 4.5.0.1 (Apr 7 2023), Linux support
 - Added Linux support.
 
-## 4.5.0 (Mar 18 2023),
+# 4.5.0 (Mar 18 2023), Raylib 4.5
+
+### Updated raylib to 4.5 
+
 - A simpler and more extendable Camera module (RayCamera a C# port of rcamera.h).
 - Support for M3D models and M3D/GLTF animations, 
 - Support for QOA audio format, 
@@ -22,3 +39,8 @@
 - RENAMED: GetCodepoint() -> GetCodepointNext()
 
 #### With more then 25 new functions and 40+ function revsions make sure to check out raylib's [CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG) for a detailed list of changes in raylib 4.5
+
+
+# 4.2.0 (Dec 8, 2022), Initial release
+- Initial release of Raylib-CSharp-Vinculum, a C# binding for Raylib 4.2, supports Windows.
+- Fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo)

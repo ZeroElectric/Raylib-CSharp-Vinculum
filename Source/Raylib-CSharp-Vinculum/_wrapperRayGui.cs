@@ -12,7 +12,7 @@
 //------------------------------------------------------------------------------
 
 using CommunityToolkit.HighPerformance.Buffers;
-using global::ZeroElectric.Vinculum.InternalHelpers;
+using global::ZeroElectric.Vinculum.Extensions;
 using System.Runtime.InteropServices;
 
 namespace ZeroElectric.Vinculum;
@@ -102,12 +102,6 @@ public static unsafe partial class RayGui
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		return GuiTextBox(bounds, sotext.AsPtr(), textSize, editMode);
-	}
-
-	public static Boolean GuiTextBoxMulti(Rectangle bounds, string? text, int textSize, Boolean editMode)
-	{
-		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiTextBoxMulti(bounds, sotext.AsPtr(), textSize, editMode);
 	}
 
 	public static float GuiSlider(Rectangle bounds, string? textLeft, string? textRight, float value, float minValue, float maxValue)
