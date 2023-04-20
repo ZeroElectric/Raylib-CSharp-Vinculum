@@ -185,9 +185,10 @@ public static class Program
 
 # Known Issues
 
-- When using `RayGui`, be sure to call `RayGui.GuiLoadStyleDefault();` right after you call `InitWindow()`.  This is needed to initialize rayGui properly.  If you don't do this and you close a raylib window and then open a new one (within the same running instance), rayGui will brake.
-- `Texture2D` doesn't exist, it's just an alias for `Texture` so use that instead.  
-- `LogCustom()` is ported but doesn't support variable length arguments.
+- When using `RayGui`, if you close a raylib window after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGui ui elements will be broken, 
+- `Texture2D` doesn't exist, it's just an alias for `Texture` so use that instead,
+- `LogCustom()` is ported but doesn't support variable length arguments,
+- The Linux build supplied by the nuget pakage was buiilt under `debug` mode,
 - The `Text.Unicode` example doesn't render unicode properly.
 
 # License
