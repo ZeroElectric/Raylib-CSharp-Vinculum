@@ -23,7 +23,7 @@ ZeroElectric.Vinculum.ExampleCore.Core.Camera3dFree.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera3dFirstPerson.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Picking3d.main();
 ZeroElectric.Vinculum.ExampleCore.Core.WorldToScreen.main();
-ZeroElectric.Vinculum.ExampleCore.Core.CustomLogging.main();
+ZeroElectric.Vinculum.ExampleCore.Core.CustomLogging.main(); // This makes Linux build crash
 ZeroElectric.Vinculum.ExampleCore.Core.WindowLetterbox.main();
 ZeroElectric.Vinculum.ExampleCore.Core.WindowsDropFiles.main();
 ZeroElectric.Vinculum.ExampleCore.Core.ScissorTest.main();
