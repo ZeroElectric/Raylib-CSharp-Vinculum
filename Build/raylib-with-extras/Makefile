@@ -25,7 +25,7 @@ INCLUDES += -I../../Libs/raylib/src -I../../Libs/raylib/src/external/glfw/includ
 FORCE_INCLUDE +=
 ALL_CPPFLAGS += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
 ALL_RESFLAGS += $(RESFLAGS) $(DEFINES) $(INCLUDES)
-LIBS += -lpthread -lGL -lm -ldl -lrt -lX11
+LIBS += -lpthread -lGL -lm -llc -lfPIC -ldl -lrt -lX11
 LDDEPS +=
 LINKCMD = $(CXX) -o "$@" $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
 define PREBUILDCMDS
