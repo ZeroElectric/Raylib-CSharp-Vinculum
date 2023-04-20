@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8898EA18-743A-15EF-5DF5-284349369C3F}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>raylib</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\Source\Raylib-CSharp-Vinculum\runtimes\win-x64\native\</OutDir>
+    <IntDir>obj\x64\Debug\</IntDir>
+    <TargetName>raylib</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\Source\Raylib-CSharp-Vinculum\runtimes\win-x64\native\</OutDir>
+    <IntDir>obj\x64\Release\</IntDir>
+    <TargetName>raylib</TargetName>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>DEBUG;PLATFORM_DESKTOP;GRAPHICS_API_OPENGL_33;BUILD_LIBTYPE_SHARED;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Libs\raylib\src;..\..\Libs\raylib\src\external\glfw\include;..\..\Libs\raylib-extra-shims\src;..\..\Libs\physac\src;..\..\Libs\raygui\src;..\..\Libs\rres\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\..\Source\Raylib-CSharp-Vinculum\runtimes\win-x64\native\raylib.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;PLATFORM_DESKTOP;GRAPHICS_API_OPENGL_33;BUILD_LIBTYPE_SHARED;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\Libs\raylib\src;..\..\Libs\raylib\src\external\glfw\include;..\..\Libs\raylib-extra-shims\src;..\..\Libs\physac\src;..\..\Libs\raygui\src;..\..\Libs\rres\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImportLibrary>..\..\Source\Raylib-CSharp-Vinculum\runtimes\win-x64\native\raylib.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Libs\physac\src\physac.h" />
+    <ClInclude Include="..\..\Libs\raygui\src\raygui.h" />
+    <ClInclude Include="..\..\Libs\raylib\src\config.h" />
+    <ClInclude Include="..\..\Libs\raylib\src\raylib.h" />
+    <ClInclude Include="..\..\Libs\raylib\src\raymath.h" />
+    <ClInclude Include="..\..\Libs\raylib\src\rcamera.h" />
+    <ClInclude Include="..\..\Libs\raylib\src\rgestures.h" />
+    <ClInclude Include="..\..\Libs\raylib\src\rlgl.h" />
+    <ClInclude Include="..\..\Libs\raylib\src\utils.h" />
+    <ClInclude Include="..\..\Libs\rres\src\external\aes.h" />
+    <ClInclude Include="..\..\Libs\rres\src\external\lz4.h" />
+    <ClInclude Include="..\..\Libs\rres\src\external\monocypher.h" />
+    <ClInclude Include="..\..\Libs\rres\src\external\qoi.h" />
+    <ClInclude Include="..\..\Libs\rres\src\rres-raylib.h" />
+    <ClInclude Include="..\..\Libs\rres\src\rres.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Libs\raylib\src\raudio.c" />
+    <ClCompile Include="..\..\Libs\raylib\src\rcore.c" />
+    <ClCompile Include="..\..\Libs\raylib\src\rglfw.c" />
+    <ClCompile Include="..\..\Libs\raylib\src\rmodels.c" />
+    <ClCompile Include="..\..\Libs\raylib\src\rshapes.c" />
+    <ClCompile Include="..\..\Libs\raylib\src\rtext.c" />
+    <ClCompile Include="..\..\Libs\raylib\src\rtextures.c" />
+    <ClCompile Include="..\..\Libs\raylib\src\utils.c" />
+    <ClCompile Include="..\raylib-extra-shims\src\physac.c" />
+    <ClCompile Include="..\raylib-extra-shims\src\raygui.c" />
+    <ClCompile Include="..\raylib-extra-shims\src\rres.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

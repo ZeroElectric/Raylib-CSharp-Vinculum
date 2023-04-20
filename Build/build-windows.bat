@@ -7,5 +7,5 @@ for /f "usebackq tokens=*" %%i in (`vswhere -latest -products * -requires Micros
 if exist "%InstallDir%\Common7\Tools\vsdevcmd.bat" (
   "%InstallDir%\Common7\Tools\vsdevcmd.bat" 
   cd %~dp0
-  devenv Raylib-With-Extras.sln /rebuild Release.DLL
+  devenv Raylib-With-Extras.sln /rebuild Release
 )

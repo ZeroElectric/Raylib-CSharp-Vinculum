@@ -1,46 +1,33 @@
 workspace "Raylib-With-Extras"
-	configurations { "Debug","Debug.DLL", "Release", "Release.DLL" }
+	configurations { "Debug", "Release" }
 	platforms { "x64"}
 
 	filter "configurations:Debug"
 		defines { "DEBUG" }
 		symbols "On"
 		
-	filter "configurations:Debug.DLL"
-		defines { "DEBUG" }
-		symbols "On"
-
 	filter "configurations:Release"
 		defines { "NDEBUG" }
 		optimize "On"	
-		
-	filter "configurations:Release.DLL"
-		defines { "NDEBUG" }
-		optimize "On"	
-		
+				
 	filter { "platforms:x64" }
 		architecture "x86_64"
-		
-	targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native" --"../Output/raylib/bin/%{cfg.buildcfg}/" 
+			
+	defines{"PLATFORM_DESKTOP", "GRAPHICS_API_OPENGL_33"} -- "GRAPHICS_API_OPENGL_43"
 	
-	defines{"PLATFORM_DESKTOP", "GRAPHICS_API_OPENGL_43"} -- "GRAPHICS_API_OPENGL_33" "SUPPORT_CAMERA_SYSTEM"
-	
---The raylib-with-extras project, but named "raylib" so the dll is named properly
+--The raylib-with-extras project, but named "raylib" so the output libraries are named properly
 project "raylib"
-	filter "configurations:Debug.DLL OR Release.DLL"
-		kind "SharedLib"
+	filter "configurations:Debug OR Release"
+		kind "SharedLib" -- "StaticLib"
 		defines {"BUILD_LIBTYPE_SHARED"}
-		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native"
-
-	--filter "configurations:Debug OR Release"
-		--kind "StaticLib"
-		--targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/ 
 
 	filter "action:vs*"
 		defines{"_WINSOCK_DEPRECATED_NO_WARNINGS", "_CRT_SECURE_NO_WARNINGS", "_WIN32"}
+		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native"
 		links {"winmm"}
 		
 	filter "action:gmake*"
+		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native"
 		links {"pthread", "GL", "m", "dl", "rt", "X11"}
 		
 	filter{}

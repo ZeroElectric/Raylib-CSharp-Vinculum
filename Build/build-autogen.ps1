@@ -19,8 +19,6 @@ dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-director
 dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file raymath.h --methodClassName RayMath --libraryPath raylib
 "### Building: rlgl"
 dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file rlgl.h --methodClassName RlGl --libraryPath raylib
-#"### Building: raycamera"
-#dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file rcamera.h --methodClassName RayCamera --libraryPath raylib
 "### Building: raygui"
 dotnet ClangSharp\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RayGuiSrc" --file raygui.h --methodClassName RayGui --libraryPath raylib --include-directory "$RaylibSrc"
 "### Building: physac"
