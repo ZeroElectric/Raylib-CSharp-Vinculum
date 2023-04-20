@@ -104,12 +104,6 @@ public static unsafe partial class RayGui
 		return GuiTextBox(bounds, sotext.AsPtr(), textSize, editMode);
 	}
 
-	public static Boolean GuiTextBoxMulti(Rectangle bounds, string? text, int textSize, Boolean editMode)
-	{
-		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiTextBoxMulti(bounds, sotext.AsPtr(), textSize, editMode);
-	}
-
 	public static float GuiSlider(Rectangle bounds, string? textLeft, string? textRight, float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> sotextLeft = textLeft.MarshalUtf8();
