@@ -14,7 +14,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace ZeroElectric.Vinculum.InternalHelpers;
+namespace ZeroElectric.Vinculum.Extensions;
 
 /// <summary>
 /// helper marshalling struct convert byte sized CBOOL's to/from dotnet

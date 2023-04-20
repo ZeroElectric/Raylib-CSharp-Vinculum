@@ -13,7 +13,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace ZeroElectric.Vinculum.InternalHelpers;
+namespace ZeroElectric.Vinculum.Extensions;
 
 public unsafe static class Helpers
 {

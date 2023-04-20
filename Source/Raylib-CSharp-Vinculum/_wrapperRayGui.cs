@@ -12,7 +12,7 @@
 //------------------------------------------------------------------------------
 
 using CommunityToolkit.HighPerformance.Buffers;
-using global::ZeroElectric.Vinculum.InternalHelpers;
+using global::ZeroElectric.Vinculum.Extensions;
 using System.Runtime.InteropServices;
 
 namespace ZeroElectric.Vinculum;

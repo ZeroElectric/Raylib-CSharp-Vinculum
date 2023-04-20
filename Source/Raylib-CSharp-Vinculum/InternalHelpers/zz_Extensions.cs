@@ -18,7 +18,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ZeroElectric.Vinculum.InternalHelpers;
+namespace ZeroElectric.Vinculum.Extensions;
 
 public unsafe static class zz_Extensions
 {

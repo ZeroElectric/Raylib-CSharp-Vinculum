@@ -14,7 +14,7 @@
 using CommunityToolkit.HighPerformance.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using ZeroElectric.Vinculum.InternalHelpers;
+using ZeroElectric.Vinculum.Extensions;
 
 namespace ZeroElectric.Vinculum;
 

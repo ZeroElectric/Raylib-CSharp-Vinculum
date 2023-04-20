@@ -13,7 +13,7 @@
 
 using System.Text;
 
-namespace ZeroElectric.Vinculum.InternalHelpers;
+namespace ZeroElectric.Vinculum.Extensions;
 
 /// <summary>
 /// Contains the printf family of functions.
