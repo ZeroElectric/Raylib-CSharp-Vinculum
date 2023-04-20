@@ -28,7 +28,7 @@ project "raylib"
 		
 	filter "action:gmake*"
 		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native"
-		links {"pthread", "GL", "m", "dl", "rt", "X11"}
+		links {"pthread", "GL", "m", "lc", "fPIC", "dl", "rt", "X11"}
 		
 	filter{}
 	
