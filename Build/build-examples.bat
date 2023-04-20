@@ -6,6 +6,6 @@ for /f "usebackq tokens=*" %%i in (`vswhere -latest -products * -requires Micros
 
 if exist "%InstallDir%\Common7\Tools\vsdevcmd.bat" (
   "%InstallDir%\Common7\Tools\vsdevcmd.bat" 
-  cd %~dp0\..\Examples\Raylib-CSharp-Vinculum.ExampleCore
-  MSBuild Raylib-CSharp-Vinculum.Examples.csproj -restore -target:rebuild -property:Configuration=Release
+  cd %~dp0\..\Source\Raylib-CSharp-Vinculum.ExampleCore
+  MSBuild Raylib-CSharp-Vinculum.ExampleCore.csproj -restore -target:rebuild -property:Configuration=Release
 )
