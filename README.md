@@ -34,7 +34,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 ## What is **Raylib**?
 
-[Raylib](https://www.raylib.com/) is a easey-to-use videogame framework well suited for prototyping, tooling, embedded systems and education, inclueds systems for: audio, 3D, 2D, 2D physics, fonts, animation, an OpenGL abstraction layer & more. Inspired By `XNA` & The `Borland Graphics Interface`.  **However, `Raylib` is a C framework**.  `Raylib-CSharp-Vinculum` is a C# autogen wrapper, which lets you use Raylib in .Net/C#.
+[Raylib](https://www.raylib.com/) is a easey-to-use videogame framework well suited for prototyping, tooling, embedded systems and education, includes systems for: audio, 3D, 2D, 2D physics, fonts, animation, an OpenGL abstraction layer & more. Inspired By `XNA` & The `Borland Graphics Interface`.  **However, `Raylib` is a C framework**.  `Raylib-CSharp-Vinculum` is a .Net/C# autogen wrapper, which lets you use raylib in .Net/C#.
 
 # How to Install
 
@@ -49,7 +49,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 ## 🏗️ via Source
 
 > **Attention:**
-> The current build system is only usable on Windows 10/11
+> The current build system is only usable on Windows 10/11, this is temporary.
 
 <details>
 
@@ -139,7 +139,7 @@ public static class Program
 ### **Make sure your matricies aren't corrupt!**
   - Raylib is built upon OpenGL which uses column-major matricies, while .Net uses row-major.  When passing your final calculated matrix to raylib for rendering, call `Matrix4x4.Transpose(yourMatrix)`.
 
-### **How do I convert a string to `sbyte*` or vice-versa?**
+### **How do I convert a string to `sbyte*`?**
   - Most methods that take `sbyte*` have a `string` wrapper, so be sure to look at the overloads you can call.
   - If you still with to convert a string, use `SpanOwner<T>` from the `CommunityToolkit.HighPerformance` Nuget package and `MarshalUtf8()` & `AsPtr()` from the `ZeroElectric.Vinculum.Extensions` namspace , for example:
     ```csharp
@@ -166,7 +166,7 @@ public static class Program
   - The `RayMath` helper methods have been translated into C#, this makes the code pretty fast, but if the same method exists under `System.Numerics` you should use that instead, because the .Net CLR treats things under System.Numerics special, and optimizes it better.
 
 ### **I ran the Example project in a profiler. What are all these `sbyte[]` arrays being allocated?**
-  - A pool of `sbyte[]` are allocated for string marshalling purposes, to avoid runtime allocations.
+  - A pool of `sbyte[]` arrays are allocated for string marshalling purposes, to avoid runtime allocations.
 
 ### TIP: You might want to use the `global using directive` to create aliases like the following to make C# code function more like the raylib C examples.
   ```csharp   
