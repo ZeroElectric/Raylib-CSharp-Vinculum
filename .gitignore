@@ -404,3 +404,6 @@ Source/Raylib-CSharp-Vinculum/autogen/*
 Source/Raylib-CSharp-Vinculum/raylib.dll
 
 Source/Raylib-CSharp-Vinculum.Tests/autogen/*
+
+Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native/raylib.lib
+Source/Raylib-CSharp-Vinculum/runtimes/win-x64/native/raylib.exp
