@@ -71,7 +71,7 @@ git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
 
 - Run `build.bat` and wait for the build to complete 
 - Reference `Raylib-CSharp-Vinculum.dll` from `Output\bin` and import the folder `runtimes` into your project's root directory
-- Compiled 'Examples' it will be in `Output\example-bin`
+- Compiled 'Examples' will be in `Output\example-bin`
 
 >If the build wasn't successful make a new issue with the error it gave you
 
