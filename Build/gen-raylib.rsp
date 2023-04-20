@@ -84,7 +84,7 @@ Vector2=System.Numerics
 Vector3=System.Numerics
 Vector4=System.Numerics
 Quaternion=System.Numerics
-Bool=ZeroElectric.Vinculum.InternalHelpers
+Bool=ZeroElectric.Vinculum.Extensions
 ##############################
 --exclude
 Matrix
