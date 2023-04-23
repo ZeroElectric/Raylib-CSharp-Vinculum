@@ -1,11 +1,11 @@
-# Raylib-CSharp-Vinculum [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/Source/Raylib-CSharp-Vinculum.Examples) ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64%2C%20Linux--x64%20-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) 
-
-### **Raylib-CSharp-Vinculum is a autogen [raylib](https://github.com/raysan5/raylib) binding for .Net/C#, raylib is a simple and easy-to-use 2d/3d videogame framework, similar to XNA & MonoGame.**
+|  Raylib-CSharp-Vinculum  | ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/Source/Raylib-CSharp-Vinculum.Examples) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64%2C%20Linux--x64%20-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) | 
+| :---: | :---: | 
+| <img align="left" src="https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/.assets/raylib-csharp-vinculum_logo_256x256.png" width="256px"> | **Raylib-CSharp-Vinculum is a .Net/C# autogen [raylib](https://github.com/raysan5/raylib) binding, raylib is a simple and easy-to-use 2d/3d videogame framework, similar to XNA & MonoGame.** | 
 
   - Windows & Linux supported,
   - Supports .Net 5+, Mono 6.4+, Core 3.0,
   - 1-1 bindings + convenience wrappers to make it easier to use,
-  - Includes bindings for all of Raylib's extras:
+  - Includes bindings for all of raylib's extras:
     - `raylib` : Core features, including Audio,
     - `rlgl` : OpenGl abstraction,
     - `raygui` : An immediate mode GUI framework,
@@ -23,18 +23,18 @@
 > **Warning**:
 > 3D users: **be sure you check the FAQ & Tips section below**, 
 > especially on how you need to use `Matrix4x4.Transpose()` when sending Matricies
-> to Raylib.
+> to raylib.
 
 > **Note:**
 > Users comming from [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) make sure to 
 > read the `Differences` section below
 
 ## Wait a minute haven't I seen this repository before?
-Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) and the Maintainer (jasonswearingen/Novaleaf) announced they wanted to step down from the project and seeing as I use the project for a set a game-making tools I decided to fork the project and greatly optimize the project layout for better long term maintainability. Why did I change the name? Honestly the name `Raylib-CsLo` is kinda boring, and being inspired by projects with names like [Vortice](https://github.com/amerkoleci/Vortice.Windows), I chose the name `Vinculum [vin·cu·lum]` witch means **Bond** in Latin, also I dont want to "steal" the name, other then the name, the only real change from a end-user point of view is a namespace difference `Raylib-CsLo > ZeroElectric.Vinculum`
+Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo), the Maintainer (jasonswearingen/Novaleaf) announced they wished to step down from the project and seeing as I use the project for a set a game-making tools I decided to fork the project and greatly optimize the project layout for better long term maintainability. Why did I change the name? Honestly the name `Raylib-CsLo` is kinda boring, and being inspired by projects with names like [Vortice](https://github.com/amerkoleci/Vortice.Windows), I chose the name `Vinculum [vin·cu·lum]` witch means **bond** in Latin, also I didn't want to "steal" the name, other then the name, the only real change from a end-user point of view is a namespace difference `Raylib-CsLo > ZeroElectric.Vinculum`
 
 ## What is **Raylib**?
 
-[Raylib](https://www.raylib.com/) is a easey-to-use videogame framework well suited for prototyping, tooling, embedded systems and education, includes systems for: audio, 3D, 2D, 2D physics, fonts, animation, an OpenGL abstraction layer & more. Inspired By `XNA` & The `Borland Graphics Interface`.  **However, `Raylib` is a C framework**.  `Raylib-CSharp-Vinculum` is a .Net/C# autogen wrapper, which lets you use raylib in .Net/C#.
+[raylib](https://www.raylib.com/) is a easey-to-use videogame framework well suited for prototyping, tooling, embedded systems and education, includes systems for: audio, 3D, 2D, 2D physics, fonts, animation, an OpenGL abstraction layer & more. Inspired By `XNA` & The `Borland Graphics Interface`.  **However, `raylib` is a C framework**, `Raylib-CSharp-Vinculum` is a .Net/C# autogen wrapper, which lets you use raylib in .Net.
 
 # How to Install
 
@@ -137,7 +137,7 @@ public static class Program
 # ❓ FAQ & Tips
 
 ### **Make sure your matricies aren't corrupt!**
-  - Raylib is built upon OpenGL which uses column-major matricies, while .Net uses row-major.  When passing your final calculated matrix to raylib for rendering, call `Matrix4x4.Transpose(yourMatrix)`.
+  - Raylib is built upon OpenGL which uses column-major matricies, while .Net uses row-major. When passing your final calculated matricies to raylib for rendering, call `Matrix4x4.Transpose(yourMatrix)` first.
 
 ### **How do I convert a string to `sbyte*`?**
   - Most methods that take `sbyte*` have a `string` wrapper, so be sure to look at the overloads you can call.
@@ -188,7 +188,7 @@ public static class Program
 - When using `RayGui`, if you close a raylib window after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGui ui elements will be broken, 
 - `Texture2D` doesn't exist, it's just an alias for `Texture` so use that instead,
 - `LogCustom()` is ported but doesn't support variable length arguments,
-- The Linux build supplied by the nuget pakage was buiilt under `debug` mode,
+- The Linux build supplied by the nuget pakage was built under `debug` mode,
 - The `Text.Unicode` example doesn't render unicode properly.
 
 # License
