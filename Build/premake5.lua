@@ -27,8 +27,9 @@ project "raylib"
 		links {"winmm"}
 		
 	filter "action:gmake*"
+		defines{"fPIC"}
 		targetdir "../Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native"
-		links {"pthread", "GL", "m", "lc", "fPIC", "dl", "rt", "X11"}
+		links {"pthread", "GL", "m", "c", "dl", "rt", "X11"}
 		
 	filter{}
 	
@@ -36,9 +37,9 @@ project "raylib"
 	language "C++"
 	cppdialect "C++17"
 	
-	includedirs { "../Libs/raylib/src","../Libs/raylib/src/external/glfw/include", 	
-	"../Libs/raylib-extra-shims/src", --extras .c files	
-	"../Libs/physac/src/","../Libs/raygui/src/","../Libs/rres/src/" --extras .h files
+	includedirs { "../Libs/raylib/src","../Libs/raylib/src/external/glfw/include", -- raylib files	
+	"raylib-extra-shims/src", -- shims .c files	
+	"../Libs/physac/src/","../Libs/raygui/src/","../Libs/rres/src/" -- extra lib files
 	} 
 	vpaths 
 	{
