@@ -14,8 +14,19 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageOutputDir>..\..\Output\nuget-bin\</PackageOutputDir>
         <RepositoryUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</RepositoryUrl>
-        <Version>4.5.1</Version>
+        <Version>4.5.2</Version>
         <PackageReleaseNotes>Release Notes: 
+4.5.2 (May 11 2023), Raygui 3.6 
+
+- Better Linux support
+
+Updated raygui to 3.6
+- Added new icon: SAND_TIMER
+- Added new icons useful for code editing tools,
+-  Added additional input support for `GuiTextBox()`
+- Redesigned `GuiSlider*()` and `GuiScrollBar()` to support out-of-bounds
+- Fixed a crash when moving the cursor on `GuiTextBox()`
+
 4.5.1 (Apr 20 2023), Raygui 3.5 
 
 Updated raygui to 3.5 
@@ -81,11 +92,9 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
         <PackageProjectUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</PackageProjectUrl>
         <PackageTags>zeroelectric;raylib-cslo;raylib-csharp;vinculum;raylib-csharp-vinculum;raylib;gamedev;binding;rendering;3d;2d;graphics;opengl;physics;audio;</PackageTags>
         <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
-        <AssemblyVersion>4.5.1</AssemblyVersion>
+        <AssemblyVersion>4.5.2</AssemblyVersion>
         <Copyright>2022-2023 (C) ZeroElectric, Raylib-CsLo &amp; Contributors</Copyright>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-        <!--include pdb in nuget package, as per: https://stackoverflow.com/a/48391188 -->
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
         <IsPublishable>False</IsPublishable>
         <RepositoryType>git</RepositoryType>
         <Title>Raylib CSharp Vinculum</Title>
@@ -128,7 +137,7 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
       </Content>
       <Content Include="raylib.pdb">
         <PackagePath>runtimes</PackagePath>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         <Pack>false</Pack>
       </Content>
     </ItemGroup>
@@ -151,7 +160,7 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
         <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
       <Content Update="runtimes\win-x64\native\raylib.pdb">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
 
