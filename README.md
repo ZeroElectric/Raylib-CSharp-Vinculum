@@ -48,8 +48,9 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 ## 🏗️ via Source
 
-> **Attention:**
-> The current build system is only usable on Windows 10/11, this is temporary.
+> **Warning**:
+> The Linux build system only builds raylib, not the Vinculum project,
+> to complete the build process you must use Windows, this is temporary.
 
 <details>
 
@@ -62,12 +63,15 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
   - Visual C++ Toolset
   - MSVC v142 (or higher) x64/x86
 
-1. Clone this repo using the git command below. **(Note: Downloading this repo as a zip file will not work,** it is important you use `git clone --recursive` to get all of the submodules)
-```
-git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
-```
-> **Note:** 
-> If you didn't or forgot to use `--recursive`, you can run `git submodule update --init --recursive` to fix it
+- Clone this repo using the git command below. **(Note: Downloading this repo as a zip file will not work,** it is important you use `git clone --recursive` to get all of the submodules)
+  ```
+  git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
+  ```
+
+  > **Note:** 
+  > If you didn't or forgot to use `--recursive`, you can run `git submodule update --init --recursive` to fix it
+
+### Building the library
 
 - Run `build.bat` and wait for the build to complete 
 - Reference `Raylib-CSharp-Vinculum.dll` from `Output\bin` and import the folder `runtimes` into your project's root directory
@@ -77,13 +81,50 @@ git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
 
 </details>
 
+<details>
+
+<summary>Building for Linux</summary>
+
+#### Note: This build system is designed for Debian based distros.
+
+### Prerequisites
+
+- **.NET SDK (NET7+)**
+  - You can find more info on how to install .NET on Linux [here](https://learn.microsoft.com/en-us/dotnet/core/install/linux)
+
+- **Install Build-Essential for linux** 
+  ```
+  sudo apt install build-essential git
+  ```
+
+- **Install required libraries**
+  ```
+  sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+  ```  
+
+- Clone this repo using the git command below. **(Note: Downloading this repo as a zip file will not work,** it is important you use `git clone --recursive` to get all of the submodules)
+  ```
+  git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
+  ```
+
+  > **Note:** 
+  > If you didn't or forgot to use `--recursive`, you can run `git submodule update --init --recursive` to fix it
+
+### Building the library
+
+- Run `build.sh`, wait for the build to complete
+- Compiled 'libraylib.so' will be in `Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native`
+
+
+</details>
+
 # Differences from [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo)
 
 ### The only real changes from a end-user point of view is a namespace difference `Raylib-CsLo > ZeroElectric.Vinculum` & uses newer build of `raylib` that might have removed or changed some functions you use.
 
 #### Other changes:
 - Greatly optimized the project layout,
-- New build system, now you just run build.bat from the root folder to build the library.
+- New build system, now just run build from the root folder to build the library.
 
 # Examples
 
@@ -137,7 +178,7 @@ public static class Program
 # ❓ FAQ & Tips
 
 ### **Make sure your matricies aren't corrupt!**
-  - Raylib is built upon OpenGL which uses column-major matricies, while .Net uses row-major. When passing your final calculated matricies to raylib for rendering, call `Matrix4x4.Transpose(yourMatrix)` first.
+  - `raylib` is built upon OpenGL which uses column-major matricies, while .Net uses row-major. When passing your final calculated matricies to raylib for rendering, call `Matrix4x4.Transpose(yourMatrix)` first.
 
 ### **How do I convert a string to `sbyte*`?**
   - Most methods that take `sbyte*` have a `string` wrapper, so be sure to look at the overloads you can call.
@@ -153,7 +194,7 @@ public static class Program
     ```
 
 ### **Do I have to cast enums to `int`?**
-  - The autogen bindings are left untouched, however convenience wrappers have been added.  Usually these will automatically "work" via method overloads, but when this is not possible, try adding an underscore `_` to the end of the method or property, for example:  
+  - The autogen bindings are left untouched, however convenience wrappers have been added. Usually these will automatically "work" via method overloads, but when this is not possible, try adding an underscore `_` to the end of the method or property, for example:  
     ```csharp
     Camera3D.projection_ = CameraProjection.CAMERA_ORTHOGRAPHIC;
     
@@ -168,7 +209,7 @@ public static class Program
 ### **I ran the Example project in a profiler. What are all these `sbyte[]` arrays being allocated?**
   - A pool of `sbyte[]` arrays are allocated for string marshalling purposes, to avoid runtime allocations.
 
-### TIP: You might want to use the `global using directive` to create aliases like the following to make C# code function more like the raylib C examples.
+### TIP: You might want to use the `global using directive` to create aliases like the following to make C# function more like the raylib C examples.
   ```csharp   
   global using static ZeroElectric.Vinculum.Raylib;
   global using static ZeroElectric.Vinculum.RayMath;
@@ -185,10 +226,9 @@ public static class Program
 
 # Known Issues
 
-- When using `RayGui`, if you close a raylib window after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGui ui elements will be broken, 
-- `Texture2D` doesn't exist, it's just an alias for `Texture` so use that instead,
+- When using `raygui`, if you close a raylib window after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGui ui elements will be broken, 
+- `Texture2D` doesn't exist, it's just an alias for `Texture`, use that instead,
 - `LogCustom()` is ported but doesn't support variable length arguments,
-- The Linux build supplied by the nuget pakage was built under `debug` mode,
 - The `Text.Unicode` example doesn't render unicode properly.
 
 # License
