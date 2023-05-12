@@ -22,8 +22,7 @@
 
 Updated raygui to 3.6
 - Added new icon: SAND_TIMER
-- Added new icons useful for code editing tools,
--  Added additional input support for `GuiTextBox()`
+- Added additional input support for `GuiTextBox()`
 - Redesigned `GuiSlider*()` and `GuiScrollBar()` to support out-of-bounds
 - Fixed a crash when moving the cursor on `GuiTextBox()`
 
