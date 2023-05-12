@@ -83,7 +83,7 @@ git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
 
 #### Other changes:
 - Greatly optimized the project layout,
-- New build system, now you just run build.bat from the root folder to build the library.
+- New build system, now just run build from the root folder to build the library.
 
 # Examples
 
@@ -137,7 +137,7 @@ public static class Program
 # ❓ FAQ & Tips
 
 ### **Make sure your matricies aren't corrupt!**
-  - Raylib is built upon OpenGL which uses column-major matricies, while .Net uses row-major. When passing your final calculated matricies to raylib for rendering, call `Matrix4x4.Transpose(yourMatrix)` first.
+  - `raylib` is built upon OpenGL which uses column-major matricies, while .Net uses row-major. When passing your final calculated matricies to raylib for rendering, call `Matrix4x4.Transpose(yourMatrix)` first.
 
 ### **How do I convert a string to `sbyte*`?**
   - Most methods that take `sbyte*` have a `string` wrapper, so be sure to look at the overloads you can call.
@@ -153,7 +153,7 @@ public static class Program
     ```
 
 ### **Do I have to cast enums to `int`?**
-  - The autogen bindings are left untouched, however convenience wrappers have been added.  Usually these will automatically "work" via method overloads, but when this is not possible, try adding an underscore `_` to the end of the method or property, for example:  
+  - The autogen bindings are left untouched, however convenience wrappers have been added. Usually these will automatically "work" via method overloads, but when this is not possible, try adding an underscore `_` to the end of the method or property, for example:  
     ```csharp
     Camera3D.projection_ = CameraProjection.CAMERA_ORTHOGRAPHIC;
     
@@ -168,7 +168,7 @@ public static class Program
 ### **I ran the Example project in a profiler. What are all these `sbyte[]` arrays being allocated?**
   - A pool of `sbyte[]` arrays are allocated for string marshalling purposes, to avoid runtime allocations.
 
-### TIP: You might want to use the `global using directive` to create aliases like the following to make C# code function more like the raylib C examples.
+### TIP: You might want to use the `global using directive` to create aliases like the following to make C# function more like the raylib C examples.
   ```csharp   
   global using static ZeroElectric.Vinculum.Raylib;
   global using static ZeroElectric.Vinculum.RayMath;
@@ -185,10 +185,9 @@ public static class Program
 
 # Known Issues
 
-- When using `RayGui`, if you close a raylib window after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGui ui elements will be broken, 
-- `Texture2D` doesn't exist, it's just an alias for `Texture` so use that instead,
+- When using `raygui`, if you close a raylib window after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGui ui elements will be broken, 
+- `Texture2D` doesn't exist, it's just an alias for `Texture`, use that instead,
 - `LogCustom()` is ported but doesn't support variable length arguments,
-- The Linux build supplied by the nuget pakage was built under `debug` mode,
 - The `Text.Unicode` example doesn't render unicode properly.
 
 # License
