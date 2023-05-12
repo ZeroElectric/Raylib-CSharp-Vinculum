@@ -48,8 +48,9 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 ## 🏗️ via Source
 
-> **Attention:**
-> The current build system is only usable on Windows 10/11, this is temporary.
+> **Warning**:
+> The Linux build system only builds raylib, not the Vinculum project,
+> to complete the build process you must use Windows, this is temporary.
 
 <details>
 
@@ -62,18 +63,58 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
   - Visual C++ Toolset
   - MSVC v142 (or higher) x64/x86
 
-1. Clone this repo using the git command below. **(Note: Downloading this repo as a zip file will not work,** it is important you use `git clone --recursive` to get all of the submodules)
-```
-git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
-```
-> **Note:** 
-> If you didn't or forgot to use `--recursive`, you can run `git submodule update --init --recursive` to fix it
+- Clone this repo using the git command below. **(Note: Downloading this repo as a zip file will not work,** it is important you use `git clone --recursive` to get all of the submodules)
+  ```
+  git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
+  ```
+
+  > **Note:** 
+  > If you didn't or forgot to use `--recursive`, you can run `git submodule update --init --recursive` to fix it
+
+### Building the library
 
 - Run `build.bat` and wait for the build to complete 
 - Reference `Raylib-CSharp-Vinculum.dll` from `Output\bin` and import the folder `runtimes` into your project's root directory
 - Compiled 'Examples' will be in `Output\example-bin`
 
 >If the build wasn't successful make a new issue with the error it gave you
+
+</details>
+
+<details>
+
+<summary>Building for Linux</summary>
+
+#### Note: This build system is designed for Debian based distros.
+
+### Prerequisites
+
+- **.NET SDK (NET7+)**
+  - You can find more info on how to install .NET on Linux [here](https://learn.microsoft.com/en-us/dotnet/core/install/linux)
+
+- **Install Build-Essential for linux** 
+  ```
+  sudo apt install build-essential git
+  ```
+
+- **Install required libraries**
+  ```
+  sudo apt install libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+  ```  
+
+- Clone this repo using the git command below. **(Note: Downloading this repo as a zip file will not work,** it is important you use `git clone --recursive` to get all of the submodules)
+  ```
+  git clone --recursive https://github.com/ZeroElectric/Raylib-CSharp-Vinculum.git
+  ```
+
+  > **Note:** 
+  > If you didn't or forgot to use `--recursive`, you can run `git submodule update --init --recursive` to fix it
+
+### Building the library
+
+- Run `build.sh`, wait for the build to complete
+- Compiled 'libraylib.so' will be in `Source/Raylib-CSharp-Vinculum/runtimes/linux-x64/native`
+
 
 </details>
 
