@@ -14,8 +14,10 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageOutputDir>..\..\Output\nuget-bin\</PackageOutputDir>
         <RepositoryUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</RepositoryUrl>
-        <Version>4.5.2</Version>
-        <PackageReleaseNotes>Release Notes: 
+        <Version>4.6-dev</Version>
+        <PackageReleaseNotes>
+Release Notes: 
+
 4.5.2 (May 11 2023), Raygui 3.6 
 
 - Better Linux support
@@ -73,8 +75,7 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
 
 4.2.0.0-alpha:
 - Initial release of Raylib-CSharp-Vinculum, a C# binding for Raylib 4.2, supports Windows.
-
-</PackageReleaseNotes>
+        </PackageReleaseNotes>
         <Authors>ZeroElectric;Minmoose</Authors>
         <Company>ZeroElectricGames</Company>
         <Description>
@@ -91,7 +92,7 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
         <PackageProjectUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</PackageProjectUrl>
         <PackageTags>zeroelectric;raylib-cslo;raylib-csharp;vinculum;raylib-csharp-vinculum;raylib;gamedev;binding;rendering;3d;2d;graphics;opengl;physics;audio;</PackageTags>
         <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
-        <AssemblyVersion>4.5.2</AssemblyVersion>
+        <AssemblyVersion>4.6</AssemblyVersion>
         <Copyright>2022-2023 (C) ZeroElectric, Raylib-CsLo &amp; Contributors</Copyright>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <IsPublishable>False</IsPublishable>
