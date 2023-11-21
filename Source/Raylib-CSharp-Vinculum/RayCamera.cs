@@ -45,35 +45,35 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Returns the cameras forward vector (normalized)
 	/// </summary>
-	static Vector3 GetCameraForward(Camera3D* Camera3D)
+	public static Vector3 GetCameraForward(in Camera3D Camera3D)
 	{
-		return RayMath.Vector3Normalize(RayMath.Vector3Subtract(Camera3D->target, Camera3D->position));
+		return Vector3.Normalize(Camera3D.target - Camera3D.position);
 	}
 
 	/// <summary>
 	/// Returns the Camera3Ds up vector (normalized)
 	/// Note: The up vector might not be perpendicular to the forward vector
 	/// </summary>
-	static Vector3 GetCameraUp(Camera3D* Camera3D)
+	public static Vector3 GetCameraUp(in Camera3D Camera3D)
 	{
-		return RayMath.Vector3Normalize(Camera3D->up);
+		return Vector3.Normalize(Camera3D.up);
 	}
 
 	/// <summary>
 	/// Returns the Camera3Ds right vector (normalized)
 	/// </summary>
-	static Vector3 GetCameraRight(Camera3D* Camera3D)
+	public static Vector3 GetCameraRight(in Camera3D Camera3D)
 	{
 		Vector3 forward = GetCameraForward(Camera3D);
 		Vector3 up = GetCameraUp(Camera3D);
 
-		return RayMath.Vector3CrossProduct(forward, up);
+		return Vector3.Cross(forward, up);
 	}
 
 	/// <summary>
 	/// Moves the Camera3D in its forward direction
 	/// </summary>
-	static void CameraMoveForward(Camera3D* Camera3D, float distance, bool moveInWorldPlane)
+	public static void CameraMoveForward(ref Camera3D Camera3D, float distance, bool moveInWorldPlane)
 	{
 		Vector3 forward = GetCameraForward(Camera3D);
 
@@ -81,36 +81,36 @@ public static unsafe class RayCamera
 		{
 			// Project vector onto world plane
 			forward.Y = 0;
-			forward = RayMath.Vector3Normalize(forward);
+			forward = Vector3.Normalize(forward);
 		}
 
 		// Scale by distance
-		forward = RayMath.Vector3Scale(forward, distance);
+		forward *= distance;
 
 		// Move position and target
-		Camera3D->position = RayMath.Vector3Add(Camera3D->position, forward);
-		Camera3D->target = RayMath.Vector3Add(Camera3D->target, forward);
+		Camera3D.position += forward;
+		Camera3D.target += forward;
 	}
 
 	/// <summary>
 	/// Moves the Camera3D in its up direction
 	/// </summary>
-	static void CameraMoveUp(Camera3D* Camera3D, float distance)
+	public static void CameraMoveUp(ref Camera3D Camera3D, float distance)
 	{
 		Vector3 up = GetCameraUp(Camera3D);
 
 		// Scale by distance
-		up = RayMath.Vector3Scale(up, distance);
+		up *= distance;
 
 		// Move position and target
-		Camera3D->position = RayMath.Vector3Add(Camera3D->position, up);
-		Camera3D->target = RayMath.Vector3Add(Camera3D->target, up);
+		Camera3D.position += up;
+		Camera3D.target += up;
 	}
 
 	/// <summary>
 	/// Moves the Camera3D target in its current right direction
 	/// </summary>
-	static void CameraMoveRight(Camera3D* Camera3D, float distance, bool moveInWorldPlane)
+	public static void CameraMoveRight(ref Camera3D Camera3D, float distance, bool moveInWorldPlane)
 	{
 		Vector3 right = GetCameraRight(Camera3D);
 
@@ -118,23 +118,23 @@ public static unsafe class RayCamera
 		{
 			// Project vector onto world plane
 			right.Y = 0;
-			right = RayMath.Vector3Normalize(right);
+			right = Vector3.Normalize(right);
 		}
 
 		// Scale by distance
-		right = RayMath.Vector3Scale(right, distance);
+		right *= distance;
 
 		// Move position and target
-		Camera3D->position = RayMath.Vector3Add(Camera3D->position, right);
-		Camera3D->target = RayMath.Vector3Add(Camera3D->target, right);
+		Camera3D.position += right;
+		Camera3D.target += right;
 	}
 
 	/// <summary>
 	/// Moves the Camera3D position closer/farther to/from the Camera3D target
 	/// </summary>
-	static void CameraMoveToTarget(Camera3D* Camera3D, float delta)
+	public static void CameraMoveToTarget(ref Camera3D Camera3D, float delta)
 	{
-		float distance = RayMath.Vector3Distance(Camera3D->position, Camera3D->target);
+		float distance = Vector3.Distance(Camera3D.position, Camera3D.target);
 
 		// Apply delta
 		distance += delta;
@@ -144,7 +144,7 @@ public static unsafe class RayCamera
 
 		// Set new distance by moving the position along the forward vector
 		Vector3 forward = GetCameraForward(Camera3D);
-		Camera3D->position = RayMath.Vector3Add(Camera3D->target, RayMath.Vector3Scale(forward, -distance));
+		Camera3D.position = Camera3D.target + forward * -distance;
 	}
 
 	/// <summary>
@@ -153,26 +153,26 @@ public static unsafe class RayCamera
 	/// If rotateAroundTarget is false, the Camera3D rotates around its position.
 	/// Note: angle must be provided in radians.
 	/// </summary>
-	static void CameraYaw(Camera3D* Camera3D, float angle, bool rotateAroundTarget)
+	public static void CameraYaw(ref Camera3D Camera3D, float angle, bool rotateAroundTarget)
 	{
 		// Rotation axis
 		Vector3 up = GetCameraUp(Camera3D);
 
 		// View vector
-		Vector3 targetPosition = RayMath.Vector3Subtract(Camera3D->target, Camera3D->position);
+		Vector3 targetPosition = Camera3D.target - Camera3D.position;
 
 		// Rotate view vector around up axis
-		targetPosition = RayMath.Vector3RotateByAxisAngle(targetPosition, up, angle);
+		targetPosition = Vector3.Transform(targetPosition, Quaternion.CreateFromAxisAngle(up, angle));
 
 		if (rotateAroundTarget)
 		{
 			// Move position relative to target
-			Camera3D->position = RayMath.Vector3Subtract(Camera3D->target, targetPosition);
+			Camera3D.position = Camera3D.target - targetPosition;
 		}
 		else // rotate around Camera3D.position
 		{
 			// Move target relative to position
-			Camera3D->target = RayMath.Vector3Add(Camera3D->position, targetPosition);
+			Camera3D.target = Camera3D.position + targetPosition;
 		}
 	}
 
@@ -183,26 +183,26 @@ public static unsafe class RayCamera
 	///   rotateUp rotates the up direction as well (typically only usefull in Camera3D_FREE).
 	/// NOTE: angle must be provided in radians
 	/// </summary>
-	static void CameraPitch(Camera3D* Camera3D, float angle, bool lockView, bool rotateAroundTarget, bool rotateUp)
+	public static void CameraPitch(ref Camera3D Camera3D, float angle, bool lockView, bool rotateAroundTarget, bool rotateUp)
 	{
 		// Up direction
 		Vector3 up = GetCameraUp(Camera3D);
 
 		// View vector
-		Vector3 targetPosition = RayMath.Vector3Subtract(Camera3D->target, Camera3D->position);
+		Vector3 targetPosition = Camera3D.target - Camera3D.position;
 
 		if (lockView)
 		{
 			// In these Camera3D modes we clamp the Pitch angle
 			// to allow only viewing straight up or down.
-
+			
 			// Clamp view up
 			float maxAngleUp = RayMath.Vector3Angle(up, targetPosition);
 			maxAngleUp -= 0.001f; // avoid numerical errors
 			if (angle > maxAngleUp) angle = maxAngleUp;
 
 			// Clamp view down
-			float maxAngleDown = RayMath.Vector3Angle(RayMath.Vector3Negate(up), targetPosition);
+			float maxAngleDown = RayMath.Vector3Angle(-up, targetPosition);
 			maxAngleDown *= -1.0f; // downwards angle is negative
 			maxAngleDown += 0.001f; // avoid numerical errors
 			if (angle < maxAngleDown) angle = maxAngleDown;
@@ -212,23 +212,23 @@ public static unsafe class RayCamera
 		Vector3 right = GetCameraRight(Camera3D);
 
 		// Rotate view vector around right axis
-		targetPosition = RayMath.Vector3RotateByAxisAngle(targetPosition, right, angle);
+		targetPosition = Vector3.Transform(targetPosition, Quaternion.CreateFromAxisAngle(right, angle));
 
 		if (rotateAroundTarget)
 		{
 			// Move position relative to target
-			Camera3D->position = RayMath.Vector3Subtract(Camera3D->target, targetPosition);
+			Camera3D.position = Camera3D.target - targetPosition;
 		}
 		else // rotate around Camera3D.position
 		{
 			// Move target relative to position
-			Camera3D->target = RayMath.Vector3Add(Camera3D->position, targetPosition);
+			Camera3D.target = Camera3D.position + targetPosition;
 		}
 
 		if (rotateUp)
 		{
 			// Rotate up direction around right axis
-			Camera3D->up = RayMath.Vector3RotateByAxisAngle(Camera3D->up, right, angle);
+			Camera3D.up = Vector3.Transform(Camera3D.up, Quaternion.CreateFromAxisAngle(right, angle));
 		}
 	}
 
@@ -237,40 +237,44 @@ public static unsafe class RayCamera
 	/// Roll is "turning your head sideways to the left or right".
 	/// Note: angle must be provided in radians
 	/// </summary>
-	static void CameraRoll(Camera3D* Camera3D, float angle)
+	public static void CameraRoll(ref Camera3D Camera3D, float angle)
 	{
 		// Rotation axis
 		Vector3 forward = GetCameraForward(Camera3D);
 
 		// Rotate up direction around forward axis
-		Camera3D->up = RayMath.Vector3RotateByAxisAngle(Camera3D->up, forward, angle);
+		Camera3D.up = Vector3.Transform(Camera3D.up, Quaternion.CreateFromAxisAngle(forward, angle));
 	}
 
 	/// <summary>
 	/// Returns the Camera3D view matrix
 	/// </summary>
-	static Matrix4x4 GetCameraViewMatrix(Camera3D* Camera3D)
+	public static Matrix4x4 GetCameraViewMatrix(in Camera3D Camera3D)
 	{
-		return RayMath.MatrixLookAt(Camera3D->position, Camera3D->target, Camera3D->up);
+		return Matrix4x4.Transpose(Matrix4x4.CreateLookAt(Camera3D.position, Camera3D.target, Camera3D.up));
 	}
 
 	/// <summary>
 	/// Returns the Camera3D projection matrix
 	/// </summary>
-	static Matrix4x4 GetCameraProjectionMatrix(Camera3D* Camera3D, float aspect)
+	public static Matrix4x4 GetCameraProjectionMatrix(in Camera3D Camera3D, float aspect)
 	{
-		if (Camera3D->projection == (int)CameraProjection.CAMERA_PERSPECTIVE)
+		if (Camera3D.projection_ == CameraProjection.CAMERA_PERSPECTIVE)
 		{
-			return RayMath.MatrixPerspective(Camera3D->fovy * RayMath.DEG2RAD, aspect, RlGl.RL_CULL_DISTANCE_NEAR, RlGl.RL_CULL_DISTANCE_FAR);
+			Matrix4x4 proj = Matrix4x4.CreatePerspectiveFieldOfView(Camera3D.fovy * RayMath.DEG2RAD, aspect, (float)RlGl.RL_CULL_DISTANCE_NEAR, (float)RlGl.RL_CULL_DISTANCE_FAR);
+			
+			return Matrix4x4.Transpose(proj);
 		}
-		else if (Camera3D->projection == (int)CameraProjection.CAMERA_ORTHOGRAPHIC)
+		else if (Camera3D.projection == (int)CameraProjection.CAMERA_ORTHOGRAPHIC)
 		{
-			double top = Camera3D->fovy / 2.0;
-			double right = top * aspect;
+			float top = Camera3D.fovy / 2.0f;
+			float right = top * aspect;
 
-			return RayMath.MatrixOrtho(-right, right, -top, top, RlGl.RL_CULL_DISTANCE_NEAR, RlGl.RL_CULL_DISTANCE_FAR);
+			Matrix4x4 ortho = Matrix4x4.CreateOrthographicOffCenter(-right, right, -top, top, (float)RlGl.RL_CULL_DISTANCE_NEAR, (float)RlGl.RL_CULL_DISTANCE_FAR);
+
+			return Matrix4x4.Transpose(ortho);
 		}
 
-		return RayMath.MatrixIdentity();
+		return Matrix4x4.Transpose(Matrix4x4.Identity);
 	}
 }
