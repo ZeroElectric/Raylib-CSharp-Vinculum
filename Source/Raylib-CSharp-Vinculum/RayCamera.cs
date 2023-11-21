@@ -45,7 +45,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Returns the cameras forward vector (normalized)
 	/// </summary>
-	static Vector3 GetCameraForward(Camera3D* Camera3D)
+	public static Vector3 GetCameraForward(Camera3D* Camera3D)
 	{
 		return RayMath.Vector3Normalize(RayMath.Vector3Subtract(Camera3D->target, Camera3D->position));
 	}
@@ -54,7 +54,7 @@ public static unsafe class RayCamera
 	/// Returns the Camera3Ds up vector (normalized)
 	/// Note: The up vector might not be perpendicular to the forward vector
 	/// </summary>
-	static Vector3 GetCameraUp(Camera3D* Camera3D)
+	public static Vector3 GetCameraUp(Camera3D* Camera3D)
 	{
 		return RayMath.Vector3Normalize(Camera3D->up);
 	}
@@ -62,7 +62,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Returns the Camera3Ds right vector (normalized)
 	/// </summary>
-	static Vector3 GetCameraRight(Camera3D* Camera3D)
+	public static Vector3 GetCameraRight(Camera3D* Camera3D)
 	{
 		Vector3 forward = GetCameraForward(Camera3D);
 		Vector3 up = GetCameraUp(Camera3D);
@@ -73,7 +73,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Moves the Camera3D in its forward direction
 	/// </summary>
-	static void CameraMoveForward(Camera3D* Camera3D, float distance, bool moveInWorldPlane)
+	public static void CameraMoveForward(Camera3D* Camera3D, float distance, bool moveInWorldPlane)
 	{
 		Vector3 forward = GetCameraForward(Camera3D);
 
@@ -95,7 +95,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Moves the Camera3D in its up direction
 	/// </summary>
-	static void CameraMoveUp(Camera3D* Camera3D, float distance)
+	public static void CameraMoveUp(Camera3D* Camera3D, float distance)
 	{
 		Vector3 up = GetCameraUp(Camera3D);
 
@@ -110,7 +110,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Moves the Camera3D target in its current right direction
 	/// </summary>
-	static void CameraMoveRight(Camera3D* Camera3D, float distance, bool moveInWorldPlane)
+	public static void CameraMoveRight(Camera3D* Camera3D, float distance, bool moveInWorldPlane)
 	{
 		Vector3 right = GetCameraRight(Camera3D);
 
@@ -132,7 +132,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Moves the Camera3D position closer/farther to/from the Camera3D target
 	/// </summary>
-	static void CameraMoveToTarget(Camera3D* Camera3D, float delta)
+	public static void CameraMoveToTarget(Camera3D* Camera3D, float delta)
 	{
 		float distance = RayMath.Vector3Distance(Camera3D->position, Camera3D->target);
 
@@ -153,7 +153,7 @@ public static unsafe class RayCamera
 	/// If rotateAroundTarget is false, the Camera3D rotates around its position.
 	/// Note: angle must be provided in radians.
 	/// </summary>
-	static void CameraYaw(Camera3D* Camera3D, float angle, bool rotateAroundTarget)
+	public static void CameraYaw(Camera3D* Camera3D, float angle, bool rotateAroundTarget)
 	{
 		// Rotation axis
 		Vector3 up = GetCameraUp(Camera3D);
@@ -183,7 +183,7 @@ public static unsafe class RayCamera
 	///   rotateUp rotates the up direction as well (typically only usefull in Camera3D_FREE).
 	/// NOTE: angle must be provided in radians
 	/// </summary>
-	static void CameraPitch(Camera3D* Camera3D, float angle, bool lockView, bool rotateAroundTarget, bool rotateUp)
+	public static void CameraPitch(Camera3D* Camera3D, float angle, bool lockView, bool rotateAroundTarget, bool rotateUp)
 	{
 		// Up direction
 		Vector3 up = GetCameraUp(Camera3D);
@@ -237,7 +237,7 @@ public static unsafe class RayCamera
 	/// Roll is "turning your head sideways to the left or right".
 	/// Note: angle must be provided in radians
 	/// </summary>
-	static void CameraRoll(Camera3D* Camera3D, float angle)
+	public static void CameraRoll(Camera3D* Camera3D, float angle)
 	{
 		// Rotation axis
 		Vector3 forward = GetCameraForward(Camera3D);
@@ -249,7 +249,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Returns the Camera3D view matrix
 	/// </summary>
-	static Matrix4x4 GetCameraViewMatrix(Camera3D* Camera3D)
+	public static Matrix4x4 GetCameraViewMatrix(Camera3D* Camera3D)
 	{
 		return RayMath.MatrixLookAt(Camera3D->position, Camera3D->target, Camera3D->up);
 	}
@@ -257,7 +257,7 @@ public static unsafe class RayCamera
 	/// <summary>
 	/// Returns the Camera3D projection matrix
 	/// </summary>
-	static Matrix4x4 GetCameraProjectionMatrix(Camera3D* Camera3D, float aspect)
+	public static Matrix4x4 GetCameraProjectionMatrix(Camera3D* Camera3D, float aspect)
 	{
 		if (Camera3D->projection == (int)CameraProjection.CAMERA_PERSPECTIVE)
 		{
