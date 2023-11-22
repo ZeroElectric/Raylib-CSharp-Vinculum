@@ -11,6 +11,7 @@
 //
 //------------------------------------------------------------------------------
 
+using CommunityToolkit.HighPerformance;
 using CommunityToolkit.HighPerformance.Buffers;
 using System.Numerics;
 using System.Runtime.CompilerServices;
@@ -45,7 +46,7 @@ public static unsafe partial class Raylib
 		InitWindow(width, height, spanOwner.AsPtr());
 	}
 
-	public static bool IsGestureDetected(Gesture gesture) => IsGestureDetected((int)gesture);
+	public static bool IsGestureDetected(Gesture gesture) => IsGestureDetected((uint)gesture);
 
 	public static Gesture GetGestureDetected_() => (Gesture)GetGestureDetected();
 
@@ -236,7 +237,7 @@ public static unsafe partial class Raylib
 	public static ModelAnimation[] LoadModelAnimations(string fileName)
 	{
 		using CommunityToolkit.HighPerformance.Buffers.SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
-		uint count;
+		int count;
 		ModelAnimation* p_animations = LoadModelAnimations(soFileName.AsPtr(), &count);
 		ModelAnimation[] toReturn = new ModelAnimation[count];
 		for (int i = 0; i < count; i++)
@@ -325,12 +326,12 @@ public static unsafe partial class Raylib
 	/// <summary>
 	/// safe override, using NULL for the `fontChars` argument.
 	/// </summary>
-	public static Font LoadFontEx(string fileName, int fontSize, int glyphCount) => LoadFontEx(fileName, fontSize, default(int*), glyphCount);
+	public static Font LoadFontEx(string fileName, int fontSize, int codepointCount) => LoadFontEx(fileName, fontSize, default(int*), codepointCount);
 
-	public static Font LoadFontEx(string fileName, int fontSize, int* fontChars, int glyphCount)
+	public static Font LoadFontEx(string fileName, int fontSize, int* codepoints, int codepointCount)
 	{
 		using SpanOwner<sbyte> text = fileName.MarshalUtf8();
-		return LoadFontEx(text.AsPtr(), fontSize, fontChars, glyphCount);
+		return LoadFontEx(text.AsPtr(), fontSize, codepoints, codepointCount);
 	}
 
 	public static void DrawTextEx(Font font, string text, Vector2 position, float fontSize, float spacing, Color tint)
@@ -384,18 +385,18 @@ public static unsafe partial class Raylib
 		return MeasureTextEx(font, soText.AsPtr(), fontSize, spacing);
 	}
 
-	public static GlyphInfo* LoadFontData(byte* fileData, int dataSize, int fontSize, int* fontChars, int glyphCount, FontType type)
-		=> LoadFontData(fileData, dataSize, fontSize, fontChars, glyphCount, (int)type);
+	public static GlyphInfo* LoadFontData(byte* fileData, int dataSize, int fontSize, int* codepoints, int codepointCount, FontType type)
+		=> LoadFontData(fileData, dataSize, fontSize, codepoints, codepointCount, (int)type);
 
-	public static byte* LoadFileData(string fileName, out uint bytesRead)
+	public static byte* LoadFileData(string fileName, out int bytesRead)
 	{
 		using SpanOwner<sbyte> soFilename = fileName.MarshalUtf8();
-		uint output;
+		int output;
 		byte* toReturn = LoadFileData(soFilename.AsPtr(), &output);
 		bytesRead = output;
 		return toReturn;
-
 	}
+
 	public static void SetMouseCursor(MouseCursor cursor) => SetMouseCursor((int)cursor);
 
 	public static int GetCodepointCount(string text)
@@ -420,7 +421,7 @@ public static unsafe partial class Raylib
 {
 	public static void SetWindowTitle(string title) { using SpanOwner<sbyte> sotitle = title.MarshalUtf8(); SetWindowTitle(sotitle.AsPtr()); }
 
-	public static Boolean SaveFileData(string fileName, void* data, [NativeTypeName("unsigned int")] uint bytesToWrite)
+	public static bool SaveFileData(string fileName, void* data, int bytesToWrite)
 	{
 		using SpanOwner<sbyte> sofileName = fileName.MarshalUtf8();
 		return SaveFileData(sofileName.AsPtr(), data, bytesToWrite);
@@ -543,10 +544,10 @@ public static unsafe partial class Raylib
 		ImageDrawText(dst, sotext.AsPtr(), posX, posY, fontSize, color);
 	}
 
-	public static Font LoadFontFromMemory(string fileType, byte* fileData, int dataSize, int fontSize, int* fontChars, int glyphCount)
+	public static Font LoadFontFromMemory(string fileType, byte* fileData, int dataSize, int fontSize, int* codepoints, int codepointCount)
 	{
 		using SpanOwner<sbyte> sofileType = fileType.MarshalUtf8();
-		return LoadFontFromMemory(sofileType.AsPtr(), fileData, dataSize, fontSize, fontChars, glyphCount);
+		return LoadFontFromMemory(sofileType.AsPtr(), fileData, dataSize, fontSize, codepoints, codepointCount);
 	}
 
 	public static void DrawTextPro(Font font, string text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint)
@@ -599,7 +600,7 @@ public static unsafe partial class Raylib
 		return LoadMaterials(sofileName.AsPtr(), materialCount);
 	}
 
-	public static ModelAnimation* LoadModelAnimations(string fileName, [NativeTypeName("unsigned int *")] uint* animCount)
+	public static ModelAnimation* LoadModelAnimations(string fileName, int* animCount)
 	{
 		using SpanOwner<sbyte> sofileName = fileName.MarshalUtf8();
 		return LoadModelAnimations(sofileName.AsPtr(), animCount);
@@ -639,5 +640,89 @@ public static unsafe partial class Raylib
 	{
 		using SpanOwner<sbyte> sofileType = fileType.MarshalUtf8();
 		return LoadMusicStreamFromMemory(sofileType.AsPtr(), data, dataSize);
+	}
+
+
+}
+
+/// raylib 5.0 safe methods are defined here
+public static unsafe partial class Raylib
+{
+	public enum FontPackMethod
+	{
+		Default = 0,
+		Skyline = 1
+	}
+
+	public static AutomationEventList LoadAutomationEventList(string fileName)
+	{
+		using SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
+		return LoadAutomationEventList(soFileName.AsPtr());
+	}
+
+	public static void UnloadAutomationEventList(ref AutomationEventList list)
+	{
+		fixed (AutomationEventList* listPtr = &list)
+		UnloadAutomationEventList(listPtr);
+	}
+
+	public static void ExportAutomationEventList(AutomationEventList list, string fileName)
+	{
+		using SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
+		ExportAutomationEventList(list, soFileName.AsPtr());
+	}
+
+	public static void SetAutomationEventList(ref AutomationEventList list)
+	{
+		fixed (AutomationEventList* listPtr = &list)
+		SetAutomationEventList(listPtr);
+	}
+
+	public static bool IsKeyPressedRepeat(KeyboardKey key) => IsKeyPressedRepeat((int)key);
+	
+	public static void DrawSplineLinear(Vector2[] points, float thick, Color color)
+	{
+		fixed (Vector2* pointsPtr = points) DrawSplineLinear(pointsPtr, points.Length, thick, color);
+	}
+
+	public static void DrawSplineBasis(Vector2[] points, float thick, Color color)
+	{
+		fixed (Vector2* pointsPtr = points) DrawSplineBasis(pointsPtr, points.Length, thick, color);
+	}
+
+	public static void DrawSplineCatmullRom(Vector2[] points, float thick, Color color)
+	{
+		fixed (Vector2* pointsPtr = points) DrawSplineCatmullRom(pointsPtr, points.Length, thick, color);
+	}
+
+	public static void DrawSplineBezierCubic(Vector2[] points, float thick, Color color)
+	{
+		fixed (Vector2* pointsPtr = points) DrawSplineBezierCubic(pointsPtr, points.Length, thick, color);
+	}
+
+	public static Image LoadImageSvg(string fileNameOrString, int width, int height)
+	{
+		using SpanOwner<sbyte> soFileNameOrString = fileNameOrString.MarshalUtf8();
+		return LoadImageSvg(soFileNameOrString.AsPtr(), width, height);
+	}
+
+	public static byte* ExportImageToMemory(Image image, string fileType, out int fileSize)
+	{
+		using SpanOwner<sbyte> soFileType = fileType.MarshalUtf8();
+		fixed (int* fileSizePtr = &fileSize)
+		return ExportImageToMemory(image, soFileType.AsPtr(), fileSizePtr);
+	}
+
+	public static Image GenImageFontAtlas(Span<GlyphInfo> glyphs, out Span<Rectangle> glyphRecs, int fontSize, int padding, FontPackMethod packMethod)
+	{
+		fixed (GlyphInfo* glyphsPtr = glyphs)
+		fixed (Rectangle* glyphRecsPtr = glyphRecs)
+		return GenImageFontAtlas(glyphsPtr, &glyphRecsPtr, glyphs.Length, fontSize, padding, (int)packMethod);
+	}
+
+	public static void DrawTextCodepoints(Font font, Span<char> codepoints, Vector2 position, float fontSize, float spacing, Color tint)
+	{
+		fixed (char* codepointsPtr = codepoints)
+		DrawTextCodepoints(font, (int*)codepointsPtr, codepoints.Length, position, fontSize, spacing, tint);
 	}
 }
