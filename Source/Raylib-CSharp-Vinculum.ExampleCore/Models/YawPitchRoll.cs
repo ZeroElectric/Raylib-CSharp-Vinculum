@@ -45,8 +45,8 @@ public unsafe static class YawPitchRoll
 		camera.fovy = 30.0f;                                // Camera field-of-view Y
 		camera.projection_ = CAMERA_PERSPECTIVE;             // Camera type
 
-		Model model = LoadModel("resources/models/obj/plane.obj");                  // Load model
-		Texture2D texture = LoadTexture("resources/models/obj/plane_diffuse.png");  // Load model texture
+		Model model = LoadModel("resources/models/wavefront/plane.obj");                  // Load model
+		Texture2D texture = LoadTexture("resources/models/wavefront/plane_diffuse.png");  // Load model texture
 		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;            // Set map diffuse texture
 
 		float pitch = 0.0f;

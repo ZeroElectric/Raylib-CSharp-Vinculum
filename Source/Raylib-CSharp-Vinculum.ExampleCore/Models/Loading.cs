@@ -55,8 +55,8 @@ public unsafe static class Loading
 		camera.fovy = 45.0f;                                // Camera field-of-view Y
 		camera.projection_ = CAMERA_PERSPECTIVE;                   // Camera mode type
 
-		Model model = LoadModel("resources/models/obj/castle.obj");                 // Load model
-		Texture2D texture = LoadTexture("resources/models/obj/castle_diffuse.png"); // Load model texture
+		Model model = LoadModel("resources/models/wavefront/castle.obj");                 // Load model
+		Texture2D texture = LoadTexture("resources/models/wavefront/castle_diffuse.png"); // Load model texture
 		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;            // Set map diffuse texture
 
 		Vector3 position = new(0.0f, 0.0f, 0.0f);                    // Set model position

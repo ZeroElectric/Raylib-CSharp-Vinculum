@@ -93,8 +93,8 @@ public unsafe static class PostProcessingShader
 		0.0f, 1.0f, 0.0f), new(
 			0.0f, 1.0f, 0.0f), 45.0f, 0);
 
-		Model model = LoadModel("resources/models/church.obj");                 // Load OBJ model
-		Texture2D texture = LoadTexture("resources/models/church_diffuse.png"); // Load model texture (diffuse map)
+		Model model = LoadModel("resources/models/wavefront/church.obj");                 // Load OBJ model
+		Texture2D texture = LoadTexture("resources/models/wavefront/church_diffuse.png"); // Load model texture (diffuse map)
 		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;                     // Set model diffuse texture
 
 		Vector3 position = new(0.0f, 0.0f, 0.0f);                             // Set model position

@@ -57,8 +57,8 @@ public unsafe static class ModelShader
 		camera.fovy = 45.0f;
 		camera.projection_ = CAMERA_PERSPECTIVE;
 
-		Model model = LoadModel("resources/models/watermill.obj");                   // Load OBJ model
-		Texture2D texture = LoadTexture("resources/models/watermill_diffuse.png");   // Load model texture
+		Model model = LoadModel("resources/models/wavefront/watermill.obj");                   // Load OBJ model
+		Texture2D texture = LoadTexture("resources/models/wavefront/watermill_diffuse.png");   // Load model texture
 
 		// Load shader for model
 		// NOTE: Defining 0 (NULL) for vertex shader forces usage of internal default vertex shader
