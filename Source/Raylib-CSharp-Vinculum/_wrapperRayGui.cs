@@ -68,10 +68,14 @@ public static unsafe partial class RayGui
 		return GuiToggleGroup(bounds, sotext.AsPtr(), &active);
 	}
 
-	public static int GuiCheckBox(Rectangle bounds, string? text, Bool @checked)
+	
+	public static bool GuiCheckBox(Rectangle bounds, string? text, Bool @checked) //TODO (KEN) Fix bool* -> Bool* for correct implementation
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiCheckBox(bounds, sotext.AsPtr(), &@checked);
+
+		GuiCheckBox(bounds, sotext.AsPtr(), &@checked);
+
+		return @checked;
 	}
 
 	public static int GuiComboBox(Rectangle bounds, string? text, int active)
@@ -111,14 +115,16 @@ public static unsafe partial class RayGui
 		return GuiSlider(bounds, sotextLeft.AsPtr(), sotextRight.AsPtr(), &value, minValue, maxValue);
 	}
 
-	public static float GuiSliderBar(Rectangle rectangle, string? leftText, string? rightText, float value, float minValue, float maxValue)
+	public static float GuiSliderBar(Rectangle rectangle, string? leftText, string? rightText, ref float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> soTextLeft = leftText.MarshalUtf8();
 		using SpanOwner<sbyte> soTextRight = rightText.MarshalUtf8();
-		return GuiSliderBar(rectangle, soTextLeft.AsPtr(), soTextRight.AsPtr(), &value, minValue, maxValue);
+
+		fixed(float* val = &value)
+		return GuiSliderBar(rectangle, soTextLeft.AsPtr(), soTextRight.AsPtr(), val, minValue, maxValue);
 	}
 
-	public static double GuiProgressBar(Rectangle bounds, string? textLeft, string? textRight, float value, float minValue, float maxValue)
+	public static int GuiProgressBar(Rectangle bounds, string? textLeft, string? textRight, float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> sotextLeft = textLeft.MarshalUtf8();
 		using SpanOwner<sbyte> sotextRight = textRight.MarshalUtf8();

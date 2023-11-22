@@ -45,7 +45,7 @@ public static unsafe partial class Raylib
 		InitWindow(width, height, spanOwner.AsPtr());
 	}
 
-	public static bool IsGestureDetected(Gesture gesture) => IsGestureDetected((int)gesture);
+	// public static bool IsGestureDetected(Gesture gesture) => IsGestureDetected((int)gesture); TODO(KEN) FIX
 
 	public static Gesture GetGestureDetected_() => (Gesture)GetGestureDetected();
 
@@ -236,7 +236,8 @@ public static unsafe partial class Raylib
 	public static ModelAnimation[] LoadModelAnimations(string fileName)
 	{
 		using CommunityToolkit.HighPerformance.Buffers.SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
-		uint count;
+
+		int count;
 		ModelAnimation* p_animations = LoadModelAnimations(soFileName.AsPtr(), &count);
 		ModelAnimation[] toReturn = new ModelAnimation[count];
 		for (int i = 0; i < count; i++)
@@ -387,10 +388,10 @@ public static unsafe partial class Raylib
 	public static GlyphInfo* LoadFontData(byte* fileData, int dataSize, int fontSize, int* fontChars, int glyphCount, FontType type)
 		=> LoadFontData(fileData, dataSize, fontSize, fontChars, glyphCount, (int)type);
 
-	public static byte* LoadFileData(string fileName, out uint bytesRead)
+	public static byte* LoadFileData(string fileName, out int bytesRead)
 	{
 		using SpanOwner<sbyte> soFilename = fileName.MarshalUtf8();
-		uint output;
+		int output;
 		byte* toReturn = LoadFileData(soFilename.AsPtr(), &output);
 		bytesRead = output;
 		return toReturn;
@@ -420,7 +421,7 @@ public static unsafe partial class Raylib
 {
 	public static void SetWindowTitle(string title) { using SpanOwner<sbyte> sotitle = title.MarshalUtf8(); SetWindowTitle(sotitle.AsPtr()); }
 
-	public static Boolean SaveFileData(string fileName, void* data, [NativeTypeName("unsigned int")] uint bytesToWrite)
+	public static Boolean SaveFileData(string fileName, void* data, [NativeTypeName("unsigned int")] int bytesToWrite)
 	{
 		using SpanOwner<sbyte> sofileName = fileName.MarshalUtf8();
 		return SaveFileData(sofileName.AsPtr(), data, bytesToWrite);
@@ -599,7 +600,7 @@ public static unsafe partial class Raylib
 		return LoadMaterials(sofileName.AsPtr(), materialCount);
 	}
 
-	public static ModelAnimation* LoadModelAnimations(string fileName, [NativeTypeName("unsigned int *")] uint* animCount)
+	public static ModelAnimation* LoadModelAnimations(string fileName, [NativeTypeName("unsigned int *")] int* animCount)
 	{
 		using SpanOwner<sbyte> sofileName = fileName.MarshalUtf8();
 		return LoadModelAnimations(sofileName.AsPtr(), animCount);
