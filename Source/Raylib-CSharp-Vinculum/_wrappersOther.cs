@@ -64,6 +64,16 @@ public partial struct Rectangle
 		get => y;
 		set => y = value;
 	}
+	public float Width
+	{
+		get => width;
+		set => width = value;
+	}
+	public float Height
+	{
+		get => height;
+		set => height = value;
+	}
 }
 
 public partial struct Camera3D
@@ -78,7 +88,7 @@ public partial struct Camera3D
 
 	}
 
-	public CameraProjection projection_
+	public CameraProjection Projection
 	{
 		get => (CameraProjection)projection;
 		set => projection = (int)value;
@@ -128,7 +138,7 @@ public unsafe partial struct float16
 }
 public partial struct Texture
 {
-	public PixelFormat format_
+	public PixelFormat Format
 	{
 		get => (PixelFormat)format;
 		set => format = (int)value;

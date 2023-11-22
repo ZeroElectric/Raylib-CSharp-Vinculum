@@ -259,7 +259,7 @@ public static unsafe class RayCamera
 	/// </summary>
 	public static Matrix4x4 GetCameraProjectionMatrix(in Camera3D Camera3D, float aspect)
 	{
-		if (Camera3D.projection_ == CameraProjection.CAMERA_PERSPECTIVE)
+		if (Camera3D.Projection == CameraProjection.CAMERA_PERSPECTIVE)
 		{
 			Matrix4x4 proj = Matrix4x4.CreatePerspectiveFieldOfView(Camera3D.fovy * RayMath.DEG2RAD, aspect, (float)RlGl.RL_CULL_DISTANCE_NEAR, (float)RlGl.RL_CULL_DISTANCE_FAR);
 			

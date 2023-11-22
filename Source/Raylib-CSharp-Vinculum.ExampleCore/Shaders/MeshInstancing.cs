@@ -56,7 +56,7 @@ public unsafe static class MeshInstancing
 		camera.target = new Vector3(0.0f, 0.0f, 0.0f);
 		camera.up = new Vector3(0.0f, 1.0f, 0.0f);
 		camera.fovy = 45.0f;
-		camera.projection_ = CAMERA_PERSPECTIVE;
+		camera.Projection = CAMERA_PERSPECTIVE;
 
 		Mesh cube = GenMeshCube(1.0f, 1.0f, 1.0f);
 

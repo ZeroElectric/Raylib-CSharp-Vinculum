@@ -95,7 +95,7 @@ public unsafe static class Draw2dIn3d
 		camera.target = new Vector3(0.0f, 0.0f, 0.0f);          // Camera looking at point
 		camera.up = new Vector3(0.0f, 1.0f, 0.0f);              // Camera up vector (rotation towards target)
 		camera.fovy = 45.0f;                                    // Camera field-of-view Y
-		camera.projection_ = CAMERA_PERSPECTIVE;                 // Camera mode type
+		camera.Projection = CAMERA_PERSPECTIVE;                 // Camera mode type
 
 		Vector3 cubePosition = new Vector3(0.0f, 1.0f, 0.0f);
 		Vector3 cubeSize = new Vector3(2.0f, 2.0f, 2.0f);
@@ -173,7 +173,7 @@ public unsafe static class Draw2dIn3d
 				camera.target = new Vector3(0.0f, 0.0f, 0.0f);          // Camera looking at point
 				camera.up = new Vector3(0.0f, 1.0f, 0.0f);              // Camera up vector (rotation towards target)
 				camera.fovy = 45.0f;                                    // Camera field-of-view Y
-				camera.projection_ = CAMERA_PERSPECTIVE;                 // Camera mode type
+				camera.Projection = CAMERA_PERSPECTIVE;                 // Camera mode type
 
 				if (spin)
 				{

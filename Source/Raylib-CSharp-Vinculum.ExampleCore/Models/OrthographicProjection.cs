@@ -54,15 +54,15 @@ public unsafe static class OrthographicProjection
 			//----------------------------------------------------------------------------------
 			if (IsKeyPressed(KEY_SPACE))
 			{
-				if (camera.projection_ == CAMERA_PERSPECTIVE)
+				if (camera.Projection == CAMERA_PERSPECTIVE)
 				{
 					camera.fovy = WIDTH_ORTHOGRAPHIC;
-					camera.projection_ = CAMERA_ORTHOGRAPHIC;
+					camera.Projection = CAMERA_ORTHOGRAPHIC;
 				}
 				else
 				{
 					camera.fovy = FOVY_PERSPECTIVE;
-					camera.projection_ = CAMERA_PERSPECTIVE;
+					camera.Projection = CAMERA_PERSPECTIVE;
 				}
 			}
 			//----------------------------------------------------------------------------------
@@ -95,8 +95,8 @@ public unsafe static class OrthographicProjection
 
 			DrawText("Press Spacebar to switch camera type", 10, GetScreenHeight() - 30, 20, DARKGRAY);
 
-			if (camera.projection_ == CAMERA_ORTHOGRAPHIC) DrawText("ORTHOGRAPHIC", 10, 40, 20, BLACK);
-			else if (camera.projection_ == CAMERA_PERSPECTIVE) DrawText("PERSPECTIVE", 10, 40, 20, BLACK);
+			if (camera.Projection == CAMERA_ORTHOGRAPHIC) DrawText("ORTHOGRAPHIC", 10, 40, 20, BLACK);
+			else if (camera.Projection == CAMERA_PERSPECTIVE) DrawText("PERSPECTIVE", 10, 40, 20, BLACK);
 
 			DrawFPS(10, 10);
 

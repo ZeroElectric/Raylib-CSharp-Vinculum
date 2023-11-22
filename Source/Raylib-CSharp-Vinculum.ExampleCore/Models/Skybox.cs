@@ -291,7 +291,7 @@ public unsafe static class Skybox
 		cubemap.width = size;
 		cubemap.height = size;
 		cubemap.mipmaps = 1;
-		cubemap.format_ = format;
+		cubemap.Format = format;
 
 		return cubemap;
 	}

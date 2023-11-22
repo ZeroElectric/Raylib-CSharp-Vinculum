@@ -97,7 +97,7 @@ public unsafe static class VrSimulator
 		camera.target = new(0.0f, 2.0f, 0.0f);      // Camera looking at point
 		camera.up = new(0.0f, 1.0f, 0.0f);          // Camera up vector
 		camera.fovy = 60.0f;                                // Camera field-of-view Y
-		camera.projection_ = CAMERA_PERSPECTIVE;             // Camera type
+		camera.Projection = CAMERA_PERSPECTIVE;             // Camera type
 
 		Vector3 cubePosition = new(0.0f, 0.0f, 0.0f);
 
