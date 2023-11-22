@@ -84,6 +84,12 @@ public static unsafe partial class Raylib
 		return LoadTexture(spanOwner.AsPtr());
 	}
 
+	public static Image LoadImageSvg(string fileName, int width, int height)
+	{
+		using SpanOwner<sbyte> spanOwner = fileName.MarshalUtf8();
+		return LoadImageSvg(spanOwner.AsPtr(), width, height);
+	}
+
 	public static string GetMonitorName_(int monitor) => Helpers.Utf8ToString(GetMonitorName(monitor));
 
 	public static void SetClipboardText(string text)
@@ -227,6 +233,15 @@ public static unsafe partial class Raylib
 	public static void SetWindowState(ConfigFlags flags) => SetWindowState((uint)flags);
 
 	public static bool IsWindowState(ConfigFlags flags) => IsWindowState((uint)flags);
+
+
+
+	public static bool IsFileExtension(sbyte* filePath, string ext)
+	{
+		using SpanOwner<sbyte> soText = ext.MarshalUtf8();
+
+		return IsFileExtension(filePath, soText.AsPtr());
+	}
 
 	/// <summary>
 	/// free animations via UnloadModelAnimation() when done
@@ -580,6 +595,12 @@ public static unsafe partial class Raylib
 		using SpanOwner<sbyte> sodst = dst.MarshalUtf8();
 		using SpanOwner<sbyte> sosrc = src.MarshalUtf8();
 		return TextCopy(sodst.AsPtr(), sosrc.AsPtr());
+	}
+
+	public static int TextCopy(string dst, sbyte* src)
+	{
+		using SpanOwner<sbyte> sodst = dst.MarshalUtf8();
+		return TextCopy(sodst.AsPtr(), src);
 	}
 
 	public static int TextToInteger(string text)
