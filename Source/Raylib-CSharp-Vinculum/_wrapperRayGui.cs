@@ -13,147 +13,164 @@
 
 using CommunityToolkit.HighPerformance.Buffers;
 using global::ZeroElectric.Vinculum.Extensions;
+using System.Numerics;
 using System.Runtime.InteropServices;
 
 namespace ZeroElectric.Vinculum;
 
 public static unsafe partial class RayGui
 {
-	public static Boolean GuiWindowBox(Rectangle bounds, string? title)
+	public static int GuiWindowBox(Rectangle bounds, string? title)
 	{
 		using SpanOwner<sbyte> sotitle = title.MarshalUtf8();
 		return GuiWindowBox(bounds, sotitle.AsPtr());
-
 	}
 
-	public static void GuiGroupBox(Rectangle bounds, string? text)
+	public static int GuiGroupBox(Rectangle bounds, string? text)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		GuiGroupBox(bounds, sotext.AsPtr());
+		return GuiGroupBox(bounds, sotext.AsPtr());
 	}
 
-	public static void GuiLine(Rectangle bounds, string? text)
+	public static int GuiLine(Rectangle bounds, string? text)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		GuiLine(bounds, sotext.AsPtr());
+		return GuiLine(bounds, sotext.AsPtr());
 	}
 
-	public static void GuiLabel(Rectangle bounds, string? text)
+	public static int GuiLabel(Rectangle bounds, string? text)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		GuiLabel(bounds, sotext.AsPtr());
+		return GuiLabel(bounds, sotext.AsPtr());
 	}
 
-	public static Boolean GuiButton(Rectangle bounds, string? text)
+	public static int GuiButton(Rectangle bounds, string? text)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		return GuiButton(bounds, sotext.AsPtr());
 	}
 
-	public static Boolean GuiLabelButton(Rectangle bounds, string? text)
+	public static int GuiLabelButton(Rectangle bounds, string? text)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		return GuiLabelButton(bounds, sotext.AsPtr());
 	}
 
-	public static Boolean GuiToggle(Rectangle bounds, string? text, Boolean active)
+	public static int GuiToggle(Rectangle bounds, string? text, ref Bool active)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiToggle(bounds, sotext.AsPtr(), active);
+		fixed (Bool* activePtr = &active)
+			return GuiToggle(bounds, sotext.AsPtr(), activePtr);
 	}
 
-	public static int GuiToggleGroup(Rectangle bounds, string? text, int active)
+	public static int GuiToggleGroup(Rectangle bounds, string? text, ref int active)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiToggleGroup(bounds, sotext.AsPtr(), active);
+		fixed (int* activePtr = &active)
+			return GuiToggleGroup(bounds, sotext.AsPtr(), activePtr);
 	}
 
-	public static Boolean GuiCheckBox(Rectangle bounds, string? text, Boolean @checked)
+	public static int GuiCheckBox(Rectangle bounds, string? text, ref Bool @checked)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiCheckBox(bounds, sotext.AsPtr(), @checked);
+		fixed (Bool* checkedPtr = &@checked)
+			return GuiCheckBox(bounds, sotext.AsPtr(), checkedPtr);
 	}
 
-	public static int GuiComboBox(Rectangle bounds, string? text, int active)
+	public static int GuiComboBox(Rectangle bounds, string? text, ref int active)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiComboBox(bounds, sotext.AsPtr(), active);
+		fixed (int* activePtr = &active)
+			return GuiComboBox(bounds, sotext.AsPtr(), activePtr);
 	}
 
-	public static Boolean GuiDropdownBox(Rectangle bounds, string? text, int* active, Boolean editMode)
+	public static int GuiDropdownBox(Rectangle bounds, string? text, ref int active, bool editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiDropdownBox(bounds, sotext.AsPtr(), active, editMode);
+		fixed (int* activePtr = &active)
+			return GuiDropdownBox(bounds, sotext.AsPtr(), activePtr, editMode);
 	}
 
-	public static Boolean GuiSpinner(Rectangle bounds, string? text, int* value, int minValue, int maxValue, Boolean editMode)
+	public static int GuiSpinner(Rectangle bounds, string? text, ref int value, int minValue, int maxValue, bool editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiSpinner(bounds, sotext.AsPtr(), value, minValue, maxValue, editMode);
+		fixed (int* valuePtr = &value)
+			return GuiSpinner(bounds, sotext.AsPtr(), valuePtr, minValue, maxValue, editMode);
 	}
 
-	public static Boolean GuiValueBox(Rectangle bounds, string? text, int* value, int minValue, int maxValue, Boolean editMode)
+	public static int GuiValueBox(Rectangle bounds, string? text, ref int value, int minValue, int maxValue, Boolean editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiValueBox(bounds, sotext.AsPtr(), value, minValue, maxValue, editMode);
+		fixed (int* valuePtr = &value)
+			return GuiValueBox(bounds, sotext.AsPtr(), valuePtr, minValue, maxValue, editMode);
 	}
 
-	public static Boolean GuiTextBox(Rectangle bounds, string? text, int textSize, Boolean editMode)
+	public static int GuiTextBox(Rectangle bounds, string? text, int textSize, bool editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		return GuiTextBox(bounds, sotext.AsPtr(), textSize, editMode);
 	}
 
-	public static float GuiSlider(Rectangle bounds, string? textLeft, string? textRight, float value, float minValue, float maxValue)
+	public static int GuiSlider(Rectangle bounds, string? textLeft, string? textRight, ref float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> sotextLeft = textLeft.MarshalUtf8();
 		using SpanOwner<sbyte> sotextRight = textRight.MarshalUtf8();
-		return GuiSlider(bounds, sotextLeft.AsPtr(), sotextRight.AsPtr(), value, minValue, maxValue);
+		fixed (float* valuePtr = &value)
+			return GuiSlider(bounds, sotextLeft.AsPtr(), sotextRight.AsPtr(), valuePtr, minValue, maxValue);
 	}
 
-	public static float GuiSliderBar(Rectangle rectangle, string? leftText, string? rightText, float value, float minValue, float maxValue)
+	public static int GuiSliderBar(Rectangle rectangle, string? leftText, string? rightText, ref float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> soTextLeft = leftText.MarshalUtf8();
 		using SpanOwner<sbyte> soTextRight = rightText.MarshalUtf8();
-		return GuiSliderBar(rectangle, soTextLeft.AsPtr(), soTextRight.AsPtr(), value, minValue, maxValue);
+		fixed (float* valuePtr = &value)
+			return GuiSliderBar(rectangle, soTextLeft.AsPtr(), soTextRight.AsPtr(), valuePtr, minValue, maxValue);
 	}
 
-	public static float GuiProgressBar(Rectangle bounds, string? textLeft, string? textRight, float value, float minValue, float maxValue)
+	public static int GuiProgressBar(Rectangle bounds, string? textLeft, string? textRight, ref float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> sotextLeft = textLeft.MarshalUtf8();
 		using SpanOwner<sbyte> sotextRight = textRight.MarshalUtf8();
-		return GuiProgressBar(bounds, sotextLeft.AsPtr(), sotextRight.AsPtr(), value, minValue, maxValue);
+		fixed (float* valuePtr = &value)
+			return GuiProgressBar(bounds, sotextLeft.AsPtr(), sotextRight.AsPtr(), valuePtr, minValue, maxValue);
 	}
 
-	public static void GuiStatusBar(Rectangle bounds, string? text)
+	public static int GuiStatusBar(Rectangle bounds, string? text)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		GuiStatusBar(bounds, sotext.AsPtr());
+		return GuiStatusBar(bounds, sotext.AsPtr());
 	}
 
-	public static void GuiDummyRec(Rectangle bounds, string? text)
+	public static int GuiDummyRec(Rectangle bounds, string? text)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		GuiDummyRec(bounds, sotext.AsPtr());
+		return GuiDummyRec(bounds, sotext.AsPtr());
 	}
 
-	public static int GuiListView(Rectangle bounds, string? text, int* scrollIndex, int active)
+	public static int GuiListView(Rectangle bounds, string? text, ref int scrollIndex, ref int active)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiListView(bounds, sotext.AsPtr(), scrollIndex, active);
+		fixed (int* scrollIndexPtr = &scrollIndex)
+		fixed (int* activePtr = &active)
+			return GuiListView(bounds, sotext.AsPtr(), scrollIndexPtr, activePtr);
 	}
 
-	public static int GuiListViewEx(Rectangle bounds, string[] textArray, int count, int* focus, int* scrollIndex, int active)
+	public static int GuiListViewEx(Rectangle bounds, string[] text, int count, ref int scrollIndex, ref int active, ref int focus)
 	{
-
-		sbyte** p_utf8 = stackalloc sbyte*[textArray.Length];
-		for (int i = 0; i < textArray.Length; i++)
+		sbyte** p_utf8 = stackalloc sbyte*[text.Length];
+		for (int i = 0; i < text.Length; i++)
 		{
-			p_utf8[i] = (sbyte*)Marshal.StringToCoTaskMemUTF8(textArray[i]);
+			p_utf8[i] = (sbyte*)Marshal.StringToCoTaskMemUTF8(text[i]);
 		}
-		int toReturn = GuiListViewEx(bounds, p_utf8, count, focus, scrollIndex, active);
 
-		for (int i = 0; i < textArray.Length; i++)
+		int toReturn;
+
+		fixed (int* scrollIndexPtr = &scrollIndex)
+		fixed (int* activePtr = &active)
+		fixed (int* focusPtr = &focus)
+			toReturn = GuiListViewEx(bounds, p_utf8, count, scrollIndexPtr, activePtr, focusPtr);
+
+		for (int i = 0; i < text.Length; i++)
 		{
 			Marshal.ZeroFreeCoTaskMemUTF8((IntPtr)p_utf8[i]);
 		}
@@ -188,5 +205,69 @@ public static unsafe partial class RayGui
 	{
 		using SpanOwner<sbyte> soText = text.MarshalUtf8();
 		return Helpers.Utf8ToString(GuiIconText(iconId, soText.AsPtr()));
+	}
+
+	public static int GuiToggleSlider(Rectangle bounds, string text, ref int active)
+	{
+		using SpanOwner<sbyte> soText =  text.MarshalUtf8();
+		fixed (int* activePtr = &active)
+		return GuiToggleSlider(bounds, soText.AsPtr(), activePtr);
+	}
+
+	public static int GuiColorPickerHSV(Rectangle bounds, string text, ref Vector3 hsvColor)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (Vector3* hsvPtr = &hsvColor)
+		return GuiColorPanelHSV(bounds, soText.AsPtr(), hsvPtr);
+	}
+
+	public static int GuiColorPanelHSV(Rectangle bounds, string text, ref Vector3 hsvColor)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (Vector3* hsvPtr = &hsvColor)
+		return GuiColorPanelHSV(bounds, soText.AsPtr(), hsvPtr);
+	}
+
+	public static int GuiScrollPanel(Rectangle bounds, string text, Rectangle content, ref Vector2 scroll, ref Rectangle view)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (Vector2* scrollPtr = &scroll)
+		fixed (Rectangle* viewPtr = &view)
+		return GuiScrollPanel(bounds, soText.AsPtr(), content, scrollPtr, viewPtr);
+	}
+
+	public static int GuiColorPicker(Rectangle bounds, string text, ref Color color)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (Color* colorPtr = &color)
+		return GuiColorPicker(bounds, soText.AsPtr(), colorPtr);
+	}
+
+	public static int GuiColorPanel(Rectangle bounds, string text, ref Color color)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (Color* colorPtr = &color)
+		return GuiColorPanel(bounds, soText.AsPtr(), colorPtr);
+	}
+
+	public static int GuiColorBarAlpha(Rectangle bounds, string text, ref float alpha)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (float* alphaPtr = &alpha)
+		return GuiColorBarAlpha(bounds, soText.AsPtr(), alphaPtr);
+	}
+
+	public static int GuiColorBarHue(Rectangle bounds, string text, ref float hue)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (float* huePtr = &hue)
+		return GuiColorBarHue(bounds, soText.AsPtr(), huePtr);
+	}
+
+	public static int GuiGrid(Rectangle bounds, string text, float spacing, int subdivs, ref Vector2 mouseCell)
+	{
+		using SpanOwner<sbyte> soText = text.MarshalUtf8();
+		fixed (Vector2* mouseCellPtr = &mouseCell)
+		return GuiGrid(bounds, soText.AsPtr(), spacing, subdivs, mouseCellPtr);
 	}
 }
