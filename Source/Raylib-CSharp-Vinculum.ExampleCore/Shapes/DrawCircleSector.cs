@@ -45,7 +45,7 @@ public unsafe static class DrawCircleSector
 		float outerRadius = 180.0f;
 		float startAngle = 0.0f;
 		float endAngle = 180.0f;
-		int segments = 0;
+		float segments = 0;
 		int minSegments = 4;
 
 		RayGui.GuiLoadStyleDefault(); //init raygui
@@ -70,16 +70,16 @@ public unsafe static class DrawCircleSector
 			DrawLine(500, 0, 500, GetScreenHeight(), Fade(LIGHTGRAY, 0.6f));
 			DrawRectangle(500, 0, GetScreenWidth() - 500, GetScreenHeight(), Fade(LIGHTGRAY, 0.3f));
 
-			DrawCircleSector(center, outerRadius, startAngle, endAngle, segments, Fade(MAROON, 0.3f));
-			DrawCircleSectorLines(center, outerRadius, startAngle, endAngle, segments, Fade(MAROON, 0.6f));
+			DrawCircleSector(center, outerRadius, startAngle, endAngle, (int)segments, Fade(MAROON, 0.3f));
+			DrawCircleSectorLines(center, outerRadius, startAngle, endAngle, (int)segments, Fade(MAROON, 0.6f));
 
 			// Draw GUI controls
 			//------------------------------------------------------------------------------
-			startAngle = GuiSliderBar(new Rectangle(600, 40, 120, 20), "StartAngle", null, startAngle, 0, 720);
-			endAngle = GuiSliderBar(new Rectangle(600, 70, 120, 20), "EndAngle", null, endAngle, 0, 720);
+			GuiSliderBar(new Rectangle(600, 40, 120, 20), "StartAngle", null, ref startAngle, 0, 720);
+			GuiSliderBar(new Rectangle(600, 70, 120, 20), "EndAngle", null, ref endAngle, 0, 720);
 
-			outerRadius = GuiSliderBar(new Rectangle(600, 140, 120, 20), "Radius", null, outerRadius, 0, 200);
-			segments = (int)GuiSliderBar(new Rectangle(600, 170, 120, 20), "Segments", null, (float)segments, 0, 100);
+			GuiSliderBar(new Rectangle(600, 140, 120, 20), "Radius", null, ref outerRadius, 0, 200);
+			GuiSliderBar(new Rectangle(600, 170, 120, 20), "Segments", null, ref segments, 0, 100);
 			//------------------------------------------------------------------------------
 
 			minSegments = (int)MathF.Ceiling((endAngle - startAngle) / 90);

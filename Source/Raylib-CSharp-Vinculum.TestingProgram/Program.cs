@@ -1,24 +1,21 @@
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
 
-/////////////////////////////////////////
-////////////	MANUAL TEST CASES:  these are test cases for bugfixes to CsLo
-ZeroElectric.Vinculum.ExampleCore.TestCases.NullString.LoadShaderFromMemory.Program.main(args);
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
-/////////////////////////////////////////
-////////////	ALL THE EXAMPLES. You can comment out the ones you don't want to run.
+///////////////////////////////////////////
+//////////////	ALL THE EXAMPLES. You can comment out the ones you don't want to run.
 
-/////////////////////////////////////////
-////////////	CORE
+///////////////////////////////////////////
+//////////////	CORE
 ZeroElectric.Vinculum.ExampleCore.Core.BasicWindow.main();
 ZeroElectric.Vinculum.ExampleCore.Core.BasicScreenManager.main();
 ZeroElectric.Vinculum.ExampleCore.Core.KeyboardInput.main();
@@ -43,10 +40,10 @@ ZeroElectric.Vinculum.ExampleCore.Core.QuatConversions.main();
 ZeroElectric.Vinculum.ExampleCore.Core.WindowFlags.main();
 ZeroElectric.Vinculum.ExampleCore.Core.SplitScreen.main();
 ZeroElectric.Vinculum.ExampleCore.Core.SmoothPixelPerfectCamera.main();
-//Raylib_CsLo.Examples.Core.CustomFrameControl.main(); //The following example requires a custom build of Raylib to work. See it's docs for info.
+////Raylib_CsLo.Examples.Core.CustomFrameControl.main(); //The following example requires a custom build of Raylib to work. See it's docs for info.
 
-/////////////////////////////////////////
-////////////	MODELS
+///////////////////////////////////////////
+//////////////	MODELS
 ZeroElectric.Vinculum.ExampleCore.Models.Animation.main();
 ZeroElectric.Vinculum.ExampleCore.Models.Billboard.main();
 ZeroElectric.Vinculum.ExampleCore.Models.BoxCollisions.main();
@@ -66,8 +63,8 @@ ZeroElectric.Vinculum.ExampleCore.Models.WavingCubes.main();
 ZeroElectric.Vinculum.ExampleCore.Models.YawPitchRoll.main();
 ZeroElectric.Vinculum.ExampleCore.Models.DrawCubeWithTexture.main();
 
-/////////////////////////////////////////
-////////////	SHADERS
+///////////////////////////////////////////
+//////////////	SHADERS
 ZeroElectric.Vinculum.ExampleCore.Shaders.BasicLighting.main();
 ZeroElectric.Vinculum.ExampleCore.Shaders.CustomUniform.main();
 ZeroElectric.Vinculum.ExampleCore.Shaders.Eratosthenes.main();
@@ -87,8 +84,8 @@ ZeroElectric.Vinculum.ExampleCore.Shaders.TextureDrawing.main();
 ZeroElectric.Vinculum.ExampleCore.Shaders.TextureOutline.main();
 ZeroElectric.Vinculum.ExampleCore.Shaders.TextureWaves.main();
 
-/////////////////////////////////////////
-////////////	TEXTURES
+///////////////////////////////////////////
+//////////////	TEXTURES
 ZeroElectric.Vinculum.ExampleCore.Textures.BackgroundScrolling.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.BlendModes.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.Bunnymark.main();
@@ -110,8 +107,8 @@ ZeroElectric.Vinculum.ExampleCore.Textures.TextureSourceAndDestinationRectangles
 ZeroElectric.Vinculum.ExampleCore.Textures.TextureToImage.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.TiledExture.main();
 
-/////////////////////////////////////////
-////////////	TEXT
+///////////////////////////////////////////
+//////////////	TEXT
 ZeroElectric.Vinculum.ExampleCore.Text.Draw2dIn3d.main();
 ZeroElectric.Vinculum.ExampleCore.Text.DrawTextInsideRectangle.main();
 ZeroElectric.Vinculum.ExampleCore.Text.FontFilters.main();
@@ -124,8 +121,8 @@ ZeroElectric.Vinculum.ExampleCore.Text.TextFormatting.main();
 ZeroElectric.Vinculum.ExampleCore.Text.WritingAnimation.main();
 ZeroElectric.Vinculum.ExampleCore.Text.Unicode.main(); // The unicode example doesn't work properly. I guess the fonts don't include the needed unicode chars? //TODO (KEN) Fix this
 
-/////////////////////////////////////////
-////////////	SHAPES
+///////////////////////////////////////////
+//////////////	SHAPES
 ZeroElectric.Vinculum.ExampleCore.Shapes.BasicShapesDrawing.main();
 ZeroElectric.Vinculum.ExampleCore.Shapes.BoundingBall.main();
 ZeroElectric.Vinculum.ExampleCore.Shapes.CollisionArea.main();
@@ -142,8 +139,8 @@ ZeroElectric.Vinculum.ExampleCore.Shapes.LogoUsingShapes.main();
 ZeroElectric.Vinculum.ExampleCore.Shapes.RectangleScalingMouse.main();
 ZeroElectric.Vinculum.ExampleCore.Shapes.LinesCubicBezier.main();
 
-/////////////////////////////////////////
-////////////	PHYSICS
+///////////////////////////////////////////
+//////////////	PHYSICS
 ZeroElectric.Vinculum.ExampleCore.Physics.PhysicsDemo.main();
 ZeroElectric.Vinculum.ExampleCore.Physics.PhysicsFriction.main();
 ZeroElectric.Vinculum.ExampleCore.Physics.PhysicsMovement.main();

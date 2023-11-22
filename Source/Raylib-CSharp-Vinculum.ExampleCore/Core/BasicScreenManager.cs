@@ -23,12 +23,13 @@
 *   Copyright (c) 2021 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
+
+using static ZeroElectric.Vinculum.ExampleCore.Core.BasicScreenManager.GameScreen;
+
 namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
-using static BasicScreenManager.GameScreen;
 public static class BasicScreenManager
-{
-	
+{	
 	public enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING }
 
 	public static int main()
@@ -75,7 +76,7 @@ public static class BasicScreenManager
 						// TODO: Update TITLE screen variables here!
 
 						// Press enter to change to GAMEPLAY screen
-						if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
+						if (IsKeyPressed(KEY_ENTER) || IsGestureDetected((uint)GESTURE_TAP))
 						{
 							currentScreen = GAMEPLAY;
 						}
@@ -86,7 +87,7 @@ public static class BasicScreenManager
 						// TODO: Update GAMEPLAY screen variables here!
 
 						// Press enter to change to ENDING screen
-						if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
+						if (IsKeyPressed(KEY_ENTER) || IsGestureDetected((uint)GESTURE_TAP))
 						{
 							currentScreen = ENDING;
 						}
@@ -97,7 +98,7 @@ public static class BasicScreenManager
 						// TODO: Update ENDING screen variables here!
 
 						// Press enter to return to TITLE screen
-						if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
+						if (IsKeyPressed(KEY_ENTER) || IsGestureDetected((uint)GESTURE_TAP))
 						{
 							currentScreen = TITLE;
 						}

@@ -1,3 +1,14 @@
+//------------------------------------------------------------------------------
+//
+// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+// This file is licensed to you under the MPL-2.0.
+// See the LICENSE file in the project's root for more info.
+//
+// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+// Find Raylib here: https://github.com/raysan5/raylib
+//
+//------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
 //
@@ -143,8 +154,8 @@ public unsafe static class TiledExture
 			ClearBackground(RAYWHITE);
 
 			// Draw the tiled area
-			//DrawTextureTiled(texPattern, recPattern[activePattern], new Rectangle((float)OPT_WIDTH + MARGIN_SIZE, (float)MARGIN_SIZE, screenWidth - OPT_WIDTH - 2.0f * MARGIN_SIZE, screenHeight - 2.0f * MARGIN_SIZE),
-			//new Vector2(0.0f, 0.0f), rotation, scale, colors[activeCol]);
+			DrawTextureTiled(texPattern, recPattern[activePattern], new Rectangle((float)OPT_WIDTH + MARGIN_SIZE, (float)MARGIN_SIZE, screenWidth - OPT_WIDTH - 2.0f * MARGIN_SIZE, screenHeight - 2.0f * MARGIN_SIZE),
+			new Vector2(0.0f, 0.0f), rotation, scale, colors[activeCol]);
 
 			// Draw options
 			DrawRectangle(MARGIN_SIZE, MARGIN_SIZE, OPT_WIDTH - MARGIN_SIZE, screenHeight - 2 * MARGIN_SIZE, ColorAlpha(LIGHTGRAY, 0.5f));
@@ -184,89 +195,88 @@ public unsafe static class TiledExture
 		return 0;
 	}
 
-	//TODO (Ken) this needs to be ported to C#
-
 	// Draw part of a texture (defined by a rectangle) with rotation and scale tiled into dest.
-	//void DrawTextureTiled(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, float scale, Color tint)
-	//{
-	//	if ((texture.id <= 0) || (scale <= 0.0f)) return;  // Wanna see a infinite loop?!...just delete this line!
-	//	if ((source.width == 0) || (source.height == 0)) return;
+	static void DrawTextureTiled(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, float scale, Color tint)
+	{
+		if ((texture.id <= 0) || (scale <= 0.0f)) return;  // Wanna see a infinite loop?!...just delete this line!
+		if ((source.width == 0) || (source.height == 0)) return;
 
-	//	int tileWidth = (int)(source.width*scale), tileHeight = (int)(source.height*scale);
-	//	if ((dest.width < tileWidth) && (dest.height < tileHeight))
-	//	{
-	//		// Can fit only one tile
-	//		DrawTexturePro(texture, (Rectangle){source.x, source.y, ((float)dest.width/tileWidth)*source.width, ((float)dest.height/tileHeight)*source.height},
-	//					(Rectangle){dest.x, dest.y, dest.width, dest.height}, origin, rotation, tint);
-	//	}
-	//	else if (dest.width <= tileWidth)
-	//	{
-	//		// Tiled vertically (one column)
-	//		int dy = 0;
-	//		for (;dy+tileHeight < dest.height; dy += tileHeight)
-	//		{
-	//			DrawTexturePro(texture, (Rectangle){source.x, source.y, ((float)dest.width/tileWidth)*source.width, source.height}, (Rectangle){dest.x, dest.y + dy, dest.width, (float)tileHeight}, origin, rotation, tint);
-	//		}
+		int tileWidth = (int)(source.width * scale);
+		int tileHeight = (int)(source.height * scale);
 
-	//		// Fit last tile
-	//		if (dy < dest.height)
-	//		{
-	//			DrawTexturePro(texture, (Rectangle){source.x, source.y, ((float)dest.width/tileWidth)*source.width, ((float)(dest.height - dy)/tileHeight)*source.height},
-	//						(Rectangle){dest.x, dest.y + dy, dest.width, dest.height - dy}, origin, rotation, tint);
-	//		}
-	//	}
-	//	else if (dest.height <= tileHeight)
-	//	{
-	//		// Tiled horizontally (one row)
-	//		int dx = 0;
-	//		for (;dx+tileWidth < dest.width; dx += tileWidth)
-	//		{
-	//			DrawTexturePro(texture, (Rectangle){source.x, source.y, source.width, ((float)dest.height/tileHeight)*source.height}, (Rectangle){dest.x + dx, dest.y, (float)tileWidth, dest.height}, origin, rotation, tint);
-	//		}
+		if ((dest.width < tileWidth) && (dest.height < tileHeight))
+		{
+			// Can fit only one tile
+			DrawTexturePro(texture,
+				new Rectangle(source.X, source.Y, (dest.width / tileWidth) * source.width, (dest.height / tileHeight) * source.height),
+				new Rectangle(dest.x, dest.y, dest.width, dest.height), origin, rotation, tint);
+		}
+		else if (dest.width <= tileWidth)
+		{
+			// Tiled vertically (one column)
+			int dy = 0;
+			for (; dy + tileHeight < dest.height; dy += tileHeight)
+			{
+				DrawTexturePro(texture, new Rectangle(source.x, source.y, (dest.width / tileWidth) * source.width, source.height), new Rectangle(dest.x, dest.y + dy, dest.width, tileHeight), origin, rotation, tint);
+			}
 
-	//		// Fit last tile
-	//		if (dx < dest.width)
-	//		{
-	//			DrawTexturePro(texture, (Rectangle){source.x, source.y, ((float)(dest.width - dx)/tileWidth)*source.width, ((float)dest.height/tileHeight)*source.height},
-	//						(Rectangle){dest.x + dx, dest.y, dest.width - dx, dest.height}, origin, rotation, tint);
-	//		}
-	//	}
-	//	else
-	//	{
-	//		// Tiled both horizontally and vertically (rows and columns)
-	//		int dx = 0;
-	//		for (;dx+tileWidth < dest.width; dx += tileWidth)
-	//		{
-	//			int dy = 0;
-	//			for (;dy+tileHeight < dest.height; dy += tileHeight)
-	//			{
-	//				DrawTexturePro(texture, source, (Rectangle){dest.x + dx, dest.y + dy, (float)tileWidth, (float)tileHeight}, origin, rotation, tint);
-	//			}
+			// Fit last tile
+			if (dy < dest.height)
+			{
+				DrawTexturePro(texture, new Rectangle(source.x, source.y, ((float)dest.width / tileWidth) * source.width, ((float)(dest.height - dy) / tileHeight) * source.height), new Rectangle(dest.x, dest.y + dy, dest.width, dest.height - dy), origin, rotation, tint);
+			}
 
-	//			if (dy < dest.height)
-	//			{
-	//				DrawTexturePro(texture, (Rectangle){source.x, source.y, source.width, ((float)(dest.height - dy)/tileHeight)*source.height},
-	//					(Rectangle){dest.x + dx, dest.y + dy, (float)tileWidth, dest.height - dy}, origin, rotation, tint);
-	//			}
-	//		}
+		}
+		else if (dest.height <= tileHeight)
+		{
+			// Tiled horizontally (one row)
+			int dx = 0;
+			for (; dx + tileWidth < dest.width; dx += tileWidth)
+			{
+				DrawTexturePro(texture, new Rectangle(source.x, source.y, source.width, ((float)dest.height / tileHeight) * source.height), new Rectangle(dest.x + dx, dest.y, (float)tileWidth, dest.height), origin, rotation, tint);
+			}
 
-	//		// Fit last column of tiles
-	//		if (dx < dest.width)
-	//		{
-	//			int dy = 0;
-	//			for (;dy+tileHeight < dest.height; dy += tileHeight)
-	//			{
-	//				DrawTexturePro(texture, (Rectangle){source.x, source.y, ((float)(dest.width - dx)/tileWidth)*source.width, source.height},
-	//						(Rectangle){dest.x + dx, dest.y + dy, dest.width - dx, (float)tileHeight}, origin, rotation, tint);
-	//			}
+			// Fit last tile
+			if (dx < dest.width)
+			{
+				DrawTexturePro(texture, new Rectangle(source.x, source.y, ((float)(dest.width - dx) / tileWidth) * source.width, ((float)dest.height / tileHeight) * source.height), new Rectangle(dest.x + dx, dest.y, dest.width - dx, dest.height), origin, rotation, tint);
+			}
 
-	//			// Draw final tile in the bottom right corner
-	//			if (dy < dest.height)
-	//			{
-	//				DrawTexturePro(texture, (Rectangle){source.x, source.y, ((float)(dest.width - dx)/tileWidth)*source.width, ((float)(dest.height - dy)/tileHeight)*source.height},
-	//					(Rectangle){dest.x + dx, dest.y + dy, dest.width - dx, dest.height - dy}, origin, rotation, tint);
-	//			}
-	//		}
-	//	}
-	//}
+		}
+		else
+		{
+			// Tiled both horizontally and vertically (rows and columns)
+			int dx = 0;
+			for (; dx + tileWidth < dest.width; dx += tileWidth)
+			{
+				int dy = 0;
+
+				for (; dy + tileHeight < dest.height; dy += tileHeight)
+				{
+					DrawTexturePro(texture, source, new Rectangle(dest.x + dx, dest.y + dy, (float)tileWidth, (float)tileHeight), origin, rotation, tint);
+				}
+
+				if (dy < dest.height)
+				{
+					DrawTexturePro(texture, new Rectangle(source.x, source.y, source.width, ((float)(dest.height - dy) / tileHeight) * source.height), new Rectangle(dest.x + dx, dest.y + dy, (float)tileWidth, dest.height - dy), origin, rotation, tint);
+				}
+			}
+
+			// Fit last column of tiles
+			if (dx < dest.width)
+			{
+				int dy = 0;
+				for (; dy + tileHeight < dest.height; dy += tileHeight)
+				{
+					DrawTexturePro(texture, new Rectangle(source.x, source.y, ((float)(dest.width - dx) / tileWidth) * source.width, source.height), new Rectangle(dest.x + dx, dest.y + dy, dest.width - dx, (float)tileHeight), origin, rotation, tint);
+				}
+
+				if (dy < dest.height)
+				{
+					DrawTexturePro(texture, new Rectangle(source.x, source.y, ((float)(dest.width - dx) / tileWidth) * source.width, ((float)(dest.height - dy) / tileHeight) * source.height), new Rectangle(dest.x + dx, dest.y + dy, dest.width - dx, dest.height - dy), origin, rotation, tint);
+				}
+			}
+
+		}
+	}
 }

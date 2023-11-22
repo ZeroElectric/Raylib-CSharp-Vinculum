@@ -49,7 +49,7 @@ public unsafe static class SdfFonts
 		string msg = "Signed Distance Fields";
 
 		// Loading file to memory
-		uint fileSize = 0;
+		int fileSize = 0;
 		byte* fileData = LoadFileData("resources/anonymous_pro_bold.ttf", out fileSize);
 
 		// Default font generation from TTF font
