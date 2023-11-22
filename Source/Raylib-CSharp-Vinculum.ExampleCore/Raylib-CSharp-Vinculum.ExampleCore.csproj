@@ -45,6 +45,28 @@
       <None Remove="resources\models\obj\turret_diffuse.png" />
       <None Remove="resources\models\obj\well.obj" />
       <None Remove="resources\models\obj\well_diffuse.png" />
+      <None Remove="resources\models\wavefront\barracks.obj" />
+      <None Remove="resources\models\wavefront\barracks_diffuse.png" />
+      <None Remove="resources\models\wavefront\bridge.obj" />
+      <None Remove="resources\models\wavefront\bridge_diffuse.png" />
+      <None Remove="resources\models\wavefront\castle.obj" />
+      <None Remove="resources\models\wavefront\castle_diffuse.png" />
+      <None Remove="resources\models\wavefront\church.obj" />
+      <None Remove="resources\models\wavefront\church_diffuse.png" />
+      <None Remove="resources\models\wavefront\cube.obj" />
+      <None Remove="resources\models\wavefront\cube_diffuse.png" />
+      <None Remove="resources\models\wavefront\house.obj" />
+      <None Remove="resources\models\wavefront\house_diffuse.png" />
+      <None Remove="resources\models\wavefront\market.obj" />
+      <None Remove="resources\models\wavefront\market_diffuse.png" />
+      <None Remove="resources\models\wavefront\plane.obj" />
+      <None Remove="resources\models\wavefront\plane_diffuse.png" />
+      <None Remove="resources\models\wavefront\turret.obj" />
+      <None Remove="resources\models\wavefront\turret_diffuse.png" />
+      <None Remove="resources\models\wavefront\watermill.obj" />
+      <None Remove="resources\models\wavefront\watermill_diffuse.png" />
+      <None Remove="resources\models\wavefront\well.obj" />
+      <None Remove="resources\models\wavefront\well_diffuse.png" />
       <None Remove="resources\shaders\cubes-panning.fs" />
     </ItemGroup>
 </Project>
