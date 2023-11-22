@@ -1,60 +1,55 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>/*******************************************************************************************
-//*
-//* raylib[models] example - Skybox loading and drawing
-//*
-//* This example has been created using raylib 3.5 (www.raylib.com)
-//* raylib is licensed under an unmodified zlib/libpng license(View raylib.h for details)
-//*
-//* Copyright(c) 2017-2020 Ramon Santamaria(@raysan5)
-//*
-//********************************************************************************************/
-///</summary>
+/*******************************************************************************************
+*
+*   raylib [models] example - Skybox loading and drawing
+*
+*   Example originally created with raylib 1.8, last time updated with raylib 4.0
+*
+*   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
+*   BSD-like license that allows static linking with closed source software
+*
+*   Copyright (c) 2017-2023 Ramon Santamaria (@raysan5)
+*
+********************************************************************************************/
+
 public unsafe static class Skybox
 {
-	//#if defined(PLATFORM_DESKTOP)
-	//#define GLSL_VERSION            330
-	//#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
-	//#define GLSL_VERSION            100
-	//#endif
+
 	const int GLSL_VERSION = 330;
 
 	public static int main()
 	{
 
-
-		//// Generate cubemap (6 faces) from equirectangular (panorama) texture
-		//static TextureCubemap GenTextureCubemap(Shader shader, Texture2D panorama, int size, int format);
-
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
 		InitWindow(screenWidth, screenHeight, "raylib [models] example - skybox loading and drawing");
 
 		// Define the camera to look into our 3d world
-		Camera camera = new(new(1.0f, 1.0f, 1.0f), new(4.0f, 1.0f, 4.0f), new(0.0f, 1.0f, 0.0f), 45.0f, 0);
+		Camera camera = new(new(1.0f, 1.0f, 1.0f), new(4.0f, 1.0f, 4.0f), new(0.0f, 1.0f, 0.0f), 45.0f, CAMERA_PERSPECTIVE);
 
 		// Load skybox model
 		Mesh cube = GenMeshCube(1.0f, 1.0f, 1.0f);
 		Model skybox = LoadModelFromMesh(cube);
 
-		bool useHDR = true;
+		bool useHDR = false;
 
 		// Load skybox shader and set required locations
 		// NOTE: Some locations are automatically set at shader loading
@@ -71,7 +66,6 @@ public unsafe static class Skybox
 
 		SetShaderValue(shdrCubemap, GetShaderLocation(shdrCubemap, "equirectangularMap"), 0, SHADER_UNIFORM_INT);
 
-		//char skyboxFileName[256];
 		string? skyboxFileName = null;
 
 		Texture2D panorama;
@@ -90,7 +84,7 @@ public unsafe static class Skybox
 			// despite texture can be successfully created.. so using PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 instead of PIXELFORMAT_UNCOMPRESSED_R32G32B32A32
 			skybox.materials[0].maps[(int)MATERIAL_MAP_CUBEMAP].texture = GenTextureCubemap(shdrCubemap, panorama, 1024, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
 
-			//UnloadTexture(panorama);    // Texture not required anymore, cubemap already generated
+			UnloadTexture(panorama);    // Texture not required anymore, cubemap already generated
 		}
 		else
 		{
@@ -100,59 +94,57 @@ public unsafe static class Skybox
 			UnloadImage(img);
 		}
 
-		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
-												//--------------------------------------------------------------------------------------
+		DisableCursor();                // Limit cursor to relative movement inside the window
 
-		// Main game loop
-		while (!WindowShouldClose())            // Detect window close button or ESC key
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_FIRST_PERSON);          // Update camera
 
 			// Load new cubemap texture on drag&drop
 			if (IsFileDropped())
 			{
-				int count = 0;
-				//char** droppedFiles = GetDroppedFiles(&count);
-				string[] droppedFiles = GetDroppedFilesAndClear();
-				count = droppedFiles.Length;
+				FilePathList droppedFiles = LoadDroppedFiles();
 
-				if (count == 1)         // Only support one file dropped
+				if (droppedFiles.count == 1)         // Only support one file dropped
 				{
-					//if (IsFileExtension(droppedFiles[0], ".png;.jpg;.hdr;.bmp;.tga"))					
-					if (droppedFiles[0].EndsWith(".png", ".jpg", ".hdr", ".bmp", ".tga"))
+					if (IsFileExtension(droppedFiles.paths[0], ".png;.jpg;.hdr;.bmp;.tga"))
 					{
 						// Unload current cubemap texture and load new one
 						UnloadTexture(skybox.materials[0].maps[(int)MATERIAL_MAP_CUBEMAP].texture);
+
 						if (useHDR)
 						{
-							//unload prior texture
-							UnloadTexture(panorama);
-							panorama = LoadTexture(droppedFiles[0]);
+							panorama = LoadTexture(droppedFiles.paths[0]);
 
 							// Generate cubemap from panorama texture
 							skybox.materials[0].maps[(int)MATERIAL_MAP_CUBEMAP].texture = GenTextureCubemap(shdrCubemap, panorama, 1024, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
 
+							UnloadTexture(panorama);
 						}
 						else
 						{
-							Image img = LoadImage(droppedFiles[0]);
+							Image img = LoadImage(droppedFiles.paths[0]);
 							skybox.materials[0].maps[(int)MATERIAL_MAP_CUBEMAP].texture = LoadTextureCubemap(img, CUBEMAP_LAYOUT_AUTO_DETECT);
 							UnloadImage(img);
 						}
 
-						//TextCopy(skyboxFileName, droppedFiles[0]);
-						skyboxFileName = droppedFiles[0];
+						TextCopy(skyboxFileName, droppedFiles.paths[0]);
 					}
 				}
 
-				//ClearDroppedFiles();    // Clear internal buffers
+				UnloadDroppedFiles(droppedFiles);
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -170,7 +162,7 @@ public unsafe static class Skybox
 
 			EndMode3D();
 
-			DrawTextureEx(panorama, new(0, 0), 0.0f, 0.5f, WHITE);
+			//DrawTextureEx(panorama, new(0, 0), 0.0f, 0.5f, WHITE);
 
 			if (useHDR) DrawText(TextFormat("Panorama image from hdrihaven.com: %s", GetFileName(skyboxFileName)), 10, GetScreenHeight() - 20, 10, BLACK);
 			else DrawText(TextFormat(": %s", GetFileName(skyboxFileName)), 10, GetScreenHeight() - 20, 10, BLACK);
@@ -178,34 +170,20 @@ public unsafe static class Skybox
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadShader(skybox.materials[0].shader);
 		UnloadTexture(skybox.materials[0].maps[(int)MATERIAL_MAP_CUBEMAP].texture);
 
 		UnloadModel(skybox);        // Unload skybox model
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
-	public static bool EndsWith(this string text, params string[] endings)
-	{
-		foreach (var end in endings)
-		{
-			if (text.EndsWith(end))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-
 
 	// Generate cubemap texture from HDR texture
 	static TextureCubemap GenTextureCubemap(Shader shader, Texture2D panorama, int size, PixelFormat format)
@@ -223,8 +201,6 @@ public unsafe static class Skybox
 		rlFramebufferAttach(fbo, rbo, RL_ATTACHMENT_DEPTH, RL_ATTACHMENT_RENDERBUFFER, 0);
 		rlFramebufferAttach(fbo, cubemap.id, RL_ATTACHMENT_COLOR_CHANNEL0, RL_ATTACHMENT_CUBEMAP_POSITIVE_X, 0);
 
-		// Check if framebuffer is complete with attachments (valid)
-		//if (rlFramebufferComplete(fbo)) TraceLog(LOG_INFO, "FBO: [ID %i] Framebuffer object created successfully", fbo);
 		//------------------------------------------------------------------------------------------
 
 		// STEP 2: Draw to framebuffer

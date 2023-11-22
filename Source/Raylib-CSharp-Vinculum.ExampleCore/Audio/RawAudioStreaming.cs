@@ -1,15 +1,15 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Audio;
 
@@ -28,10 +28,6 @@ namespace ZeroElectric.Vinculum.ExampleCore.Audio;
 
 public unsafe static class RawAudioStreaming
 {
-
-	// #include <stdlib.h>         // Required for: malloc(), free()
-	// # include <math.h>           // Required for: MathF.Sin()
-	// # include <string.h>         // Required for: memcpy()
 
 	const int MAX_SAMPLES = 512;
 	const int MAX_SAMPLES_PER_UPDATE = 4096;
@@ -79,11 +75,11 @@ public unsafe static class RawAudioStreaming
 
 		Vector2 position = new Vector2(0, 0);
 
-		SetTargetFPS(30);               // Set our game to run at 30 frames-per-second
-										//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
@@ -147,7 +143,6 @@ public unsafe static class RawAudioStreaming
 				// Copy finished frame to audio stream
 				UpdateAudioStream(stream, writeBuf, MAX_SAMPLES_PER_UPDATE);
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
@@ -168,29 +163,18 @@ public unsafe static class RawAudioStreaming
 			}
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
-		//free(data);                 // Unload sine wave data
-		//free(writeBuf);             // Unload write buffer
 
 		UnloadAudioStream(stream);   // Close raw audio stream and delete buffers from RAM
 		CloseAudioDevice();         // Close audio device (music streaming is automatically stopped)
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 
 
 }
-
-
-
-
-
-
-

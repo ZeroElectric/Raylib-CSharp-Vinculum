@@ -54,8 +54,8 @@ public unsafe static class CustomUniform
 		camera.fovy = 45.0f;
 		camera.projection_ = CAMERA_PERSPECTIVE;
 
-		Model model = LoadModel("resources/models/barracks.obj");                   // Load OBJ model
-		Texture2D texture = LoadTexture("resources/models/barracks_diffuse.png");   // Load model texture (diffuse map)
+		Model model = LoadModel("resources/models/wavefront/barracks.obj");                   // Load OBJ model
+		Texture2D texture = LoadTexture("resources/models/wavefront/barracks_diffuse.png");   // Load model texture (diffuse map)
 		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;                     // Set model diffuse texture
 
 		Vector3 position = new(0.0f, 0.0f, 0.0f);                                    // Set model position

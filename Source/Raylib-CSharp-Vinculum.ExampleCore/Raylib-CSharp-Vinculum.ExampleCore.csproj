@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>ZeroElectric.Vinculum.Examples</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -25,26 +25,5 @@
         <Content Include="resources\**">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-    </ItemGroup>
-    <ItemGroup>
-      <None Remove="resources\models\gltf\raylib_logo_3d.glb" />
-      <None Remove="resources\models\gltf\robot.glb" />
-      <None Remove="resources\models\obj\bridge.obj" />
-      <None Remove="resources\models\obj\bridge_diffuse.png" />
-      <None Remove="resources\models\obj\castle.obj" />
-      <None Remove="resources\models\obj\castle_diffuse.png" />
-      <None Remove="resources\models\obj\cube.obj" />
-      <None Remove="resources\models\obj\cube_diffuse.png" />
-      <None Remove="resources\models\obj\house.obj" />
-      <None Remove="resources\models\obj\house_diffuse.png" />
-      <None Remove="resources\models\obj\market.obj" />
-      <None Remove="resources\models\obj\market_diffuse.png" />
-      <None Remove="resources\models\obj\plane.obj" />
-      <None Remove="resources\models\obj\plane_diffuse.png" />
-      <None Remove="resources\models\obj\turret.obj" />
-      <None Remove="resources\models\obj\turret_diffuse.png" />
-      <None Remove="resources\models\obj\well.obj" />
-      <None Remove="resources\models\obj\well_diffuse.png" />
-      <None Remove="resources\shaders\cubes-panning.fs" />
     </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
   - Windows & Linux supported,
   - Supports .Net 5+, Mono 6.4+, Core 3.0,
   - 1-1 bindings + convenience wrappers to make it easier to use,
-  - Includes bindings for all of raylib's extras:
+  - Includes bindings for the following raylib extras:
     - `raylib` : Core features, including Audio,
     - `rlgl` : OpenGl abstraction,
     - `raygui` : An immediate mode GUI framework,
@@ -13,15 +13,15 @@
     - `rres` : A simple and easy-to-use file-format to package resources,
     - `easings` : Use for simple animations (C# Managed Port),
     - `raymath` : A game math library (C# Managed Port),
-    - `rcamera` : A basic camera system (Direct C# port of rcamera.h).
-  - Requires `unsafe` keyword for 3d workflows. A basic guide on pointers can be found [here](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/unsafe-code), 
-  - A focus on performance. No runtime allocations if at all possible,
-  - A fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) as the maintainer wishes to step down,
+    - `rcamera` : A basic camera system (C# port of rcamera.h).
+  - Requires `unsafe` keyword. A basic guide on pointers can be found [here](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/unsafe-code), 
+  - A focus on performance & minimal runtime allocations,
+  - A fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo) as the maintainer wished to step down,
   - Very little intellisense docs. [You can read the Raylib cheatsheet for some help](https://www.raylib.com/cheatsheet/cheatsheet.html) or [view the examples](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.ExampleCore)
   - Go give Ray some love ❤️, https://github.com/sponsors/raysan5
 
 > **Warning**:
-> 3D users: **be sure you check the FAQ & Tips section below**, 
+> **be sure you check the FAQ & Tips section below**, 
 > especially on how you need to use `Matrix4x4.Transpose()` when sending Matricies
 > to raylib.
 
@@ -30,7 +30,7 @@
 > read the `Differences` section below
 
 ## Wait a minute haven't I seen this repository before?
-Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo), the Maintainer (jasonswearingen/Novaleaf) announced they wished to step down from the project and seeing as I use the project for a set a game-making tools I decided to fork the project and greatly optimize the project layout for better long term maintainability. Why did I change the name? Honestly the name `Raylib-CsLo` is kinda boring, and being inspired by projects with names like [Vortice](https://github.com/amerkoleci/Vortice.Windows), I chose the name `Vinculum [vin·cu·lum]` witch means **bond** in Latin, also I didn't want to "steal" the name, other then the name, the only real change from a end-user point of view is a namespace difference `Raylib-CsLo > ZeroElectric.Vinculum`
+Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo), the Maintainer (jasonswearingen/Novaleaf) announced they wished to step down from the project and seeing as I use the project for a set a game-development tools I decided to fork the project and greatly optimize the project layout for better long term maintainability. Why did I change the name? Honestly the name `Raylib-CsLo` is kind of boring, and being inspired by projects with names like [Vortice](https://github.com/amerkoleci/Vortice.Windows), I chose the name `Vinculum [vin·cu·lum]` witch means **bond** in Latin, also I didn't want to "steal" the name, other then the name, the only real change from a 'end-user' point of view is a namespace difference `Raylib-CsLo > ZeroElectric.Vinculum`
 
 ## What is **Raylib**?
 
@@ -59,7 +59,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 ### Prerequisites
 
 - Visual Studio 2022 with the following workloads:
-  - .NET SDK (NET6+)
+  - .NET SDK (NET8+)
   - Visual C++ Toolset
   - MSVC v142 (or higher) x64/x86
 
@@ -89,7 +89,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 ### Prerequisites
 
-- **.NET SDK (NET7+)**
+- **.NET SDK (NET8+)**
   - You can find more info on how to install .NET on Linux [here](https://learn.microsoft.com/en-us/dotnet/core/install/linux)
 
 - **Install Build-Essential for linux** 
@@ -172,7 +172,7 @@ public static class Program
 ```
 
 - View code example collection [here](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.ExampleCore)
-- raylib 4.5 cheatsheet [here](https://www.raylib.com/cheatsheet/cheatsheet.html)
+- raylib 5.0 cheatsheet [here](https://www.raylib.com/cheatsheet/cheatsheet.html)
 - raylib architecture design [here](https://github.com/raysan5/raylib/wiki/raylib-architecture)
 
 # ❓ FAQ & Tips
@@ -204,7 +204,7 @@ public static class Program
 
  ### **Can or Should I use `RayMath`?**
   - `ZeroElectric.Vinculum.RayMath` contains a lot of helpful methods for doing game related math.
-  - The `RayMath` helper methods have been translated into C#, this makes the code pretty fast, but if the same method exists under `System.Numerics` you should use that instead, because the .Net CLR treats things under System.Numerics special, and optimizes it better.
+  - The `RayMath` helper methods have been translated into C#, this makes the code pretty fast, but if the same method exists under `System.Numerics` you should use that instead, because the .Net CLR treats things under System.Numerics special, and optimizes better.
 
 ### **I ran the Example project in a profiler. What are all these `sbyte[]` arrays being allocated?**
   - A pool of `sbyte[]` arrays are allocated for string marshalling purposes, to avoid runtime allocations.
@@ -226,7 +226,7 @@ public static class Program
 
 # Known Issues
 
-- When using `raygui`, if you close a raylib window after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGui ui elements will be broken, 
+- When using `raygui`, if you close a window made with raylib after calling `RayGui.GuiLoadStyleDefault()` and then open a new raylib window (within the same running instance), multiple rayGUI ui elements will be broken, 
 - `Texture2D` doesn't exist, it's just an alias for `Texture`, use that instead,
 - `LogCustom()` is ported but doesn't support variable length arguments,
 - The `Text.Unicode` example doesn't render unicode properly.

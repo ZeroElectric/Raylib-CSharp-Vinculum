@@ -14,9 +14,62 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageOutputDir>..\..\Output\nuget-bin\</PackageOutputDir>
         <RepositoryUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</RepositoryUrl>
-        <Version>4.5.2</Version>
-        <PackageReleaseNotes>Release Notes: 
+        <Version>5.0</Version>
+        <PackageReleaseNotes>
+Release Notes: 
+----------------------------------------------
+5.0 (Nov 22 2023), Raylib 5.0 | RayGUI 4.0 
+----------------------------------------------
+ 
+Raylib and RayGUI Changes :
+
+- Raylib 5.0
+    - [BRAKING] REMOVED: GenImageGradientH() and GenImageGradientV()
+    - [BRAKING] RENAMED: LoadFont*() parameter names for consistenc
+    - ADDED: New Splines drawing and evaluation API
+    - ADDED: IsKeyPressedRepeat() on PLATFORM_DESKTOP
+    - ADDED: SetWindowMaxSize() for desktop and web
+    - ADDED: LoadRandomSequence() / UnloadRandomSequence()
+    - ADDED: DrawCircleLinesV()
+    - ADDED: ExportImageToMemory()
+    - ADDED: GenImageGradientSquare()
+    - ADDED: GenImageLinearGradient()
+    - ADDED: LoadSoundAlias()
+    - ADDED: GetMasterVolume()
+    - REDESIGNED: LoadOBJ(), to avoid mesh splitting by materials
+    - REVIEWED: Support .vox model file version 200 
+    - REVIEWED: Optimized and simplified  the gesture system 
+    - And much much more
+
+With over 95 function changed and additions be sure to read up on all of the changes over on raylib's' [CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG)!
+
+- RayGUI 4.0
+    - [BRAKING] REDESIGNED: Multiple functions and what they return, check out raygui 4.0's [CHANGELOG](https://github.com/raysan5/raygui/releases/tag/4.0) for a detailed list of changes
+    - [BRAKING] REDESIGNED: All controls return result are now 'int'
+    - ADDED: GuiToggleSlider()
+    - ADDED: GuiColorPickerHSV() and GuiColorPanelHSV()
+    - ADDED: Multiple new icons, mostly compiler related
+    - ADDED: New enum values: GuiTextAlignment, GuiTextAlignmentVertical, GuiTextWrapMode
+
+Vinculum Changes
+- Added two new examples
+    - SplinesDrawing
+    - MixedAudioProcessing
+- Created a Attributions file for example assets
+- Optimized the layout of multiple of the examples
+- Optimized port of rcamera, #6 
+- Fixed .obj example files being missing
+- Fixed a crash on Linux with the TestingProgram
+- Fixed all examples with freecamera to behave properly
+
+Known Issues:
+
+- GuiCheckBox wrapper implementation does not have correct API, returns bool like the raygui 3.x API and not int.
+- Many of the new API's do not have a managed sbyte* wrapper implementations.
+
+----------------------------------------------
 4.5.2 (May 11 2023), Raygui 3.6 
+----------------------------------------------
 
 - Better Linux support
 
@@ -63,7 +116,7 @@ The following functions have been removed or renamed:
 - RENAMED: TextCodepointsToUTF8() to LoadUTF8()
 - RENAMED: GetCodepoint() -&gt; GetCodepointNext()
 
-With more then 25 new functions and 40+ functions revsions make sure to check out raylib's [CHANGELOG]([CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG)) for a detailed list of changes in raylib 4.5
+With more then 25 new functions and 40+ functions revsions make sure to check out raylib's [CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG) for a detailed list of changes in raylib 4.5
 
 4.5.0-rc1: 
 - Added RayCamera
@@ -73,25 +126,30 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
 
 4.2.0.0-alpha:
 - Initial release of Raylib-CSharp-Vinculum, a C# binding for Raylib 4.2, supports Windows.
-
-</PackageReleaseNotes>
+        </PackageReleaseNotes>
         <Authors>ZeroElectric;Minmoose</Authors>
         <Company>ZeroElectricGames</Company>
         <Description>
-            AutoGen C# bindings for Raylib 4.5 (https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.
-            - Windows &amp; Linux supported.
-            - Supports net5+
-            - 1-1 bindings + convenience wrappers to make it easier to use.
-            - Includes bindings for all of Raylib's extras: RayGui, Easings, Physac, RlGl, RayMath &amp; RRES.
-            - Requires `unsafe` for 3d workflows.
-            - A focus on performance. No runtime allocations if at all possible.
-            - A fork of Raylib-CsLo (https://github.com/NotNotTech/Raylib-CsLo).
-            - Very few intellisense docs. You can read the Raylib cheatsheet for some help (https://www.raylib.com/cheatsheet/cheatsheet.html) or view the examples (https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.ExampleCore)
-        </Description>
+AutoGen C# bindings for Raylib 5.0 (https://github.com/raysan5/raylib), a simple and easy-to-use 2d/3d videogame framework, similar to XNA / MonoGame.
+- Windows &amp; Linux supported.
+- Supports net5+ 
+- 1-1 bindings + convenience wrappers to make it easier to use.
+- Includes bindings for all of Raylib's extras: RayGui, Easings, Physac, RlGl, RayMath &amp; RRES.
+- Requires `unsafe` keyword.
+- A focus on performance with minimal runtime allocations.
+- A fork of Raylib-CsLo (https://github.com/NotNotTech/Raylib-CsLo).
+
+Very few intellisense docs. 
+
+You can read the Raylib cheatsheet for some help:
+(https://www.raylib.com/cheatsheet/cheatsheet.html) 
+Or view the examples:
+(https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.ExampleCore)
+</Description>
         <PackageProjectUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</PackageProjectUrl>
         <PackageTags>zeroelectric;raylib-cslo;raylib-csharp;vinculum;raylib-csharp-vinculum;raylib;gamedev;binding;rendering;3d;2d;graphics;opengl;physics;audio;</PackageTags>
         <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
-        <AssemblyVersion>4.5.2</AssemblyVersion>
+        <AssemblyVersion>5.0</AssemblyVersion>
         <Copyright>2022-2023 (C) ZeroElectric, Raylib-CsLo &amp; Contributors</Copyright>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <IsPublishable>False</IsPublishable>
@@ -99,6 +157,7 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
         <Title>Raylib CSharp Vinculum</Title>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageOutputPath>..\..\Output</PackageOutputPath>
+        <PackageIcon>raylib-csharp-vinculum_logo_256x256.png</PackageIcon>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -125,7 +184,6 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
 
     <ItemGroup>
       <None Remove="raylib.dll" />
-      <None Remove="raylib.pdb" />
     </ItemGroup>
 
     <ItemGroup>
@@ -134,14 +192,13 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <Pack>false</Pack>
       </Content>
-      <Content Include="raylib.pdb">
-        <PackagePath>runtimes</PackagePath>
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-        <Pack>false</Pack>
-      </Content>
     </ItemGroup>
 
     <ItemGroup>
+      <None Include="..\..\.assets\raylib-csharp-vinculum_logo_256x256.png" Link="build\raylib-csharp-vinculum_logo_256x256.png">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
       <None Include="..\..\README.md">
         <Pack>True</Pack>
         <PackagePath>\</PackagePath>
@@ -152,15 +209,10 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
       <Content Update="runtimes\win-x64\native\raylib.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
-      <Content Update="runtimes\win-x64\native\raylib.exp">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      </Content>
-      <Content Update="runtimes\win-x64\native\raylib.lib">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      </Content>
-      <Content Update="runtimes\win-x64\native\raylib.pdb">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="build\" />
     </ItemGroup>
 
 </Project>

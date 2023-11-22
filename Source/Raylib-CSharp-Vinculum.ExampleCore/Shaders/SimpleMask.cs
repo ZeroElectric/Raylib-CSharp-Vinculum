@@ -1,15 +1,15 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 
@@ -35,7 +35,6 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 
 public unsafe static class SimpleMask
 {
-
 
 #if PLATFORM_DESKTOP
 	const int GLSL_VERSION = 330;
@@ -94,13 +93,19 @@ public unsafe static class SimpleMask
 		model2.materials[0].shader = shader;
 
 		int framesCounter = 0;
-		Vector3 rotation = new(0);       // Model rotation angles
 
-		SetTargetFPS(60);               // Set  to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
+		// Model rotation angles
+		Vector3 rotation = new(0);       
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Limit cursor to relative movement inside the window
+		DisableCursor();
+		
+		// Set  to run at 60 frames-per-second
+		SetTargetFPS(60);               
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())    
 		{
 			// Update
 			//----------------------------------------------------------------------------------
@@ -116,12 +121,12 @@ public unsafe static class SimpleMask
 			// Rotate one of the models
 			model1.transform = MatrixRotateXYZ(rotation);
 
-			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
-
-			//----------------------------------------------------------------------------------
+			// Update camera
+			UpdateCamera(ref camera, CAMERA_FREE);          
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(DARKBLUE);
@@ -131,7 +136,7 @@ public unsafe static class SimpleMask
 			DrawModel(model1, new Vector3(0.5f, 0, 0), 1, WHITE);
 			DrawModelEx(model2, new Vector3(-.5f, 0, 0), new Vector3(1, 1, 0), 50, new Vector3(1, 1, 1), WHITE);
 			DrawModel(model3, new Vector3(0, 0, -1.5f), 1, WHITE);
-			DrawGrid(10, 1.0f);        // Draw a grid
+			DrawGrid(10, 1.0f);       
 
 			EndMode3D();
 
@@ -141,35 +146,26 @@ public unsafe static class SimpleMask
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadModel(model1);
 		UnloadModel(model2);
 		UnloadModel(model3);
 
-		UnloadTexture(texDiffuse);  // Unload default diffuse texture
-		UnloadTexture(texMask);     // Unload texture mask
+		// Unload default diffuse texture
+		UnloadTexture(texDiffuse);
+		// Unload texture mask
+		UnloadTexture(texMask);
 
-		UnloadShader(shader);       // Unload shader
+		// Unload shader
+		UnloadShader(shader);
 
-		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
+		// Close window and OpenGL context
+		CloseWindow();              
 
 		return 0;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

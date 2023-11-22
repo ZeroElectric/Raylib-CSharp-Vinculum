@@ -1,3 +1,52 @@
+# 5.0 (Nov 22 2023), Raylib 5.0 | RayGUI 4.0 
+ 
+### Raylib & RayGUI Changes :
+
+- Raylib 5.0
+    - [BRAKING] REMOVED: GenImageGradientH() and GenImageGradientV()
+    - [BRAKING] RENAMED: LoadFont*() parameter names for consistenc
+    - ADDED: New Splines drawing and evaluation API
+    - ADDED: IsKeyPressedRepeat() on PLATFORM_DESKTOP
+    - ADDED: SetWindowMaxSize() for desktop and web
+    - ADDED: LoadRandomSequence() / UnloadRandomSequence()
+    - ADDED: DrawCircleLinesV()
+    - ADDED: ExportImageToMemory()
+    - ADDED: GenImageGradientSquare()
+    - ADDED: GenImageLinearGradient()
+    - ADDED: LoadSoundAlias()
+    - ADDED: GetMasterVolume()
+    - REDESIGNED: LoadOBJ(), to avoid mesh splitting by materials
+    - REVIEWED: Support .vox model file version 200 
+    - REVIEWED: Optimized and simplified  the gesture system 
+    - And much much more
+
+#### With over 95 function changed & additions be sure to read up on all of the changes over on raylib's' [CHANGELOG]([CHANGELOG](https://github.com/raysan5/raylib/blob/master/CHANGELOG))!
+
+- RayGUI 4.0
+    - [BRAKING] REDESIGNED: Multiple functions and what they return, check out raygui 4.0's [CHANGELOG]([CHANGELOG](https://github.com/raysan5/raygui/releases/tag/4.0)) for a detailed list of changes
+    - [BRAKING] REDESIGNED: All controls return result are now 'int'
+    - ADDED: GuiToggleSlider()
+    - ADDED: GuiColorPickerHSV() and GuiColorPanelHSV()
+    - ADDED: Multiple new icons, mostly compiler related
+    - ADDED: New enum values: GuiTextAlignment, GuiTextAlignmentVertical, GuiTextWrapMode
+
+
+### Vinculum Changes
+- Added two new examples
+    - SplinesDrawing
+    - MixedAudioProcessing
+- Created a Attributions file for example assets
+- Optimized the layout of multiple of the examples
+- Optimized port of rcamera, #6 
+- Fixed .obj example files being missing
+- Fixed a crash on Linux with the TestingProgram
+- Fixed all examples with freecamera to behave properly
+
+#### Known Issues:
+
+- GuiCheckBox wrapper implementation does not have correct API, returns bool like the raygui 3.x API and not int.
+- Many of the new API's do not have a managed sbyte* wrapper implementations.
+
 # 4.5.1 (Apr 20 2023), Raygui 3.5 
 
 ### Updated raygui to 3.5 
