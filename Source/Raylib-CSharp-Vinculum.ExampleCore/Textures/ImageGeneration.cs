@@ -38,8 +38,8 @@ public unsafe static class ImageGeneration
 
 		InitWindow(screenWidth, screenHeight, "raylib [textures] example - procedural images generation");
 
-		Image verticalGradient = GenImageGradientV(screenWidth, screenHeight, RED, BLUE);
-		Image horizontalGradient = GenImageGradientH(screenWidth, screenHeight, RED, BLUE);
+		Image verticalGradient = GenImageGradientLinear(screenWidth, screenHeight, 0, RED, BLUE);
+		Image horizontalGradient = GenImageGradientLinear(screenWidth, screenHeight, 360, RED, BLUE);
 		Image radialGradient = GenImageGradientRadial(screenWidth, screenHeight, 0.0f, WHITE, BLACK);
 		Image checkedImage = GenImageChecked(screenWidth, screenHeight, 32, 32, RED, BLUE);
 		Image whiteNoise = GenImageWhiteNoise(screenWidth, screenHeight, 0.5f);

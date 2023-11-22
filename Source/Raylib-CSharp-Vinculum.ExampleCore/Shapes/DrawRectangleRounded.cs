@@ -42,14 +42,14 @@ public unsafe static class DrawRectangleRounded
 		InitWindow(screenWidth, screenHeight, "raylib [shapes] example - draw rectangle rounded");
 
 		float roundness = 0.2f;
-		int width = 200;
-		int height = 100;
-		int segments = 0;
-		int lineThick = 1;
+		float width = 200;
+		float height = 100;
+		float segments = 0;
+		float lineThick = 1;
 
-		bool drawRect = false;
-		bool drawRoundedRect = true;
-		bool drawRoundedLines = false;
+		Bool drawRect = false;
+		Bool drawRoundedRect = true;
+		Bool drawRoundedLines = false;
 
 		RayGui.GuiLoadStyleDefault(); //init raygui
 
@@ -76,20 +76,20 @@ public unsafe static class DrawRectangleRounded
 			DrawRectangle(560, 0, GetScreenWidth() - 500, GetScreenHeight(), Fade(LIGHTGRAY, 0.3f));
 
 			if (drawRect) DrawRectangleRec(rec, Fade(GOLD, 0.6f));
-			if (drawRoundedRect) DrawRectangleRounded(rec, roundness, segments, Fade(MAROON, 0.2f));
-			if (drawRoundedLines) DrawRectangleRoundedLines(rec, roundness, segments, (float)lineThick, Fade(MAROON, 0.4f));
+			if (drawRoundedRect) DrawRectangleRounded(rec, roundness, (int)segments, Fade(MAROON, 0.2f));
+			if (drawRoundedLines) DrawRectangleRoundedLines(rec, roundness, (int)segments, (float)lineThick, Fade(MAROON, 0.4f));
 
 			// Draw GUI controls
 			//------------------------------------------------------------------------------
-			width = (int)GuiSliderBar(new Rectangle(640, 40, 105, 20), "Width", width.ToString(), (float)width, 0, (float)GetScreenWidth() - 300);
-			height = (int)GuiSliderBar(new Rectangle(640, 70, 105, 20), "Height", height.ToString(), (float)height, 0, (float)GetScreenHeight() - 50);
-			roundness = GuiSliderBar(new Rectangle(640, 140, 105, 20), "Roundness", roundness.ToString(), roundness, 0.0f, 1.0f);
-			lineThick = (int)GuiSliderBar(new Rectangle(640, 170, 105, 20), "Thickness", lineThick.ToString(), (float)lineThick, 0, 20);
-			segments = (int)GuiSliderBar(new Rectangle(640, 240, 105, 20), "Segments", segments.ToString(), (float)segments, 0, 60);
+			GuiSliderBar(new Rectangle(640, 40, 105, 20), "Width", width.ToString(), ref width, 0, (float)GetScreenWidth() - 300);
+			GuiSliderBar(new Rectangle(640, 70, 105, 20), "Height", height.ToString(), ref height, 0, (float)GetScreenHeight() - 50);
+			GuiSliderBar(new Rectangle(640, 140, 105, 20), "Roundness", roundness.ToString(), ref roundness, 0.0f, 1.0f);
+			GuiSliderBar(new Rectangle(640, 170, 105, 20), "Thickness", lineThick.ToString(), ref lineThick, 0, 20);
+			GuiSliderBar(new Rectangle(640, 240, 105, 20), "Segments", segments.ToString(), ref segments, 0, 60);
 
-			drawRoundedRect = GuiCheckBox(new Rectangle(640, 320, 20, 20), "DrawRoundedRect", drawRoundedRect);
-			drawRoundedLines = GuiCheckBox(new Rectangle(640, 350, 20, 20), "DrawRoundedLines", drawRoundedLines);
-			drawRect = GuiCheckBox(new Rectangle(640, 380, 20, 20), "DrawRect", drawRect);
+			GuiCheckBox(new Rectangle(640, 320, 20, 20), "DrawRoundedRect", ref drawRoundedRect);
+			GuiCheckBox(new Rectangle(640, 350, 20, 20), "DrawRoundedLines", ref drawRoundedLines);
+			GuiCheckBox(new Rectangle(640, 380, 20, 20), "DrawRect", ref drawRect);
 			//------------------------------------------------------------------------------
 
 			DrawText(TextFormat("MODE: %s", (segments >= 4) ? "MANUAL" : "AUTO"), 640, 280, 10, (segments >= 4) ? MAROON : DARKGRAY);
