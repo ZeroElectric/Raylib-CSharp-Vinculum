@@ -126,18 +126,12 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
 
     <ItemGroup>
       <None Remove="raylib.dll" />
-      <None Remove="raylib.pdb" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="raylib.dll">
         <PackagePath>runtimes</PackagePath>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <Pack>false</Pack>
-      </Content>
-      <Content Include="raylib.pdb">
-        <PackagePath>runtimes</PackagePath>
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
         <Pack>false</Pack>
       </Content>
     </ItemGroup>
@@ -152,15 +146,6 @@ With more then 25 new functions and 40+ functions revsions make sure to check ou
     <ItemGroup>
       <Content Update="runtimes\win-x64\native\raylib.dll">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Update="runtimes\win-x64\native\raylib.exp">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      </Content>
-      <Content Update="runtimes\win-x64\native\raylib.lib">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      </Content>
-      <Content Update="runtimes\win-x64\native\raylib.pdb">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
 
