@@ -84,7 +84,7 @@ public static unsafe partial class RayGui
 		return GuiComboBox(bounds, sotext.AsPtr(), &active);
 	}
 
-	public static int GuiDropdownBox(Rectangle bounds, string? text, int* active, Boolean editMode)
+	public static int GuiDropdownBox(Rectangle bounds, string? text, int* active, bool editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		return GuiDropdownBox(bounds, sotext.AsPtr(), active, editMode);
