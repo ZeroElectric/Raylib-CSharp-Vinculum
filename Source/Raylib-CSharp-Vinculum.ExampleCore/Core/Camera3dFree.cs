@@ -46,9 +46,8 @@ public unsafe static class Camera3dFree
 
 		Vector3 cubePosition = new(0.0f, 0.0f, 0.0f);
 
-		//SetCameraMode(camera, CAMERA_FREE); // Set a free camera mode
-		//SetCameraPanControl((int)MouseButton.MOUSE_BUTTON_RIGHT); TODO (Ken) Find the new API for this!
-		
+		DisableCursor();                    // Limit cursor to relative movement inside the window
+
 		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 											//--------------------------------------------------------------------------------------
 

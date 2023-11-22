@@ -1,19 +1,19 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>/*******************************************************************************************
+//********************************************************************************************/
 //*
 //* raylib[models] example - first person maze
 //*
@@ -24,14 +24,14 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //*
 //********************************************************************************************/
 //
-///</summary>
+
 public unsafe static class FirstPersonMaze
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -54,16 +54,19 @@ public unsafe static class FirstPersonMaze
 		UnloadImage(imMap);             // Unload image from RAM
 
 		Vector3 mapPosition = new(-16.0f, 0.0f, -8.0f);  // Set model position
+														 // Limit cursor to relative movement inside the window
+		DisableCursor();
 
+		// Set  to run at 60 frames-per-second
+		SetTargetFPS(60);
 
-		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
-
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			Vector3 oldCamPos = camera.position;    // Store old camera position
 
 			UpdateCamera(ref camera, CAMERA_FIRST_PERSON);          // Update camera
@@ -97,10 +100,10 @@ public unsafe static class FirstPersonMaze
 					}
 				}
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -119,11 +122,11 @@ public unsafe static class FirstPersonMaze
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadImageColors(mapPixels);   // Unload color array
 
 		UnloadTexture(cubicmap);        // Unload cubicmap texture
@@ -131,7 +134,6 @@ public unsafe static class FirstPersonMaze
 		UnloadModel(model);             // Unload map model
 
 		CloseWindow();                  // Close window and OpenGL context
-										//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

@@ -11,6 +11,8 @@
 //
 //------------------------------------------------------------------------------
 
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
+
 /*******************************************************************************************
 *
 *   raylib [core] example - World to screen
@@ -22,8 +24,6 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public unsafe static class WorldToScreen
 {
 
@@ -31,6 +31,7 @@ public unsafe static class WorldToScreen
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -47,23 +48,27 @@ public unsafe static class WorldToScreen
 		Vector3 cubePosition =new( 1.0f, 5.0f, 5.0f );
 		Vector2 cubeScreenPosition = new( 0.0f, 0.0f );
 
+		// Limit cursor to relative movement inside the window
+		DisableCursor();
 
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-											//--------------------------------------------------------------------------------------
+		// Set  to run at 60 frames-per-second
+		SetTargetFPS(60);
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
 
 			// Calculate cube screen space position (with a little offset to be in top)
 			cubeScreenPosition = GetWorldToScreen(new(cubePosition.X, cubePosition.Y + 2.5f, cubePosition.Z), camera);
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -81,15 +86,13 @@ public unsafe static class WorldToScreen
 			DrawText("Text is always on top of the cube", (screenWidth - MeasureText("Text is always on top of the cube", 20)) / 2, 25, 20, GRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-

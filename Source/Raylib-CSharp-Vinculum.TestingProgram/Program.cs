@@ -12,10 +12,11 @@
 ////------------------------------------------------------------------------------
 
 ///////////////////////////////////////////
-//////////////	ALL THE EXAMPLES. You can comment out the ones you don't want to run.
+//////	ALL THE EXAMPLES. You can comment out the ones you don't want to run.
 
 ///////////////////////////////////////////
 //////////////	CORE
+
 ZeroElectric.Vinculum.ExampleCore.Core.BasicWindow.main();
 ZeroElectric.Vinculum.ExampleCore.Core.BasicScreenManager.main();
 ZeroElectric.Vinculum.ExampleCore.Core.KeyboardInput.main();
@@ -31,7 +32,12 @@ ZeroElectric.Vinculum.ExampleCore.Core.Camera3dFree.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera3dFirstPerson.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Picking3d.main();
 ZeroElectric.Vinculum.ExampleCore.Core.WorldToScreen.main();
-ZeroElectric.Vinculum.ExampleCore.Core.CustomLogging.main(); // This makes Linux build crash
+
+if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+{
+	ZeroElectric.Vinculum.ExampleCore.Core.CustomLogging.main(); // This is Windows only!
+}
+
 ZeroElectric.Vinculum.ExampleCore.Core.WindowLetterbox.main();
 ZeroElectric.Vinculum.ExampleCore.Core.WindowsDropFiles.main();
 ZeroElectric.Vinculum.ExampleCore.Core.ScissorTest.main();
@@ -40,7 +46,8 @@ ZeroElectric.Vinculum.ExampleCore.Core.QuatConversions.main();
 ZeroElectric.Vinculum.ExampleCore.Core.WindowFlags.main();
 ZeroElectric.Vinculum.ExampleCore.Core.SplitScreen.main();
 ZeroElectric.Vinculum.ExampleCore.Core.SmoothPixelPerfectCamera.main();
-////Raylib_CsLo.Examples.Core.CustomFrameControl.main(); //The following example requires a custom build of Raylib to work. See it's docs for info.
+
+////Raylib_CsLo.Examples.Core.CustomFrameControl.main(); // The following example requires a custom build of raylib to work. See raylib docs for it's info.
 
 ///////////////////////////////////////////
 //////////////	MODELS
@@ -58,7 +65,7 @@ ZeroElectric.Vinculum.ExampleCore.Models.MeshGeneration.main();
 ZeroElectric.Vinculum.ExampleCore.Models.MeshPicking.main();
 ZeroElectric.Vinculum.ExampleCore.Models.OrthographicProjection.main();
 ZeroElectric.Vinculum.ExampleCore.Models.RlglSolarSystem.main();
-ZeroElectric.Vinculum.ExampleCore.Models.Skybox.main();
+ZeroElectric.Vinculum.ExampleCore.Models.Skybox.main(); // This example does not work right // TODO (KEN) FIX
 ZeroElectric.Vinculum.ExampleCore.Models.WavingCubes.main();
 ZeroElectric.Vinculum.ExampleCore.Models.YawPitchRoll.main();
 ZeroElectric.Vinculum.ExampleCore.Models.DrawCubeWithTexture.main();
@@ -119,6 +126,7 @@ ZeroElectric.Vinculum.ExampleCore.Text.SdfFonts.main();
 ZeroElectric.Vinculum.ExampleCore.Text.SpriteFontLoading.main();
 ZeroElectric.Vinculum.ExampleCore.Text.TextFormatting.main();
 ZeroElectric.Vinculum.ExampleCore.Text.WritingAnimation.main();
+
 ZeroElectric.Vinculum.ExampleCore.Text.Unicode.main(); // The unicode example doesn't work properly. I guess the fonts don't include the needed unicode chars? //TODO (KEN) Fix this
 
 ///////////////////////////////////////////
@@ -138,6 +146,8 @@ ZeroElectric.Vinculum.ExampleCore.Shapes.LogoAnimation.main();
 ZeroElectric.Vinculum.ExampleCore.Shapes.LogoUsingShapes.main();
 ZeroElectric.Vinculum.ExampleCore.Shapes.RectangleScalingMouse.main();
 ZeroElectric.Vinculum.ExampleCore.Shapes.LinesCubicBezier.main();
+ZeroElectric.Vinculum.ExampleCore.Shapes.SplinesDrawing.main();
+
 
 ///////////////////////////////////////////
 //////////////	PHYSICS
@@ -149,6 +159,7 @@ ZeroElectric.Vinculum.ExampleCore.Physics.PhysicsShatter.main();
 
 /////////////////////////////////////////
 ////////////	AUDIO
+ZeroElectric.Vinculum.ExampleCore.Audio.MixedAudioProcessing.main();
 ZeroElectric.Vinculum.ExampleCore.Audio.RawAudioStreaming.main();
 ZeroElectric.Vinculum.ExampleCore.Audio.SoundLoadingAndPlaying.main();
 ZeroElectric.Vinculum.ExampleCore.Audio.MusicPlayingStreaming.main();

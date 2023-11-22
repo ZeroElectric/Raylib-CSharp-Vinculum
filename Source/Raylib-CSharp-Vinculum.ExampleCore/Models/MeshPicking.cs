@@ -1,19 +1,19 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>/*******************************************************************************************
+//********************************************************************************************/
 //*
 //* raylib[models] example - Mesh picking in 3d mode, ground plane, triangle, mesh
 //*
@@ -25,11 +25,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* Copyright(c) 2017 Joel Davis(@joeld42) and Ramon Santamaria(@raysan5)
 //*
 //********************************************************************************************/
-///</summary>
+
 public unsafe static class MeshPicking
 {
-	//#define FLT_MAX     340282346638528859811704183484516925440.0f     // Maximum value of a float, from bit pattern 01111111011111111111111111111111
 	const float FLT_MAX = float.MaxValue;
+
 	public static int main()
 	{
 		// Initialization
@@ -41,20 +41,20 @@ public unsafe static class MeshPicking
 
 		// Define the camera to look into our 3d world
 		Camera camera = new();
-		camera.position = new(20.0f, 20.0f, 20.0f); // Camera position
-		camera.target = new(0.0f, 8.0f, 0.0f);      // Camera looking at point
-		camera.up = new(0.0f, 1.6f, 0.0f);          // Camera up vector (rotation towards target)
-		camera.fovy = 45.0f;                                // Camera field-of-view Y
+		camera.position = new(20.0f, 20.0f, 20.0f);			 // Camera position
+		camera.target = new(0.0f, 8.0f, 0.0f);				 // Camera looking at point
+		camera.up = new(0.0f, 1.6f, 0.0f);					 // Camera up vector (rotation towards target)
+		camera.fovy = 45.0f;                                 // Camera field-of-view Y
 		camera.projection_ = CAMERA_PERSPECTIVE;             // Camera mode type
 
 		Ray ray = new();        // Picking ray
 
-		Model tower = LoadModel("resources/models/wavefront/turret.obj");                 // Load OBJ model
-		Texture2D texture = LoadTexture("resources/models/wavefront/turret_diffuse.png"); // Load model texture
-		tower.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;            // Set model diffuse texture
+		Model tower = LoadModel("resources/models/wavefront/turret.obj");					// Load OBJ model
+		Texture2D texture = LoadTexture("resources/models/wavefront/turret_diffuse.png");	// Load model texture
+		tower.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;				// Set model diffuse texture
 
-		Vector3 towerPos = new(0.0f, 0.0f, 0.0f);                        // Set model position
-		BoundingBox towerBBox = GetMeshBoundingBox(tower.meshes[0]);    // Get mesh bounding box
+		Vector3 towerPos = new(0.0f, 0.0f, 0.0f);							// Set model position
+		BoundingBox towerBBox = GetMeshBoundingBox(tower.meshes[0]);		// Get mesh bounding box
 
 		// Ground quad
 		Vector3 g0 = new(-50.0f, 0.0f, -50.0f);
@@ -73,13 +73,19 @@ public unsafe static class MeshPicking
 		Vector3 sp = new(-30.0f, 5.0f, 5.0f);
 		float sr = 4.0f;
 
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-											//--------------------------------------------------------------------------------------
-											// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Limit cursor to relative movement inside the window
+		DisableCursor();
+
+		// Set  to run at 60 frames-per-second
+		SetTargetFPS(60);
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
 
 			// Display information about closest hit
@@ -157,10 +163,10 @@ public unsafe static class MeshPicking
 					hitObjectName = "Mesh";
 				}
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -233,16 +239,15 @@ public unsafe static class MeshPicking
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadModel(tower);         // Unload model
 		UnloadTexture(texture);     // Unload texture
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

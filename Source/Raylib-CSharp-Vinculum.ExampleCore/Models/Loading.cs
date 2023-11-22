@@ -1,19 +1,19 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>/*******************************************************************************************
+//********************************************************************************************/
 //*
 //* raylib[models] example - Models loading
 //*
@@ -34,7 +34,7 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* Copyright(c) 2014-2021 Ramon Santamaria(@raysan5)
 //*
 //********************************************************************************************/
-///</summary>
+
 public unsafe static class Loading
 {
 
@@ -49,40 +49,45 @@ public unsafe static class Loading
 
 		// Define the camera to look into our 3d world
 		Camera camera = new();
-		camera.position = new(50.0f, 50.0f, 50.0f); // Camera position
-		camera.target = new(0.0f, 10.0f, 0.0f);     // Camera looking at point
-		camera.up = new(0.0f, 1.0f, 0.0f);          // Camera up vector (rotation towards target)
-		camera.fovy = 45.0f;                                // Camera field-of-view Y
-		camera.projection_ = CAMERA_PERSPECTIVE;                   // Camera mode type
+		camera.position = new(50.0f, 50.0f, 50.0f);					 // Camera position
+		camera.target = new(0.0f, 10.0f, 0.0f);						 // Camera looking at point
+		camera.up = new(0.0f, 1.0f, 0.0f);							 // Camera up vector (rotation towards target)
+		camera.fovy = 45.0f;										 // Camera field-of-view Y
+		camera.projection_ = CAMERA_PERSPECTIVE;                     // Camera mode type
 
-		Model model = LoadModel("resources/models/wavefront/castle.obj");                 // Load model
-		Texture2D texture = LoadTexture("resources/models/wavefront/castle_diffuse.png"); // Load model texture
-		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;            // Set map diffuse texture
+		Model model = LoadModel("resources/models/wavefront/castle.obj");					// Load model
+		Texture2D texture = LoadTexture("resources/models/wavefront/castle_diffuse.png");	// Load model texture
+		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;				// Set map diffuse texture
 
-		Vector3 position = new(0.0f, 0.0f, 0.0f);                    // Set model position
+		Vector3 position = new(0.0f, 0.0f, 0.0f);						// Set model position
 
-		BoundingBox bounds = GetMeshBoundingBox(model.meshes[0]);   // Set model bounds
+		BoundingBox bounds = GetMeshBoundingBox(model.meshes[0]);		// Set model bounds
 
 		// NOTE: bounds are calculated from the original size of the model,
 		// if model is scaled on drawing, bounds must be also scaled
 
 		bool selected = false;          // Selected object flag
 
-		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
+		// Limit cursor to relative movement inside the window
+		DisableCursor();
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Set  to run at 60 frames-per-second
+		SetTargetFPS(60);
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
 
 			// Load new models/textures on drag&drop
 			if (IsFileDropped())
 			{
 				int count = 0;
-				//char** droppedFiles = GetDroppedFiles(&count);
+
 				var droppedFiles = GetDroppedFilesAndClear();
 
 				if (count == 1) // Only support one file dropped
@@ -93,9 +98,9 @@ public unsafe static class Loading
 						droppedFiles[0].EndsWith(".vox") ||
 						droppedFiles[0].EndsWith(".iqm"))       // Model file formats supported
 					{
-						UnloadModel(model);                     // Unload previous model
-						model = LoadModel(droppedFiles[0]);     // Load new model
-						model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture; // Set current map diffuse texture
+						UnloadModel(model);														// Unload previous model
+						model = LoadModel(droppedFiles[0]);										// Load new model
+						model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;	// Set current map diffuse texture
 
 						bounds = GetMeshBoundingBox(model.meshes[0]);
 
@@ -109,8 +114,6 @@ public unsafe static class Loading
 						model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;
 					}
 				}
-
-				//ClearDroppedFiles();    // Clear internal buffers
 			}
 
 			// Select model on mouse click
@@ -120,10 +123,10 @@ public unsafe static class Loading
 				if (GetRayCollisionBox(GetMouseRay(GetMousePosition(), camera), bounds).hit) selected = !selected;
 				else selected = false;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -146,16 +149,15 @@ public unsafe static class Loading
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(texture);     // Unload texture
 		UnloadModel(model);         // Unload model
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

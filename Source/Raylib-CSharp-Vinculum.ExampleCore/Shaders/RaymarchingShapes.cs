@@ -1,24 +1,17 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
-
 
 /*******************************************************************************************
 *
@@ -37,7 +30,6 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 public unsafe static class RaymarchingShapes
 {
 
-
 #if PLATFORM_DESKTOP
 	const int GLSL_VERSION = 330;
 #else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB -> Not supported at this moment
@@ -48,6 +40,7 @@ public unsafe static class RaymarchingShapes
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		int screenWidth = 800;
 		int screenHeight = 450;
 
@@ -75,15 +68,21 @@ public unsafe static class RaymarchingShapes
 
 		float runTime = 0.0f;
 
-		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
-												//--------------------------------------------------------------------------------------
+		// Limit cursor to relative movement inside the window
+		DisableCursor();
 
-		// Main game loop
-		while (!WindowShouldClose())            // Detect window close button or ESC key
+		// Set  to run at 60 frames-per-second
+		SetTargetFPS(60);
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
+
+			// Update camera
+			UpdateCamera(ref camera, CAMERA_FREE);          
 
 			Vector3 cameraPos = new(camera.position.X, camera.position.Y, camera.position.Z);
 			Vector3 cameraTarget = new(camera.target.X, camera.target.Y, camera.target.Z);
@@ -104,10 +103,10 @@ public unsafe static class RaymarchingShapes
 				resolution = new((float)screenWidth, (float)screenHeight);
 				SetShaderValue(shader, resolutionLoc, resolution, SHADER_UNIFORM_VEC2);
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -121,18 +120,17 @@ public unsafe static class RaymarchingShapes
 			DrawText("(c) Raymarching shader by Iñigo Quilez. MIT License.", screenWidth - 280, screenHeight - 20, 10, BLACK);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
-		UnloadShader(shader);           // Unload shader
 
-		CloseWindow();                  // Close window and OpenGL context
-										//--------------------------------------------------------------------------------------
+		// Unload shader
+		UnloadShader(shader);
+
+		// Close window and OpenGL context
+		CloseWindow();                  
 
 		return 0;
 	}
 }
-
-

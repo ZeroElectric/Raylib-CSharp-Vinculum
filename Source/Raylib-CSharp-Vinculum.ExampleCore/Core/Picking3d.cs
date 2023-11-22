@@ -11,6 +11,8 @@
 //
 //------------------------------------------------------------------------------
 
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
+
 /*******************************************************************************************
 *
 *   raylib [core] example - Picking in 3d mode
@@ -22,15 +24,13 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public unsafe static class Picking3d
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -51,16 +51,19 @@ public unsafe static class Picking3d
 
 		RayCollision collision =new();
 
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
+		// Limit cursor to relative movement inside the window
+		DisableCursor();
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Set  to run at 60 frames-per-second
+		SetTargetFPS(60);
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 
-			//----------------------------------------------------------------------------------
 			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
-			//----------------------------------------------------------------------------------
 
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 			{
@@ -77,10 +80,10 @@ public unsafe static class Picking3d
 				}
 				else collision.hit = false;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -112,17 +115,15 @@ public unsafe static class Picking3d
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 
 
 }
-

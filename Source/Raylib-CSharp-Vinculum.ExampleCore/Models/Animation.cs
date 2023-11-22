@@ -1,20 +1,19 @@
 
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
+////------------------------------------------------------------------------------
+////
+//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// This file is licensed to you under the MPL-2.0.
+//// See the LICENSE file in the project's root for more info.
+////
+//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+//// Find raylib here: https://github.com/raysan5/raylib
+////
+////------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>
-/// /*******************************************************************************************
+//********************************************************************************************/
 //*
 //* raylib[models] example - Load 3d model with animations and play them
 //*
@@ -32,14 +31,14 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* and that the scale of your models is set to 0. Scaling can be done from the export menu.
 //*
 //********************************************************************************************/
-///</summary>
+
 public unsafe static class Animation
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -47,32 +46,39 @@ public unsafe static class Animation
 
 		// Define the camera to look into our 3d world
 		Camera camera = new();
-		camera.position = new(10.0f, 10.0f, 10.0f); // Camera position
-		camera.target = new(0.0f, 0.0f, 0.0f);      // Camera looking at point
-		camera.up = new(0.0f, 1.0f, 0.0f);          // Camera up vector (rotation towards target)
-		camera.fovy = 45.0f;                                // Camera field-of-view Y
-		camera.projection_ = CAMERA_PERSPECTIVE;             // Camera mode type
+		camera.position = new(10.0f, 15.0f, 10.0f);         // Camera position
+		camera.target = new(0.0f, 5f, 0.0f);                // Camera looking at point
+		camera.up = new(0.0f, 1.0f, 0.0f);                  // Camera up vector (rotation towards target)
+		camera.fovy = 50.0f;                                // Camera field-of-view Y
+		camera.projection_ = CAMERA_PERSPECTIVE;            // Camera mode type
 
 		Model model = LoadModel("resources/models/iqm/guy.iqm");                    // Load the animated model mesh and basic data
 		Texture2D texture = LoadTexture("resources/models/iqm/guytex.png");         // Load model texture and set material
 		SetMaterialTexture(&model.materials[0], MATERIAL_MAP_DIFFUSE, texture);     // Set model material map texture
 
-		Vector3 position = new(0.0f, 0.0f, 0.0f);            // Set model position
+		// Set model position
+		Vector3 position = new(0.0f, 0.0f, 0.0f);
 
 		// Load animation data
 		uint animsCount = 0;
 		ModelAnimation[] anims = LoadModelAnimations("resources/models/iqm/guyanim.iqm");
 		int animFrameCounter = 0;
 
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-											//--------------------------------------------------------------------------------------
+		// Limit cursor to relative movement inside the window
+		DisableCursor();
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Set our game to run at 60 frames-per-second
+		SetTargetFPS(60);
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			UpdateCamera(ref camera, CAMERA_FREE);          // Update camera
+
+			// Update camera
+			UpdateCamera(ref camera, CAMERA_ORBITAL);
 
 			// Play animation when spacebar is held down
 			if (IsKeyDown(KEY_SPACE))
@@ -81,10 +87,10 @@ public unsafe static class Animation
 				UpdateModelAnimation(model, anims[0], animFrameCounter);
 				if (animFrameCounter >= anims[0].frameCount) animFrameCounter = 0;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -98,7 +104,8 @@ public unsafe static class Animation
 				DrawCube(anims[0].framePoses[animFrameCounter][i].translation, 0.2f, 0.2f, 0.2f, RED);
 			}
 
-			DrawGrid(10, 1.0f);         // Draw a grid
+			// Draw a grid
+			DrawGrid(10, 1.0f);
 
 			EndMode3D();
 
@@ -106,22 +113,26 @@ public unsafe static class Animation
 			DrawText("(c) Guy IQM 3D model by @culacant", screenWidth - 200, screenHeight - 20, 10, GRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
-		UnloadTexture(texture);     // Unload texture
+
+		// Unload texture
+		UnloadTexture(texture);
 
 		// Unload model animations data
-		for (uint i = 0; i < animsCount; i++) UnloadModelAnimation(anims[i]);
-		//MemFree
-		//RL_FREE(anims);
+		for (uint i = 0; i < animsCount; i++)
+		{
+			UnloadModelAnimation(anims[i]);
+		}
 
-		UnloadModel(model);         // Unload model
+		// Unload model
+		UnloadModel(model);
 
-		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
+		CloseWindow();
+
+		//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
