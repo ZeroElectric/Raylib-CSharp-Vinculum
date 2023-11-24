@@ -50,7 +50,7 @@ public unsafe static class RlglSolarSystem
 		camera.target = new(0.0f, 0.0f, 0.0f);
 		camera.up = new(0.0f, 1.0f, 0.0f);
 		camera.fovy = 45.0f;
-		camera.projection_ = CAMERA_PERSPECTIVE;
+		camera.Projection = CAMERA_PERSPECTIVE;
 
 
 		float rotationSpeed = 0.2f;         // General system rotation speed

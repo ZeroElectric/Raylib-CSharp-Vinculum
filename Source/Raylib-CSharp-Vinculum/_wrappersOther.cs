@@ -64,6 +64,17 @@ public partial struct Rectangle
 		get => y;
 		set => y = value;
 	}
+
+	public float Width
+	{
+		get => width;
+		set => width = value;
+	}
+	public float Height
+	{
+		get => height;
+		set => height = value;
+	}
 }
 
 public partial struct Camera3D
@@ -78,11 +89,20 @@ public partial struct Camera3D
 
 	}
 
+	// TODO REMOVE in 5.1~
+	[Obsolete(" Will be removed in future version, Use: 'Projection' instead. ")]
 	public CameraProjection projection_
 	{
 		get => (CameraProjection)projection;
 		set => projection = (int)value;
 	}
+
+	public CameraProjection Projection
+	{
+		get => (CameraProjection)projection;
+		set => projection = (int)value;
+	}
+
 }
 
 public partial struct Color
@@ -128,11 +148,20 @@ public unsafe partial struct float16
 }
 public partial struct Texture
 {
+	// TODO REMOVE in 5.1~
+	[Obsolete(" Will be removed in future version, Use: 'Projection' instead. ")]
 	public PixelFormat format_
 	{
 		get => (PixelFormat)format;
 		set => format = (int)value;
 	}
+
+	public PixelFormat Format
+	{
+		get => (PixelFormat)format;
+		set => format = (int)value;
+	}
+
 }
 public partial struct NPatchInfo
 {

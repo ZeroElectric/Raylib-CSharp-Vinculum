@@ -42,7 +42,7 @@ public unsafe static class GeometricShapes
 		camera.target = new(0.0f, 0.0f, 0.0f);
 		camera.up = new(0.0f, 1.0f, 0.0f);
 		camera.fovy = 45.0f;
-		camera.projection_ = CAMERA_PERSPECTIVE;
+		camera.Projection = CAMERA_PERSPECTIVE;
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 										//--------------------------------------------------------------------------------------

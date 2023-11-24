@@ -43,7 +43,7 @@ public unsafe static class DrawCubeWithTexture
 		camera.target = new Vector3(0.0f, 0.0f, 0.0f);
 		camera.up = new Vector3(0.0f, 1.0f, 0.0f);
 		camera.fovy = 45.0f;
-		camera.projection_ = CameraProjection.CAMERA_PERSPECTIVE;
+		camera.Projection = CameraProjection.CAMERA_PERSPECTIVE;
 
 		// Load texture to be applied to the cubes sides
 		Texture2D texture = LoadTexture("resources/cubicmap_atlas.png");

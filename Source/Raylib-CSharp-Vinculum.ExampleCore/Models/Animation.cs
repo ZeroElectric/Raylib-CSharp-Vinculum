@@ -50,7 +50,7 @@ public unsafe static class Animation
 		camera.target = new(0.0f, 5f, 0.0f);                // Camera looking at point
 		camera.up = new(0.0f, 1.0f, 0.0f);                  // Camera up vector (rotation towards target)
 		camera.fovy = 50.0f;                                // Camera field-of-view Y
-		camera.projection_ = CAMERA_PERSPECTIVE;            // Camera mode type
+		camera.Projection = CAMERA_PERSPECTIVE;            // Camera mode type
 
 		Model model = LoadModel("resources/models/iqm/guy.iqm");                    // Load the animated model mesh and basic data
 		Texture2D texture = LoadTexture("resources/models/iqm/guytex.png");         // Load model texture and set material
