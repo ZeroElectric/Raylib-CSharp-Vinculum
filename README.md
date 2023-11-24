@@ -198,7 +198,7 @@ public static class Program
 ### **Do I have to cast enums to `int`?**
   - The autogen bindings are left untouched, however convenience wrappers have been added. Usually these will automatically "work" via method overloads, but when this is not possible, try adding an underscore `_` to the end of the method or property, for example:  
     ```csharp
-    Camera3D.projection_ = CameraProjection.CAMERA_ORTHOGRAPHIC;
+    Camera3D.Projection = CameraProjection.CAMERA_ORTHOGRAPHIC;
     
     Gesture gesture = Raylib.GetGestureDetected_();
     ```
