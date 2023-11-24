@@ -11,6 +11,10 @@
 //
 //------------------------------------------------------------------------------
 
+using static ZeroElectric.Vinculum.ExampleCore.Core.BasicScreenManager.GameScreen;
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
+
 /*******************************************************************************************
 *
 *   raylib [core] examples - basic screen manager
@@ -24,10 +28,6 @@
 *
 ********************************************************************************************/
 
-using static ZeroElectric.Vinculum.ExampleCore.Core.BasicScreenManager.GameScreen;
-
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public static class BasicScreenManager
 {	
 	public enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING }
@@ -36,26 +36,25 @@ public static class BasicScreenManager
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - basic screen manager");
 
-
 		GameScreen currentScreen = LOGO;
-
-		// TODO: Initialize all required variables and load all required data here!
 
 		int framesCounter = 0; // Useful to count frames
 
-		SetTargetFPS(60); // Set desired framerate (frames-per-second)
-						  //--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose()) // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			switch (currentScreen)
 			{
 				case LOGO:
@@ -106,10 +105,10 @@ public static class BasicScreenManager
 					break;
 				default: break;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -155,16 +154,12 @@ public static class BasicScreenManager
 			}
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
 
-		// TODO: Unload all loaded data (textures, fonts, audio) here!
-
 		CloseWindow(); // Close window and OpenGL context
-					   //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
