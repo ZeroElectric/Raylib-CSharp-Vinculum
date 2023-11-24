@@ -13,7 +13,7 @@ workspace "Raylib-With-Extras"
 	filter { "platforms:x64" }
 		architecture "x86_64"
 			
-	defines{"PLATFORM_DESKTOP", "GRAPHICS_API_OPENGL_33", "SUPPORT_FILEFORMAT_SVG", "SUPPORT_EVENTS_AUTOMATION"} -- "GRAPHICS_API_OPENGL_43"
+	defines{"PLATFORM_DESKTOP", "GRAPHICS_API_OPENGL_33", "SUPPORT_FILEFORMAT_SVG", "SUPPORT_EVENTS_AUTOMATION"} -- "SUPPORT_SCREEN_CAPTURE" "GRAPHICS_API_OPENGL_43"
 	
 --The raylib-with-extras project, but named "raylib" so the output libraries are named properly
 project "raylib"
