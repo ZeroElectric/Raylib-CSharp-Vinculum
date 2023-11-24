@@ -1,4 +1,4 @@
-|  Raylib-CSharp-Vinculum  | ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/Source/Raylib-CSharp-Vinculum.Examples) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64%2C%20Linux--x64%20-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) | 
+|  Raylib-CSharp-Vinculum  | ![.NET 5+](https://img.shields.io/badge/.NET-net5+-%23512bd4) [![Nuget](https://img.shields.io/nuget/v/Raylib-CSharp-Vinculum)](https://www.nuget.org/packages/Raylib-CSharp-Vinculum/) [![Source Code](https://img.shields.io/badge/100+_Examples-blueviolet)](https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/tree/main/Source/Raylib-CSharp-Vinculum.ExampleCore) ![Platforms](https://img.shields.io/badge/Platforms-Win--x64%2C%20Linux--x64%20-blue) ![GitHub](https://img.shields.io/github/license/ZeroElectric/Raylib-CSharp-Vinculum) | 
 | :---: | :---: | 
 | <img align="left" src="https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/blob/main/.assets/raylib-csharp-vinculum_logo_256x256.png" width="256px"> | **Raylib-CSharp-Vinculum is a .Net/C# autogen [raylib](https://github.com/raysan5/raylib) binding, raylib is a simple and easy-to-use 2d/3d videogame framework, similar to XNA & MonoGame.** | 
 
@@ -120,7 +120,9 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 # Differences from [Raylib-CsLo](https://github.com/NotNotTech/Raylib-CsLo)
 
-### The only real changes from a end-user point of view is a namespace difference `Raylib-CsLo > ZeroElectric.Vinculum` & uses newer build of `raylib` that might have removed or changed some functions you use.
+- ### A namespace difference `Raylib-CsLo > ZeroElectric.Vinculum`.
+- ### Uses newer build of `raylib` that might have removed or changed some functions you use.
+- ### No macOS support.
 
 #### Other changes:
 - Greatly optimized the project layout,
