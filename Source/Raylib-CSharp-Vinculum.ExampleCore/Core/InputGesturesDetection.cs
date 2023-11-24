@@ -11,6 +11,8 @@
 //
 //------------------------------------------------------------------------------
 
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
+
 /*******************************************************************************************
 *
 *   raylib [core] example - Input Gestures Detection
@@ -21,7 +23,6 @@
 *   Copyright (c) 2016 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 public static class InputGesturesDetection
 {
@@ -31,33 +32,32 @@ public static class InputGesturesDetection
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - input gestures");
 
 		Vector2 touchPosition = new();
-		Rectangle touchArea = new( 220, 10, screenWidth - 230.0f, screenHeight - 20.0f );
+		Rectangle touchArea = new(220, 10, screenWidth - 230.0f, screenHeight - 20.0f);
 
 		int gesturesCount = 0;
-		//char gestureStrings[MAX_GESTURE_STRINGS][32];
 		string[] gestureStrings = new string[MAX_GESTURE_STRINGS];
 
 		Gesture currentGesture = GESTURE_NONE;
 		Gesture lastGesture = GESTURE_NONE;
 
-		//SetGesturesEnabled(0b0000000000001001);   // Enable only some gestures to be detected
-
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			lastGesture = currentGesture;
-			currentGesture = GetGestureDetected_();
+			currentGesture = GetGestureDetectedAsGesture();
 			touchPosition = GetTouchPosition(0);
 
 			if (CheckCollisionPointRec(touchPosition, touchArea) && (currentGesture != GESTURE_NONE))
@@ -67,16 +67,16 @@ public static class InputGesturesDetection
 					// Store gesture string
 					switch (currentGesture)
 					{
-						case GESTURE_TAP: gestureStrings[gesturesCount]= "GESTURE TAP"; break;
-						case GESTURE_DOUBLETAP: gestureStrings[gesturesCount]= "GESTURE DOUBLETAP"; break;
-						case GESTURE_HOLD: gestureStrings[gesturesCount]= "GESTURE HOLD"; break;
-						case GESTURE_DRAG: gestureStrings[gesturesCount]= "GESTURE DRAG"; break;
-						case GESTURE_SWIPE_RIGHT: gestureStrings[gesturesCount]= "GESTURE SWIPE RIGHT"; break;
-						case GESTURE_SWIPE_LEFT: gestureStrings[gesturesCount]= "GESTURE SWIPE LEFT"; break;
-						case GESTURE_SWIPE_UP: gestureStrings[gesturesCount]= "GESTURE SWIPE UP"; break;
-						case GESTURE_SWIPE_DOWN: gestureStrings[gesturesCount]= "GESTURE SWIPE DOWN"; break;
-						case GESTURE_PINCH_IN: gestureStrings[gesturesCount]= "GESTURE PINCH IN"; break;
-						case GESTURE_PINCH_OUT: gestureStrings[gesturesCount]= "GESTURE PINCH OUT"; break;
+						case GESTURE_TAP: gestureStrings[gesturesCount] = "GESTURE TAP"; break;
+						case GESTURE_DOUBLETAP: gestureStrings[gesturesCount] = "GESTURE DOUBLETAP"; break;
+						case GESTURE_HOLD: gestureStrings[gesturesCount] = "GESTURE HOLD"; break;
+						case GESTURE_DRAG: gestureStrings[gesturesCount] = "GESTURE DRAG"; break;
+						case GESTURE_SWIPE_RIGHT: gestureStrings[gesturesCount] = "GESTURE SWIPE RIGHT"; break;
+						case GESTURE_SWIPE_LEFT: gestureStrings[gesturesCount] = "GESTURE SWIPE LEFT"; break;
+						case GESTURE_SWIPE_UP: gestureStrings[gesturesCount] = "GESTURE SWIPE UP"; break;
+						case GESTURE_SWIPE_DOWN: gestureStrings[gesturesCount] = "GESTURE SWIPE DOWN"; break;
+						case GESTURE_PINCH_IN: gestureStrings[gesturesCount] = "GESTURE PINCH IN"; break;
+						case GESTURE_PINCH_OUT: gestureStrings[gesturesCount] = "GESTURE PINCH OUT"; break;
 						default: break;
 					}
 
@@ -85,16 +85,16 @@ public static class InputGesturesDetection
 					// Reset gestures strings
 					if (gesturesCount >= MAX_GESTURE_STRINGS)
 					{
-						for (int i = 0; i < MAX_GESTURE_STRINGS; i++) gestureStrings[i]= "";
+						for (int i = 0; i < MAX_GESTURE_STRINGS; i++) gestureStrings[i] = "";
 
 						gesturesCount = 0;
 					}
 				}
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -119,14 +119,13 @@ public static class InputGesturesDetection
 			if (currentGesture != GESTURE_NONE) DrawCircleV(touchPosition, 30, MAROON);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
+
 		return 0;
 	}
 }
-

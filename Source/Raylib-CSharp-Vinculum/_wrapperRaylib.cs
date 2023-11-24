@@ -36,7 +36,9 @@ public static unsafe partial class Raylib
 
 	public static bool IsGestureDetected(Gesture gesture) => IsGestureDetected((uint)gesture);
 
+	[Obsolete(" Will be removed in future version, GetGestureDetected_ has been renamed to: GetGestureDetectedAsGesture.")] //TODO (Ken) REMOVE
 	public static Gesture GetGestureDetected_() => (Gesture)GetGestureDetected();
+	public static Gesture GetGestureDetectedAsGesture() => (Gesture)GetGestureDetected();
 
 	public static void DrawText(string text, float posX, float posY, float fontSize, Color color)
 	{
@@ -570,7 +572,7 @@ public static unsafe partial class Raylib
 
 	public static string CodepointToUTF8_(int codepoint, int* byteSize) => Helpers.Utf8ToString(CodepointToUTF8(codepoint, byteSize));
 
-	[Obsolete("TextCodepointsToUTF8_ has been renamed to: LoadUTF8_")] //TODO (Ken) REMOVE
+	[Obsolete(" Will be removed in future version, TextCodepointsToUTF8_ has been renamed to: LoadUTF8_ ")] //TODO (Ken) REMOVE
 	public static string? TextCodepointsToUTF8_(int* codepoints, int length) => LoadUTF8_(codepoints, length);
 
 	public static string LoadUTF8_(int* codepoints, int length) => Helpers.Utf8ToString(LoadUTF8(codepoints, length));

@@ -35,6 +35,7 @@ public unsafe static class MousePainting
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -76,14 +77,15 @@ public unsafe static class MousePainting
 		ClearBackground(colors[0]);
 		EndTextureMode();
 
-		SetTargetFPS(120);              // Set our game to run at 120 frames-per-second
-										//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			Vector2 mousePos = GetMousePosition();
 
 			// Move between colors with keys
@@ -123,7 +125,7 @@ public unsafe static class MousePainting
 				EndTextureMode();
 			}
 
-			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || (GetGestureDetected_() == GESTURE_DRAG))
+			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || (GetGestureDetectedAsGesture() == GESTURE_DRAG))
 			{
 				// Paint circle into render texture
 				// NOTE: To avoid discontinuous circles, we could store
@@ -179,10 +181,10 @@ public unsafe static class MousePainting
 					saveMessageCounter = 0;
 				}
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -223,15 +225,14 @@ public unsafe static class MousePainting
 			}
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadRenderTexture(target);    // Unload render texture
 
 		CloseWindow();                  // Close window and OpenGL context
-										//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
