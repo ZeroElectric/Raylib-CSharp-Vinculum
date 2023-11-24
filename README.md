@@ -126,7 +126,7 @@ Maybe! This repo is a fork of [Raylib-CsLo](https://github.com/NotNotTech/Raylib
 
 #### Other changes:
 - Greatly optimized the project layout,
-- New build system, now just run build from the root folder to build the library.
+- New build system, now just run build.xx from the root folder to build the library.
 
 # Examples
 
@@ -158,10 +158,10 @@ public static class Program
 			Raylib.BeginDrawing();
 
 			// Clear the background to white
-			Raylib.ClearBackground(Color.RAYWHITE);
+			Raylib.ClearBackground(RAYWHITE);
 
 			// Draw the text "Hello World" in maroon color at position (190, 200)
-			Raylib.DrawText("Hello Raylib in CSharp!", 190, 200, 20, Color.MAROON);
+			Raylib.DrawText("Hello Raylib in CSharp!", 190, 200, 20, MAROON);
 
 			// End drawing to the window
 			Raylib.EndDrawing();
@@ -196,17 +196,13 @@ public static class Program
     ```
 
 ### **Do I have to cast enums to `int`?**
-  - The autogen bindings are left untouched, however convenience wrappers have been added. Usually these will automatically "work" via method overloads, but when this is not possible, try adding an underscore `_` to the end of the method or property, for example:  
-    ```csharp
-    Camera3D.projection_ = CameraProjection.CAMERA_ORTHOGRAPHIC;
-    
-    Gesture gesture = Raylib.GetGestureDetected_();
-    ```
+  - Although the autogen bindings remain unchanged, convenience wrappers have been added. These wrappers typically work automatically via method overloads or helpers eg `GetGestureDetectedAsGesture` or `Camera3D.Projection`.
+
   - If all else fails, yes, cast to `int`.
 
  ### **Can or Should I use `RayMath`?**
   - `ZeroElectric.Vinculum.RayMath` contains a lot of helpful methods for doing game related math.
-  - The `RayMath` helper methods have been translated into C#, this makes the code pretty fast, but if the same method exists under `System.Numerics` you should use that instead, because the .Net CLR treats things under System.Numerics special, and optimizes better.
+  - Although the `RayMath` helper methods have been translated into C#, making the code pretty fast, it is recommended, if available to use the corresponding method under `System.Numerics`, as the .Net CLR treats things under `System.Numerics` special and optimizes them better.
 
 ### **I ran the Example project in a profiler. What are all these `sbyte[]` arrays being allocated?**
   - A pool of `sbyte[]` arrays are allocated for string marshalling purposes, to avoid runtime allocations.
@@ -232,6 +228,7 @@ public static class Program
 - `Texture2D` doesn't exist, it's just an alias for `Texture`, use that instead,
 - `LogCustom()` is ported but doesn't support variable length arguments,
 - The `Text.Unicode` example doesn't render unicode properly.
+- One of the overloads for the `GuiCheckBox` implementation returns `bool` like the Raygui 3.x API, instead of `int`.
 
 # License
 ## Mozilla Public License 2.0 (**MPL**)
