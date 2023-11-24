@@ -42,7 +42,7 @@ public unsafe static class Billboard
 		camera.target = new(0.0f, 2.0f, 0.0f);
 		camera.up = new(0.0f, 1.0f, 0.0f);
 		camera.fovy = 45.0f;
-		camera.projection_ = CAMERA_PERSPECTIVE;
+		camera.Projection = CAMERA_PERSPECTIVE;
 
 		Texture2D bill = LoadTexture("resources/billboard.png");     // Our texture billboard
 		Vector3 billPosition = new(0.0f, 2.0f, 0.0f);                 // Position where draw billboard

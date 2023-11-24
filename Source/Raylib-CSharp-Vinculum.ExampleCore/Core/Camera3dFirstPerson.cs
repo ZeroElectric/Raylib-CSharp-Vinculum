@@ -42,7 +42,7 @@ public unsafe static class Camera3dFirstPerson
 		camera.target =new( 0.0f, 1.8f, 0.0f);
 		camera.up =new( 0.0f, 1.0f, 0.0f);
 		camera.fovy = 60.0f;
-		camera.projection_ = CAMERA_PERSPECTIVE;
+		camera.Projection = CAMERA_PERSPECTIVE;
 
 		// Generates some random columns
 		float[] heights=new float[MAX_COLUMNS];

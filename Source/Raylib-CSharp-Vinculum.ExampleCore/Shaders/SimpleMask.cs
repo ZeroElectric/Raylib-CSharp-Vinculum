@@ -57,7 +57,7 @@ public unsafe static class SimpleMask
 		camera.target = new Vector3(0.0f, 0.0f, 0.0f);
 		camera.up = new Vector3(0.0f, 1.0f, 0.0f);
 		camera.fovy = 45.0f;
-		camera.projection_ = CAMERA_PERSPECTIVE;
+		camera.Projection = CAMERA_PERSPECTIVE;
 
 		// Define our three models to show the shader on
 		Mesh torus = GenMeshTorus(0.3f, 1, 16, 32);

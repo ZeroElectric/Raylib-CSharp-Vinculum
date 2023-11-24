@@ -41,7 +41,7 @@ public static class Camera3dMode
 		camera.target =new( 0.0f, 0.0f, 0.0f);      // Camera looking at point
 		camera.up =new( 0.0f, 1.0f, 0.0f);          // Camera up vector (rotation towards target)
 		camera.fovy = 45.0f;                                // Camera field-of-view Y
-		camera.projection_ = CAMERA_PERSPECTIVE;             // Camera mode type
+		camera.Projection = CAMERA_PERSPECTIVE;             // Camera mode type
 
 		Vector3 cubePosition = new( 0.0f, 0.0f, 0.0f );
 

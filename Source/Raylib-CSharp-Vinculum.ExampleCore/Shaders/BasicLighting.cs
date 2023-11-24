@@ -56,7 +56,7 @@ public unsafe static class BasicLighting
 		camera.target = new Vector3(0.0f, 0.5f, 0.0f);      // Camera looking at point
 		camera.up = new Vector3(0.0f, 1.0f, 0.0f);          // Camera up vector (rotation towards target)
 		camera.fovy = 45.0f;                                // Camera field-of-view Y
-		camera.projection_ = CAMERA_PERSPECTIVE;             // Camera mode type
+		camera.Projection = CAMERA_PERSPECTIVE;             // Camera mode type
 
 		// Load plane model from a generated mesh
 		Model model = LoadModelFromMesh(GenMeshPlane(10.0f, 10.0f, 3, 3));

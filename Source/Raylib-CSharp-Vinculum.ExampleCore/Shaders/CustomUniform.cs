@@ -52,7 +52,7 @@ public unsafe static class CustomUniform
 		camera.target = new Vector3(0.0f, 1.5f, 0.0f);
 		camera.up = new Vector3(0.0f, 1.0f, 0.0f);
 		camera.fovy = 45.0f;
-		camera.projection_ = CAMERA_PERSPECTIVE;
+		camera.Projection = CAMERA_PERSPECTIVE;
 
 		Model model = LoadModel("resources/models/wavefront/barracks.obj");                   // Load OBJ model
 		Texture2D texture = LoadTexture("resources/models/wavefront/barracks_diffuse.png");   // Load model texture (diffuse map)
