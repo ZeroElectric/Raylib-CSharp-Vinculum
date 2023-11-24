@@ -230,7 +230,7 @@ public static class SplinesDrawing
 			GuiUnlock();
 
 			GuiLabel(new Rectangle(12, 10, 140, 24), "Spline type:");
-			if (GuiDropdownBox(new Rectangle(12, 8 + 24, 140, 28), "LINEAR;BSPLINE;CATMULLROM;BEZIER", &splineTypeActive, splineTypeEditMode) == 1)
+			if (GuiDropdownBox(new Rectangle(12, 8 + 24, 140, 28), "LINEAR;BSPLINE;CATMULLROM;BEZIER", ref splineTypeActive, splineTypeEditMode) == 1)
 			{
 				splineTypeEditMode = !splineTypeEditMode;
 			}
