@@ -87,9 +87,9 @@ public unsafe static class DrawRectangleRounded
 			GuiSliderBar(new Rectangle(640, 170, 105, 20), "Thickness", lineThick.ToString(), ref lineThick, 0, 20);
 			GuiSliderBar(new Rectangle(640, 240, 105, 20), "Segments", segments.ToString(), ref segments, 0, 60);
 
-			drawRoundedRect = GuiCheckBox(new Rectangle(640, 320, 20, 20), "DrawRoundedRect", drawRoundedRect);
-			drawRoundedLines = GuiCheckBox(new Rectangle(640, 350, 20, 20), "DrawRoundedLines", drawRoundedLines);
-			drawRect = GuiCheckBox(new Rectangle(640, 380, 20, 20), "DrawRect", drawRect);
+			GuiCheckBox(new Rectangle(640, 320, 20, 20), "DrawRoundedRect", ref drawRoundedRect);
+			GuiCheckBox(new Rectangle(640, 350, 20, 20), "DrawRoundedLines", ref drawRoundedLines);
+			GuiCheckBox(new Rectangle(640, 380, 20, 20), "DrawRect", ref drawRect);
 
 			//------------------------------------------------------------------------------
 

@@ -226,7 +226,7 @@ public static class SplinesDrawing
 			GuiLabel(new Rectangle(12, 62, 140, 24), string.Format("Spline thickness: {0}", (int)splineThickness));
 			GuiSliderBar(new Rectangle(12, 60 + 24, 140, 16), null, null, ref splineThickness, 1.0f, 40.0f);
 
-			splineHelpersActive = GuiCheckBox(new Rectangle(12, 110, 20, 20), "Show point helpers", splineHelpersActive);
+			GuiCheckBox(new Rectangle(12, 110, 20, 20), "Show point helpers", ref splineHelpersActive);
 			GuiUnlock();
 
 			GuiLabel(new Rectangle(12, 10, 140, 24), "Spline type:");

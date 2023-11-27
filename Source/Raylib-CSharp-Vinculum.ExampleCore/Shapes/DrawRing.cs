@@ -55,7 +55,7 @@ public unsafe static class DrawRing
 		bool drawRingLines = false;
 		bool drawCircleLines = false;
 
-		RayGui.GuiLoadStyleDefault();	//init raygui
+		RayGui.GuiLoadStyleDefault();   //init raygui
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 										//--------------------------------------------------------------------------------------
@@ -84,16 +84,16 @@ public unsafe static class DrawRing
 			// Draw GUI controls
 			//------------------------------------------------------------------------------
 			GuiSliderBar(new Rectangle(600, 40, 120, 20), "StartAngle", null, ref startAngle, -450, 450);
-			GuiSliderBar(new Rectangle(600, 70, 120, 20), "EndAngle", null,  ref endAngle, -450, 450);
+			GuiSliderBar(new Rectangle(600, 70, 120, 20), "EndAngle", null, ref endAngle, -450, 450);
 
 			GuiSliderBar(new Rectangle(600, 140, 120, 20), "InnerRadius", null, ref innerRadius, 0, 100);
 			GuiSliderBar(new Rectangle(600, 170, 120, 20), "OuterRadius", null, ref outerRadius, 0, 200);
 
 			GuiSliderBar(new Rectangle(600, 240, 120, 20), "Segments", null, ref segments, 0, 100);
 
-			drawRing = GuiCheckBox(new Rectangle(600, 320, 20, 20), "Draw Ring", drawRing);
-			drawRingLines = GuiCheckBox(new Rectangle(600, 350, 20, 20), "Draw RingLines", drawRingLines);
-			drawCircleLines = GuiCheckBox(new Rectangle(600, 380, 20, 20), "Draw CircleLines", drawCircleLines);
+			GuiCheckBox(new Rectangle(600, 320, 20, 20), "Draw Ring", ref drawRing);
+			GuiCheckBox(new Rectangle(600, 350, 20, 20), "Draw RingLines", ref drawRingLines);
+			GuiCheckBox(new Rectangle(600, 380, 20, 20), "Draw CircleLines", ref drawCircleLines);
 
 			//------------------------------------------------------------------------------
 

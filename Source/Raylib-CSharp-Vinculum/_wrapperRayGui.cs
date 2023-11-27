@@ -12,9 +12,9 @@
 //------------------------------------------------------------------------------
 
 using CommunityToolkit.HighPerformance.Buffers;
-using global::ZeroElectric.Vinculum.Extensions;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using ZeroElectric.Vinculum.Extensions;
 
 namespace ZeroElectric.Vinculum;
 
@@ -24,7 +24,6 @@ public static unsafe partial class RayGui
 	{
 		using SpanOwner<sbyte> sotitle = title.MarshalUtf8();
 		return GuiWindowBox(bounds, sotitle.AsPtr());
-
 	}
 
 	public static int GuiGroupBox(Rectangle bounds, string? text)
@@ -57,17 +56,11 @@ public static unsafe partial class RayGui
 		return GuiLabelButton(bounds, sotext.AsPtr());
 	}
 
-	public static int GuiToggle(Rectangle bounds, string? text, Bool active)
+	public static int GuiToggle(Rectangle bounds, string? text, ref bool active)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		return GuiToggle(bounds, sotext.AsPtr(), &active);
-	}
-
-	public static int GuiToggle(Rectangle bounds, string? text, ref Bool active)
-	{
-		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		fixed (Bool* activePtr = &active)
-			return GuiToggle(bounds, sotext.AsPtr(), activePtr);
+		fixed (bool* activePtr = &active)
+			return GuiToggle(bounds, sotext.AsPtr(), (Bool*)activePtr);
 	}
 
 	public static int GuiToggleGroup(Rectangle bounds, string? text, ref int active)
@@ -77,22 +70,12 @@ public static unsafe partial class RayGui
 			return GuiToggleGroup(bounds, sotext.AsPtr(), activePtr);
 	}
 
-	//TODO (KEN) I think we can change Bool to `convert` bool* -> Bool* for correct implementation 
-
-	public static bool GuiCheckBox(Rectangle bounds, string? text, Bool @checked)
+	public static int GuiCheckBox(Rectangle bounds, string? text, ref bool @checked)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 
-		GuiCheckBox(bounds, sotext.AsPtr(), &@checked);
-
-		return @checked;
-	}
-
-	public static int GuiCheckBox(Rectangle bounds, string? text, ref Bool @checked)
-	{
-		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
-		fixed (Bool* checkedPtr = &@checked)
-			return GuiCheckBox(bounds, sotext.AsPtr(), checkedPtr);
+		fixed (bool* activePtr = &@checked)
+			return GuiCheckBox(bounds, sotext.AsPtr(), (Bool*)activePtr);
 	}
 
 	public static int GuiComboBox(Rectangle bounds, string? text, ref int active)
@@ -109,27 +92,27 @@ public static unsafe partial class RayGui
 			return GuiDropdownBox(bounds, sotext.AsPtr(), activePtr, editMode);
 	}
 
-	public static int GuiSpinner(Rectangle bounds, string? text, ref int value, int minValue, int maxValue, Boolean editMode)
+	public static int GuiSpinner(Rectangle bounds, string? text, ref int value, int minValue, int maxValue, bool editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		fixed (int* valuePtr = &value)
 			return GuiSpinner(bounds, sotext.AsPtr(), valuePtr, minValue, maxValue, editMode);
 	}
 
-	public static int GuiValueBox(Rectangle bounds, string? text, ref int value, int minValue, int maxValue, Boolean editMode)
+	public static int GuiValueBox(Rectangle bounds, string? text, ref int value, int minValue, int maxValue, bool editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		fixed (int* valuePtr = &value)
 			return GuiValueBox(bounds, sotext.AsPtr(), valuePtr, minValue, maxValue, editMode);
 	}
 
-	public static int GuiTextBox(Rectangle bounds, string? text, int textSize, Bool editMode)
+	public static int GuiTextBox(Rectangle bounds, string? text, int textSize, bool editMode)
 	{
 		using SpanOwner<sbyte> sotext = text.MarshalUtf8();
 		return GuiTextBox(bounds, sotext.AsPtr(), textSize, editMode);
 	}
 
-	public static float GuiSlider(Rectangle bounds, string? textLeft, string? textRight, ref float value, float minValue, float maxValue)
+	public static int GuiSlider(Rectangle bounds, string? textLeft, string? textRight, ref float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> sotextLeft = textLeft.MarshalUtf8();
 		using SpanOwner<sbyte> sotextRight = textRight.MarshalUtf8();
@@ -137,7 +120,7 @@ public static unsafe partial class RayGui
 			return GuiSlider(bounds, sotextLeft.AsPtr(), sotextRight.AsPtr(), valuePtr, minValue, maxValue);
 	}
 
-	public static float GuiSliderBar(Rectangle rectangle, string? leftText, string? rightText, ref float value, float minValue, float maxValue)
+	public static int GuiSliderBar(Rectangle rectangle, string? leftText, string? rightText, ref float value, float minValue, float maxValue)
 	{
 		using SpanOwner<sbyte> soTextLeft = leftText.MarshalUtf8();
 		using SpanOwner<sbyte> soTextRight = rightText.MarshalUtf8();
