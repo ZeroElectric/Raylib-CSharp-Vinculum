@@ -1,15 +1,15 @@
 
-////------------------------------------------------------------------------------
-////
-//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-//// This file is licensed to you under the MPL-2.0.
-//// See the LICENSE file in the project's root for more info.
-////
-//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
-//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-//// Find raylib here: https://github.com/raysan5/raylib
-////
-////------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//
+// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+// This file is licensed to you under the MPL-2.0.
+// See the LICENSE file in the project's root for more info.
+//
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+// Find raylib here: https://github.com/raysan5/raylib
+//
+//------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
@@ -51,7 +51,6 @@ public static class BasicWindow
 
 			// TODO: Update your variables here
 
-
 			// Draw
 			//----------------------------------------------------------------------------------
 
@@ -62,7 +61,6 @@ public static class BasicWindow
 			DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
 			EndDrawing();
-
 		}
 
 		// De-Initialization
