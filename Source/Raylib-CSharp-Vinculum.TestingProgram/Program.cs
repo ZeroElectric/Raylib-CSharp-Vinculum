@@ -139,8 +139,6 @@ ZeroElectric.Vinculum.ExampleCore.Text.SpriteFontLoading.main();
 ZeroElectric.Vinculum.ExampleCore.Text.TextFormatting.main();
 ZeroElectric.Vinculum.ExampleCore.Text.WritingAnimation.main();
 
-ZeroElectric.Vinculum.ExampleCore.Text.Unicode.main(); // The unicode example doesn't work properly. I guess the fonts don't include the needed unicode chars? //TODO (KEN) Fix this
-
 ///////////////////////////////////////////
 //////////////	SHAPES
 ZeroElectric.Vinculum.ExampleCore.Shapes.BasicShapesDrawing.main();
