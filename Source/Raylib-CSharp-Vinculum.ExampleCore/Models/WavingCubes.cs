@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -13,7 +13,7 @@
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>/*******************************************************************************************
+//*******************************************************************************************
 //*
 //* raylib[models] example - Waving cubes
 //*
@@ -25,7 +25,7 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* Copyright(c) 2019 Codecat(@codecat) and Ramon Santamaria(@raysan5)
 //*
 //********************************************************************************************/
-///</summary>
+
 public unsafe static class WavingCubes
 {
 
@@ -33,6 +33,7 @@ public unsafe static class WavingCubes
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -49,14 +50,15 @@ public unsafe static class WavingCubes
 		// Specify the amount of blocks in each direction
 		const int numBlocks = 15;
 
-		SetTargetFPS(60);
-		//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			double time = GetTime();
 
 			// Calculate time scale for cube position and size
@@ -66,10 +68,10 @@ public unsafe static class WavingCubes
 			double cameraTime = time * 0.3;
 			camera.position.X = (float)Math.Cos(cameraTime) * 40.0f;
 			camera.position.Z = (float)Math.Sin(cameraTime) * 40.0f;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -114,13 +116,12 @@ public unsafe static class WavingCubes
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}

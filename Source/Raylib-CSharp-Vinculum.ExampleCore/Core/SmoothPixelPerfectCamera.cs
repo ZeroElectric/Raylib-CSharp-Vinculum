@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -25,15 +27,13 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public unsafe static class SmoothPixelPerfectCamera
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -52,29 +52,30 @@ public unsafe static class SmoothPixelPerfectCamera
 
 		RenderTexture2D target = LoadRenderTexture(virtualScreenWidth, virtualScreenHeight); // This is where we'll draw all our objects.
 
-		Rectangle rec01 = new( 70.0f, 35.0f, 20.0f, 20.0f );
-		Rectangle rec02 = new( 90.0f, 55.0f, 30.0f, 10.0f );
-		Rectangle rec03 = new( 80.0f, 65.0f, 15.0f, 25.0f );
+		Rectangle rec01 = new(70.0f, 35.0f, 20.0f, 20.0f);
+		Rectangle rec02 = new(90.0f, 55.0f, 30.0f, 10.0f);
+		Rectangle rec03 = new(80.0f, 65.0f, 15.0f, 25.0f);
 
 		// The target's height is flipped (in the source Rectangle), due to OpenGL reasons
-		Rectangle sourceRec = new( 0.0f, 0.0f, (float)target.texture.width, -(float)target.texture.height );
-		Rectangle destRec =new( -virtualRatio, -virtualRatio, screenWidth + (virtualRatio * 2), screenHeight + (virtualRatio * 2) );
+		Rectangle sourceRec = new(0.0f, 0.0f, (float)target.texture.width, -(float)target.texture.height);
+		Rectangle destRec = new(-virtualRatio, -virtualRatio, screenWidth + (virtualRatio * 2), screenHeight + (virtualRatio * 2));
 
-		Vector2 origin =new( 0.0f, 0.0f );
+		Vector2 origin = new(0.0f, 0.0f);
 
 		float rotation = 0.0f;
 
 		float cameraX = 0.0f;
 		float cameraY = 0.0f;
 
-		SetTargetFPS(60);
-		//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			rotation += 60.0f * GetFrameTime();   // Rotate the rectangles, 60 degrees per second
 
 			// Make the camera move to demonstrate the effect
@@ -82,7 +83,7 @@ public unsafe static class SmoothPixelPerfectCamera
 			cameraY = MathF.Cos((float)GetTime()) * 30.0f;
 
 			// Set the camera's target to the values computed above
-			screenSpaceCamera.target = new( cameraX, cameraY );
+			screenSpaceCamera.target = new(cameraX, cameraY);
 
 			// Round worldSpace coordinates, keep decimals into screenSpace coordinates
 			worldSpaceCamera.target.X = (int)screenSpaceCamera.target.X;
@@ -92,10 +93,10 @@ public unsafe static class SmoothPixelPerfectCamera
 			worldSpaceCamera.target.Y = (int)screenSpaceCamera.target.Y;
 			screenSpaceCamera.target.Y -= worldSpaceCamera.target.Y;
 			screenSpaceCamera.target.Y *= virtualRatio;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginTextureMode(target);
 			ClearBackground(RAYWHITE);
 
@@ -117,17 +118,15 @@ public unsafe static class SmoothPixelPerfectCamera
 			DrawText(TextFormat("World resolution: %ix%i", virtualScreenWidth, virtualScreenHeight), 10, 40, 20, DARKGREEN);
 			DrawFPS(GetScreenWidth() - 95, 10);
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadRenderTexture(target);    // Unload render texture
 
 		CloseWindow();                  // Close window and OpenGL context
-										//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-

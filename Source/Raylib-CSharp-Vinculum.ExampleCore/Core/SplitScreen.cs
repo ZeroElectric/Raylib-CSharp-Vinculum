@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -24,13 +26,11 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public unsafe static class SplitScreen
 {
-	static Texture2D textureGrid;	// = { 0 };
-	static Camera cameraPlayer1;	// = { 0 };
-	static Camera cameraPlayer2;	// = { 0 };
+	static Texture2D textureGrid;   // = { 0 };
+	static Camera cameraPlayer1;    // = { 0 };
+	static Camera cameraPlayer2;    // = { 0 };
 
 	// Scene drawing
 	static void DrawScene()
@@ -59,6 +59,7 @@ public unsafe static class SplitScreen
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -93,13 +94,14 @@ public unsafe static class SplitScreen
 		Rectangle splitScreenRect = new(0.0f, 0.0f, (float)screenPlayer1.texture.width, (float)-screenPlayer1.texture.height);
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// If anyone moves this frame, how far will they move based on the time since the last frame
 			// this moves thigns at 10 world units per second, regardless of the actual FPS
 			float offsetThisFrame = 10.0f * GetFrameTime();
@@ -127,10 +129,10 @@ public unsafe static class SplitScreen
 				cameraPlayer2.position.X -= offsetThisFrame;
 				cameraPlayer2.target.X -= offsetThisFrame;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			// Draw Player1 view to the render texture
 			BeginTextureMode(screenPlayer1);
 			ClearBackground(SKYBLUE);
@@ -159,12 +161,12 @@ public unsafe static class SplitScreen
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadRenderTexture(screenPlayer1); // Unload render texture
 		UnloadRenderTexture(screenPlayer2); // Unload render texture
 		UnloadTexture(textureGrid);         // Unload texture
 
 		CloseWindow();                      // Close window and OpenGL context
-											//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
@@ -323,4 +325,3 @@ public unsafe static class SplitScreen
 		rlSetTexture(0);
 	}
 }
-

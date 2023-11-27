@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -13,7 +13,7 @@
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>/*******************************************************************************************
+//*******************************************************************************************
 //*
 //* raylib[models] example - Show the difference between perspective and orthographic projection
 //*
@@ -27,11 +27,13 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* Copyright(c) 2018 Max Danielsson(@autious) and Ramon Santamaria(@raysan5)
 //*
 //********************************************************************************************/
-///</summary>
+
 public unsafe static class OrthographicProjection
 {
+
 	const float FOVY_PERSPECTIVE = 45.0f;
 	const float WIDTH_ORTHOGRAPHIC = 10.0f;
+
 	public static int main()
 	{
 		// Initialization
@@ -45,13 +47,14 @@ public unsafe static class OrthographicProjection
 		Camera camera = new(new(0.0f, 10.0f, 10.0f), new(0.0f, 0.0f, 0.0f), new(0.0f, 1.0f, 0.0f), FOVY_PERSPECTIVE, CAMERA_PERSPECTIVE);
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			if (IsKeyPressed(KEY_SPACE))
 			{
 				if (camera.Projection == CAMERA_PERSPECTIVE)
@@ -65,10 +68,10 @@ public unsafe static class OrthographicProjection
 					camera.Projection = CAMERA_PERSPECTIVE;
 				}
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -101,13 +104,12 @@ public unsafe static class OrthographicProjection
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}

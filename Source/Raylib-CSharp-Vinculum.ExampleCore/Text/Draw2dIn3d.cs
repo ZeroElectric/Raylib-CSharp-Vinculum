@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -40,17 +40,10 @@ namespace ZeroElectric.Vinculum.ExampleCore.Text;
 
 public unsafe static class Draw2dIn3d
 {
-	// # include "rlgl.h"
-
-	// # include <stddef.h>     // Required for: null
-	// # include <math.h>       // Required for: MathF.Sin()
-
-	// To make it work with the older RLGL module just comment the line below
-	//#define RAYLIB_NEW_RLGL
-
 	//--------------------------------------------------------------------------------------
 	// Globals
 	//--------------------------------------------------------------------------------------
+
 	const float LETTER_BOUNDRY_SIZE = 0.25f;
 	const int TEXT_MAX_LAYERS = 32;
 	static Color LETTER_BOUNDRY_COLOR = VIOLET;
@@ -64,7 +57,6 @@ public unsafe static class Draw2dIn3d
 	// Data Types definition
 	//--------------------------------------------------------------------------------------
 
-	// Configuration structure for waving the text
 	struct WaveTextConfig
 	{
 
@@ -80,6 +72,7 @@ public unsafe static class Draw2dIn3d
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -99,8 +92,6 @@ public unsafe static class Draw2dIn3d
 
 		Vector3 cubePosition = new Vector3(0.0f, 1.0f, 0.0f);
 		Vector3 cubeSize = new Vector3(2.0f, 2.0f, 2.0f);
-
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
 
 		// Use the default font
 		Font font = GetFontDefault();
@@ -131,18 +122,19 @@ public unsafe static class Draw2dIn3d
 
 		// Array filled with multiple random colors (when multicolor mode is set)
 		Color[] multi = new Color[TEXT_MAX_LAYERS];
-		//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// Handle font files dropped
 			if (IsFileDropped())
 			{
-				//int count = 0;
-				//char** droppedFiles = GetDroppedFiles(&count);
 				var droppedFiles = GetDroppedFilesAndClear();
 				var count = droppedFiles.Length;
 
@@ -158,7 +150,6 @@ public unsafe static class Draw2dIn3d
 					font = LoadFont(droppedFiles[0]);
 					fontSize = font.baseSize;
 				}
-				//ClearDroppedFiles();
 			}
 
 			// Handle Events
@@ -236,20 +227,10 @@ public unsafe static class Draw2dIn3d
 			int ch = GetCharPressed();
 			if (IsKeyPressed(KEY_BACKSPACE))
 			{
-				//// Remove last char
-				//int len = TextLength(text);
-				//if (len > 0) text[len - 1] = '\0';
 				text = text.Substring(0, text.Length - 1);
 			}
 			else if (IsKeyPressed(KEY_ENTER))
 			{
-				//// handle newline
-				//int len = TextLength(text);
-				//if (len < sizeof(text) - 1)
-				//{
-				//	text[len] = '\n';
-				//	text[len + 1] = '\0';
-				//}
 				text += "\n";
 			}
 			else if (ch == 0)
@@ -258,13 +239,6 @@ public unsafe static class Draw2dIn3d
 			}
 			else
 			{
-				//// append only printable chars
-				//int len = TextLength(text);
-				//if (len < sizeof(text) - 1)
-				//{
-				//	text[len] = ch;
-				//	text[len + 1] = '\0';
-				//}
 				text += (char)ch;
 			}
 
@@ -274,10 +248,10 @@ public unsafe static class Draw2dIn3d
 			UpdateCamera(ref camera, CAMERA_MODE);          // Update camera
 			quads = 0;                      // Reset quad counter
 			time += GetFrameTime();         // Update timer needed by `DrawTextWave3D()`
-											//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -357,10 +331,10 @@ public unsafe static class Draw2dIn3d
 			pos.X = -m.X / 2.0f;
 			DrawText3D(GetFontDefault(), opt, pos, 8.0f, 1.0f, 0.0f, false, DARKPURPLE);
 			rlPopMatrix();
-			//-------------------------------------------------------------------------
 
 			// Draw 3D info text (use default font)
 			//-------------------------------------------------------------------------
+
 			opt = "All the text displayed here is in 3D";
 			quads += 36;
 			m = MeasureText3D(GetFontDefault(), opt, 10.0f, 0.5f, 0.0f);
@@ -401,7 +375,6 @@ public unsafe static class Draw2dIn3d
 			m = MeasureText3D(GetFontDefault(), opt, 6.0f, 0.5f, 0.0f);
 			pos.X = -m.X / 2.0f;
 			DrawText3D(GetFontDefault(), opt, pos, 6.0f, 0.5f, 0.0f, false, DARKBLUE);
-			//-------------------------------------------------------------------------
 
 			SHOW_LETTER_BOUNDRY = slb;
 			EndShaderMode();
@@ -410,6 +383,7 @@ public unsafe static class Draw2dIn3d
 
 			// Draw 2D info text & stats
 			//-------------------------------------------------------------------------
+
 			DrawText("Drag & drop a font file to change the font!\nType something, see what happens!\n\n Press [F3] to toggle the camera", 10, 35, 10, BLACK);
 
 			quads += TextLength(text) * 2 * layers;
@@ -432,25 +406,21 @@ public unsafe static class Draw2dIn3d
 			tmp = "[Tab] to toggle multicolor mode";
 			width = MeasureText(tmp, 10);
 			DrawText(tmp, screenWidth - 20 - width, 70, 10, DARKGRAY);
-			//-------------------------------------------------------------------------
 
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadFont(font);
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
-
 
 	//--------------------------------------------------------------------------------------
 	// Module Functions Definitions
@@ -565,8 +535,6 @@ public unsafe static class Draw2dIn3d
 		}
 	}
 
-
-
 	static Vector3 MeasureText3D(Font font, string text, float fontSize, float fontSpacing, float lineSpacing)
 	{
 		int len = TextLength(text);
@@ -620,7 +588,6 @@ public unsafe static class Draw2dIn3d
 
 		return vec;
 	}
-
 
 	static void DrawTextWave3D(Font font, string text, Vector3 position, float fontSize, float fontSpacing, float lineSpacing, bool backface, WaveTextConfig* config, float time, Color tint)
 	{

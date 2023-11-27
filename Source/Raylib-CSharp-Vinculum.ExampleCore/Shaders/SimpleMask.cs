@@ -36,16 +36,13 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 public unsafe static class SimpleMask
 {
 
-#if PLATFORM_DESKTOP
 	const int GLSL_VERSION = 330;
-#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
-	const int GLSL_VERSION = 100;
-#endif
 
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -95,17 +92,16 @@ public unsafe static class SimpleMask
 		int framesCounter = 0;
 
 		// Model rotation angles
-		Vector3 rotation = new(0);       
+		Vector3 rotation = new(0);
 
 		// Limit cursor to relative movement inside the window
 		DisableCursor();
-		
-		// Set  to run at 60 frames-per-second
-		SetTargetFPS(60);               
+
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
 		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
 		//----------------------------------------------------------------------------------
-		while (!WindowShouldClose())    
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
@@ -122,7 +118,7 @@ public unsafe static class SimpleMask
 			model1.transform = MatrixRotateXYZ(rotation);
 
 			// Update camera
-			UpdateCamera(ref camera, CAMERA_FREE);          
+			UpdateCamera(ref camera, CAMERA_FREE);
 
 			// Draw
 			//----------------------------------------------------------------------------------
@@ -136,7 +132,7 @@ public unsafe static class SimpleMask
 			DrawModel(model1, new Vector3(0.5f, 0, 0), 1, WHITE);
 			DrawModelEx(model2, new Vector3(-.5f, 0, 0), new Vector3(1, 1, 0), 50, new Vector3(1, 1, 1), WHITE);
 			DrawModel(model3, new Vector3(0, 0, -1.5f), 1, WHITE);
-			DrawGrid(10, 1.0f);       
+			DrawGrid(10, 1.0f);
 
 			EndMode3D();
 
@@ -164,7 +160,7 @@ public unsafe static class SimpleMask
 		UnloadShader(shader);
 
 		// Close window and OpenGL context
-		CloseWindow();              
+		CloseWindow();
 
 		return 0;
 	}

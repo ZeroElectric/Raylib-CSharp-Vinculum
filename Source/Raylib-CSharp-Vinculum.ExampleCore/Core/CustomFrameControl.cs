@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -37,8 +39,6 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public unsafe static class CustomFrameControl
 {
 
@@ -46,8 +46,10 @@ public unsafe static class CustomFrameControl
 	{
 		System.Diagnostics.Debug.Assert(false,
 			"this example requires a recompile of raylib with the SUPPORT_CUSTOM_FRAME_CONTROL flag.  see above docs");
+
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -65,13 +67,14 @@ public unsafe static class CustomFrameControl
 		bool pause = false;                 // Pause control flag
 
 		int targetFPS = 60;                 // Our initial target fps
-											//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose()) 
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			PollInputEvents();              // Poll input events (SUPPORT_CUSTOM_FRAME_CONTROL)
 
 			if (IsKeyPressed(KEY_SPACE)) pause = !pause;
@@ -87,10 +90,10 @@ public unsafe static class CustomFrameControl
 				if (position >= GetScreenWidth()) position = 0;
 				timeCounter += deltaTime;   // We count time (seconds)
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -114,7 +117,6 @@ public unsafe static class CustomFrameControl
 			// Events polling, screen buffer swap and frame time control must be managed by the user
 
 			SwapScreenBuffer();         // Flip the back buffer to screen (front buffer)
-			
 
 			currentTime = GetTime();
 			updateDrawTime = currentTime - previousTime;
@@ -129,18 +131,16 @@ public unsafe static class CustomFrameControl
 					deltaTime = (float)(currentTime - previousTime);
 				}
 			}
-			else deltaTime =(float) updateDrawTime;    // Framerate could be variable
+			else deltaTime = (float)updateDrawTime;    // Framerate could be variable
 
 			previousTime = currentTime;
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-

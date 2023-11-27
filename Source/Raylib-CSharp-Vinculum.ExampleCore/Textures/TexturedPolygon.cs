@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -29,7 +29,6 @@ namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 
 public unsafe static class TexturedPolygon
 {
-	//# include "raymath.h"
 
 	const int MAX_POINTS = 11;      // 10 points and back to the start
 
@@ -37,6 +36,7 @@ public unsafe static class TexturedPolygon
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -77,21 +77,22 @@ public unsafe static class TexturedPolygon
 		float angle = 0.0f;             // Rotation angle (in degrees)
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// Update points rotation with an angle transform
 			// NOTE: Base points position are not modified
 			angle++;
 			for (int i = 0; i < MAX_POINTS; i++) positions[i] = Vector2Rotate(points[i], angle * DEG2RAD);
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -101,15 +102,14 @@ public unsafe static class TexturedPolygon
 			DrawTexturePoly(texture, new Vector2(GetScreenWidth() / 2, GetScreenHeight() / 2), positions, texcoords, MAX_POINTS, WHITE);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(texture); // Unload texture
 
 		CloseWindow();          // Close window and OpenGL context
-								//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

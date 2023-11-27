@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -13,7 +13,7 @@
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>*******************************************************************************************
+//*******************************************************************************************
 //*
 //* raylib[models] example - Cubicmap loading and drawing
 //*
@@ -23,14 +23,14 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* Copyright(c) 2015 Ramon Santamaria(@raysan5)
 //*
 //********************************************************************************************
-///</summary>
+
 public unsafe static class Cubicmap
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -54,19 +54,20 @@ public unsafe static class Cubicmap
 		UnloadImage(image);     // Unload cubesmap image from RAM, already uploaded to VRAM
 
 
-		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
-												//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())            // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -87,19 +88,17 @@ public unsafe static class Cubicmap
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(cubicmap);    // Unload cubicmap texture
 		UnloadTexture(texture);     // Unload map texture
 		UnloadModel(model);         // Unload map model
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
 }

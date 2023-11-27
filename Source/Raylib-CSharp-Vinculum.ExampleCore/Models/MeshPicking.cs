@@ -1,15 +1,15 @@
 
-////------------------------------------------------------------------------------
-////
-//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-//// This file is licensed to you under the MPL-2.0.
-//// See the LICENSE file in the project's root for more info.
-////
-//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
-//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-//// Find raylib here: https://github.com/raysan5/raylib
-////
-////------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//
+// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+// This file is licensed to you under the MPL-2.0.
+// See the LICENSE file in the project's root for more info.
+//
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+// Find raylib here: https://github.com/raysan5/raylib
+//
+//------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
@@ -28,12 +28,14 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
 public unsafe static class MeshPicking
 {
+
 	const float FLT_MAX = float.MaxValue;
 
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -41,20 +43,20 @@ public unsafe static class MeshPicking
 
 		// Define the camera to look into our 3d world
 		Camera camera = new();
-		camera.position = new(20.0f, 20.0f, 20.0f);			 // Camera position
-		camera.target = new(0.0f, 8.0f, 0.0f);				 // Camera looking at point
-		camera.up = new(0.0f, 1.6f, 0.0f);					 // Camera up vector (rotation towards target)
+		camera.position = new(20.0f, 20.0f, 20.0f);          // Camera position
+		camera.target = new(0.0f, 8.0f, 0.0f);               // Camera looking at point
+		camera.up = new(0.0f, 1.6f, 0.0f);                   // Camera up vector (rotation towards target)
 		camera.fovy = 45.0f;                                 // Camera field-of-view Y
 		camera.Projection = CAMERA_PERSPECTIVE;             // Camera mode type
 
 		Ray ray = new();        // Picking ray
 
-		Model tower = LoadModel("resources/models/wavefront/turret.obj");					// Load OBJ model
-		Texture2D texture = LoadTexture("resources/models/wavefront/turret_diffuse.png");	// Load model texture
-		tower.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;				// Set model diffuse texture
+		Model tower = LoadModel("resources/models/wavefront/turret.obj");                   // Load OBJ model
+		Texture2D texture = LoadTexture("resources/models/wavefront/turret_diffuse.png");   // Load model texture
+		tower.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;               // Set model diffuse texture
 
-		Vector3 towerPos = new(0.0f, 0.0f, 0.0f);							// Set model position
-		BoundingBox towerBBox = GetMeshBoundingBox(tower.meshes[0]);		// Get mesh bounding box
+		Vector3 towerPos = new(0.0f, 0.0f, 0.0f);                           // Set model position
+		BoundingBox towerBBox = GetMeshBoundingBox(tower.meshes[0]);        // Get mesh bounding box
 
 		// Ground quad
 		Vector3 g0 = new(-50.0f, 0.0f, -50.0f);
@@ -76,8 +78,7 @@ public unsafe static class MeshPicking
 		// Limit cursor to relative movement inside the window
 		DisableCursor();
 
-		// Set  to run at 60 frames-per-second
-		SetTargetFPS(60);
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
 		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
 		//----------------------------------------------------------------------------------
@@ -140,7 +141,7 @@ public unsafe static class MeshPicking
 				hitObjectName = "Box";
 
 				// Check ray collision against model meshes
-				RayCollision meshHitInfo=default;
+				RayCollision meshHitInfo = default;
 				for (int m = 0; m < tower.meshCount; m++)
 				{
 					// NOTE: We consider the model.transform for the collision check but 

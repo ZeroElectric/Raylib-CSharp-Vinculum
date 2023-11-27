@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -34,16 +34,13 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 public unsafe static class ShapesAndTextureShaders
 {
 
-#if PLATFORM_DESKTOP
 	const int GLSL_VERSION = 330;
-#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
-	const int GLSL_VERSION = 100;
-#endif
 
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -57,18 +54,19 @@ public unsafe static class ShapesAndTextureShaders
 		Shader shader = LoadShader(null, TextFormat("resources/shaders/glsl%i/grayscale.fs", GLSL_VERSION));
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// TODO: Update your variables here
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -119,29 +117,16 @@ public unsafe static class ShapesAndTextureShaders
 			DrawText("(c) Fudesumi sprite by Eiden Marsal", 380, screenHeight - 20, 10, GRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadShader(shader);       // Unload shader
 		UnloadTexture(fudesumi);    // Unload texture
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

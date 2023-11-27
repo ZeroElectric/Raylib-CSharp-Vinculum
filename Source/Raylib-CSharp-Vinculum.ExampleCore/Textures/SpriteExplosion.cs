@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -34,6 +34,7 @@ public unsafe static class SpriteExplosion
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -59,11 +60,11 @@ public unsafe static class SpriteExplosion
 		bool active = false;
 		int framesCounter = 0;
 
-		SetTargetFPS(120);
-		//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
@@ -107,10 +108,10 @@ public unsafe static class SpriteExplosion
 
 			frameRec.X = frameWidth * currentFrame;
 			frameRec.Y = frameHeight * currentLine;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -119,18 +120,17 @@ public unsafe static class SpriteExplosion
 			if (active) DrawTextureRec(explosion, frameRec, position, WHITE);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(explosion);   // Unload texture
 		UnloadSound(fxBoom);        // Unload sound
 
 		CloseAudioDevice();
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

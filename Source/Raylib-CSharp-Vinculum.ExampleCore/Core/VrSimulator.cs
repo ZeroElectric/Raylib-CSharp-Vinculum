@@ -157,6 +157,4 @@ public unsafe static class VrSimulator
 
 		return 0;
 	}
-
-
 }

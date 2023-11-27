@@ -1,15 +1,15 @@
 
-////------------------------------------------------------------------------------
-////
-//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-//// This file is licensed to you under the MPL-2.0.
-//// See the LICENSE file in the project's root for more info.
-////
-//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
-//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-//// Find raylib here: https://github.com/raysan5/raylib
-////
-////------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//
+// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+// This file is licensed to you under the MPL-2.0.
+// See the LICENSE file in the project's root for more info.
+//
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+// Find raylib here: https://github.com/raysan5/raylib
+//
+//------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 
@@ -45,7 +45,7 @@ public unsafe static class ModelShader
 		const int screenHeight = 450;
 
 		// Enable Multi Sampling Anti Aliasing 4x (if available)
-		SetConfigFlags(FLAG_MSAA_4X_HINT);      
+		SetConfigFlags(FLAG_MSAA_4X_HINT);
 
 		InitWindow(screenWidth, screenHeight, "raylib [shaders] example - model shader");
 
@@ -83,10 +83,11 @@ public unsafe static class ModelShader
 			//----------------------------------------------------------------------------------
 
 			// Update camera
-			UpdateCamera(ref camera, CAMERA_FREE);          
+			UpdateCamera(ref camera, CAMERA_FREE);
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -118,5 +119,3 @@ public unsafe static class ModelShader
 		return 0;
 	}
 }
-
-

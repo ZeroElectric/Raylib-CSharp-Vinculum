@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -27,24 +29,22 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public unsafe static class QuatConversions
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - quat conversions");
 
 		Camera3D camera = new();
-		camera.position = new( 0.0f, 10.0f, 10.0f );  // Camera position
-		camera.target = new( 0.0f, 0.0f, 0.0f );      // Camera looking at point
-		camera.up = new( 0.0f, 1.0f, 0.0f );          // Camera up vector (rotation towards target)
+		camera.position = new(0.0f, 10.0f, 10.0f);  // Camera position
+		camera.target = new(0.0f, 0.0f, 0.0f);      // Camera looking at point
+		camera.up = new(0.0f, 1.0f, 0.0f);          // Camera up vector (rotation towards target)
 		camera.fovy = 45.0f;                                // Camera field-of-view Y
 		camera.Projection = CAMERA_PERSPECTIVE;             // Camera mode type
 
@@ -61,17 +61,18 @@ public unsafe static class QuatConversions
 		Matrix m4 = new();// = { 0 };
 
 		// Generic vectors for rotations
-		Vector3 v1=new();// = { 0 };
+		Vector3 v1 = new();// = { 0 };
 		Vector3 v2 = new();// = { 0 };
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//--------------------------------------------------------------------------------------
+
 			if (v2.X < 0) v2.X += PI * 2;
 			if (v2.Y < 0) v2.Y += PI * 2;
 			if (v2.Z < 0) v2.Z += PI * 2;
@@ -87,11 +88,10 @@ public unsafe static class QuatConversions
 			if (v1.Y > PI * 2) v1.Y -= PI * 2;
 			if (v1.Z > PI * 2) v1.Z -= PI * 2;
 
-
 			//q1 = QuaternionFromEuler(v1.X, v1.Y, v1.Z);
 			q1 = Quaternion.CreateFromYawPitchRoll(v1.X, v1.Y, v1.Z);
 			//m1 = MatrixRotateZYX(v1);
-			m1 = Matrix.CreateFromYawPitchRoll(v1.X,v1.Y,v1.Z);
+			m1 = Matrix.CreateFromYawPitchRoll(v1.X, v1.Y, v1.Z);
 			//m2 = QuaternionToMatrix(q1);
 			m2 = Matrix.CreateFromQuaternion(q1);
 
@@ -108,10 +108,10 @@ public unsafe static class QuatConversions
 			//m4 = MatrixRotateZYX(v2);
 			m4 = Matrix.CreateFromYawPitchRoll(v2.X, v2.Y, v2.Z);
 
-			//--------------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -119,16 +119,16 @@ public unsafe static class QuatConversions
 			BeginMode3D(camera);
 
 			model.transform = Matrix.Transpose(m1);
-			DrawModel(model, new( -1, 0, 0 ), 1.0f, RED);
+			DrawModel(model, new(-1, 0, 0), 1.0f, RED);
 
 			model.transform = Matrix.Transpose(m2);
-			DrawModel(model, new( 1, 0, 0 ), 1.0f, RED);
+			DrawModel(model, new(1, 0, 0), 1.0f, RED);
 
 			model.transform = Matrix.Transpose(m3);
-			DrawModel(model, new( 0, 0, 0 ), 1.0f, RED);
+			DrawModel(model, new(0, 0, 0), 1.0f, RED);
 
 			model.transform = Matrix.Transpose(m4);
-			DrawModel(model, new( 0, 0, -1 ), 1.0f, RED);
+			DrawModel(model, new(0, 0, -1), 1.0f, RED);
 
 			DrawGrid(10, 1.0f);
 
@@ -143,17 +143,15 @@ public unsafe static class QuatConversions
 			DrawText(TextFormat("%2.3f", v2.Z), 200, 60, 20, (v1.Z == v2.Z) ? GREEN : BLACK);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadModel(model);   // Unload model data (mesh and materials)
 
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-

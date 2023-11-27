@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -35,18 +35,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 
 public unsafe static class PaletteColorSwitch
 {
-	////#if defined(PLATFORM_DESKTOP)
-	////	const int GLSL_VERSION = 330;
-	////#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
-	////#define GLSL_VERSION            100
-	////#endif
 	const int GLSL_VERSION = 330;
 
 	const int MAX_PALETTES = 3;
 	const int COLORS_PER_PALETTE = 8;
 	const int VALUES_PER_COLOR = 3;
-
-
 
 	static int[,] palettes = new int[MAX_PALETTES, COLORS_PER_PALETTE * VALUES_PER_COLOR]{
 			{   // 3-BIT RGB
@@ -82,7 +75,7 @@ public unsafe static class PaletteColorSwitch
 			255,
 			255,
 			255,
-},
+			},
 			{   // AMMO-8 (GameBoy-like)
 				4,
 				12,
@@ -110,7 +103,7 @@ public unsafe static class PaletteColorSwitch
 				204,
 			},
 
-	{   // RKBV (2-strip film)
+			{   // RKBV (2-strip film)
 				21,
 				25,
 				26,
@@ -142,13 +135,13 @@ public unsafe static class PaletteColorSwitch
 			"3-BIT RGB",
 			"AMMO-8 (GameBoy-like)",
 			"RKBV (2-strip film)"
-};
+	};
 
 	public static int main()
 	{
-
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -166,14 +159,15 @@ public unsafe static class PaletteColorSwitch
 		int currentPalette = 0;
 		int lineHeight = screenHeight / COLORS_PER_PALETTE;
 
-		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
-												//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())            // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			if (IsKeyPressed(KEY_RIGHT)) currentPalette++;
 			else if (IsKeyPressed(KEY_LEFT)) currentPalette--;
 
@@ -183,10 +177,10 @@ public unsafe static class PaletteColorSwitch
 			// Send new value to the shader to be used on drawing.
 			// NOTE: We are sending RGB triplets w/o the alpha channel
 			SetShaderValueV(shader, paletteLoc, ref palettes[currentPalette, 0], SHADER_UNIFORM_IVEC3, COLORS_PER_PALETTE);
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -199,7 +193,7 @@ public unsafe static class PaletteColorSwitch
 				// The used palette index is encoded in the RGB components of the pixel
 				DrawRectangle(0, lineHeight * i, GetScreenWidth(), lineHeight, new Color(i, i, i, 255));
 			}
-			
+
 			EndShaderMode();
 
 			DrawText("< >", 10, 10, 30, DARKBLUE);
@@ -209,18 +203,15 @@ public unsafe static class PaletteColorSwitch
 			DrawFPS(700, 15);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadShader(shader);       // Unload shader
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-
-

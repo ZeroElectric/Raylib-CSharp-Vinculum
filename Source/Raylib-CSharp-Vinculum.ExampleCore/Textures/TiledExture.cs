@@ -1,14 +1,3 @@
-//------------------------------------------------------------------------------
-//
-// Copyright 2022-2023 © Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-// This file is licensed to you under the MPL-2.0.
-// See the LICENSE file in the project's root for more info.
-//
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
-// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-// Find Raylib here: https://github.com/raysan5/raylib
-//
-//------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
 //
@@ -16,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -35,19 +24,18 @@ namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 *
 ********************************************************************************************/
 
-
 public unsafe static class TiledExture
 {
 
-	//#define SIZEOF(A) (sizeof(A)/sizeof(A[0]))
 	const int OPT_WIDTH = 220;       // Max width for the options container
 	const int MARGIN_SIZE = 8;       // Size for the margins
 	const int COLOR_SIZE = 16;       // Size of the color select buttons
 
-	public static int main()//int argc, char** argv)
+	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		int screenWidth = 800;
 		int screenHeight = 450;
 
@@ -60,13 +48,13 @@ public unsafe static class TiledExture
 
 		// Coordinates for all patterns inside the texture
 		Rectangle[] recPattern = new Rectangle[]{
-		new Rectangle( 3, 3, 66, 66 ),
-		new Rectangle( 75, 3, 100, 100 ),
-		new Rectangle( 3, 75, 66, 66 ),
-		new Rectangle( 7, 156, 50, 50 ),
-		new Rectangle( 85, 106, 90, 45 ),
-		new Rectangle( 75, 154, 100, 60)
-	};
+			new Rectangle( 3, 3, 66, 66 ),
+			new Rectangle( 75, 3, 100, 100 ),
+			new Rectangle( 3, 75, 66, 66 ),
+			new Rectangle( 7, 156, 50, 50 ),
+			new Rectangle( 85, 106, 90, 45 ),
+			new Rectangle( 75, 154, 100, 60)
+		};
 
 		// Setup colors
 		Color[] colors = new Color[] { BLACK, MAROON, ORANGE, BLUE, PURPLE, BEIGE, LIME, RED, DARKGRAY, SKYBLUE };
@@ -94,14 +82,15 @@ public unsafe static class TiledExture
 		int activePattern = 0, activeCol = 0;
 		float scale = 1.0f, rotation = 0.0f;
 
-		SetTargetFPS(60);
-		//---------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			screenWidth = GetScreenWidth();
 			screenHeight = GetScreenHeight();
 
@@ -146,10 +135,10 @@ public unsafe static class TiledExture
 
 			// Reset
 			if (IsKeyPressed(KEY_SPACE)) { rotation = 0.0f; scale = 1.0f; }
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
 
@@ -182,15 +171,14 @@ public unsafe static class TiledExture
 			// Draw FPS
 			DrawText(TextFormat("%i FPS", GetFPS()), 2 + MARGIN_SIZE, 2 + MARGIN_SIZE, 20, BLACK);
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(texPattern);        // Unload texture
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

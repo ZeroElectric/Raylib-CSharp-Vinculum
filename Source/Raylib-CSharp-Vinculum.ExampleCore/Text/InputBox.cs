@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -33,6 +33,7 @@ public unsafe static class InputBox
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -47,14 +48,15 @@ public unsafe static class InputBox
 
 		int framesCounter = 0;
 
-		SetTargetFPS(10);               // Set our game to run at 10 frames-per-second
-										//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			if (CheckCollisionPointRec(GetMousePosition(), textBox)) mouseOnText = true;
 			else mouseOnText = false;
 
@@ -72,9 +74,6 @@ public unsafe static class InputBox
 					// NOTE: Only allow keys in range [32..125]
 					if ((key >= 32) && (key <= 125) && (name.Length < MAX_INPUT_CHARS))
 					{
-						//name[letterCount] = (char)key;
-						//name[letterCount + 1] = '\0'; // Add null terminator at the end of the string.
-						//letterCount++;
 						name += (char)key;
 					}
 
@@ -83,9 +82,6 @@ public unsafe static class InputBox
 
 				if (IsKeyPressed(KEY_BACKSPACE))
 				{
-					//letterCount--;
-					//if (letterCount < 0) letterCount = 0;
-					//name[letterCount] = '\0';
 					name = name.Substring(0, name.Length - 1);
 				}
 			}
@@ -93,10 +89,10 @@ public unsafe static class InputBox
 
 			if (mouseOnText) framesCounter++;
 			else framesCounter = 0;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -122,29 +118,13 @@ public unsafe static class InputBox
 			}
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
-
-	// Check if any key is pressed
-	// NOTE: We limit keys check to keys between 32 (KEY_SPACE) and 126
-	static bool IsAnyKeyPressed()
-	{
-		bool keyPressed = false;
-		int key = GetKeyPressed();
-
-		if ((key >= 32) && (key <= 126)) keyPressed = true;
-
-		return keyPressed;
-	}
-
-
 }

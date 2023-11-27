@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -36,21 +36,21 @@ public unsafe static class JuliaSet
 
 	const int GLSL_VERSION = 330;
 
-
-	// A few good julia sets
 	static Vector2[] pointsOfInterest = new Vector2[6]
-{
-	new Vector2( -0.348827f, 0.607167f ),
-	new Vector2( -0.786268f, 0.169728f ),
-	new Vector2( -0.8f, 0.156f ),
-	new Vector2( 0.285f, 0.0f ),
-	new Vector2( -0.835f, -0.2321f ),
-	new Vector2( -0.70176f, -0.3842f ),
-};
+	{
+		new Vector2( -0.348827f, 0.607167f ),
+		new Vector2( -0.786268f, 0.169728f ),
+		new Vector2( -0.8f, 0.156f ),
+		new Vector2( 0.285f, 0.0f ),
+		new Vector2( -0.835f, -0.2321f ),
+		new Vector2( -0.70176f, -0.3842f ),
+	};
+
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -91,14 +91,15 @@ public unsafe static class JuliaSet
 		bool showControls = true;           // Show controls
 		bool pause = false;                 // Pause animation
 
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-											//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// Press [1 - 6] to reset c to a point of interest
 			if (IsKeyPressed(KEY_ONE) ||
 				IsKeyPressed(KEY_TWO) ||
@@ -158,10 +159,10 @@ public unsafe static class JuliaSet
 
 				SetShaderValue(shader, cLoc, c, SHADER_UNIFORM_VEC2);
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			// Using a render texture to draw Julia set
 			BeginTextureMode(target);       // Enable drawing to texture
 			ClearBackground(BLACK);     // Clear the render texture
@@ -194,19 +195,16 @@ public unsafe static class JuliaSet
 				DrawText("Press KEY_SPACE to pause movement animation", 10, 75, 10, RAYWHITE);
 			}
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadShader(shader);               // Unload shader
 		UnloadRenderTexture(target);        // Unload render texture
 
 		CloseWindow();                      // Close window and OpenGL context
-											//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-
-

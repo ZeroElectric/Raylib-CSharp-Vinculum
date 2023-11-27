@@ -1,15 +1,15 @@
 
-////------------------------------------------------------------------------------
-////
-//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
-//// This file is licensed to you under the MPL-2.0.
-//// See the LICENSE file in the project's root for more info.
-////
-//// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
-//// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
-//// Find raylib here: https://github.com/raysan5/raylib
-////
-////------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//
+// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+// This file is licensed to you under the MPL-2.0.
+// See the LICENSE file in the project's root for more info.
+//
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
+// Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
+// Find raylib here: https://github.com/raysan5/raylib
+//
+//------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 
@@ -30,11 +30,7 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 public unsafe static class RaymarchingShapes
 {
 
-#if PLATFORM_DESKTOP
 	const int GLSL_VERSION = 330;
-#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB -> Not supported at this moment
-	const int GLSL_VERSION = 100;
-#endif
 
 	public static int main()
 	{
@@ -71,8 +67,7 @@ public unsafe static class RaymarchingShapes
 		// Limit cursor to relative movement inside the window
 		DisableCursor();
 
-		// Set  to run at 60 frames-per-second
-		SetTargetFPS(60);
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
 		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
 		//----------------------------------------------------------------------------------
@@ -82,7 +77,7 @@ public unsafe static class RaymarchingShapes
 			//----------------------------------------------------------------------------------
 
 			// Update camera
-			UpdateCamera(ref camera, CAMERA_FREE);          
+			UpdateCamera(ref camera, CAMERA_FREE);
 
 			Vector3 cameraPos = new(camera.position.X, camera.position.Y, camera.position.Z);
 			Vector3 cameraTarget = new(camera.target.X, camera.target.Y, camera.target.Z);
@@ -129,7 +124,7 @@ public unsafe static class RaymarchingShapes
 		UnloadShader(shader);
 
 		// Close window and OpenGL context
-		CloseWindow();                  
+		CloseWindow();
 
 		return 0;
 	}

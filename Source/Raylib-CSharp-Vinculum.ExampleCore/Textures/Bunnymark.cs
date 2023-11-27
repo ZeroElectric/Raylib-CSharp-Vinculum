@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -27,8 +27,6 @@ namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 public unsafe static class Bunnymark
 {
 
-	// #include <stdlib.h>                 // Required for: malloc(), free()
-
 	const int MAX_BUNNIES = 50000;    // 50K bunnies limit
 
 	// This is the maximum amount of elements (quads) per batch
@@ -46,6 +44,7 @@ public unsafe static class Bunnymark
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -60,13 +59,14 @@ public unsafe static class Bunnymark
 		int bunniesCount = 0;           // Bunnies counter
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 			{
 				// Create more bunnies
@@ -96,10 +96,10 @@ public unsafe static class Bunnymark
 				if (((bunnies[i].position.Y + texBunny.height / 2) > GetScreenHeight()) ||
 					((bunnies[i].position.Y + texBunny.height / 2 - 40) < 0)) bunnies[i].speed.Y *= -1;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -122,17 +122,14 @@ public unsafe static class Bunnymark
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
-		//free(bunnies);              // Unload bunnies data array
 
 		UnloadTexture(texBunny);    // Unload bunny texture
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

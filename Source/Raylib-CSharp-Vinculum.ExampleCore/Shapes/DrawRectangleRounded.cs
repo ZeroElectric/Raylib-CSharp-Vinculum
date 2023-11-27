@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -29,13 +29,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shapes;
 public unsafe static class DrawRectangleRounded
 {
 
-	//#define RAYGUI_IMPLEMENTATION
-	//# include "extras/raygui.h"                 // Required for GUI controls
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -51,23 +49,22 @@ public unsafe static class DrawRectangleRounded
 		bool drawRoundedRect = true;
 		bool drawRoundedLines = false;
 
-		RayGui.GuiLoadStyleDefault(); //init raygui
-
+		GuiLoadStyleDefault(); //init raygui
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-
-		//--------------------------------------------------------------------------------------
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			Rectangle rec = new Rectangle(((float)GetScreenWidth() - width - 250) / 2, (GetScreenHeight() - height) / 2.0f, (float)width, (float)height);
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -81,6 +78,7 @@ public unsafe static class DrawRectangleRounded
 
 			// Draw GUI controls
 			//------------------------------------------------------------------------------
+
 			GuiSliderBar(new Rectangle(640, 40, 105, 20), "Width", width.ToString(), ref width, 0, (float)GetScreenWidth() - 300);
 			GuiSliderBar(new Rectangle(640, 70, 105, 20), "Height", height.ToString(), ref height, 0, (float)GetScreenHeight() - 50);
 			GuiSliderBar(new Rectangle(640, 140, 105, 20), "Roundness", roundness.ToString(), ref roundness, 0.0f, 1.0f);
@@ -91,23 +89,19 @@ public unsafe static class DrawRectangleRounded
 			GuiCheckBox(new Rectangle(640, 350, 20, 20), "DrawRoundedLines", ref drawRoundedLines);
 			GuiCheckBox(new Rectangle(640, 380, 20, 20), "DrawRect", ref drawRect);
 
-			//------------------------------------------------------------------------------
 
 			DrawText(TextFormat("MODE: %s", (segments >= 4) ? "MANUAL" : "AUTO"), 640, 280, 10, (segments >= 4) ? MAROON : DARKGRAY);
 
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
-							  //RayGui.GuiDisable();
-							  //RayGui.GuiEnable();
-							  ////Raylib.unload
+
 		return 0;
 	}
 }

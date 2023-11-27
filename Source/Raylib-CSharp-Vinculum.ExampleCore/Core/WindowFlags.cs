@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -22,19 +24,17 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public unsafe static class WindowFlags
 {
-
 	public static int main()
 	{
 		// Initialization
 		//---------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
-		// Possible window flags
+		// Possible window flags:
 		/*
 		FLAG_VSYNC_HINT
 		FLAG_FULLSCREEN_MODE    -> not working properly -> wrong scaling!
@@ -52,23 +52,25 @@ public unsafe static class WindowFlags
 		*/
 
 		// Set configuration flags for window creation
-		//SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT | FLAG_WINDOW_HIGHDPI);
+
+		SetConfigFlags(FLAG_VSYNC_HINT | FLAG_MSAA_4X_HINT | FLAG_WINDOW_HIGHDPI);
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - window flags");
 
-		Vector2 ballPosition = new( GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f );
-		Vector2 ballSpeed = new( 5.0f, 4.0f );
+		Vector2 ballPosition = new(GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f);
+		Vector2 ballSpeed = new(5.0f, 4.0f);
 		float ballRadius = 20;
 
 		int framesCounter = 0;
 
-		//SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-		//----------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//-----------------------------------------------------
+
 			if (IsKeyPressed(KEY_F)) ToggleFullscreen();  // modifies window size when scaling!
 
 			if (IsKeyPressed(KEY_R))
@@ -145,17 +147,17 @@ public unsafe static class WindowFlags
 			ballPosition.Y += ballSpeed.Y;
 			if ((ballPosition.X >= (GetScreenWidth() - ballRadius)) || (ballPosition.X <= ballRadius)) ballSpeed.X *= -1.0f;
 			if ((ballPosition.Y >= (GetScreenHeight() - ballRadius)) || (ballPosition.Y <= ballRadius)) ballSpeed.Y *= -1.0f;
-			//-----------------------------------------------------
 
 			// Draw
 			//-----------------------------------------------------
+
 			BeginDrawing();
 
 			if (IsWindowState(FLAG_WINDOW_TRANSPARENT)) ClearBackground(BLANK);
 			else ClearBackground(RAYWHITE);
 
 			DrawCircleV(ballPosition, ballRadius, MAROON);
-			DrawRectangleLinesEx(new( 0, 0, (float)GetScreenWidth(), (float)GetScreenHeight() ), 4, RAYWHITE);
+			DrawRectangleLinesEx(new(0, 0, (float)GetScreenWidth(), (float)GetScreenHeight()), 4, RAYWHITE);
 
 			DrawCircleV(GetMousePosition(), 10, DARKBLUE);
 
@@ -195,17 +197,13 @@ public unsafe static class WindowFlags
 			else DrawText("FLAG_MSAA_4X_HINT: off", 10, 360, 10, MAROON);
 
 			EndDrawing();
-			//-----------------------------------------------------
 		}
 
 		// De-Initialization
 		//---------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //----------------------------------------------------------
 
 		return 0;
 	}
-
-
 }
-

@@ -5,14 +5,15 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
-/// <summary>/*******************************************************************************************
+
+//*******************************************************************************************
 //*
 //* raylib[models] example - Plane rotations(yaw, pitch, roll)
 //*
@@ -24,14 +25,14 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* Copyright(c) 2017-2021 Berni(@Berni8k) and Ramon Santamaria(@raysan5)
 //*
 //********************************************************************************************/
-///</summary>
+
 public unsafe static class YawPitchRoll
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -54,13 +55,14 @@ public unsafe static class YawPitchRoll
 		float yaw = 0.0f;
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// Plane pitch (x-axis) controls
 			if (IsKeyDown(KEY_DOWN)) pitch += 0.6f;
 			else if (IsKeyDown(KEY_UP)) pitch -= 0.6f;
@@ -90,10 +92,10 @@ public unsafe static class YawPitchRoll
 
 			// Tranformation matrix for rotations
 			model.transform = Matrix.Transpose(Matrix4x4.CreateFromYawPitchRoll(DEG2RAD * yaw, DEG2RAD * pitch, DEG2RAD * roll));
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -116,15 +118,14 @@ public unsafe static class YawPitchRoll
 			DrawText("(c) WWI Plane Model created by GiaHanLam", screenWidth - 240, screenHeight - 20, 10, DARKGRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadModel(model);     // Unload model data
 
 		CloseWindow();          // Close window and OpenGL context
-								//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

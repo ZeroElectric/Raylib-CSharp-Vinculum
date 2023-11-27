@@ -67,8 +67,7 @@ public unsafe static class Animation
 		// Limit cursor to relative movement inside the window
 		DisableCursor();
 
-		// Set our game to run at 60 frames-per-second
-		SetTargetFPS(60);
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
 		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
 		//----------------------------------------------------------------------------------
@@ -132,9 +131,6 @@ public unsafe static class Animation
 
 		CloseWindow();
 
-		//--------------------------------------------------------------------------------------
-
 		return 0;
 	}
-
 }

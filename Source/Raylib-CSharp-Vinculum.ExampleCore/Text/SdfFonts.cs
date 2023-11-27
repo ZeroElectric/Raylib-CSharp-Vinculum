@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -27,18 +27,13 @@ namespace ZeroElectric.Vinculum.ExampleCore.Text;
 public unsafe static class SdfFonts
 {
 
-#if PLATFORM_DESKTOP
 	const int GLSL_VERSION = 330;
-#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
-	const int GLSL_VERSION = 100;
-#endif
-
-	// #include <stdlib.h>
 
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -88,13 +83,14 @@ public unsafe static class SdfFonts
 		int currentFont = 0;            // 0 - fontDefault, 1 - fontSDF
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			fontSize += GetMouseWheelMove() * 8.0f;
 
 			if (fontSize < 6) fontSize = 6;
@@ -107,10 +103,10 @@ public unsafe static class SdfFonts
 
 			fontPosition.X = GetScreenWidth() / 2 - textSize.X / 2;
 			fontPosition.Y = GetScreenHeight() / 2 - textSize.Y / 2 + 80;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -140,18 +136,17 @@ public unsafe static class SdfFonts
 			DrawText("HOLD SPACE to USE SDF FONT VERSION!", 340, GetScreenHeight() - 30, 20, MAROON);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadFont(fontDefault);    // Default font unloading
 		UnloadFont(fontSDF);        // SDF font unloading
 
 		UnloadShader(shader);       // Unload SDF shader
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

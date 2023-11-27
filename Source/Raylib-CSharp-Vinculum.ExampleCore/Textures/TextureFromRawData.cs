@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -32,12 +32,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 public unsafe static class TextureFromRawData
 {
 
-	// #include <stdlib.h>         // Required for: malloc() and free()
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -55,16 +54,9 @@ public unsafe static class TextureFromRawData
 		int height = 480;
 
 		// Dynamic memory allocation to store pixels data (Color type)
-		//Color* pixels = (Color*)malloc(width * height * sizeof(Color));
-		//var pixels = stackalloc Color[width * height];
 		var pixels = new Color[width * height];
-		var h_pixels			= pixels.GcPin();
+		var h_pixels = pixels.GcPin();
 
-		//Span<Color> span = new Span<Color>(pixels);
-		//Color* pColors = &span[0];
-
-		//GCHandle pPixels = GCHandle.Alloc(pixels, GCHandleType.Pinned);
-		//pPixels.
 		for (int y = 0; y < height; y++)
 		{
 			for (int x = 0; x < width; x++)
@@ -77,7 +69,7 @@ public unsafe static class TextureFromRawData
 		// Load pixels data into an image structure and create texture
 		Image checkedIm = new()
 		{
-			data =Unsafe.AsPointer(ref pixels.DangerousGetReference()),             // We can assign pixels directly to data
+			data = Unsafe.AsPointer(ref pixels.DangerousGetReference()),             // We can assign pixels directly to data
 			width = width,
 			height = height,
 			format = (int)PIXELFORMAT_UNCOMPRESSED_R8G8B8A8,
@@ -85,20 +77,22 @@ public unsafe static class TextureFromRawData
 		};
 
 		Texture2D checkedImage = LoadTextureFromImage(checkedIm);
-		//RAYLIB-CSLO: our pixels are created in managed memory.  will be cleaned up by the GC
-		//UnloadImage(checkedIm);         // Unload CPU (RAM) image data (pixels)
-										//---------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// [Vinculum] Our pixels are created in managed memory.  will be cleaned up by the GC
+		// UnloadImage(checkedIm);         // Unload CPU (RAM) image data (pixels)
+
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// TODO: Update your variables here
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -113,18 +107,16 @@ public unsafe static class TextureFromRawData
 			DrawText("(c) Fudesumi sprite by Eiden Marsal", 310, screenHeight - 20, 10, BROWN);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(fudesumi);    // Texture unloading
 		UnloadTexture(checkedImage);     // Texture unloading
 		h_pixels.Free();
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
 }

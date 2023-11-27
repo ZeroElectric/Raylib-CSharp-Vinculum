@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -30,11 +30,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 
 public unsafe static class NPatchDrawing
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -62,14 +62,15 @@ public unsafe static class NPatchDrawing
 		// A vertical 3-patch (NPATCH_THREE_PATCH_VERTICAL) changes its sizes along the y axis only
 		NPatchInfo v3PatchInfo = new NPatchInfo(new Rectangle(0.0f, 192.0f, 64.0f, 64.0f), 6, 6, 6, 6, NPATCH_THREE_PATCH_VERTICAL);
 
-		SetTargetFPS(60);
-		//---------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			mousePosition = GetMousePosition();
 
 			// Resize the n-patches based on mouse position
@@ -89,10 +90,10 @@ public unsafe static class NPatchDrawing
 			if (dstRec2.height < 1.0f) dstRec2.height = 1.0f;
 			if (dstRecH.width < 1.0f) dstRecH.width = 1.0f;
 			if (dstRecV.height < 1.0f) dstRecV.height = 1.0f;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -111,15 +112,14 @@ public unsafe static class NPatchDrawing
 			DrawText("Move the mouse to stretch or shrink the n-patches", 10, 20, 20, DARKGRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(nPatchTexture);       // Texture unloading
 
 		CloseWindow();                // Close window and OpenGL context
-									  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}

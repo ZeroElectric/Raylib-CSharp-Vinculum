@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -28,38 +30,19 @@
 *
 ********************************************************************************************/
 
-//# include "raylib.h"
-
-//// NOTE: Gamepad name ID depends on drivers and OS
-//#define XBOX360_LEGACY_NAME_ID  "Xbox Controller"
-//#if defined(PLATFORM_RPI)
-//#define XBOX360_NAME_ID     "Microsoft X-Box 360 pad"
-//#define PS3_NAME_ID         "PLAYSTATION(R)3 Controller"
-//#else
-//#define XBOX360_NAME_ID     "Xbox 360 Controller"
-//#define PS3_NAME_ID         "PLAYSTATION(R)3 Controller"
-//#endif
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
-using System;
-using static Consts;
-public static class Consts
+public static class GamepadInput
 {
 	public static string XBOX360_LEGACY_NAME_ID = "Xbox Controller";
 	//public static string XBOX360_NAME_ID = "Microsoft X-Box 360 pad";
 	//public static string PS3_NAME_ID = "PLAYSTATION(R)3 Controller";
 	public static string XBOX360_NAME_ID = "Xbox 360 Controller";
 	public static string PS3_NAME_ID = "PLAYSTATION(R)3 Controller";
-}
-
-
-public static class GamepadInput
-{
 
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -71,18 +54,19 @@ public static class GamepadInput
 		Texture2D texXboxPad = LoadTexture("resources/xbox.png");
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
-			// ...
-			//----------------------------------------------------------------------------------
+
+			// TODO: Update your variables here
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -136,9 +120,6 @@ public static class GamepadInput
 					DrawRectangle(604, 30, 15, 70, GRAY);
 					DrawRectangle(170, 30, 15, (((1 + (int)GetGamepadAxisMovement(0, GAMEPAD_AXIS_LEFT_TRIGGER)) / 2) * 70), RED);
 					DrawRectangle(604, 30, 15, (((1 + (int)GetGamepadAxisMovement(0, GAMEPAD_AXIS_RIGHT_TRIGGER)) / 2) * 70), RED);
-
-					//DrawText(TextFormat("Xbox axis LT: %02.02f", GetGamepadAxisMovement(0, GAMEPAD_AXIS_LEFT_TRIGGER)), 10, 40, 10, BLACK);
-					//DrawText(TextFormat("Xbox axis RT: %02.02f", GetGamepadAxisMovement(0, GAMEPAD_AXIS_RIGHT_TRIGGER)), 10, 60, 10, BLACK);
 				}
 				else if (TextIsEqual(GetGamepadName_(0), PS3_NAME_ID))
 				{
@@ -146,10 +127,10 @@ public static class GamepadInput
 
 					// Draw buttons: ps
 					if (IsGamepadButtonDown(0, GAMEPAD_BUTTON_MIDDLE)) DrawCircle(396, 222, 13, RED);
-					
+
 					// Draw buttons: basic
 					if (IsGamepadButtonDown(0, GAMEPAD_BUTTON_MIDDLE_LEFT)) DrawRectangle(328, 170, 32, 13, RED);
-					if (IsGamepadButtonDown(0, GAMEPAD_BUTTON_MIDDLE_RIGHT)) DrawTriangle(new( 436, 168), new( 436, 185), new(464, 177), RED);
+					if (IsGamepadButtonDown(0, GAMEPAD_BUTTON_MIDDLE_RIGHT)) DrawTriangle(new(436, 168), new(436, 185), new(464, 177), RED);
 					if (IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_FACE_UP)) DrawCircle(557, 144, 13, LIME);
 					if (IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_FACE_RIGHT)) DrawCircle(586, 173, 13, RED);
 					if (IsGamepadButtonDown(0, GAMEPAD_BUTTON_RIGHT_FACE_DOWN)) DrawCircle(557, 203, 13, VIOLET);
@@ -210,20 +191,16 @@ public static class GamepadInput
 			}
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(texPs3Pad);
 		UnloadTexture(texXboxPad);
 
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
-
 }
-

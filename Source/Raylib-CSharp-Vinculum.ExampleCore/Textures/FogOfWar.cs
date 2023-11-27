@@ -196,9 +196,9 @@ public static class FogOfWar
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
 
-		UnloadRenderTexture(fogOfWar);		// Unload render texture
+		UnloadRenderTexture(fogOfWar);      // Unload render texture
 
-		CloseWindow();						// Close window and OpenGL context
+		CloseWindow();                      // Close window and OpenGL context
 
 	}
 

@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -26,7 +26,6 @@ namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 public unsafe static class WorldToScreen
 {
-
 	public static int main()
 	{
 		// Initialization
@@ -45,14 +44,13 @@ public unsafe static class WorldToScreen
 		camera.fovy = 45.0f;                                // Camera field-of-view Y
 		camera.Projection = CAMERA_PERSPECTIVE;                   // Camera mode type
 
-		Vector3 cubePosition =new( 1.0f, 5.0f, 5.0f );
-		Vector2 cubeScreenPosition = new( 0.0f, 0.0f );
+		Vector3 cubePosition = new(1.0f, 5.0f, 5.0f);
+		Vector2 cubeScreenPosition = new(0.0f, 0.0f);
 
 		// Limit cursor to relative movement inside the window
 		DisableCursor();
 
-		// Set  to run at 60 frames-per-second
-		SetTargetFPS(60);
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
 		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
 		//----------------------------------------------------------------------------------

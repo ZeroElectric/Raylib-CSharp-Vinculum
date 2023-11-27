@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -28,12 +28,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Text;
 
 public unsafe static class DrawTextInsideRectangle
 {
-
-	// Main entry point
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -59,14 +58,15 @@ public unsafe static class DrawTextInsideRectangle
 		Color borderColor = MAROON;         // Container border color
 		Font font = GetFontDefault();       // Get default system font
 
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-											//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			if (IsKeyPressed(KEY_SPACE)) wordWrap = !wordWrap;
 
 			Vector2 mouse = GetMousePosition();
@@ -97,10 +97,10 @@ public unsafe static class DrawTextInsideRectangle
 			resizer.Y = container.Y + container.height - 17;
 
 			lastMouse = mouse; // Update mouse
-							   //----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -125,17 +125,15 @@ public unsafe static class DrawTextInsideRectangle
 			DrawText("Click hold & drag the    to resize the container", 155, screenHeight - 38, 20, RAYWHITE);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
 
 	//--------------------------------------------------------------------------------------
 	// Module functions definition
@@ -146,7 +144,6 @@ public unsafe static class DrawTextInsideRectangle
 	{
 		DrawTextBoxedSelectable(font, text, rec, fontSize, spacing, wordWrap, tint, 0, 0, WHITE, WHITE);
 	}
-
 
 	// Draw text using font inside rectangle limits with support for text selection
 	static void DrawTextBoxedSelectable(Font font, string text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectTint, Color selectBackTint)

@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -21,31 +23,31 @@
 *   Copyright (c) 2014 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 public static class InputMouse
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - mouse input");
 
-		Vector2 ballPosition = new( -100.0f, -100.0f );
+		Vector2 ballPosition = new(-100.0f, -100.0f);
 		Color ballColor = DARKBLUE;
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//---------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			ballPosition = GetMousePosition();
 
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) ballColor = MAROON;
@@ -55,10 +57,10 @@ public static class InputMouse
 			else if (IsMouseButtonPressed(MOUSE_BUTTON_EXTRA)) ballColor = YELLOW;
 			else if (IsMouseButtonPressed(MOUSE_BUTTON_FORWARD)) ballColor = ORANGE;
 			else if (IsMouseButtonPressed(MOUSE_BUTTON_BACK)) ballColor = BEIGE;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -68,15 +70,13 @@ public static class InputMouse
 			DrawText("move ball with mouse and click mouse button to change color", 10, 10, 20, DARKGRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-

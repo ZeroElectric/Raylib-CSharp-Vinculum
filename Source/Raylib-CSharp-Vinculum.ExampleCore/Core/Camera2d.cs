@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -22,21 +24,20 @@
 *
 ********************************************************************************************/
 
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
 public static class Camera2d
 {
 	private const int MAX_BUILDINGS = 100;
 	public static int main()
 	{
 		// Initialization
+
 		//--------------------------------------------------------------------------------------
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - 2d camera");
 
-		Rectangle player = new( 400, 280, 40, 40 );
+		Rectangle player = new(400, 280, 40, 40);
 		Rectangle[] buildings = new Rectangle[MAX_BUILDINGS];
 		var buildColors = new Color[MAX_BUILDINGS];
 
@@ -51,20 +52,20 @@ public static class Camera2d
 
 			spacing += (int)buildings[i].width;
 
-			buildColors[i] =new( GetRandomValue(200, 240), GetRandomValue(200, 240), GetRandomValue(200, 250), 255 );
+			buildColors[i] = new(GetRandomValue(200, 240), GetRandomValue(200, 240), GetRandomValue(200, 250), 255);
 		}
 
 		Camera2D camera;// = { 0 };
-		camera.target = new( player.x + 20.0f, player.y + 20.0f );
-		camera.offset = new( screenWidth / 2.0f, screenHeight / 2.0f );
+		camera.target = new(player.x + 20.0f, player.y + 20.0f);
+		camera.offset = new(screenWidth / 2.0f, screenHeight / 2.0f);
 		camera.rotation = 0.0f;
 		camera.zoom = 1.0f;
 
-		SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-											//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())        // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
@@ -74,7 +75,7 @@ public static class Camera2d
 			else if (IsKeyDown(KEY_LEFT)) player.x -= 2;
 
 			// Camera target follows player
-			camera.target = new(player.x + 20, player.y + 20 );
+			camera.target = new(player.x + 20, player.y + 20);
 
 			// Camera rotation controls
 			if (IsKeyDown(KEY_A)) camera.rotation--;
@@ -96,10 +97,10 @@ public static class Camera2d
 				camera.zoom = 1.0f;
 				camera.rotation = 0.0f;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -134,15 +135,13 @@ public static class Camera2d
 			DrawText("- R to reset Zoom and Rotation", 40, 100, 10, DARKGRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-

@@ -5,11 +5,13 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -23,11 +25,6 @@
 *   Copyright (c) 2019 arvyy (@arvyy)
 *
 ********************************************************************************************/
-
-
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
-
-
 
 public unsafe static class Camera2dPlatformer
 {
@@ -61,13 +58,6 @@ public unsafe static class Camera2dPlatformer
 
 	public static void UpdateCameraEvenOutOnLanding(ref Camera2D camera, Player player, EnvItem[] envItems, int envItemsLength, float delta, int width, int height)
 	{
-		//C++ TO C# CONVERTER NOTE: This static local variable declaration (not allowed in C#) has been moved just prior to the method:
-		//	static float evenOutSpeed = 700;
-		//C++ TO C# CONVERTER NOTE: This static local variable declaration (not allowed in C#) has been moved just prior to the method:
-		//	static int eveningOut = false;
-		//C++ TO C# CONVERTER NOTE: This static local variable declaration (not allowed in C#) has been moved just prior to the method:
-		//	static float evenOutTarget;
-
 		camera.offset = new(
 			width / 2.0f, height / 2.0f
 		);
@@ -236,6 +226,7 @@ public unsafe static class Camera2dPlatformer
 	{
 		return MathF.Max(a, b);
 	}
+
 	//C++ TO C# CONVERTER NOTE: This was formerly a static local variable declaration (not allowed in C#):
 	internal static float UpdateCameraCenterSmoothFollow_minSpeed = 30F;
 	//C++ TO C# CONVERTER NOTE: This was formerly a static local variable declaration (not allowed in C#):
@@ -245,13 +236,6 @@ public unsafe static class Camera2dPlatformer
 
 	public static void UpdateCameraCenterSmoothFollow(ref Camera2D camera, Player player, EnvItem[] envItems, int envItemsLength, float delta, int width, int height)
 	{
-		//C++ TO C# CONVERTER NOTE: This static local variable declaration (not allowed in C#) has been moved just prior to the method:
-		//	static float minSpeed = 30;
-		//C++ TO C# CONVERTER NOTE: This static local variable declaration (not allowed in C#) has been moved just prior to the method:
-		//	static float minEffectLength = 10;
-		//C++ TO C# CONVERTER NOTE: This static local variable declaration (not allowed in C#) has been moved just prior to the method:
-		//	static float fractionSpeed = 0.8f;
-
 		camera.offset = new(
 			width / 2.0f, height / 2.0f
 		);
@@ -268,6 +252,7 @@ public unsafe static class Camera2dPlatformer
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -288,8 +273,6 @@ public unsafe static class Camera2dPlatformer
 			new EnvItem() {rect = new(650, 300, 100, 10), blocking = 1, color = GRAY}
 		};
 
-		//C++ TO C# CONVERTER WARNING: This 'sizeof' ratio was replaced with a direct reference to the array length:
-		//ORIGINAL LINE: int envItemsLength = sizeof(envItems)/sizeof(envItems[0]);
 		int envItemsLength = envItems.Length;
 
 		Camera2D camera = new Camera2D();
@@ -301,25 +284,22 @@ public unsafe static class Camera2dPlatformer
 		camera.zoom = 1.0f;
 
 		// Store pointers to the multiple update camera functions
-		//C++ TO C# CONVERTER TODO TASK: The following line could not be converted:
-		//cameraUpdatersDelegate cameraUpdaters[] = { UpdateCameraCenter, UpdateCameraCenterInsideMap, UpdateCameraCenterSmoothFollow, UpdateCameraEvenOutOnLanding, UpdateCameraPlayerBoundsPush };
 		cameraUpdatersDelegate[] cameraUpdaters = { UpdateCameraCenter, UpdateCameraCenterInsideMap, UpdateCameraCenterSmoothFollow, UpdateCameraEvenOutOnLanding, UpdateCameraPlayerBoundsPush };
 
 		int cameraOption = 0;
-		//C++ TO C# CONVERTER WARNING: This 'sizeof' ratio was replaced with a direct reference to the array length:
-		//ORIGINAL LINE: int cameraUpdatersLength = sizeof(cameraUpdaters)/sizeof(cameraUpdaters[0]);
 		int cameraUpdatersLength = cameraUpdaters.Length;
 
 		string[] cameraDescriptions = { "Follow player center", "Follow player center, but clamp to map edges", "Follow player center; smoothed", "Follow player center horizontally; updateplayer center vertically after landing", "Player push camera on getting too close to screen edge" };
 
-		SetTargetFPS(60);
-		//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
 		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			float deltaTime = GetFrameTime();
 
 			UpdatePlayer(player, envItems, envItemsLength, deltaTime);
@@ -350,10 +330,10 @@ public unsafe static class Camera2dPlatformer
 
 			// Call update camera function by its pointer
 			cameraUpdaters[cameraOption](ref camera, player, envItems, envItemsLength, deltaTime, screenWidth, screenHeight);
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(LIGHTGRAY);
@@ -379,13 +359,12 @@ public unsafe static class Camera2dPlatformer
 			DrawText(cameraDescriptions[cameraOption], 40, 140, 10, DARKGRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow(); // Close window and OpenGL context
-					   //--------------------------------------------------------------------------------------
 
 		return 0;
 	}

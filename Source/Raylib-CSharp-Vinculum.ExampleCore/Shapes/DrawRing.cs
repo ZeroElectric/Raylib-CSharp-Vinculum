@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -29,13 +29,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shapes;
 public unsafe static class DrawRing
 {
 
-	//#define RAYGUI_IMPLEMENTATION
-	//# include "extras/raygui.h"                 // Required for GUI controls
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -55,21 +53,22 @@ public unsafe static class DrawRing
 		bool drawRingLines = false;
 		bool drawCircleLines = false;
 
-		RayGui.GuiLoadStyleDefault();   //init raygui
+		GuiLoadStyleDefault();   //init raygui
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// NOTE: All variables update happens inside GUI control functions
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -83,6 +82,7 @@ public unsafe static class DrawRing
 
 			// Draw GUI controls
 			//------------------------------------------------------------------------------
+
 			GuiSliderBar(new Rectangle(600, 40, 120, 20), "StartAngle", null, ref startAngle, -450, 450);
 			GuiSliderBar(new Rectangle(600, 70, 120, 20), "EndAngle", null, ref endAngle, -450, 450);
 
@@ -95,7 +95,6 @@ public unsafe static class DrawRing
 			GuiCheckBox(new Rectangle(600, 350, 20, 20), "Draw RingLines", ref drawRingLines);
 			GuiCheckBox(new Rectangle(600, 380, 20, 20), "Draw CircleLines", ref drawCircleLines);
 
-			//------------------------------------------------------------------------------
 
 			minSegments = (int)MathF.Ceiling((endAngle - startAngle) / 90);
 			DrawText(TextFormat("MODE: %s", (segments >= minSegments) ? "MANUAL" : "AUTO"), 600, 270, 10, (segments >= minSegments) ? MAROON : DARKGRAY);
@@ -103,13 +102,12 @@ public unsafe static class DrawRing
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}

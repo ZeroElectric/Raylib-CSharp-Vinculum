@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -33,6 +33,7 @@ public unsafe static class ImageLoading
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -44,19 +45,20 @@ public unsafe static class ImageLoading
 		Texture2D texture = LoadTextureFromImage(image);          // Image converted to texture, GPU memory (VRAM)
 		UnloadImage(image);   // Once image has been converted to texture and uploaded to VRAM, it can be unloaded from RAM
 
-		SetTargetFPS(60);     // Set our game to run at 60 frames-per-second
-							  //---------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// TODO: Update your variables here
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -66,7 +68,6 @@ public unsafe static class ImageLoading
 			DrawText("this IS a texture loaded from an image!", 300, 370, 10, GRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
@@ -74,7 +75,6 @@ public unsafe static class ImageLoading
 		UnloadTexture(texture);       // Texture unloading
 
 		CloseWindow();                // Close window and OpenGL context
-									  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}

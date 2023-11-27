@@ -5,11 +5,16 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
 //------------------------------------------------------------------------------
+
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace ZeroElectric.Vinculum.ExampleCore.Core;
 
 /*******************************************************************************************
 *
@@ -24,28 +29,24 @@
 *
 ********************************************************************************************/
 
-using System.Runtime.CompilerServices;
-using static ZeroElectric.Vinculum.TraceLogLevel;
-using System.Runtime.InteropServices;
-using System.Text;
-
-namespace ZeroElectric.Vinculum.ExampleCore.Core;
 /// <summary>
-/// tough to implement logging.
-/// solution from : https://stackoverflow.com/a/37629480
-/// windows only.  
+/// Provides custom logging functionality. [Windows Only!]
 /// </summary>
+/// <remarks>Solution from : https://stackoverflow.com/a/37629480 </remarks>
 public unsafe static class CustomLogging
 {
 
+	//
+	// P/Invoke declarations
+
 	[DllImport("msvcrt.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.Cdecl)]
-	public static extern int vsprintf(StringBuilder buffer,string format,IntPtr args);
+	public static extern int vsprintf(StringBuilder buffer, string format, IntPtr args);
 
 	[DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
-	public static extern int _vscprintf(string format,IntPtr ptr);
+	public static extern int _vscprintf(string format, IntPtr ptr);
 
+	//--------------------------------------------------------------------------------------
 
-	// Custom logging funtion
 	[UnmanagedCallersOnly(CallConvs = new[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) })]
 	private static void LogCustom(int msgType, sbyte* text, sbyte* args)
 	{
@@ -61,7 +62,7 @@ public unsafe static class CustomLogging
 				Console.Write($"[???] {msgType} :"); break;
 		}
 
-		var textStr = Marshal.PtrToStringUTF8((IntPtr)text)??"";
+		var textStr = Marshal.PtrToStringUTF8((IntPtr)text) ?? "";
 
 		var sb = new StringBuilder(_vscprintf(textStr, (IntPtr)args) + 1);
 		vsprintf(sb, textStr, (IntPtr)args);
@@ -71,11 +72,11 @@ public unsafe static class CustomLogging
 		Console.WriteLine(formattedMessage);
 	}
 
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -86,18 +87,19 @@ public unsafe static class CustomLogging
 		InitWindow(screenWidth, screenHeight, "raylib [core] example - custom logging");
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// TODO: Update your variables here
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -105,15 +107,13 @@ public unsafe static class CustomLogging
 			DrawText("Check out the console output to see the custom logger in action!", 60, 200, 20, LIGHTGRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-

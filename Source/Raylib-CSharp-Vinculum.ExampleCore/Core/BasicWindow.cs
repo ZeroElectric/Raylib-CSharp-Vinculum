@@ -44,7 +44,7 @@ public static class BasicWindow
 
 		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
 		//----------------------------------------------------------------------------------
-		while (!WindowShouldClose()) 
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------

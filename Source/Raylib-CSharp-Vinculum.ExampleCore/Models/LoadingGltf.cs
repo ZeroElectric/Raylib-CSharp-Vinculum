@@ -35,7 +35,6 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
 public unsafe static class LoadingGLTF
 {
-
 	public static void main()
 	{
 		// Initialization
@@ -116,7 +115,7 @@ public unsafe static class LoadingGLTF
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
 
-		UnloadModel(model);			// Unload model and meshes/material
+		UnloadModel(model);         // Unload model and meshes/material
 
 		CloseWindow();              // Close window and OpenGL context
 	}

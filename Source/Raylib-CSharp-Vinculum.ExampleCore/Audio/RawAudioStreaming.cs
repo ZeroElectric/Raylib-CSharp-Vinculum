@@ -36,6 +36,7 @@ public unsafe static class RawAudioStreaming
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -146,6 +147,7 @@ public unsafe static class RawAudioStreaming
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -168,10 +170,10 @@ public unsafe static class RawAudioStreaming
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
 
-		UnloadAudioStream(stream);   // Close raw audio stream and delete buffers from RAM
-		CloseAudioDevice();         // Close audio device (music streaming is automatically stopped)
+		UnloadAudioStream(stream);		// Close raw audio stream and delete buffers from RAM
+		CloseAudioDevice();				// Close audio device (music streaming is automatically stopped)
 
-		CloseWindow();              // Close window and OpenGL context
+		CloseWindow();					// Close window and OpenGL context
 
 		return 0;
 	}

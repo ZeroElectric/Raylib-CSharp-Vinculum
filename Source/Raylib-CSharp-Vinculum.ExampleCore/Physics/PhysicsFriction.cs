@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -29,14 +29,14 @@ namespace ZeroElectric.Vinculum.ExampleCore.Physics;
 public unsafe static class PhysicsFriction
 {
 
-	//#define PHYSAC_IMPLEMENTATION
-	//# include "extras/physac.h"
 
 	static int* NULL = (int*)0;
+
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -78,13 +78,14 @@ public unsafe static class PhysicsFriction
 		SetPhysicsBodyRotation(bodyB, 330 * DEG2RAD);
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdatePhysics();            // Update physics system
 
 			if (IsKeyPressed(KEY_R))    // Reset physics system
@@ -100,10 +101,10 @@ public unsafe static class PhysicsFriction
 				bodyB->angularVelocity = 0;
 				SetPhysicsBodyRotation(bodyB, 330 * DEG2RAD);
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(BLACK);
@@ -145,21 +146,15 @@ public unsafe static class PhysicsFriction
 			DrawText("Powered by", logoX + 50, logoY - 7, 10, WHITE);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		ClosePhysics();       // Unitialize physics
 
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-
-
-
-
-

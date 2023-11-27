@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -31,10 +31,12 @@ public unsafe static class HotReloading
 {
 
 	const int GLSL_VERSION = 330;
+
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		int screenWidth = 800;
 		int screenHeight = 450;
 
@@ -60,14 +62,15 @@ public unsafe static class HotReloading
 		float totalTime = 0.0f;
 		bool shaderAutoReloading = false;
 
-		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
-												//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())            // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			totalTime += GetFrameTime();
 			Vector2 mouse = GetMousePosition();
 			Vector2 mousePos = new(mouse.X, mouse.Y);
@@ -106,10 +109,10 @@ public unsafe static class HotReloading
 			}
 
 			if (IsKeyPressed(KEY_A)) shaderAutoReloading = !shaderAutoReloading;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -126,20 +129,15 @@ public unsafe static class HotReloading
 			DrawText(TextFormat("Shader last modification: %s", DateTime.FromFileTime(fragShaderFileModTime).ToString()), 10, 430, 10, BLACK);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadShader(shader);           // Unload shader
 
 		CloseWindow();                  // Close window and OpenGL context
-										//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
-
 }
-
-

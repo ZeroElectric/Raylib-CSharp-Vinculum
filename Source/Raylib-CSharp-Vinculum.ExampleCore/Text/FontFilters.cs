@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -30,11 +30,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Text;
 
 public unsafe static class FontFilters
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -60,13 +60,14 @@ public unsafe static class FontFilters
 		int currentFontFilter = 0;      // TEXTURE_FILTER_POINT
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			fontSize += GetMouseWheelMove() * 4.0f;
 
 			// Choose font texture filter method
@@ -108,10 +109,10 @@ public unsafe static class FontFilters
 					//ClearDroppedFiles();
 				}
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -136,17 +137,14 @@ public unsafe static class FontFilters
 			else if (currentFontFilter == 2) DrawText("TRILINEAR", 570, 400, 20, BLACK);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
-		//ClearDroppedFiles();        // Clear internal buffers
 
 		UnloadFont(font);           // Font unloading
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

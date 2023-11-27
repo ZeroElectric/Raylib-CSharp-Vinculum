@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -25,16 +25,14 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shapes;
 *   Copyright (c) 2018 Vlad Adrian (@demizdor) and Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
+
 public unsafe static class DrawCircleSector
 {
-
-	//#define RAYGUI_IMPLEMENTATION
-	// # include "extras/raygui.h"                 // Required for GUI controls
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -48,21 +46,22 @@ public unsafe static class DrawCircleSector
 		float segments = 0;
 		int minSegments = 4;
 
-		RayGui.GuiLoadStyleDefault(); //init raygui
+		GuiLoadStyleDefault(); //init raygui
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-		//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			// NOTE: All variables update happens inside GUI control functions
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -75,12 +74,12 @@ public unsafe static class DrawCircleSector
 
 			// Draw GUI controls
 			//------------------------------------------------------------------------------
+
 			GuiSliderBar(new Rectangle(600, 40, 120, 20), "StartAngle", null, ref startAngle, 0, 720);
 			GuiSliderBar(new Rectangle(600, 70, 120, 20), "EndAngle", null, ref endAngle, 0, 720);
 
 			GuiSliderBar(new Rectangle(600, 140, 120, 20), "Radius", null, ref outerRadius, 0, 200);
 			GuiSliderBar(new Rectangle(600, 170, 120, 20), "Segments", null, ref segments, 0, 100);
-			//------------------------------------------------------------------------------
 
 			minSegments = (int)MathF.Ceiling((endAngle - startAngle) / 90);
 			DrawText(TextFormat("MODE: %s", (segments >= minSegments) ? "MANUAL" : "AUTO"), 600, 200, 10, (segments >= minSegments) ? MAROON : DARKGRAY);
@@ -88,13 +87,12 @@ public unsafe static class DrawCircleSector
 			DrawFPS(10, 10);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		CloseWindow();        // Close window and OpenGL context
-		//--------------------------------------------------------------------------------------
 
 		return 0;
 	}

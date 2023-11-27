@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -30,18 +30,12 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 *   Copyright (c) 2015 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
+
 public unsafe static class PostProcessingShader
 {
-	////#if PLATFORM_DESKTOP
-	////	const int GLSL_VERSION = 330;
-	////#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
-	////const int GLSL_VERSION =100;
-	////#endif
 	const int GLSL_VERSION = 330;
 
-
 	const int MAX_POSTPRO_SHADERS = 12;
-
 
 	enum PostproShader
 	{
@@ -61,26 +55,26 @@ public unsafe static class PostProcessingShader
 	}
 
 	static string[] postproShaderText = new string[]{
-	"GRAYSCALE",
-	"POSTERIZATION",
-	"DREAM_VISION",
-	"PIXELIZER",
-	"CROSS_HATCHING",
-	"CROSS_STITCHING",
-	"PREDATOR_VIEW",
-	"SCANLINES",
-	"FISHEYE",
-	"SOBEL",
-	"BLOOM",
-	"BLUR",
-	//"FXAA"
-};
-
+		"GRAYSCALE",
+		"POSTERIZATION",
+		"DREAM_VISION",
+		"PIXELIZER",
+		"CROSS_HATCHING",
+		"CROSS_STITCHING",
+		"PREDATOR_VIEW",
+		"SCANLINES",
+		"FISHEYE",
+		"SOBEL",
+		"BLOOM",
+		"BLUR",
+		//"FXAA"
+	};
 
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -123,15 +117,15 @@ public unsafe static class PostProcessingShader
 		// Create a RenderTexture2D to be used for render to texture
 		RenderTexture2D target = LoadRenderTexture(screenWidth, screenHeight);
 
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
-												//--------------------------------------------------------------------------------------
-
-		// Main game loop
-		while (!WindowShouldClose())            // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 
 			if (IsKeyPressed(KEY_RIGHT)) currentShader++;
@@ -139,10 +133,10 @@ public unsafe static class PostProcessingShader
 
 			if (currentShader >= MAX_POSTPRO_SHADERS) currentShader = 0;
 			else if (currentShader < 0) currentShader = MAX_POSTPRO_SHADERS - 1;
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginTextureMode(target);       // Enable drawing to texture
 			ClearBackground(RAYWHITE);  // Clear texture background
 
@@ -171,12 +165,12 @@ public unsafe static class PostProcessingShader
 			DrawText("< >", 540, 10, 30, DARKBLUE);
 			DrawFPS(700, 15);
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
 		// Unload all postpro shaders
+
 		for (int i = 0; i < MAX_POSTPRO_SHADERS; i++) UnloadShader(shaders[(int)i]);
 
 		UnloadTexture(texture);         // Unload texture
@@ -184,10 +178,7 @@ public unsafe static class PostProcessingShader
 		UnloadRenderTexture(target);    // Unload render texture
 
 		CloseWindow();                  // Close window and OpenGL context
-										//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-
-

@@ -25,7 +25,7 @@ namespace ZeroElectric.Vinculum.ExampleCore.Other;
 *
 *   LICENSE: zlib/libpng
 *
-*   Copyright (c) 2017-2020 Victor Fisac (@victorfisac) and Ramon Santamaria (@raysan5)
+*   Copyright (c) 2017-2023 Victor Fisac (@victorfisac) and Ramon Santamaria (@raysan5)
 *
 *   This software is provided "as-is", without any express or implied warranty. In no event
 *   will the authors be held liable for any damages arising from the use of this software.
@@ -43,6 +43,7 @@ namespace ZeroElectric.Vinculum.ExampleCore.Other;
 *     3. This notice may not be removed or altered from any source distribution.
 *
 **********************************************************************************************/
+
 public unsafe class RLights //TODO (Ken) Clean this up
 {
 	public const int MAX_LIGHTS = 4;         // Max dynamic lights supported by shader
@@ -93,21 +94,11 @@ public unsafe class RLights //TODO (Ken) Clean this up
 			light.target = target;
 			light.color = color;
 
-			// TODO: Below code doesn't look good to me, 
-			// it assumes a specific shader naming and structure
-			// Probably this implementation could be improved
 			string enabledName = $"lights[{lightsCount}].enabled";
 			string typeName = $"lights[{lightsCount}].type";
 			string posName = $"lights[{lightsCount}].position";
 			string targetName = $"lights[{lightsCount}].target";
 			string colorName = $"lights[{lightsCount}].color";
-
-			//// Set location name [x] depending on lights count
-			//enabledName[7] = '0' + lightsCount;
-			//typeName[7] = '0' + lightsCount;
-			//posName[7] = '0' + lightsCount;
-			//targetName[7] = '0' + lightsCount;
-			//colorName[7] = '0' + lightsCount;
 
 			light.enabledLoc = GetShaderLocation(shader, enabledName);
 			light.typeLoc = GetShaderLocation(shader, typeName);
@@ -144,5 +135,4 @@ public unsafe class RLights //TODO (Ken) Clean this up
 						   light.color.b / (float)255, light.color.a / (float)255);
 		SetShaderValue(shader, light.colorLoc, color, SHADER_UNIFORM_VEC4);
 	}
-
 }

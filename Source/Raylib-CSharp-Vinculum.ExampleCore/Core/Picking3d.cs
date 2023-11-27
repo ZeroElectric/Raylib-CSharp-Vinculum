@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -38,18 +38,18 @@ public unsafe static class Picking3d
 
 		// Define the camera to look into our 3d world
 		Camera camera = new();
-		camera.position = new( 10.0f, 10.0f, 10.0f ); // Camera position
-		camera.target = new( 0.0f, 0.0f, 0.0f );      // Camera looking at point
-		camera.up = new( 0.0f, 1.0f, 0.0f );          // Camera up vector (rotation towards target)
+		camera.position = new(10.0f, 10.0f, 10.0f); // Camera position
+		camera.target = new(0.0f, 0.0f, 0.0f);      // Camera looking at point
+		camera.up = new(0.0f, 1.0f, 0.0f);          // Camera up vector (rotation towards target)
 		camera.fovy = 45.0f;                                // Camera field-of-view Y
 		camera.Projection = CAMERA_PERSPECTIVE;                   // Camera mode type
 
-		Vector3 cubePosition = new( 0.0f, 1.0f, 0.0f );
-		Vector3 cubeSize = new(2.0f, 2.0f, 2.0f );
+		Vector3 cubePosition = new(0.0f, 1.0f, 0.0f);
+		Vector3 cubeSize = new(2.0f, 2.0f, 2.0f);
 
 		Ray ray = new();// { 0 };                    // Picking line ray
 
-		RayCollision collision =new();
+		RayCollision collision = new();
 
 		// Limit cursor to relative movement inside the window
 		DisableCursor();
@@ -74,8 +74,8 @@ public unsafe static class Picking3d
 					// Check collision between ray and box
 					collision = GetRayCollisionBox(ray,
 						new BoundingBox(
-						new( cubePosition.X - cubeSize.X / 2, cubePosition.Y - cubeSize.Y / 2, cubePosition.Z - cubeSize.Z / 2 ),
-										  new( cubePosition.X + cubeSize.X / 2, cubePosition.Y + cubeSize.Y / 2, cubePosition.Z + cubeSize.Z / 2 )
+						new(cubePosition.X - cubeSize.X / 2, cubePosition.Y - cubeSize.Y / 2, cubePosition.Z - cubeSize.Z / 2),
+										  new(cubePosition.X + cubeSize.X / 2, cubePosition.Y + cubeSize.Y / 2, cubePosition.Z + cubeSize.Z / 2)
 					));
 				}
 				else collision.hit = false;
@@ -124,6 +124,4 @@ public unsafe static class Picking3d
 
 		return 0;
 	}
-
-
 }

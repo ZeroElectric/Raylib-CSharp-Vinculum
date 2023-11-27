@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -32,18 +32,18 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 *
 ********************************************************************************************/
 
-
 public unsafe static class BasicLighting
 {
 
 	const int GLSL_VERSION = 330;
+
 	public static int main()
 	{
 		var rLights = new RLights();
-		
 
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -86,14 +86,15 @@ public unsafe static class BasicLighting
 		lights[2] = rLights.CreateLight(LIGHT_POINT, new Vector3(-2, 1, 2), Vector3Zero(), GREEN, shader);
 		lights[3] = rLights.CreateLight(LIGHT_POINT, new Vector3(2, 1, -2), Vector3Zero(), BLUE, shader);
 
-		SetTargetFPS(60);                       // Set our game to run at 60 frames-per-second
-												//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())            // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 
 			// Check key inputs to enable/disable lights
@@ -111,10 +112,10 @@ public unsafe static class BasicLighting
 			// Update the shader with the camera view vector (points towards { 0.0f, 0.0f, 0.0f })
 			Vector3 cameraPos = new(camera.position.X, camera.position.Y, camera.position.Z);
 			SetShaderValue(shader, shader.locs[(int)SHADER_LOC_VECTOR_VIEW], cameraPos, SHADER_UNIFORM_VEC3);
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -143,20 +144,17 @@ public unsafe static class BasicLighting
 			DrawText("Use keys [Y][R][G][B] to toggle lights", 10, 40, 20, DARKGRAY);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadModel(model);     // Unload the model
 		UnloadModel(cube);      // Unload the model
 		UnloadShader(shader);   // Unload shader
 
 		CloseWindow();          // Close window and OpenGL context
-								//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-
-

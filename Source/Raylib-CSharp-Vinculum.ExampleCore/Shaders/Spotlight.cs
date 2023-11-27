@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -45,11 +45,7 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 public unsafe static class Spotlight
 {
 
-#if PLATFORM_DESKTOP
 	const int GLSL_VERSION = 330;
-#else   // PLATFORM_RPI, PLATFORM_ANDROID, PLATFORM_WEB
-	const int GLSL_VERSION = 100;
-#endif
 
 	const int MAX_SPOTS = 3;        // NOTE: It must be the same as define in shader
 	const int MAX_STARS = 400;
@@ -79,6 +75,7 @@ public unsafe static class Spotlight
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -149,14 +146,15 @@ public unsafe static class Spotlight
 			SetShaderValue(shdrSpot, spots[i].radiusLoc, spots[i].radius, SHADER_UNIFORM_FLOAT);
 		}
 
-		SetTargetFPS(60);               // Set  to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			frameCounter++;
 
 			// Move the stars, resetting them if the go offscreen
@@ -182,11 +180,12 @@ public unsafe static class Spotlight
 					if (spots[i].pos.Y > (screenHeight - 64)) spots[i].vel.Y = -spots[i].vel.Y;
 				}
 
-				SetShaderValue(shdrSpot, spots[i].posLoc,ref spots[i].pos.X, SHADER_UNIFORM_VEC2);
+				SetShaderValue(shdrSpot, spots[i].posLoc, ref spots[i].pos.X, SHADER_UNIFORM_VEC2);
 			}
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(DARKBLUE);
@@ -222,21 +221,18 @@ public unsafe static class Spotlight
 
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(texRay);
 		UnloadShader(shdrSpot);
 
 		CloseWindow();        // Close window and OpenGL context
-							  //--------------------------------------------------------------------------------------
 
 		return 0;
 	}
-
-
 
 	static void ResetStar(ref Star s)
 	{
@@ -264,15 +260,3 @@ public unsafe static class Spotlight
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

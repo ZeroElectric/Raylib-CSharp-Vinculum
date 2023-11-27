@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -31,17 +31,16 @@ namespace ZeroElectric.Vinculum.ExampleCore.Shaders;
 *
 ********************************************************************************************/
 
-
 public unsafe static class MultiSample2d
 {
 
 	const int GLSL_VERSION = 330;
+
 	public static int main()
 	{
-		//var rLights = new Examples.RLights();
-
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -66,14 +65,15 @@ public unsafe static class MultiSample2d
 		int dividerLoc = GetShaderLocation(shader, "divider");
 		float dividerValue = 0.5f;
 
-		SetTargetFPS(60);                           // Set our game to run at 60 frames-per-second
-													//--------------------------------------------------------------------------------------
+		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
 
-		// Main game loop
-		while (!WindowShouldClose())                // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			if (IsKeyDown(KEY_RIGHT)) dividerValue += 0.01f;
 			else if (IsKeyDown(KEY_LEFT)) dividerValue -= 0.01f;
 
@@ -81,10 +81,10 @@ public unsafe static class MultiSample2d
 			else if (dividerValue > 1.0f) dividerValue = 1.0f;
 
 			SetShaderValue(shader, dividerLoc, &dividerValue, SHADER_UNIFORM_FLOAT);
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -105,20 +105,17 @@ public unsafe static class MultiSample2d
 			DrawText("Use KEY_LEFT/KEY_RIGHT to move texture mixing in shader!", 80, GetScreenHeight() - 40, 20, RAYWHITE);
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadShader(shader);       // Unload shader
 		UnloadTexture(texRed);      // Unload texture
 		UnloadTexture(texBlue);     // Unload texture
 
 		CloseWindow();              // Close window and OpenGL context
-									//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
 }
-
-

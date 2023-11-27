@@ -37,11 +37,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
 public unsafe static class Loading
 {
-
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -49,19 +49,19 @@ public unsafe static class Loading
 
 		// Define the camera to look into our 3d world
 		Camera camera = new();
-		camera.position = new(50.0f, 50.0f, 50.0f);					 // Camera position
-		camera.target = new(0.0f, 10.0f, 0.0f);						 // Camera looking at point
-		camera.up = new(0.0f, 1.0f, 0.0f);							 // Camera up vector (rotation towards target)
-		camera.fovy = 45.0f;										 // Camera field-of-view Y
+		camera.position = new(50.0f, 50.0f, 50.0f);                  // Camera position
+		camera.target = new(0.0f, 10.0f, 0.0f);                      // Camera looking at point
+		camera.up = new(0.0f, 1.0f, 0.0f);                           // Camera up vector (rotation towards target)
+		camera.fovy = 45.0f;                                         // Camera field-of-view Y
 		camera.Projection = CAMERA_PERSPECTIVE;                     // Camera mode type
 
-		Model model = LoadModel("resources/models/wavefront/castle.obj");					// Load model
-		Texture2D texture = LoadTexture("resources/models/wavefront/castle_diffuse.png");	// Load model texture
-		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;				// Set map diffuse texture
+		Model model = LoadModel("resources/models/wavefront/castle.obj");                   // Load model
+		Texture2D texture = LoadTexture("resources/models/wavefront/castle_diffuse.png");   // Load model texture
+		model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;               // Set map diffuse texture
 
-		Vector3 position = new(0.0f, 0.0f, 0.0f);						// Set model position
+		Vector3 position = new(0.0f, 0.0f, 0.0f);                       // Set model position
 
-		BoundingBox bounds = GetMeshBoundingBox(model.meshes[0]);		// Set model bounds
+		BoundingBox bounds = GetMeshBoundingBox(model.meshes[0]);       // Set model bounds
 
 		// NOTE: bounds are calculated from the original size of the model,
 		// if model is scaled on drawing, bounds must be also scaled
@@ -98,9 +98,9 @@ public unsafe static class Loading
 						droppedFiles[0].EndsWith(".vox") ||
 						droppedFiles[0].EndsWith(".iqm"))       // Model file formats supported
 					{
-						UnloadModel(model);														// Unload previous model
-						model = LoadModel(droppedFiles[0]);										// Load new model
-						model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;	// Set current map diffuse texture
+						UnloadModel(model);                                                     // Unload previous model
+						model = LoadModel(droppedFiles[0]);                                     // Load new model
+						model.materials[0].maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;   // Set current map diffuse texture
 
 						bounds = GetMeshBoundingBox(model.meshes[0]);
 

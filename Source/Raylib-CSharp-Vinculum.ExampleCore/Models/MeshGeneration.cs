@@ -5,7 +5,7 @@
 // This file is licensed to you under the MPL-2.0.
 // See the LICENSE file in the project's root for more info.
 //
-// Raylib-CSharp-Vinculum, bindings for Raylib 4.5.
+// Raylib-CSharp-Vinculum, .Net/C# bindings for raylib 5.0.
 // Find Raylib-CSharp-Vinculum here: https://github.com/ZeroElectric/Raylib-CSharp-Vinculum
 // Find Raylib here: https://github.com/raysan5/raylib
 //
@@ -13,7 +13,7 @@
 
 namespace ZeroElectric.Vinculum.ExampleCore.Models;
 
-/// <summary>/*******************************************************************************************
+//*******************************************************************************************
 //*
 //* raylib example - procedural mesh generation
 //*
@@ -23,11 +23,11 @@ namespace ZeroElectric.Vinculum.ExampleCore.Models;
 //* Copyright(c) 2017 Ramon Santamaria(Ray San)
 //*
 //********************************************************************************************/
-///</summary>
+
 public unsafe static class MeshGeneration
 {
-	const int NUM_MODELS = 9;      // Parametric 3d shapes to generate
 
+	const int NUM_MODELS = 9;      // Parametric 3d shapes to generate
 
 	static void AllocateMeshData(Mesh* mesh, int triangleCount)
 	{
@@ -79,10 +79,12 @@ public unsafe static class MeshGeneration
 
 		return mesh;
 	}
+
 	public static int main()
 	{
 		// Initialization
 		//--------------------------------------------------------------------------------------
+
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
@@ -117,13 +119,14 @@ public unsafe static class MeshGeneration
 		int currentModel = 0;
 
 		SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-										//--------------------------------------------------------------------------------------
 
-		// Main game loop
-		while (!WindowShouldClose())    // Detect window close button or ESC key
+		// Main game loop, 'WindowShouldClose' Detects window close button or ESC key
+		//----------------------------------------------------------------------------------
+		while (!WindowShouldClose())
 		{
 			// Update
 			//----------------------------------------------------------------------------------
+
 			UpdateCamera(ref camera, CAMERA_ORBITAL);          // Update camera
 
 			if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
@@ -141,10 +144,10 @@ public unsafe static class MeshGeneration
 				currentModel--;
 				if (currentModel < 0) currentModel = NUM_MODELS - 1;
 			}
-			//----------------------------------------------------------------------------------
 
 			// Draw
 			//----------------------------------------------------------------------------------
+
 			BeginDrawing();
 
 			ClearBackground(RAYWHITE);
@@ -175,18 +178,17 @@ public unsafe static class MeshGeneration
 			}
 
 			EndDrawing();
-			//----------------------------------------------------------------------------------
 		}
 
 		// De-Initialization
 		//--------------------------------------------------------------------------------------
+
 		UnloadTexture(texture); // Unload texture
 
 		// Unload models data (GPU VRAM)
 		for (int i = 0; i < NUM_MODELS; i++) UnloadModel(models[i]);
 
 		CloseWindow();          // Close window and OpenGL context
-								//--------------------------------------------------------------------------------------
 
 		return 0;
 	}
