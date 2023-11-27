@@ -570,12 +570,18 @@ public static unsafe partial class Raylib
 		return GetCodepoint(sotext.AsPtr(), bytesProcessed);
 	}
 
-	public static string CodepointToUTF8_(int codepoint, int* byteSize) => Helpers.Utf8ToString(CodepointToUTF8(codepoint, byteSize));
+	[Obsolete(" Will be removed in future version, TextCodepointsToUTF8_ has been renamed to: CodepointToUTF8String ")] //TODO REMOVE
+	public static string CodepointToUTF8_(int codepoint, int* byteSize) => CodepointToUTF8String(codepoint, byteSize);
+	public static string CodepointToUTF8String(int codepoint, int* byteSize) => Helpers.Utf8ToString(CodepointToUTF8(codepoint, byteSize));
 
-	[Obsolete(" Will be removed in future version, TextCodepointsToUTF8_ has been renamed to: LoadUTF8_ ")] //TODO (Ken) REMOVE
-	public static string? TextCodepointsToUTF8_(int* codepoints, int length) => LoadUTF8_(codepoints, length);
 
-	public static string LoadUTF8_(int* codepoints, int length) => Helpers.Utf8ToString(LoadUTF8(codepoints, length));
+	[Obsolete(" Will be removed in future version, TextCodepointsToUTF8_ has been renamed to: LoadUTF8String ")] //TODO REMOVE
+	public static string? TextCodepointsToUTF8_(int* codepoints, int length) => LoadUTF8String(codepoints, length);
+
+	[Obsolete(" Will be removed in future version, TextCodepointsToUTF8_ has been renamed to: LoadUTF8String ")] //TODO REMOVE
+	public static string LoadUTF8_(int* codepoints, int length) => LoadUTF8String(codepoints, length);
+
+	public static string LoadUTF8String(int* codepoints, int length) => Helpers.Utf8ToString(LoadUTF8(codepoints, length));
 
 	public static int TextCopy(string dst, string src)
 	{
@@ -610,7 +616,7 @@ public static unsafe partial class Raylib
 
 	// This is spooky, but it works???? Maybe we need to revisit this later.
 	public unsafe static ModelAnimation[] LoadModelAnimations(string fileName, ref int animCount)
-	{		
+	{
 		ModelAnimation[] modelAnimations;
 
 		fixed (int* count = &animCount)
@@ -683,50 +689,56 @@ public static unsafe partial class Raylib
 		Skyline = 1
 	}
 
-	public static AutomationEventList LoadAutomationEventList(string fileName)
-	{
-		using SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
-		return LoadAutomationEventList(soFileName.AsPtr());
-	}
+	// TODO: (Ken) Removing these temporary, until we have a better way to handle their pointers, see:https://github.com/ZeroElectric/Raylib-CSharp-Vinculum/issues/12
 
-	public static void UnloadAutomationEventList(ref AutomationEventList list)
-	{
-		fixed (AutomationEventList* listPtr = &list)
-			UnloadAutomationEventList(listPtr);
-	}
+	//public static AutomationEventList LoadAutomationEventList(string fileName)
+	//{
+	//	using SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
+	//	return LoadAutomationEventList(soFileName.AsPtr());
+	//}
 
-	public static void ExportAutomationEventList(AutomationEventList list, string fileName)
-	{
-		using SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
-		ExportAutomationEventList(list, soFileName.AsPtr());
-	}
+	//public static void UnloadAutomationEventList(ref AutomationEventList list)
+	//{
+	//	fixed (AutomationEventList* listPtr = &list)
+	//		UnloadAutomationEventList(listPtr);
+	//}
 
-	public static void SetAutomationEventList(ref AutomationEventList list)
-	{
-		fixed (AutomationEventList* listPtr = &list)
-			SetAutomationEventList(listPtr);
-	}
+	//public static void ExportAutomationEventList(AutomationEventList list, string fileName)
+	//{
+	//	using SpanOwner<sbyte> soFileName = fileName.MarshalUtf8();
+	//	ExportAutomationEventList(list, soFileName.AsPtr());
+	//}
+
+	//public static void SetAutomationEventList(ref AutomationEventList list)
+	//{
+	//	fixed (AutomationEventList* listPtr = &list)
+	//		SetAutomationEventList(listPtr);
+	//}
 
 	public static bool IsKeyPressedRepeat(KeyboardKey key) => IsKeyPressedRepeat((int)key);
 
 	public static void DrawSplineLinear(Vector2[] points, float thick, Color color)
 	{
-		fixed (Vector2* pointsPtr = points) DrawSplineLinear(pointsPtr, points.Length, thick, color);
+		fixed (Vector2* pointsPtr = points)
+			DrawSplineLinear(pointsPtr, points.Length, thick, color);
 	}
 
 	public static void DrawSplineBasis(Vector2[] points, float thick, Color color)
 	{
-		fixed (Vector2* pointsPtr = points) DrawSplineBasis(pointsPtr, points.Length, thick, color);
+		fixed (Vector2* pointsPtr = points)
+			DrawSplineBasis(pointsPtr, points.Length, thick, color);
 	}
 
 	public static void DrawSplineCatmullRom(Vector2[] points, float thick, Color color)
 	{
-		fixed (Vector2* pointsPtr = points) DrawSplineCatmullRom(pointsPtr, points.Length, thick, color);
+		fixed (Vector2* pointsPtr = points)
+			DrawSplineCatmullRom(pointsPtr, points.Length, thick, color);
 	}
 
 	public static void DrawSplineBezierCubic(Vector2[] points, float thick, Color color)
 	{
-		fixed (Vector2* pointsPtr = points) DrawSplineBezierCubic(pointsPtr, points.Length, thick, color);
+		fixed (Vector2* pointsPtr = points)
+			DrawSplineBezierCubic(pointsPtr, points.Length, thick, color);
 	}
 
 	public static byte* ExportImageToMemory(Image image, string fileType, out int fileSize)

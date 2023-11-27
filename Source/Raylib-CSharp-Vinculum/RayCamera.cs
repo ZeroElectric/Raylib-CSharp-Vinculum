@@ -195,7 +195,7 @@ public static unsafe class RayCamera
 		{
 			// In these Camera3D modes we clamp the Pitch angle
 			// to allow only viewing straight up or down.
-			
+
 			// Clamp view up
 			float maxAngleUp = RayMath.Vector3Angle(up, targetPosition);
 			maxAngleUp -= 0.001f; // avoid numerical errors
@@ -262,7 +262,7 @@ public static unsafe class RayCamera
 		if (Camera3D.Projection == CameraProjection.CAMERA_PERSPECTIVE)
 		{
 			Matrix4x4 proj = Matrix4x4.CreatePerspectiveFieldOfView(Camera3D.fovy * RayMath.DEG2RAD, aspect, (float)RlGl.RL_CULL_DISTANCE_NEAR, (float)RlGl.RL_CULL_DISTANCE_FAR);
-			
+
 			return Matrix4x4.Transpose(proj);
 		}
 		else if (Camera3D.projection == (int)CameraProjection.CAMERA_ORTHOGRAPHIC)
