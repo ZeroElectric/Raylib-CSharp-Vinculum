@@ -73,7 +73,6 @@ public unsafe static class TexturedCurve
 		//----------------------------------------------------------------------------------
 		while (!WindowShouldClose())
 		{
-
 			// Update
 			//----------------------------------------------------------------------------------
 
@@ -99,7 +98,7 @@ public unsafe static class TexturedCurve
 			// If a point was selected, move it
 			if (curveSelectedPoint is not null)
 			{
-				*curveSelectedPoint = Vector2Add(*curveSelectedPoint, GetMouseDelta());
+				*curveSelectedPoint = *curveSelectedPoint + GetMouseDelta();
 			}
 
 			// The mouse is down, and nothing was selected, so see if anything was picked
