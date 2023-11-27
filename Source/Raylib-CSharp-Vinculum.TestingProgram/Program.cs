@@ -99,6 +99,7 @@ ZeroElectric.Vinculum.ExampleCore.Textures.Bunnymark.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ImageDrawing.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ImageGeneration.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ImageLoading.main();
+ZeroElectric.Vinculum.ExampleCore.Textures.ImageRotation.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ImageProcessing.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ImageTextDrawing.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.LoadingAndDrawing.main();
