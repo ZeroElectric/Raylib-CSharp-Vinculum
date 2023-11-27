@@ -29,7 +29,7 @@ namespace ZeroElectric.Vinculum.Extensions;
 /// At the moment, it does NOT support %n (number of chars printed, through a prointer),
 ///  and the 1$..n$ position specifier.
 /// </summary>
-/// <remarks>from https://sourceforge.net/projects/printfnet/  MIT License</remarks>
+/// <remarks>From https://sourceforge.net/projects/printfnet/ [Dead link]  [MIT License]</remarks>
 public static class Printf
 {
 	/// <summary>
@@ -43,7 +43,8 @@ public static class Printf
 	/// <exception cref="ArgumentNullException">Format string is null</exception>
 	public static string sprintf(string format, params object[] args)
 	{
-		if (format == null) throw new ArgumentNullException("format");
+		if (format is null) throw new ArgumentNullException("format");
+
 		try
 		{
 			FormatObject f = new FormatObject(format);
@@ -66,7 +67,8 @@ public static class Printf
 	/// <exception cref="ArgumentNullException">Format string is null</exception>
 	public static void printf(string format, params object[] args)
 	{
-		if (format == null) throw new ArgumentNullException("format");
+		if (format is null) throw new ArgumentNullException("format");
+
 		Console.Write(sprintf(format, args));
 	}
 
@@ -81,8 +83,9 @@ public static class Printf
 	/// <exception cref="ArgumentNullException">Format string or TextWriter is null</exception>
 	public static void fprintf(System.IO.TextWriter writer, string format, params object[] args)
 	{
-		if (format == null) throw new ArgumentNullException("format");
-		if (writer == null) throw new ArgumentNullException("writer");
+		if (format is null) throw new ArgumentNullException("format");
+		if (writer is null) throw new ArgumentNullException("writer");
+		
 		writer.Write(sprintf(format, args));
 	}
 }
