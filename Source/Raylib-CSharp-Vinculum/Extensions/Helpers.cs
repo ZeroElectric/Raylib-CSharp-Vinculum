@@ -18,14 +18,13 @@ namespace ZeroElectric.Vinculum.Extensions;
 public unsafe static class Helpers
 {
 	/// <summary>
-	/// help convert a utf8 vector to string
+	/// Converts a pointer to UTF-8 encoded text to a string.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="utf8Text"></param>
-	/// <returns></returns>
+	/// <typeparam name="T">The type of the pointer.</typeparam>
+	/// <param name="utf8Text">A pointer to the UTF-8 encoded text.</param>
+	/// <returns>The converted string.</returns>
 	public static string Utf8ToString<T>(T* utf8Text) where T : unmanaged
 	{
 		return Marshal.PtrToStringUTF8((IntPtr)utf8Text) ?? "";
 	}
-
 }

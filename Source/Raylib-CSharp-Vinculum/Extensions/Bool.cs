@@ -17,47 +17,66 @@ using System.Runtime.InteropServices;
 namespace ZeroElectric.Vinculum.Extensions;
 
 /// <summary>
-/// helper marshalling struct convert byte sized CBOOL's to/from dotnet
-/// <para>You should be able to ignore this type.   treat it just as you would a normal bool.</para>
+/// This is a helper for marshalling `byte` sized CBOOL's to/from .NET's `bool` type.
+/// <para>You should be able to ignore this type, treat it just as you would a normal `bool`.</para>
 /// </summary>
-/// <remarks> see here for some reasoning behind this type: https://docs.microsoft.com/en-us/dotnet/standard/native-interop/customize-struct-marshaling#customizing-boolean-field-marshaling
-/// <para>the native structs that use bool expect it to be the size of byte, so this type lets it be that, and yet east for managed code to treat it as a boolean</para></remarks>
+/// <remarks>
+/// See: https://docs.microsoft.com/en-us/dotnet/standard/native-interop/customize-struct-marshaling#customizing-boolean-field-marshaling for reasoning behind this type.
+/// </remarks>
 [DebuggerDisplay("{ToString(),raw}")]
 public readonly partial struct Bool : IEquatable<Bool>
 {
 	/// <summary>
-	/// private to prevent abuse.   Managed code should treat this as a bool.
+	/// Represents a CBOOL's boolean value.
 	/// </summary>
-	[MarshalAs(UnmanagedType.U1)] //probably not needed
+	[MarshalAs(UnmanagedType.U1)]
 	private readonly byte _val;
 
+	/// <summary>
+	/// Initializes a new instance of <see cref="Bool"/> with the specified boolean value.
+	/// </summary>
+	/// <param name="value">The boolean value to initialize the <see cref="Bool"/> with.</param>
 	public Bool(bool value)
 	{
 		_val = Convert.ToByte(value);
 	}
 
+	/// <summary>
+	/// Initializes a new instance of <see cref="Bool"/> with the specified byte value.
+	/// </summary>
+	/// <param name="value">The byte value to initialize the <see cref="Bool"/> with.</param>
+	public Bool(byte value) : this(Convert.ToBoolean(value)) { }
 
-	public Bool(byte value) : this(Convert.ToBoolean(value)) //any non-zero should be treated the same, so lets coherse it to == 1
-	{
-		//_val = value;
-	}
-
+	/// <summary>
+	/// Determines whether the current <see cref="Bool"/> is equal to another <see cref="Bool"/>.
+	/// </summary>
+	/// <param name="other">The <see cref="Bool"/> struct to compare with the current struct.</param>
+	/// <returns><c>true</c> if the current <see cref="Bool"/> is equal to the other <see cref="Bool"/>; otherwise, <c>false</c>.</returns>
 	public bool Equals(Bool other)
 	{
-		//because emulate bool, compare only the related bits (non-zero == true)
 		return Convert.ToBoolean(_val) == Convert.ToBoolean(other._val);
 	}
 
+	/// <summary>
+	/// Returns a string representation of the current <see cref="Bool"/>.
+	/// </summary>
+	/// <returns>A string representation of the current <see cref="Bool"/>.</returns>
 	public override string ToString()
 	{
 		return Convert.ToBoolean(_val).ToString();
 	}
 
+	/// <summary>
+	/// Implicitly converts a <see cref="Bool"/> to a boolean value.
+	/// </summary>
+	/// <param name="cb">The <see cref="Bool"/> to convert.</param>
+	/// <returns>The boolean value represented by the <see cref="Bool"/>.</returns>
 	public static implicit operator bool(Bool cb) => Convert.ToBoolean(cb._val);
+
+	/// <summary>
+	/// Implicitly converts a boolean value to <see cref="Bool"/>.
+	/// </summary>
+	/// <param name="value">The boolean value to convert.</param>
+	/// <returns>A <see cref="Bool"/> representing the boolean value.</returns>
 	public static implicit operator Bool(bool value) => new(value);
-
-	//// bad idea to allow conversion to/from byte, as that is likely a bug/misuse.   so the following conversions are disabled:
-	//public static implicit operator byte(Bool cb) => Convert.ToByte(cb._val);
-	//public static implicit operator Bool(byte value) => new(value);
-
 }
