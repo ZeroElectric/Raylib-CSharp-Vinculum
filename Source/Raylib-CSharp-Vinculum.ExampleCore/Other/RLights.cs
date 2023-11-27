@@ -1,4 +1,3 @@
-
 //------------------------------------------------------------------------------
 //
 // Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
@@ -11,7 +10,7 @@
 //
 //------------------------------------------------------------------------------
 
-namespace ZeroElectric.Vinculum.ExampleCore;
+namespace ZeroElectric.Vinculum.ExampleCore.Other;
 
 /**********************************************************************************************
 *
@@ -46,14 +45,7 @@ namespace ZeroElectric.Vinculum.ExampleCore;
 **********************************************************************************************/
 public unsafe class RLights //TODO (Ken) Clean this up
 {
-	//----------------------------------------------------------------------------------
-	// Defines and Macros
-	//----------------------------------------------------------------------------------
 	public const int MAX_LIGHTS = 4;         // Max dynamic lights supported by shader
-
-	//----------------------------------------------------------------------------------
-	// Types and Structures Definition
-	//----------------------------------------------------------------------------------
 
 	// Light data
 	public struct Light
@@ -80,38 +72,13 @@ public unsafe class RLights //TODO (Ken) Clean this up
 		LIGHT_POINT
 	}
 
-
-
 	/***********************************************************************************
 	*
 	*   RLIGHTS IMPLEMENTATION
 	*
 	************************************************************************************/
 
-
-	//----------------------------------------------------------------------------------
-	// Defines and Macros
-	//----------------------------------------------------------------------------------
-	// ...
-
-	//----------------------------------------------------------------------------------
-	// Types and Structures Definition
-	//----------------------------------------------------------------------------------
-	// ...
-
-	//----------------------------------------------------------------------------------
-	// Global Variables Definition
-	//----------------------------------------------------------------------------------
 	private int lightsCount = 0;    // Current amount of created lights
-
-	//----------------------------------------------------------------------------------
-	// Module specific Functions Declaration
-	//----------------------------------------------------------------------------------
-	// ...
-
-	//----------------------------------------------------------------------------------
-	// Module Functions Definition
-	//----------------------------------------------------------------------------------
 
 	// Create a light and get shader locations
 	public Light CreateLight(LightType type, Vector3 position, Vector3 target, Color color, Shader shader)
@@ -173,8 +140,8 @@ public unsafe class RLights //TODO (Ken) Clean this up
 		SetShaderValue(shader, light.targetLoc, target, SHADER_UNIFORM_VEC3);
 
 		// Send to shader light color values
-		Vector4 color = new((float)light.color.r / (float)255, (float)light.color.g / (float)255,
-						   (float)light.color.b / (float)255, (float)light.color.a / (float)255);
+		Vector4 color = new(light.color.r / (float)255, light.color.g / (float)255,
+						   light.color.b / (float)255, light.color.a / (float)255);
 		SetShaderValue(shader, light.colorLoc, color, SHADER_UNIFORM_VEC4);
 	}
 

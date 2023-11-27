@@ -39,7 +39,7 @@ public unsafe static class BasicLighting
 	const int GLSL_VERSION = 330;
 	public static int main()
 	{
-		var rLights = new ExampleCore.RLights();
+		var rLights = new RLights();
 		
 
 		// Initialization

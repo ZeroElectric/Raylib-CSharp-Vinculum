@@ -45,7 +45,7 @@ public unsafe static class Fog
 	const int GLSL_VERSION = 330;
 	public static int main()
 	{
-		var rLights = new ExampleCore.RLights();
+		var rLights = new RLights();
 		// Initialization
 		//--------------------------------------------------------------------------------------
 		const int screenWidth = 800;

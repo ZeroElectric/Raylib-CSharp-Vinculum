@@ -24,9 +24,6 @@ global using static ZeroElectric.Vinculum.Easings;
 global using static ZeroElectric.Vinculum.RlGl;
 global using static ZeroElectric.Vinculum.Physac;
 
-global using static ZeroElectric.Vinculum.ExampleCore.RLights;
-global using static ZeroElectric.Vinculum.ExampleCore.RLights.LightType;
-
 global using static ZeroElectric.Vinculum.BlendMode;
 global using static ZeroElectric.Vinculum.CameraMode;
 global using static ZeroElectric.Vinculum.CameraProjection;
@@ -51,6 +48,12 @@ global using static ZeroElectric.Vinculum.TextureFilter;
 global using static ZeroElectric.Vinculum.TextureWrap;
 global using static ZeroElectric.Vinculum.TraceLogLevel;
 
+//
+// The following `global using` statements are for the examples that use RLights.
+
+global using ZeroElectric.Vinculum.ExampleCore.Other;
+global using static ZeroElectric.Vinculum.ExampleCore.Other.RLights;
+global using static ZeroElectric.Vinculum.ExampleCore.Other.RLights.LightType;
 
 /////////////////////////////////////////
 // The C examples use type aliases, so the following `global using` lines are to match those.
