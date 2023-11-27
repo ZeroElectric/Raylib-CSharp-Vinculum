@@ -28,6 +28,7 @@ ZeroElectric.Vinculum.ExampleCore.Core.InputGesturesDetection.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera2d.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera2DMouseZoom.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera2dPlatformer.main();
+ZeroElectric.Vinculum.ExampleCore.Core.Camera2DSplitScreen.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera3dMode.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera3dFree.main();
 ZeroElectric.Vinculum.ExampleCore.Core.Camera3dFirstPerson.main();
