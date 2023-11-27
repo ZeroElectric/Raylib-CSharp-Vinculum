@@ -36,7 +36,7 @@ public static class VectorAngle
 		const int screenWidth = 800;
 		const int screenHeight = 450;
 
-		InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+		InitWindow(screenWidth, screenHeight, "raylib [math] example - vector angle");
 
 		Vector2 v0 = new Vector2(screenWidth / 2, screenHeight / 2);
 		Vector2 v1 = v0 + new Vector2(100.0f, 80.0f);
