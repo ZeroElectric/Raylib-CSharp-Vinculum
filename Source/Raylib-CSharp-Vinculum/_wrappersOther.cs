@@ -12,6 +12,7 @@
 //------------------------------------------------------------------------------
 
 using System.Numerics;
+using ZeroElectric.Vinculum.Extensions;
 
 namespace ZeroElectric.Vinculum;
 
@@ -165,7 +166,6 @@ public partial struct Texture
 }
 public partial struct NPatchInfo
 {
-
 	public NPatchInfo(Rectangle source, int left, int top, int right, int bottom, NPatchLayout layout)
 	{
 		this.source = source;
@@ -174,6 +174,17 @@ public partial struct NPatchInfo
 		this.right = right;
 		this.bottom = bottom;
 		this.layout = (int)layout;
+	}
+}
+
+public unsafe partial struct ModelAnimation
+{
+	public string Name
+	{
+		get
+		{
+			fixed (sbyte* n = name) return Helpers.Utf8ToString(n);
+		}
 	}
 }
 

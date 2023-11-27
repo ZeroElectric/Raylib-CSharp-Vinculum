@@ -608,6 +608,29 @@ public static unsafe partial class Raylib
 		return LoadMaterials(sofileName.AsPtr(), materialCount);
 	}
 
+	public unsafe static ModelAnimation[] LoadModelAnimations(string fileName, ref int animCount)
+	{
+		ModelAnimation[] modelAnimations;
+
+		fixed (int* count = &animCount)
+		{
+			using SpanOwner<sbyte> sofileName = fileName.MarshalUtf8();
+
+			ModelAnimation* ami = LoadModelAnimations(sofileName.AsPtr(), count);
+
+			modelAnimations = new ModelAnimation[animCount];
+
+			for (int i = 0; i < animCount; i++)
+			{
+				modelAnimations[i] = ami[i];
+			}
+
+			MemFree(ami);
+		}
+
+		return modelAnimations;
+	}
+
 	public static ModelAnimation* LoadModelAnimations(string fileName, int* animCount)
 	{
 		using SpanOwner<sbyte> sofileName = fileName.MarshalUtf8();

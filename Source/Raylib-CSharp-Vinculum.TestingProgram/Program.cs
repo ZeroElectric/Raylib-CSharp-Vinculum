@@ -59,7 +59,7 @@ ZeroElectric.Vinculum.ExampleCore.Models.FirstPersonMaze.main();
 ZeroElectric.Vinculum.ExampleCore.Models.GeometricShapes.main();
 ZeroElectric.Vinculum.ExampleCore.Models.Heightmap.main();
 ZeroElectric.Vinculum.ExampleCore.Models.Loading.main();
-ZeroElectric.Vinculum.ExampleCore.Models.LoadingGltf.main();
+ZeroElectric.Vinculum.ExampleCore.Models.LoadingGLTF.main();
 ZeroElectric.Vinculum.ExampleCore.Models.LoadingVox.main();
 ZeroElectric.Vinculum.ExampleCore.Models.MeshGeneration.main();
 ZeroElectric.Vinculum.ExampleCore.Models.MeshPicking.main();
