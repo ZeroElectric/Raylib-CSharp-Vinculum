@@ -102,6 +102,7 @@ ZeroElectric.Vinculum.ExampleCore.Textures.ImageLoading.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ImageProcessing.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ImageTextDrawing.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.LoadingAndDrawing.main();
+ZeroElectric.Vinculum.ExampleCore.Textures.FogOfWar.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.SVGLoading.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.MousePainting.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.NPatchDrawing.main();
