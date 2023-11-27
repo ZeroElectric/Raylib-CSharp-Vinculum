@@ -105,6 +105,7 @@ ZeroElectric.Vinculum.ExampleCore.Textures.LoadingAndDrawing.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.FogOfWar.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.SVGLoading.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.MousePainting.main();
+ZeroElectric.Vinculum.ExampleCore.Textures.TexturedCurve.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.NPatchDrawing.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.ParticlesBlending.main();
 ZeroElectric.Vinculum.ExampleCore.Textures.SpriteButton.main();
