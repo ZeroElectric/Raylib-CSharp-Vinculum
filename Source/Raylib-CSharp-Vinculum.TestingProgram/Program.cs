@@ -47,6 +47,11 @@ ZeroElectric.Vinculum.ExampleCore.Core.WindowFlags.main();
 ZeroElectric.Vinculum.ExampleCore.Core.SplitScreen.main();
 ZeroElectric.Vinculum.ExampleCore.Core.SmoothPixelPerfectCamera.main();
 
+///////////////////////////////////////////
+//////////////	OTHER
+
+ZeroElectric.Vinculum.ExampleCore.Other.VectorAngle.main();
+
 ////Raylib_CsLo.Examples.Core.CustomFrameControl.main(); // The following example requires a custom build of raylib to work. See raylib docs for it's info.
 
 ///////////////////////////////////////////
