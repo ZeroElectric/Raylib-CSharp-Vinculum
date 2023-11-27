@@ -608,8 +608,9 @@ public static unsafe partial class Raylib
 		return LoadMaterials(sofileName.AsPtr(), materialCount);
 	}
 
+	// This is spooky, but it works???? Maybe we need to revisit this later.
 	public unsafe static ModelAnimation[] LoadModelAnimations(string fileName, ref int animCount)
-	{
+	{		
 		ModelAnimation[] modelAnimations;
 
 		fixed (int* count = &animCount)
