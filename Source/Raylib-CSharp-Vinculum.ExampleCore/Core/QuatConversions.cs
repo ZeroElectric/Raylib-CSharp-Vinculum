@@ -103,7 +103,7 @@ public unsafe static class QuatConversions
 
 
 			//v2 = QuaternionToEuler(q1);     // Angles returned in radians
-			v2 = q1.CreateYawPitchRoll();
+			v2 = q1.YawPitchRollAsVector3();
 
 			//m4 = MatrixRotateZYX(v2);
 			m4 = Matrix.CreateFromYawPitchRoll(v2.X, v2.Y, v2.Z);
