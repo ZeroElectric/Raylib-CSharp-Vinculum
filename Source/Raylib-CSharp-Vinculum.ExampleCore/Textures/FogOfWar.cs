@@ -13,7 +13,6 @@
 
 namespace ZeroElectric.Vinculum.ExampleCore.Textures;
 
-
 /*******************************************************************************************
 *
 *   raylib [textures] example - Fog of war
