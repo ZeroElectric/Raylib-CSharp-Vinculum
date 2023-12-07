@@ -26,7 +26,11 @@ public static unsafe partial class Raylib
 
 	public static bool IsKeyUp(KeyboardKey key) => IsKeyUp((int)key);
 	public static void SetExitKey(KeyboardKey key) => SetExitKey((int)key);
+
+
+	[Obsolete(" Will be removed in future version, GetKeyPressed_ has been renamed to: GetKeyPressedAsKeyboardKey.")] //TODO (Ken) REMOVE
 	public static KeyboardKey GetKeyPressed_() => (KeyboardKey)GetKeyPressed();
+	public static KeyboardKey GetKeyPressedAsKeyboardKey() => (KeyboardKey)GetKeyPressed();
 
 	public static void InitWindow(int width, int height, string title)
 	{
@@ -77,7 +81,9 @@ public static unsafe partial class Raylib
 		return LoadImageSvg(spanOwner.AsPtr(), width, height);
 	}
 
+	[Obsolete(" Will be removed in future version, GetMonitorName_ has been renamed to: GetMonitorNameAsString.")] //TODO (Ken) REMOVE
 	public static string GetMonitorName_(int monitor) => Helpers.Utf8ToString(GetMonitorName(monitor));
+	public static string GetMonitorNameAsString(int monitor) => Helpers.Utf8ToString(GetMonitorName(monitor));
 
 	public static void SetClipboardText(string text)
 	{
@@ -85,7 +91,9 @@ public static unsafe partial class Raylib
 		SetClipboardText(spanOwner.AsPtr());
 	}
 
+	[Obsolete(" Will be removed in future version, GetClipboardText_ has been renamed to: GetClipboardTextAsString.")] //TODO (Ken) REMOVE
 	public static string GetClipboardText_() => Helpers.Utf8ToString(GetClipboardText());
+	public static string GetClipboardTextAsString() => Helpers.Utf8ToString(GetClipboardText());
 
 	public static Shader LoadShader(string? vsFileName, string fsFileName)
 	{
@@ -484,7 +492,9 @@ public static unsafe partial class Raylib
 		return Helpers.Utf8ToString(GetPrevDirectoryPath(sotext.AsPtr()));
 	}
 
+	[Obsolete(" Will be removed in future version, GetWorkingDirectory_ has been renamed to: GetWorkingDirectoryAsString.")] //TODO (Ken) REMOVE
 	public static string GetWorkingDirectory_() => Helpers.Utf8ToString(GetWorkingDirectory());
+	public static string GetWorkingDirectoryAsString() => Helpers.Utf8ToString(GetWorkingDirectory());
 
 	public static string[] GetDirectoryFiles(string dirPath)
 	{
