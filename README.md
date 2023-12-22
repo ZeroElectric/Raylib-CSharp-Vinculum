@@ -158,10 +158,10 @@ public static class Program
 			Raylib.BeginDrawing();
 
 			// Clear the background to white
-			Raylib.ClearBackground(RAYWHITE);
+			Raylib.ClearBackground(Raylib.RAYWHITE);
 
 			// Draw the text "Hello World" in maroon color at position (190, 200)
-			Raylib.DrawText("Hello Raylib in CSharp!", 190, 200, 20, MAROON);
+			Raylib.DrawText("Hello Raylib in CSharp!", 190, 200, 20, Raylib.MAROON);
 
 			// End drawing to the window
 			Raylib.EndDrawing();
