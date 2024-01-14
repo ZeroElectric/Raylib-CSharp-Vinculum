@@ -14,13 +14,26 @@
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageOutputDir>..\..\Output\nuget-bin\</PackageOutputDir>
         <RepositoryUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</RepositoryUrl>
-        <Version>5.0</Version>
+        <Version>5.0.1</Version>
         <PackageReleaseNotes>
 Release Notes: 
+
+----------------------------------------------
+5.0.1 (Jan 14 2024), General Fixes &amp; Improvements 
+----------------------------------------------
+
+- Renamed `GetGestureDetected()` -&gt; `GetGestureDetectedAsGesture()`
+- Renamed `CreateYawPitchRoll()` -&gt; `YawPitchRollAsVector3()`
+
+- Fixed a bug where IsMouseButtonUp() would always return true
+- Improvements to 5.0 wrappers 
+
+- Added new examples
+
 ----------------------------------------------
 5.0 (Nov 22 2023), Raylib 5.0 | RayGUI 4.0 
 ----------------------------------------------
- 
+
 Raylib and RayGUI Changes :
 
 - Raylib 5.0
@@ -149,8 +162,8 @@ Or view the examples:
         <PackageProjectUrl>https://github.com/ZeroElectric/Raylib-CSharp-Vinculum</PackageProjectUrl>
         <PackageTags>zeroelectric;raylib-cslo;raylib-csharp;vinculum;raylib-csharp-vinculum;raylib;gamedev;binding;rendering;3d;2d;graphics;opengl;physics;audio;</PackageTags>
         <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
-        <AssemblyVersion>5.0</AssemblyVersion>
-        <Copyright>2022-2023 (C) ZeroElectric, Raylib-CsLo &amp; Contributors</Copyright>
+        <AssemblyVersion>5.0.1</AssemblyVersion>
+        <Copyright>2022-2024 (C) ZeroElectric, Raylib-CsLo &amp; Contributors</Copyright>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <IsPublishable>False</IsPublishable>
         <RepositoryType>git</RepositoryType>
