@@ -1,7 +1,7 @@
 
 ////------------------------------------------------------------------------------
 ////
-//// Copyright 2022-2023 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
+//// Copyright 2022-2024 (C) Raylib-CSharp-Vinculum, Raylib-CsLo and Contributors. 
 //// This file is licensed to you under the MPL-2.0.
 //// See the LICENSE file in the project's root for more info.
 ////
