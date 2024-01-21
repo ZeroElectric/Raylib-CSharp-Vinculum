@@ -224,8 +224,4 @@ Or view the examples:
       </Content>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="build\" />
-    </ItemGroup>
-
 </Project>
