@@ -1,3 +1,21 @@
+# 5.0.1 (Jan 14 2024), General Fixes & Improvements 
+
+- Renamed `GetGestureDetected()` -> `GetGestureDetectedAsGesture()`
+- Renamed `CreateYawPitchRoll()` -> `YawPitchRollAsVector3()`
+- Improvements to 5.0 wrappers 
+- Fixed a bug where `IsMouseButtonUp()` would always return true
+
+Added new examples:
+- Updated example `GLTFLoading`
+- Added new example `SVGLoading`
+- Added new example `LoadingM3D`
+- Added new example `TexturedCurve`
+- Added new example `ImageRotation`
+- Added new example `VectorAngle`
+- Added new example `Camera2DMouseZoom`
+- Added new example `Camera2DSplitScreen`
+- Added new example `Fog of War`
+
 # 5.0 (Nov 22 2023), Raylib 5.0 | RayGUI 4.0 
  
 ### Raylib & RayGUI Changes :
